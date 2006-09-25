@@ -1,0 +1,241 @@
+Source: postgresql-8.2
+Section: misc
+Priority: optional
+Maintainer: Martin Pitt <mpitt@debian.org>
+Uploaders: Oliver Elphick <Oliver.Elphick@lfix.co.uk>
+Standards-Version: 3.7.2
+XS-Python-Version: current
+Build-Depends: debhelper (>= 5.0.37.2), cdbs (>= 0.4.43), bison, perl (>= 5.8), libperl-dev, tk8.4-dev, flex, libreadline5-dev (>= 4.2), libssl-dev, zlib1g-dev | libz-dev, libpam0g-dev | libpam-dev, libxml2-dev, libkrb5-dev, libxslt1-dev, python-dev, python-central (>= 0.5), gettext, bzip2
+
+Package: libpq-dev
+Architecture: any
+Section: libdevel
+Depends: ${shlibs:Depends}, libpq5 (= ${Source-Version}), libssl-dev, libkrb5-dev, comerr-dev
+Conflicts: postgresql-dev (<< 7.5)
+Replaces: postgresql-dev
+Suggests: postgresql-doc-8.2
+Description: header files for libpq5 (PostgreSQL library)
+ Header files and static library for compiling C programs to link
+ with the libpq library in order to communicate with a PostgreSQL
+ database backend.
+ .
+ PostgreSQL is an object-relational SQL database management system.
+
+Package: libpq5
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}
+Description: PostgreSQL C client library
+ libpq is a C library that enables user programs to communicate with
+ the PostgreSQL database server.  The server can be on another machine
+ and accessed through TCP/IP.  This version of libpq is compatible
+ with servers from PostgreSQL 7.3 or later.
+ .
+ This package contains the run-time library, needed by packages using
+ libpq.
+ .
+ PostgreSQL is an object-relational SQL database management system.
+
+Package: libecpg5
+Architecture: any
+Section: libs
+Depends:  ${shlibs:Depends}
+Description: run-time library for ECPG programs
+ The libecpg shared library is used by programs built with ECPG
+ (Embedded PostgreSQL for C).
+ .
+ PostgreSQL is an object-relational SQL database management system.
+
+Package: libecpg-dev
+Architecture: any
+Section: libdevel
+Depends: ${shlibs:Depends}, libpq-dev, libecpg-compat2, libpgtypes2
+Conflicts: postgresql-dev, libecpg3-dev
+Description: development files for ECPG (Embedded PostgreSQL for C)
+ This package contains the necessary files to build ECPG (Embedded
+ PostgreSQL for C) programs.  It includes the development libraries
+ and the preprocessor program ecpg.
+ .
+ PostgreSQL is an object-relational SQL database management system.
+ .
+ Install this package if you want to write C programs with SQL statements
+ embedded in them (rather than run by an external process).
+
+Package: libecpg-compat2
+Architecture: any
+Section: libs
+Depends:  ${shlibs:Depends}
+Description: older version of run-time library for ECPG programs
+ The libecpg_compat shared library is used by programs built with ecpg.
+ (Embedded PostgreSQL for C).
+ .
+ PostgreSQL is an object-relational SQL database management system.
+
+Package: libpgtypes2
+Architecture: any
+Section: libs
+Depends:  ${shlibs:Depends}
+Description: shared library libpgtypes for PostgreSQL 8.2
+ The libpgtypes shared library is used by programs built with ecpg.
+ (Embedded PostgreSQL for C).
+ .
+ PostgreSQL is an object-relational SQL database management system.
+
+Package: postgresql-8.2
+Architecture: any
+Section: misc
+Depends: ${shlibs:Depends}, postgresql-client-8.2, postgresql-common (>= 63)
+Suggests: oidentd | ident-server
+Conflicts: postgresql (<< 7.5)
+Description: object-relational SQL database, version 8.2 server
+ PostgreSQL is a fully featured object-relational database management
+ system.  It supports a large part of the SQL standard and is designed
+ to be extensible by users in many aspects.  Some of the features are:
+ ACID transactions, foreign keys, views, sequences, subqueries,
+ triggers, user-defined types and functions, outer joins, multiversion
+ concurrency control.  Graphical user interfaces and bindings for many
+ programming languages are available as well.
+ .
+ This package provides the database server for PostgreSQL 8.2. Servers
+ for other major release versions can be installed simultaneously and
+ are coordinated by the postgresql-common package. A package providing
+ ident-server is needed if you want to authenticate remote connections
+ with identd.
+
+Package: postgresql-client-8.2
+Architecture: any
+Section: misc
+Depends: ${shlibs:Depends}, postgresql-client-common
+Conflicts: postgresql (<< 7.5)
+Suggests: postgresql-8.2, postgresql-doc-8.2
+Description: front-end programs for PostgreSQL 8.2
+ This package contains client and administrative programs for
+ PostgreSQL: these are the interactive terminal client psql and
+ programs for creating and removing users and databases.
+ .
+ This is the client package for PostgreSQL 8.2. If you install
+ PostgreSQL 8.2 on a standalone machine, you need the server package
+ postgresql-8.2, too. On a network, you can install this package on
+ many client machines, while the server package may be installed on
+ only one machine.
+ .  
+ PostgreSQL is an object-relational SQL database management system.
+
+Package: postgresql-server-dev-8.2
+Architecture: any
+Section: libdevel
+Depends: ${shlibs:Depends}, libpq-dev (>= 8.2)
+Conflicts: pgxs
+Replaces: pgxs
+Description: development files for PostgreSQL 8.2 server-side programming
+ Header files for compiling SSI code to link into PostgreSQL's backend; for
+ example, for C functions to be called from SQL.
+ .
+ This package also contains the Makefiles necessary for building add-on 
+ modules of PostgreSQL, which would otherwise have to be built in the
+ PostgreSQL source-code tree.
+ .
+ PostgreSQL is an object-relational SQL database management system.
+
+Package: postgresql-doc-8.2
+Architecture: all
+Section: doc
+Suggests: doc-linux-html,pgdocs
+Conflicts: postgresql-doc (<< 7.5)
+Description: documentation for the PostgreSQL database management system
+ This package contains all README files, user manual, and examples for
+ PostgreSQL 8.2. The manual is in HTML format.  See the
+ packages pgdocs-pdf and pgdocs-pdf-a4 for other printable formats.
+ .
+ PostgreSQL is an object-relational SQL database management system.
+
+Package: postgresql-contrib-8.2
+Architecture: any
+Section: misc
+Depends: postgresql-8.2, ${shlibs:Depends}, postgresql-common (>= 39)
+Recommends: libpg-perl (>= 1:2.0.1-1), libdbd-pg-perl
+Conflicts: postgresql-contrib (<< 7.5)
+Description: additional facilities for PostgreSQL
+ The PostgreSQL contrib package provides several additional features
+ for the PostgreSQL database. This version is built to work with the
+ server package postgresql-8.2.  contrib often serves as a testbed for
+ features before they are adopted into PostgreSQL proper:
+ .
+  btree_gist     - B-Tree indexing using GiST (Generalised Search Tree)
+  chkpass        - Password type for storing and comparing encrypted passwords
+  cube           - Type for n-dimensional "cubes"
+  dbf2pg         - Inserts the contents of an xBase-style .dbf file into a
+                   PostgreSQL table
+  dblink         - Functions to return results from a remote database
+  dbmirror       - Trigger-based databaase mirroring
+  earthdistance  - Operator for computing the distance (in miles) between
+                   two points on the earth's surface
+  fti            - Full text indexing using triggers
+  fuzzystrmatch  - Functions for fuzzy string comparison (including Soundex)
+  intagg         - Integer aggregator/enumerator
+  intarray       - RD-tree data structure using GiST index
+  isbn_issn      - Type extensions for ISBN (books) and ISSN (serials)
+  lo             - Large Object maintenance
+  ltree          - data types, indexed access methods and queries for data
+                   organized as a tree-like structures.
+  oid2name       - Maps oids to table names
+  ora2pg         - Conversion utility for Oracle database schemas
+  pg_buffercache - Real time queries on the shared buffer cache
+  pg_trgm        - Determine the similarity of text based on trigram matching
+  pgbench        - A simple program to run a benchmark test
+  pgcrypto       - Cryptographic functions
+  pgstattuple    - Returns the percentage of dead tuples in a table; this
+                   indicates whether a vacuum is required.
+  seg            - Type representing laboratory measurements as floating-
+                   point intervals
+  spi            - PostgreSQL Server Programming Interface; 4 examples of
+                   its use:
+                   autoinc    - A function for implementing AUTOINCREMENT/
+                                IDENTITY
+                   insert_username - function for inserting user names
+                   moddatetime - Update modification timestamps
+                   refint     - Functions for implementing referential
+                                integrity (foreign keys).  Note that this is
+                                now superseded by built-in referential
+                                integrity.
+                   timetravel - Re-implements in user code the time travel
+                                feature that was removed in 6.3.
+  tips           - Micro HOWTOs
+  tsearch2       - Searchable text data type supporting indexed access
+  user_locks     - User-level long-term locks
+  vacuumlo       - Vacuum deleted large objects
+  xml2           - Manipulate XML documents in the database
+ .
+ PostgreSQL is an object-relational SQL database management system.
+
+Package: postgresql-plperl-8.2
+Architecture: any
+Depends: ${shlibs:Depends}, postgresql-8.2
+Description: PL/Perl procedural language for PostgreSQL 8.2
+ PL/Perl enables an SQL developer to write procedural language functions
+ for PostgreSQL 8.2 in Perl.  You need this package if you have any
+ PostgreSQL 8.2 functions that use the languages plperl or plperlu.
+ .
+ PostgreSQL is an object-relational SQL database management system.
+
+Package: postgresql-plpython-8.2
+Architecture: any
+Depends: ${shlibs:Depends}, postgresql-8.2
+XB-Python-Version: ${python:Versions}
+Description: PL/Python procedural language for PostgreSQL 8.2
+ PL/Python enables an SQL developer to write procedural language functions
+ for PostgreSQL 8.2 in Python.  You need this package if you have any
+ PostgreSQL 8.2 functions that use the languages plpython or plpythonu.
+ .
+ PostgreSQL is an object-relational SQL database management system.
+
+Package: postgresql-pltcl-8.2
+Architecture: any
+Depends: ${shlibs:Depends}, postgresql-8.2
+Description: PL/TCL procedural language for PostgreSQL 8.2
+ PL/TCL enables an SQL developer to write procedural language functions
+ for PostgreSQL 8.2 in TCL.  You need this package if you have any
+ PostgreSQL 8.2 functions that use the languages pltcl or pltclu.
+ .
+ PostgreSQL is an object-relational SQL database management system.
+

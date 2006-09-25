@@ -1,0 +1,39 @@
+diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta1/src/test/regress/pg_regress.c postgresql-8.2.new/build-tree/postgresql-8.2beta1/src/test/regress/pg_regress.c
+--- postgresql-8.2beta1/src/test/regress/pg_regress.c	2006-09-19 17:36:08.000000000 +0200
++++ postgresql-8.2beta1/src/test/regress/pg_regress.c	2006-09-25 23:52:28.000000000 +0200
+@@ -598,7 +598,7 @@
+ 
+ 	/* And now we can build and execute the shell command */
+ 	snprintf(psql_cmd, sizeof(psql_cmd),
+-			 SYSTEMQUOTE "\"%s%spsql\" -X -c \"%s\" \"%s\"" SYSTEMQUOTE,
++			 SYSTEMQUOTE "\"%s%spsql\" -h /tmp -X -c \"%s\" \"%s\"" SYSTEMQUOTE,
+ 			 psqldir ? psqldir : "",
+ 			 psqldir ? "/" : "",
+ 			 query_escaped,
+@@ -700,7 +700,7 @@
+ 			 outputdir, testname);
+ 
+ 	snprintf(psql_cmd, sizeof(psql_cmd),
+-			 SYSTEMQUOTE "\"%s%spsql\" -X -a -q -d \"%s\" < \"%s\" > \"%s\" 2>&1" SYSTEMQUOTE,
++			 SYSTEMQUOTE "\"%s%spsql\" -h /tmp -X -a -q -d \"%s\" < \"%s\" > \"%s\" 2>&1" SYSTEMQUOTE,
+ 			 psqldir ? psqldir : "",
+ 			 psqldir ? "/" : "",
+ 			 dbname,
+@@ -1512,7 +1512,7 @@
+ 		 */
+ 		header(_("starting postmaster"));
+ 		snprintf(buf, sizeof(buf),
+-				 SYSTEMQUOTE "\"%s/postmaster\" -D \"%s/data\" -F%s -c \"listen_addresses=%s\" > \"%s/log/postmaster.log\" 2>&1" SYSTEMQUOTE,
++				 SYSTEMQUOTE "\"%s/postmaster\" -D \"%s/data\" -k /tmp -F%s -c \"listen_addresses=%s\" > \"%s/log/postmaster.log\" 2>&1" SYSTEMQUOTE,
+ 				 bindir, temp_install,
+ 				 debug ? " -d 5" : "",
+ 				 hostname ? hostname : "",
+@@ -1531,7 +1531,7 @@
+ 		 * wait forever, however.
+ 		 */
+ 		snprintf(buf, sizeof(buf),
+-				 SYSTEMQUOTE "\"%s/psql\" -X postgres <%s 2>%s" SYSTEMQUOTE,
++				 SYSTEMQUOTE "\"%s/psql\" -h /tmp -X postgres <%s 2>%s" SYSTEMQUOTE,
+ 				 bindir, DEVNULL, DEVNULL);
+ 		for (i = 0; i < 60; i++)
+ 		{

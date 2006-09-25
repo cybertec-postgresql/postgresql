@@ -1,0 +1,88 @@
+#!/usr/bin/make	-f 
+TCL_VER := 8.4
+DEB_TAR_SRCDIR:=postgresql-8.2beta1
+
+include /usr/share/cdbs/1/rules/tarball.mk
+include /usr/share/cdbs/1/rules/simple-patchsys.mk
+include /usr/share/cdbs/1/class/autotools.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+
+LDFLAGS+= -Wl,--as-needed
+CFLAGS+= -fPIC
+
+DEB_DH_INSTALL_SOURCEDIR=debian/tmp
+DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/8.2/man \
+                    --with-docdir=\$${prefix}/share/doc/postgresql-doc-8.2 \
+		    --datadir=\$${prefix}/share/postgresql/8.2 \
+                    --bindir=\$${prefix}/lib/postgresql/8.2/bin \
+                    --includedir=\$${prefix}/include/postgresql/ \
+                    --enable-nls \
+                    --enable-integer-datetimes \
+		    --enable-thread-safety \
+                    --enable-debug \
+                    --disable-rpath \
+                    --with-tcl \
+                    --with-perl \
+                    --with-python \
+                    --with-pam \
+                    --with-krb5 \
+                    --with-openssl \
+                    --with-gnu-ld \
+                    --with-tclconfig=/usr/lib/tcl$(TCL_VER) \
+                    --with-tkconfig=/usr/lib/tk$(TCL_VER) \
+                    --with-includes=/usr/include/tcl$(TCL_VER) \
+                    --with-pgport=5432 \
+		    $(ARCH_OPTS) \
+		    CFLAGS='$(CFLAGS)' \
+		    LDFLAGS='$(LDFLAGS)'
+
+DEB_DH_MAKESHLIBS_ARGS := -Xusr/lib/postgresql/8.2
+DEB_DH_INSTALLCHANGELOGS_ARGS := build-tree/postgresql-*/HISTORY
+DEB_COMPRESS_EXCLUDE := .source .c
+DEB_DH_INSTALLINIT_ARGS := -u'defaults 19'
+
+common-post-build-arch::
+	# generate POT files for translators
+	find build-tree -name nls.mk -exec sh -c "make -C \$$(dirname {}) init-po" \;
+	
+common-post-build-indep::
+	# build tutorial stuff
+	make -C build-tree/$(DEB_TAR_SRCDIR)/src/tutorial NO_PGXS=1
+
+install/postgresql-doc-8.2::
+	install build-tree/$(DEB_TAR_SRCDIR)/src/tutorial/*.c build-tree/$(DEB_TAR_SRCDIR)/src/tutorial/*.source build-tree/$(DEB_TAR_SRCDIR)/src/tutorial/Makefile build-tree/$(DEB_TAR_SRCDIR)/src/tutorial/README debian/$(cdbs_curpkg)/usr/share/doc/$(cdbs_curpkg)/tutorial
+
+binary-predeb/postgresql-8.2::
+	# patch away the "don't execute as root" check for the test
+	# suite; doing it here will ensure that the actual debs have
+	# the check.
+	cd build-tree/$(DEB_TAR_SRCDIR) && \
+	patch -p1 < ../../debian/disable-root-check.patch && \
+	make 
+	
+	# run testsuite
+ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
+	cd build-tree/$(DEB_TAR_SRCDIR); \
+	if ! make check; then \
+	    for l in regression.diffs log/initdb.log log/postmaster.log; do \
+	    	if [ -e src/test/regress/$$l ]; then \
+		    echo "********* $$l *******"; \
+		    cat src/test/regress/$$l; \
+		fi; \
+	    done; \
+	fi
+endif
+
+	cd build-tree/$(DEB_TAR_SRCDIR) && \
+	patch -Rp1 < ../../debian/disable-root-check.patch 
+
+	# compress manpages
+	find debian/postgresql-8.2/usr/share/postgresql/8.2/man -type f -exec gzip -9 '{}' \;
+
+binary-predeb/postgresql-client-8.2::
+	find debian/postgresql-client-8.2/usr/share/postgresql/8.2/man -type f -exec gzip -9 '{}' \;
+
+binary-install/postgresql-plpython-8.2::
+	dh_pycentral -p$(cdbs_curpkg)
+	dh_python -p$(cdbs_curpkg) usr/lib/postgresql/8.2/lib
+
