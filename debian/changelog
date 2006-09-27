@@ -1,8 +1,24 @@
 postgresql-8.2 (8.2~beta1-1) experimental; urgency=low
 
   * First public beta release of 8.2, packaging based on current 8.1 tree.
+  * Major improvements and changes (see HISTORY for details):
+    - Improved sort performance with lower memory usage.
+    - More efficient locking with better concurency.
+    - New FILLFACTOR support for tables and indexes.
+    - Many query optimization improvements.
+    - More efficient vacuuming.
+    - Warm standby server enhancements.
+    - Monitoring, logging, and performance tuning additions.
+    - Query enhancements including RETURNING values, multi-VALUES,
+    - support, and self-joins for DELETE.
+    - More control over creating/dropping objects and inheritance.
+    - Index creation without blocking INSERT/UPDATE/DELETE.
+    - COPY TO support for SELECT statements.
+    - Array and aggregate improvements, including SQL:2003 statistical
+    - functions.
+    - Many /contrib improvements.
 
- -- Martin Pitt <mpitt@debian.org>  Mon,  7 Aug 2006 09:58:25 +0200
+ -- Martin Pitt <mpitt@debian.org>  Wed, 27 Sep 2006 20:38:06 +0200
 
 postgresql-8.1 (8.1.4-6) unstable; urgency=low
 
