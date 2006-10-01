@@ -2,7 +2,6 @@ Source: postgresql-8.2
 Section: misc
 Priority: optional
 Maintainer: Martin Pitt <mpitt@debian.org>
-Uploaders: Oliver Elphick <Oliver.Elphick@lfix.co.uk>
 Standards-Version: 3.7.2
 XS-Python-Version: current
 Build-Depends: debhelper (>= 5.0.37.2), cdbs (>= 0.4.43), bison, perl (>= 5.8), libperl-dev, tk8.4-dev, flex, libreadline5-dev (>= 4.2), libssl-dev, zlib1g-dev | libz-dev, libpam0g-dev | libpam-dev, libxml2-dev, libkrb5-dev, libxslt1-dev, python-dev, python-central (>= 0.5), gettext, bzip2
