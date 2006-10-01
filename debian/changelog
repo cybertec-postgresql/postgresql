@@ -1,8 +1,9 @@
 postgresql-8.2 (8.2~beta1-2) experimental; urgency=low
 
-  *
+  * Move vacuumlo from -client to -contrib, since it is a contributed script.
+    Add appropriate Replaces:.
 
- -- Martin Pitt <mpitt@debian.org>  Wed, 27 Sep 2006 21:19:21 +0200
+ -- Martin Pitt <mpitt@debian.org>  Sun,  1 Oct 2006 14:51:27 +0200
 
 postgresql-8.2 (8.2~beta1-1) experimental; urgency=low
 

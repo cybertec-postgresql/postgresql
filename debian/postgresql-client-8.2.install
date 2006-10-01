@@ -11,7 +11,6 @@ usr/lib/postgresql/8.2/bin/reindexdb
 usr/lib/postgresql/8.2/bin/pg_restore
 usr/lib/postgresql/8.2/bin/psql
 usr/lib/postgresql/8.2/bin/vacuumdb
-usr/lib/postgresql/8.2/bin/vacuumlo
 usr/share/postgresql/8.2/man/man1/pg_restore.1
 usr/share/postgresql/8.2/man/man1/psql.1
 usr/share/postgresql/8.2/man/man1/vacuumdb.1

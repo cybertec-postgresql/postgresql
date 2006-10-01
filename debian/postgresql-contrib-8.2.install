@@ -2,6 +2,7 @@ usr/share/doc/postgresql-doc-8.2/contrib/* usr/share/doc/postgresql-contrib-8.2
 usr/share/postgresql/8.2/contrib/*
 usr/lib/postgresql/8.2/bin/oid2name
 usr/lib/postgresql/8.2/bin/pgbench
+usr/lib/postgresql/8.2/bin/vacuumlo
 usr/lib/postgresql/8.2/lib/_int.so
 usr/lib/postgresql/8.2/lib/autoinc.so
 usr/lib/postgresql/8.2/lib/btree_gist.so
