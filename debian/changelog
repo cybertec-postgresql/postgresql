@@ -2,8 +2,10 @@ postgresql-8.2 (8.2~beta1-2) experimental; urgency=low
 
   * Move vacuumlo from -client to -contrib, since it is a contributed script.
     Add appropriate Replaces:.
+  * debian/control: Fix libpq-dev dependency of -server-dev-8.2.
+    Closes: #393148
 
- -- Martin Pitt <mpitt@debian.org>  Sun,  1 Oct 2006 14:51:27 +0200
+ -- Martin Pitt <mpitt@debian.org>  Sun, 15 Oct 2006 17:40:06 +0200
 
 postgresql-8.2 (8.2~beta1-1) experimental; urgency=low
 

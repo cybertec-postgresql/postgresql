@@ -123,7 +123,7 @@ Description: front-end programs for PostgreSQL 8.2
 Package: postgresql-server-dev-8.2
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, libpq-dev (>= 8.2)
+Depends: ${shlibs:Depends}, libpq-dev (>= 8.2~beta)
 Conflicts: pgxs
 Replaces: pgxs
 Description: development files for PostgreSQL 8.2 server-side programming
