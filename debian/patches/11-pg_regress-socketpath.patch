@@ -1,7 +1,7 @@
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta1/src/test/regress/pg_regress.c postgresql-8.2.new/build-tree/postgresql-8.2beta1/src/test/regress/pg_regress.c
---- postgresql-8.2beta1/src/test/regress/pg_regress.c	2006-09-19 17:36:08.000000000 +0200
-+++ postgresql-8.2beta1/src/test/regress/pg_regress.c	2006-09-25 23:52:28.000000000 +0200
-@@ -598,7 +598,7 @@
+diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/test/regress/pg_regress.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/test/regress/pg_regress.c
+--- postgresql-8.2beta2/src/test/regress/pg_regress.c	2006-10-04 02:30:14.000000000 +0200
++++ postgresql-8.2beta2/src/test/regress/pg_regress.c	2006-10-27 09:08:40.000000000 +0200
+@@ -599,7 +599,7 @@
  
  	/* And now we can build and execute the shell command */
  	snprintf(psql_cmd, sizeof(psql_cmd),
@@ -10,7 +10,7 @@ diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta1/src/test/regress/pg_regr
  			 psqldir ? psqldir : "",
  			 psqldir ? "/" : "",
  			 query_escaped,
-@@ -700,7 +700,7 @@
+@@ -701,7 +701,7 @@
  			 outputdir, testname);
  
  	snprintf(psql_cmd, sizeof(psql_cmd),
@@ -19,17 +19,17 @@ diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta1/src/test/regress/pg_regr
  			 psqldir ? psqldir : "",
  			 psqldir ? "/" : "",
  			 dbname,
-@@ -1512,7 +1512,7 @@
+@@ -1515,7 +1515,7 @@
  		 */
  		header(_("starting postmaster"));
  		snprintf(buf, sizeof(buf),
--				 SYSTEMQUOTE "\"%s/postmaster\" -D \"%s/data\" -F%s -c \"listen_addresses=%s\" > \"%s/log/postmaster.log\" 2>&1" SYSTEMQUOTE,
-+				 SYSTEMQUOTE "\"%s/postmaster\" -D \"%s/data\" -k /tmp -F%s -c \"listen_addresses=%s\" > \"%s/log/postmaster.log\" 2>&1" SYSTEMQUOTE,
+-				 SYSTEMQUOTE "\"%s/postgres\" -D \"%s/data\" -F%s -c \"listen_addresses=%s\" > \"%s/log/postmaster.log\" 2>&1" SYSTEMQUOTE,
++				 SYSTEMQUOTE "\"%s/postgres\" -D \"%s/data\" -k /tmp -F%s -c \"listen_addresses=%s\" > \"%s/log/postmaster.log\" 2>&1" SYSTEMQUOTE,
  				 bindir, temp_install,
  				 debug ? " -d 5" : "",
  				 hostname ? hostname : "",
-@@ -1531,7 +1531,7 @@
- 		 * wait forever, however.
+@@ -1534,7 +1534,7 @@
+ 		 * forever, however.
  		 */
  		snprintf(buf, sizeof(buf),
 -				 SYSTEMQUOTE "\"%s/psql\" -X postgres <%s 2>%s" SYSTEMQUOTE,
