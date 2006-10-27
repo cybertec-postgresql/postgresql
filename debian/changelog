@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2~beta2-1) UNRELEASED; urgency=low
+postgresql-8.2 (8.2~beta2-1) experimental; urgency=low
 
   * New upstream beta release.
   * debian/patches/{03-gettext-domains.patch,11-pg_regress-socketpath.patch}:
