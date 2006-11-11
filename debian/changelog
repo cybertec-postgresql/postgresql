@@ -1,3 +1,9 @@
+postgresql-8.2 (8.2~beta1-1) UNRELEASED; urgency=low
+
+  * New upstream beta release.
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 11 Nov 2006 11:52:23 -0800
+
 postgresql-8.2 (8.2~beta2-1) experimental; urgency=low
 
   * New upstream beta release.
