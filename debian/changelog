@@ -1,3 +1,9 @@
+postgresql-8.2 (8.2~rc1-1) experimental; urgency=low
+
+  * Release candidate 1.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 26 Nov 2006 15:59:11 +0100
+
 postgresql-8.2 (8.2~beta3-1) experimental; urgency=low
 
   * New upstream beta release.
