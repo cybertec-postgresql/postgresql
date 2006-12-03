@@ -1,6 +1,6 @@
 #!/usr/bin/make	-f 
 TCL_VER := 8.4
-DEB_TAR_SRCDIR:=postgresql-8.2rc1
+DEB_TAR_SRCDIR:=postgresql-8.2.0
 
 include /usr/share/cdbs/1/rules/tarball.mk
 include /usr/share/cdbs/1/rules/simple-patchsys.mk
