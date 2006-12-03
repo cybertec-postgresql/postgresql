@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2-1) UNRELEASED; urgency=low
+postgresql-8.2 (8.2-1) experimental; urgency=low
 
   * 8.2 final release.
   * debian/control: Fix spelling of 'Tcl'. (See #401191)
