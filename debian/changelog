@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2.1-1) UNRELEASED; urgency=low
+postgresql-8.2 (8.2.1-1) experimental; urgency=low
 
   * New upstream bugfix release:
     - Fix crash with SELECT ... LIMIT ALL (also LIMIT NULL).
