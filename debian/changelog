@@ -1,3 +1,26 @@
+postgresql-8.2 (8.2.1-1) UNRELEASED; urgency=low
+
+  * New upstream bugfix release:
+    - Fix crash with SELECT ... LIMIT ALL (also LIMIT NULL).
+    - "Several /contrib/tsearch2" fixes (Teodor)
+    - Fix planner mistakes for outer join queries.
+    - Fix several problems in queries involving sub-SELECTs.
+    - Fix potential crash in SPI during subtransaction abort.
+      This affects all PL functions since they all use SPI.
+    - Improve build speed of PDF documentation.
+    - Re-add JST (Japan) timezone abbreviation.
+    - Improve optimization decisions related to index scans.
+    - Have psql print multi-byte combining characters as before, rather
+      than output as \u.
+    - Improve index usage of regular expressions that use parentheses.
+      This improves psql \d performance also.
+    - Make pg_dumpall assume that databases have public CONNECT
+      privilege, when dumping from a pre-8.2 server.
+      This preserves the previous behavior that anyone can connect to a
+      database if allowed by "pg_hba.conf".
+
+ -- Martin Pitt <mpitt@debian.org>  Mon,  8 Jan 2007 18:04:34 +0100
+
 postgresql-8.2 (8.2-1) experimental; urgency=low
 
   * 8.2 final release.
