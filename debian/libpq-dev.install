@@ -6,7 +6,7 @@ usr/include/postgresql/postgres_ext.h
 usr/include/postgresql/8.2/server/catalog/pg_type.h /usr/include/postgresql/catalog
 usr/include/postgresql/8.2/server/nodes/nodes.h /usr/include/postgresql/nodes
 usr/include/postgresql/8.2/server/utils/{elog,errcodes,palloc}.h /usr/include/postgresql/utils
-usr/include/postgresql/8.2/server/{c,pg_config,pg_config_manual,pg_config_os,port}.h /usr/include/postgresql/
+usr/include/postgresql/8.2/server/{c,pg_config,pg_config_manual,pg_config_os,port,pg_trace}.h /usr/include/postgresql/
 usr/include/postgresql/8.2/server/postgres{,_fe,_ext}.h /usr/include/postgresql/
 usr/include/postgresql/8.2/server/mb/pg_wchar.h /usr/include/postgresql/mb
 usr/lib/libpgport.a
