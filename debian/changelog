@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2.1-2) UNRELEASED; urgency=low
+postgresql-8.2 (8.2.1-2) experimental; urgency=low
 
   * debian/libpq-dev.install: Install missing pg_trace.h.
   * debian/control: Remove -contrib's libpg-perl recommendation, nothing in
