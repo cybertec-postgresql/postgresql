@@ -161,33 +161,29 @@ Description: additional facilities for PostgreSQL
  server package postgresql-8.2.  contrib often serves as a testbed for
  features before they are adopted into PostgreSQL proper:
  .
+  adminpack      - File and log manipulation routines, used by pgAdmin
   btree_gist     - B-Tree indexing using GiST (Generalised Search Tree)
-  chkpass        - Password type for storing and comparing encrypted passwords
-  cube           - Type for n-dimensional "cubes"
-  dbf2pg         - Inserts the contents of an xBase-style .dbf file into a
-                   PostgreSQL table
+  chkpass        - An auto-encrypted password datatype
+  cube           - Multidimensional-cube datatype (GiST indexing example)
   dblink         - Functions to return results from a remote database
-  dbmirror       - Trigger-based databaase mirroring
   earthdistance  - Operator for computing the distance (in miles) between
                    two points on the earth's surface
-  fti            - Full text indexing using triggers
-  fuzzystrmatch  - Functions for fuzzy string comparison (including Soundex)
+  fuzzystrmatch  - Levenshtein, metaphone, and soundex fuzzy string matching
   intagg         - Integer aggregator/enumerator
-  intarray       - RD-tree data structure using GiST index
-  isbn_issn      - Type extensions for ISBN (books) and ISSN (serials)
+  intarray       - Index support for arrays of int4, using GiST
+  isn            - type extensions for ISBN, ISSN, ISMN, EAN13 product numbers
   lo             - Large Object maintenance
-  ltree          - data types, indexed access methods and queries for data
-                   organized as a tree-like structures.
-  oid2name       - Maps oids to table names
-  ora2pg         - Conversion utility for Oracle database schemas
+  ltree          - Tree-like data structures
+  oid2name       - Maps OIDs to table names
   pg_buffercache - Real time queries on the shared buffer cache
+  pg_freespacemap- Displays the contents of the free space map (FSM)
   pg_trgm        - Determine the similarity of text based on trigram matching
-  pgbench        - A simple program to run a benchmark test
+  pgbench        - TPC-B like benchmark
   pgcrypto       - Cryptographic functions
+  pgrowlocks     - A function to return row locking information
   pgstattuple    - Returns the percentage of dead tuples in a table; this
                    indicates whether a vacuum is required.
-  seg            - Type representing laboratory measurements as floating-
-                   point intervals
+  seg            - Confidence-interval datatype (GiST indexing example)
   spi            - PostgreSQL Server Programming Interface; 4 examples of
                    its use:
                    autoinc    - A function for implementing AUTOINCREMENT/
@@ -200,10 +196,8 @@ Description: additional facilities for PostgreSQL
                                 integrity.
                    timetravel - Re-implements in user code the time travel
                                 feature that was removed in 6.3.
-  tips           - Micro HOWTOs
-  tsearch2       - Searchable text data type supporting indexed access
-  user_locks     - User-level long-term locks
-  vacuumlo       - Vacuum deleted large objects
+  tsearch2       - Full-text-index support using GiST
+  vacuumlo       - Remove orphaned large objects
   xml2           - Manipulate XML documents in the database
  .
  PostgreSQL is an object-relational SQL database management system.
