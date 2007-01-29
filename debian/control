@@ -152,7 +152,7 @@ Package: postgresql-contrib-8.2
 Architecture: any
 Section: misc
 Depends: postgresql-8.2, ${shlibs:Depends}, postgresql-common (>= 39)
-Recommends: libpg-perl (>= 1:2.0.1-1), libdbd-pg-perl
+Recommends: libdbd-pg-perl
 Conflicts: postgresql-contrib (<< 7.5)
 Replaces: postgresql-client-8.2 (<< 8.2~beta1-2)
 Description: additional facilities for PostgreSQL
