@@ -1,3 +1,39 @@
+postgresql-8.2 (8.2.2-1) UNRELEASED; urgency=low
+
+  * New upstream security and bug fix release:
+    - Fix security vulnerabilities that allowed connected users to
+      read backend memory.
+      The vulnerabilities involve suppressing the normal check that a SQL
+      function returns the data type it's declared to, and changing the
+      data type of a table column (CVE-2007-0555, CVE-2007-0556). These
+      errors can easily be exploited to cause a backend crash, and in
+      principle might be used to read database content that the user
+      should not be able to access.
+    - Fix not-so-rare-anymore bug wherein btree index page splits could
+      fail due to choosing an infeasible split point.
+    - Properly handle to_char('CC') for years ending in 00.
+      Year 2000 is in the twentieth century, not the twenty-first.
+    - "/contrib/tsearch2" localization improvements.
+    - Fix incorrect permission check in information_schema.key_column_usage
+      view.
+      The symptom is "relation with OID nnnnn does not exist" errors. To
+      get this fix without using "initdb", use "CREATE OR REPLACE VIEW"
+      to install the corrected definition found in
+      "share/information_schema.sql". Note you will need to do this in
+      each database.
+    - Improve "VACUUM" performance for databases with many tables.
+    - Fix for rare Assert() crash triggered by UNION.
+    - Fix potentially incorrect results from index searches using ROW
+      inequality conditions.
+    - Tighten security of multi-byte character processing for UTF8
+      sequences over three bytes long.
+    - Fix possible crashes when an already-in-use PL/pgSQL function is
+      updated.
+    - Improve PL/pgSQL handling of domain types.
+    - Fix possible errors in processing PL/pgSQL exception blocks.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun,  4 Feb 2007 19:53:54 +0100
+
 postgresql-8.2 (8.2.1-2) experimental; urgency=low
 
   * debian/libpq-dev.install: Install missing pg_trace.h.
