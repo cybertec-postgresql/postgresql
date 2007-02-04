@@ -107,6 +107,7 @@ Section: misc
 Depends: ${shlibs:Depends}, postgresql-client-common
 Conflicts: postgresql (<< 7.5)
 Suggests: postgresql-8.2, postgresql-doc-8.2
+Provides: postgresql-client
 Description: front-end programs for PostgreSQL 8.2
  This package contains client and administrative programs for
  PostgreSQL: these are the interactive terminal client psql and

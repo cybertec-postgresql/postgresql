@@ -31,8 +31,11 @@ postgresql-8.2 (8.2.2-1) UNRELEASED; urgency=low
       updated.
     - Improve PL/pgSQL handling of domain types.
     - Fix possible errors in processing PL/pgSQL exception blocks.
+  * debian/control: postgresql-client-8.2 provides postgresql-client. This
+    avoids breaking all the reverse dependencies to p-c when the transitional
+    package gets removed.
 
- -- Martin Pitt <mpitt@debian.org>  Sun,  4 Feb 2007 19:53:54 +0100
+ -- Martin Pitt <mpitt@debian.org>  Sun,  4 Feb 2007 20:38:09 +0100
 
 postgresql-8.2 (8.2.1-2) experimental; urgency=low
 
