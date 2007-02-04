@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2.2-1) UNRELEASED; urgency=low
+postgresql-8.2 (8.2.2-1) experimental; urgency=low
 
   * New upstream security and bug fix release:
     - Fix security vulnerabilities that allowed connected users to
