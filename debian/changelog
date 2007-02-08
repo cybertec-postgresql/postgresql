@@ -1,3 +1,12 @@
+postgresql-8.2 (8.2.3-1) UNRELEASED; urgency=low
+
+  * New upstream bug fix release to fix regressions in 8.2.2:
+    - Remove overly-restrictive check for type length in constraints and
+      functional indexes.
+    - Fix optimization so MIN/MAX in subqueries can again use indexes.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu,  8 Feb 2007 17:13:08 +0100
+
 postgresql-8.2 (8.2.2-1) experimental; urgency=low
 
   * New upstream security and bug fix release:
