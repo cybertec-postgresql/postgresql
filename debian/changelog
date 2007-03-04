@@ -1,3 +1,9 @@
+postgresql-8.2 (8.2.3-2) UNRELEASED; urgency=low
+
+  * 
+
+ -- Martin Pitt <mpitt@debian.org>  Fri,  9 Feb 2007 08:29:14 +0100
+
 postgresql-8.2 (8.2.3-1) experimental; urgency=low
 
   * New upstream bug fix release to fix regressions in 8.2.2:
@@ -42,7 +48,7 @@ postgresql-8.2 (8.2.2-1) experimental; urgency=low
     - Fix possible errors in processing PL/pgSQL exception blocks.
   * debian/control: postgresql-client-8.2 provides postgresql-client. This
     avoids breaking all the reverse dependencies to p-c when the transitional
-    package gets removed.
+    package gets removed. Closes: #400648
 
  -- Martin Pitt <mpitt@debian.org>  Sun,  4 Feb 2007 20:38:09 +0100
 
