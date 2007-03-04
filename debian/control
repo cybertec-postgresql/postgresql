@@ -205,7 +205,7 @@ Description: additional facilities for PostgreSQL
 
 Package: postgresql-plperl-8.2
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-8.2
+Depends: ${shlibs:Depends}, postgresql-8.2, perl
 Description: PL/Perl procedural language for PostgreSQL 8.2
  PL/Perl enables an SQL developer to write procedural language functions
  for PostgreSQL 8.2 in Perl.  You need this package if you have any
