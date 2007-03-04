@@ -3,8 +3,10 @@ postgresql-8.2 (8.2.3-2) UNRELEASED; urgency=low
   * debian/control: Add Perl dependency to p-8.2-plperl, to ensure that
     creating plperl functions works (as opposed to plperlu, which only needs
     libperl). (see bug #412135)
+  * debian/control: Do not mention nor suggest 'pgdocs' any more in p-doc's
+    description since pgdocs is only available for 7.4. (see bug #405097)
 
- -- Martin Pitt <mpitt@debian.org>  Sun,  4 Mar 2007 11:52:02 +0100
+ -- Martin Pitt <mpitt@debian.org>  Sun,  4 Mar 2007 11:57:36 +0100
 
 postgresql-8.2 (8.2.3-1) experimental; urgency=low
 

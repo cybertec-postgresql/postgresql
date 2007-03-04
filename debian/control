@@ -140,12 +140,10 @@ Description: development files for PostgreSQL 8.2 server-side programming
 Package: postgresql-doc-8.2
 Architecture: all
 Section: doc
-Suggests: doc-linux-html,pgdocs
 Conflicts: postgresql-doc (<< 7.5)
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
- PostgreSQL 8.2. The manual is in HTML format.  See the
- packages pgdocs-pdf and pgdocs-pdf-a4 for other printable formats.
+ PostgreSQL 8.2. The manual is in HTML format.
  .
  PostgreSQL is an object-relational SQL database management system.
 
