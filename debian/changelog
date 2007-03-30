@@ -5,8 +5,14 @@ postgresql-8.2 (8.2.3-2) UNRELEASED; urgency=low
     libperl). (see bug #412135)
   * debian/control: Do not mention nor suggest 'pgdocs' any more in p-doc's
     description since pgdocs is only available for 7.4. (see bug #405097)
+  * debian/patches/04-timezone-symlinks.patch:
+    - Use the timezone database from the system tzdata instead of shipping our
+      own. Towards a single authoritative time zone database in Debian and
+      Ubuntu... :) (LP: #41159)
+    - Drop previous hardlink-to-symlink patch to zic, since that is irrelevant
+      now.
 
- -- Martin Pitt <mpitt@debian.org>  Sun,  4 Mar 2007 11:57:36 +0100
+ -- Martin Pitt <mpitt@debian.org>  Fri, 30 Mar 2007 18:53:14 +0200
 
 postgresql-8.2 (8.2.3-1) experimental; urgency=low
 

@@ -1,31 +1,12 @@
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta1/src/timezone/zic.c postgresql-8.2.new/build-tree/postgresql-8.2beta1/src/timezone/zic.c
---- postgresql-8.2beta1/src/timezone/zic.c	2005-10-15 04:49:51.000000000 +0200
-+++ postgresql-8.2beta1/src/timezone/zic.c	2006-09-25 19:19:26.000000000 +0200
-@@ -611,14 +611,14 @@
- 	 */
- 	if (!itsdir(toname))
- 		(void) remove(toname);
--	if (link(fromname, toname) != 0)
-+        if (1)
- 	{
- 		int			result;
+diff -Nur postgresql-8.2/build-tree/postgresql-8.2.3/src/timezone/Makefile postgresql-8.2.new/build-tree/postgresql-8.2.3/src/timezone/Makefile
+--- postgresql-8.2.3/src/timezone/Makefile	2006-07-25 05:51:22.000000000 +0200
++++ postgresql-8.2.3/src/timezone/Makefile	2007-03-30 18:52:54.000000000 +0200
+@@ -34,7 +34,7 @@
+ 	$(CC) $(CFLAGS) $(ZICOBJS) $(LDFLAGS) $(LIBS) -o $@$(X)
  
- 		if (mkdirs(toname) != 0)
- 			(void) exit(EXIT_FAILURE);
+ install: all installdirs
+-	./zic -d '$(DESTDIR)$(datadir)/timezone' $(TZDATAFILES)
++	ln -s /usr/share/zoneinfo '$(DESTDIR)$(datadir)/timezone'
+ 	$(MAKE) -C tznames $@
  
--		result = link(fromname, toname);
-+                result = 1;
- #ifdef HAVE_SYMLINK
- 		if (result != 0 &&
- 			access(fromname, F_OK) == 0 &&
-@@ -632,8 +632,10 @@
- 			symlinkcontents = ecatalloc(symlinkcontents, fromfile);
- 
- 			result = symlink(symlinkcontents, toname);
-+                        /*
- 			if (result == 0)
- 				warning(_("hard link failed, symbolic link used"));
-+                        */
- 			ifree(symlinkcontents);
- 		}
- #endif
+ installdirs:
