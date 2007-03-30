@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2.3-2) UNRELEASED; urgency=low
+postgresql-8.2 (8.2.3-2) experimental; urgency=low
 
   * debian/control: Add Perl dependency to p-8.2-plperl, to ensure that
     creating plperl functions works (as opposed to plperlu, which only needs
