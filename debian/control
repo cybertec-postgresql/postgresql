@@ -83,7 +83,7 @@ Description: shared library libpgtypes for PostgreSQL 8.2
 Package: postgresql-8.2
 Architecture: any
 Section: misc
-Depends: ${shlibs:Depends}, postgresql-client-8.2, postgresql-common (>= 63)
+Depends: ${shlibs:Depends}, postgresql-client-8.2, postgresql-common (>= 63), tzdata
 Suggests: oidentd | ident-server
 Conflicts: postgresql (<< 7.5)
 Description: object-relational SQL database, version 8.2 server
