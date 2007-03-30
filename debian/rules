@@ -70,6 +70,7 @@ ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 		    cat src/test/regress/$$l; \
 		fi; \
 	    done; \
+	    exit 1; \
 	fi
 endif
 
