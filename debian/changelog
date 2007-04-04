@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2.3-3) UNRELEASED; urgency=low
+postgresql-8.2 (8.2.3-3) experimental; urgency=low
 
   * debian/rules: Do not FTBFS on failed test suite on sparc. sparc throws a
     'floating point exception' instead of a 'division by zero' error, which is
