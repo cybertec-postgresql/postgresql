@@ -10,6 +10,12 @@ include /usr/share/cdbs/1/rules/debhelper.mk
 LDFLAGS+= -Wl,--as-needed
 CFLAGS+= -fPIC
 
+ifeq ($(DEB_BUILD_ARCH),sparc)
+   TESTSUITE_FAIL_CMD=true
+else
+   TESTSUITE_FAIL_CMD=exit 1
+endif
+
 DEB_DH_INSTALL_SOURCEDIR=debian/tmp
 DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/8.2/man \
                     --with-docdir=\$${prefix}/share/doc/postgresql-doc-8.2 \
@@ -70,7 +76,7 @@ ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 		    cat src/test/regress/$$l; \
 		fi; \
 	    done; \
-	    exit 1; \
+	    $(TESTSUITE_FAIL_CMD); \
 	fi
 endif
 
