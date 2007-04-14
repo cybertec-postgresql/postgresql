@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2.3-5) UNRELEASED; urgency=low
+postgresql-8.2 (8.2.3-5) unstable; urgency=low
 
   * debian/rules: Do not let failed test suite fail the build on mips and
     mipsel. The Debian buildds' kernels are still broken.
