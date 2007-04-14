@@ -1,3 +1,9 @@
+postgresql-8.2 (8.2.3-4) unstable; urgency=low
+
+  * First upload to unstable: Welcome, Lenny!
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 14 Apr 2007 13:52:28 +0200
+
 postgresql-8.2 (8.2.3-3) experimental; urgency=low
 
   * debian/rules: Do not FTBFS on failed test suite on sparc. sparc throws a
