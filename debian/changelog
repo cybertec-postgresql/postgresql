@@ -2,8 +2,10 @@ postgresql-8.2 (8.2.3-5) UNRELEASED; urgency=low
 
   * debian/rules: Do not let failed test suite fail the build on mips and
     mipsel. The Debian buildds' kernels are still broken.
+  * debian/control: Add empty postgresql{,-client,-contrib,-doc} packages
+    which always point to the latest available version.
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 14 Apr 2007 20:37:08 +0200
+ -- Martin Pitt <mpitt@debian.org>  Sat, 14 Apr 2007 21:23:32 +0200
 
 postgresql-8.2 (8.2.3-4) unstable; urgency=low
 
