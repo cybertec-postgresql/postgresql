@@ -1,3 +1,9 @@
+postgresql-8.2 (8.2.3-6) UNRELEASED; urgency=low
+
+  * debian/postgresql-8.2.postrm: Fix bashism.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 19 Apr 2007 17:14:03 +0200
+
 postgresql-8.2 (8.2.3-5) unstable; urgency=low
 
   * debian/rules: Do not let failed test suite fail the build on mips and
