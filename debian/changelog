@@ -1,8 +1,37 @@
-postgresql-8.2 (8.2.3-6) UNRELEASED; urgency=low
+postgresql-8.2 (8.2.4-1) UNRELEASED; urgency=medium
 
+  * New upstream security/bug fix release:
+    - Support explicit placement of the temporary-table schema within
+      search_path, and disable searching it for functions and operators.
+      This is needed to allow a security-definer function to set a truly
+      secure value of search_path. Without it, an unprivileged SQL user
+      can use temporary objects to execute code with the privileges of
+      the security-definer function (CVE-2007-2138). See "CREATE
+      FUNCTION" for more information.
+    - Fix to_char() so it properly upper/lower cases localized day or
+      month names.
+    - "/contrib/tsearch2" crash fixes.
+    - Require "COMMIT PREPARED" to be executed in the same database as
+      the transaction was prepared in.
+    - New traditional (Taiwan) Chinese FAQ.
+    - Prevent the statistics collector from writing to disk too
+      frequently.
+    - Fix potential-data-corruption bug in how "VACUUM FULL" handles
+      "UPDATE" chains.
+    - Fix bug in domains that use array types.
+    - Fix "pg_dump" so it can dump a serial column's sequence using "-t"
+      when not also dumping the owning table.
+    - Planner fixes, including improving outer join and bitmap scan
+      selection logic.
+    - Fix possible wrong answers or crash when a PL/pgSQL function tries
+      to RETURN from within an EXCEPTION block.
+    - Fix PANIC during enlargement of a hash index.
+  * debian/patches/04-timezone-symlinks.patch: Adapt to slightly changed
+    Makefile of 8.2.4.
+  * Remove debian/patches/12-vacuum-cycle-hang.patch: Fixed upstream.
   * debian/postgresql-8.2.postrm: Fix bashism.
 
- -- Martin Pitt <mpitt@debian.org>  Thu, 19 Apr 2007 17:14:03 +0200
+ -- Martin Pitt <mpitt@debian.org>  Fri, 20 Apr 2007 09:23:55 +0200
 
 postgresql-8.2 (8.2.3-5) unstable; urgency=low
 
