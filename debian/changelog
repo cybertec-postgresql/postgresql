@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2.4-1) UNRELEASED; urgency=medium
+postgresql-8.2 (8.2.4-1) unstable; urgency=medium
 
   * New upstream security/bug fix release:
     - Support explicit placement of the temporary-table schema within
