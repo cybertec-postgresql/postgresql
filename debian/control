@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 5.0.37.2), cdbs (>= 0.4.43), perl (>= 5.8), libperl
 Package: libpq-dev
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, libpq5 (= ${Source-Version}), libssl-dev, libkrb5-dev, comerr-dev
+Depends: ${shlibs:Depends}, libpq5 (= ${binary:Version}), libssl-dev, libkrb5-dev, comerr-dev
 Conflicts: postgresql-dev (<< 7.5)
 Replaces: postgresql-dev
 Suggests: postgresql-doc-8.2
