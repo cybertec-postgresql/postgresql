@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2.4-2) UNRELEASED; urgency=low
+postgresql-8.2 (8.2.4-2) unstable; urgency=low
 
   * debian/control: Remove some unnecessary build depends. Closes: #424010
   * debian/postgresql-8.2.install: Actually install the "timezone" symlink,
