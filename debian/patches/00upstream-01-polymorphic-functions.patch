@@ -1,0 +1,83 @@
+diff -Nur postgresql-8.2/build-tree/postgresql-8.2.4/src/backend/optimizer/util/clauses.c postgresql-8.2.new/build-tree/postgresql-8.2.4/src/backend/optimizer/util/clauses.c
+--- postgresql-8.2.4/src/backend/optimizer/util/clauses.c	2007-03-06 23:45:23.000000000 +0100
++++ postgresql-8.2.4/src/backend/optimizer/util/clauses.c	2007-06-23 18:43:26.000000000 +0200
+@@ -2888,11 +2888,11 @@
+ 	 * compatible with the original expression result type.  To avoid
+ 	 * confusing matters, insert a RelabelType in such cases.
+ 	 */
+-	if (exprType(newexpr) != funcform->prorettype)
++	if (exprType(newexpr) != result_type)
+ 	{
+-		Assert(IsBinaryCoercible(exprType(newexpr), funcform->prorettype));
++		Assert(IsBinaryCoercible(exprType(newexpr), result_type));
+ 		newexpr = (Node *) makeRelabelType((Expr *) newexpr,
+-										   funcform->prorettype,
++										   result_type,
+ 										   -1,
+ 										   COERCE_IMPLICIT_CAST);
+ 	}
+diff -Nur postgresql-8.2/build-tree/postgresql-8.2.4/src/test/regress/expected/polymorphism.out postgresql-8.2.new/build-tree/postgresql-8.2.4/src/test/regress/expected/polymorphism.out
+--- postgresql-8.2.4/src/test/regress/expected/polymorphism.out	2006-07-27 21:52:07.000000000 +0200
++++ postgresql-8.2.4/src/test/regress/expected/polymorphism.out	2007-06-23 18:42:03.000000000 +0200
+@@ -542,3 +542,38 @@
+      38
+ (1 row)
+ 
++-- test inlining of polymorphic SQL functions
++create function bleat(int) returns int as $$
++begin
++  raise notice 'bleat %', $1;
++  return $1;
++end$$ language plpgsql;
++create function sql_if(bool, anyelement, anyelement) returns anyelement as $$
++select case when $1 then $2 else $3 end $$ language sql;
++-- Note this would fail with integer overflow, never mind wrong bleat() output,
++-- if the CASE expression were not successfully inlined
++select f1, sql_if(f1 > 0, bleat(f1), bleat(f1 + 1)) from int4_tbl;
++NOTICE:  bleat 1
++NOTICE:  bleat 123456
++NOTICE:  bleat -123455
++NOTICE:  bleat 2147483647
++NOTICE:  bleat -2147483646
++     f1      |   sql_if    
++-------------+-------------
++           0 |           1
++      123456 |      123456
++     -123456 |     -123455
++  2147483647 |  2147483647
++ -2147483647 | -2147483646
++(5 rows)
++
++select q2, sql_if(q2 > 0, q2, q2 + 1) from int8_tbl;
++        q2         |      sql_if       
++-------------------+-------------------
++               456 |               456
++  4567890123456789 |  4567890123456789
++               123 |               123
++  4567890123456789 |  4567890123456789
++ -4567890123456789 | -4567890123456788
++(5 rows)
++
+diff -Nur postgresql-8.2/build-tree/postgresql-8.2.4/src/test/regress/sql/polymorphism.sql postgresql-8.2.new/build-tree/postgresql-8.2.4/src/test/regress/sql/polymorphism.sql
+--- postgresql-8.2.4/src/test/regress/sql/polymorphism.sql	2006-07-27 21:52:07.000000000 +0200
++++ postgresql-8.2.4/src/test/regress/sql/polymorphism.sql	2007-06-23 18:42:03.000000000 +0200
+@@ -374,3 +374,19 @@
+ select f3, myaggn09a(f1) from t group by f3;
+ select f3, myaggn10a(f1) from t group by f3;
+ select mysum2(f1, f1 + 1) from t;
++
++-- test inlining of polymorphic SQL functions
++create function bleat(int) returns int as $$
++begin
++  raise notice 'bleat %', $1;
++  return $1;
++end$$ language plpgsql;
++
++create function sql_if(bool, anyelement, anyelement) returns anyelement as $$
++select case when $1 then $2 else $3 end $$ language sql;
++
++-- Note this would fail with integer overflow, never mind wrong bleat() output,
++-- if the CASE expression were not successfully inlined
++select f1, sql_if(f1 > 0, bleat(f1), bleat(f1 + 1)) from int4_tbl;
++
++select q2, sql_if(q2 > 0, q2, q2 + 1) from int8_tbl;
