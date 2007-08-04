@@ -1,3 +1,10 @@
+postgresql-8.2 (8.2.4-3) UNRELEASED; urgency=low
+
+  * debian/postgresql-8.2.postinst: Work around dpkg bug #435938 by manually
+    doing the timezone symlink transition. Closes: #430524
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 04 Aug 2007 13:34:06 +0200
+
 postgresql-8.2 (8.2.4-2) unstable; urgency=low
 
   * debian/control: Remove some unnecessary build depends. Closes: #424010

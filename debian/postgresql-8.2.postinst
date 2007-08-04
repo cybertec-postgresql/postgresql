@@ -4,6 +4,13 @@ VERSION=8.2
 
 
 if [ "$1" = configure ]; then
+    # work around dpkg bug #435938: not replacing directories with symlinks on
+    # upgrades
+    if ! [ -L /usr/share/postgresql/8.2/timezone ]; then
+        rmdir /usr/share/postgresql/8.2/timezone
+        ln -s ../../zoneinfo /usr/share/postgresql/8.2/timezone
+    fi
+
     . /usr/share/postgresql-common/maintscripts-functions
 
     configure_version $VERSION "$2"
