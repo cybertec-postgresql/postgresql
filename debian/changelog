@@ -1,5 +1,7 @@
-postgresql-8.2 (8.2.4-3) UNRELEASED; urgency=low
+postgresql-8.2 (8.2.4-3) unstable; urgency=medium
 
+  * Urgency medium since the dpkg bug above is nasty and I want this fixed in
+    testing ASAP.
   * debian/postgresql-8.2.postinst: Work around dpkg bug #435938 by manually
     doing the timezone symlink transition. Closes: #430524
   * debian/rules: Make binary-arch idempotent if test suite fails.
