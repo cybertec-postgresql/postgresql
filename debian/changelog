@@ -1,3 +1,36 @@
+postgresql-8.2 (8.2.5-1) UNRELEASED; urgency=low
+
+  * New upstream bugfix release:
+    - Require non-superusers who use "/contrib/dblink" to use only
+      password authentication, as a security measure.
+      [CVE-2007-3278, CVE-2007-3280]
+    - Fix ALTER DOMAIN ADD CONSTRAINT for cases involving domains over
+      domains.
+    - Make "CREATE DOMAIN ... DEFAULT NULL" work properly.
+    - Fix some planner problems with outer joins, notably poor size
+      estimation for t1 LEFT JOIN t2 WHERE t2.col IS NULL.
+    - Allow the interval data type to accept input consisting only of
+      milliseconds or microseconds.
+    - Allow timezone name to appear before the year in timestamp input.
+    - Fixes for GIN indexes used by "/contrib/tsearch2".
+    - Speed up rtree index insertion.
+    - Fix excessive logging of SSL error messages.
+    - Fix logging so that log messages are never interleaved when using
+      the syslogger process.
+    - Fix crash when log_min_error_statement logging runs out of memory.
+    - Fix incorrect handling of some foreign-key corner cases.
+    - Fix stddev_pop(numeric) and var_pop(numeric).
+    - Prevent "REINDEX" and "CLUSTER" from failing due to attempting to
+      process temporary tables of other sessions.
+    - Restrict "/contrib/pgstattuple" functions to superusers, for
+      security reasons.
+    - Do not let "/contrib/intarray" try to make its GIN opclass the
+      default (this caused problems at dump/restore).
+  * Remove debian/patches/00upstream-01-polymorphic-functions.patch: Upstream
+    now.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 16 Sep 2007 12:25:19 +0200
+
 postgresql-8.2 (8.2.4-3) unstable; urgency=medium
 
   * Urgency medium since the dpkg bug above is nasty and I want this fixed in
