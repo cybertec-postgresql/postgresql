@@ -1,0 +1,26 @@
+diff -Nur postgresql-8.2/build-tree/postgresql-8.2.5/contrib/tsearch2/tsvector.c postgresql-8.2.new/build-tree/postgresql-8.2.5/contrib/tsearch2/tsvector.c
+--- postgresql-8.2.5/contrib/tsearch2/tsvector.c	2006-10-05 19:57:40.000000000 +0200
++++ postgresql-8.2.5/contrib/tsearch2/tsvector.c	2007-09-28 14:54:46.000000000 +0200
+@@ -604,7 +604,12 @@
+ 								  ((TSWORD *) b)->len);
+ 
+ 		if (res == 0)
++		{
++			if ( ((TSWORD *) a)->pos.pos == ((TSWORD *) b)->pos.pos )
++				return 0;
++
+ 			return (((TSWORD *) a)->pos.pos > ((TSWORD *) b)->pos.pos) ? 1 : -1;
++		}
+ 		return res;
+ 	}
+ 	return (((TSWORD *) a)->len > ((TSWORD *) b)->len) ? 1 : -1;
+@@ -654,7 +659,8 @@
+ 		else
+ 		{
+ 			pfree(ptr->word);
+-			if (res->pos.apos[0] < MAXNUMPOS - 1 && res->pos.apos[res->pos.apos[0]] != MAXENTRYPOS - 1)
++			if (res->pos.apos[0] < MAXNUMPOS - 1 && res->pos.apos[res->pos.apos[0]] != MAXENTRYPOS - 1 &&
++				res->pos.apos[res->pos.apos[0]] != LIMITPOS(ptr->pos.pos) )
+ 			{
+ 				if (res->pos.apos[0] + 1 >= res->alen)
+ 				{
