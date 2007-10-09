@@ -1,24 +1,24 @@
 #!/bin/sh -e
 
 ### BEGIN INIT INFO
-# Provides:		postgresql postgresql-8.2
+# Provides:		postgresql postgresql-8.3
 # Required-Start:	$local_fs $network $time
 # Required-Stop:	$local_fs $network $time
 # Should-Start:		$syslog $remote_fs
 # Should-Stop:		$syslog $remote_fs
 # Default-Start:	2 3 4 5
 # Default-Stop:		S 0 1 6
-# Short-Description:	PostgreSQL 8.2 RDBMS server
+# Short-Description:	PostgreSQL 8.3 RDBMS server
 ### END INIT INFO
 
 # Setting environment variables for the postmaster here does not work; please
-# set them in /etc/postgresql/8.2/<cluster>/environment instead.
+# set them in /etc/postgresql/8.3/<cluster>/environment instead.
 
 [ -r /usr/share/postgresql-common/init.d-functions ] || exit 0
 
 . /usr/share/postgresql-common/init.d-functions
 
-VERSION=8.2
+VERSION=8.3
 
 case "$1" in
     start)

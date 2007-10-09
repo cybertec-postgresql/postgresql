@@ -1,6 +1,6 @@
 #!/usr/bin/make	-f 
 TCL_VER := 8.4
-DEB_TAR_SRCDIR:=postgresql-8.2.5
+DEB_TAR_SRCDIR:=postgresql-8.3beta1
 
 include /usr/share/cdbs/1/rules/tarball.mk
 include /usr/share/cdbs/1/rules/simple-patchsys.mk
@@ -17,10 +17,10 @@ else
 endif
 
 DEB_DH_INSTALL_SOURCEDIR=debian/tmp
-DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/8.2/man \
-                    --with-docdir=\$${prefix}/share/doc/postgresql-doc-8.2 \
-		    --datadir=\$${prefix}/share/postgresql/8.2 \
-                    --bindir=\$${prefix}/lib/postgresql/8.2/bin \
+DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/8.3/man \
+                    --with-docdir=\$${prefix}/share/doc/postgresql-doc-8.3 \
+		    --datadir=\$${prefix}/share/postgresql/8.3 \
+                    --bindir=\$${prefix}/lib/postgresql/8.3/bin \
                     --includedir=\$${prefix}/include/postgresql/ \
                     --enable-nls \
                     --enable-integer-datetimes \
@@ -33,16 +33,19 @@ DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/8.2/man \
                     --with-pam \
                     --with-krb5 \
                     --with-openssl \
+		    --with-libxml \
+		    --with-libxslt \
                     --with-gnu-ld \
                     --with-tclconfig=/usr/lib/tcl$(TCL_VER) \
                     --with-tkconfig=/usr/lib/tk$(TCL_VER) \
                     --with-includes=/usr/include/tcl$(TCL_VER) \
+		    --with-system-tzdata=/usr/share/zoneinfo \
                     --with-pgport=5432 \
 		    $(ARCH_OPTS) \
 		    CFLAGS='$(CFLAGS)' \
 		    LDFLAGS='$(LDFLAGS)'
 
-DEB_DH_MAKESHLIBS_ARGS := -Xusr/lib/postgresql/8.2
+DEB_DH_MAKESHLIBS_ARGS := -Xusr/lib/postgresql/8.3
 DEB_DH_INSTALLCHANGELOGS_ARGS := build-tree/postgresql-*/HISTORY
 DEB_COMPRESS_EXCLUDE := .source .c
 DEB_DH_INSTALLINIT_ARGS := -u'defaults 19'
@@ -55,10 +58,10 @@ common-post-build-indep::
 	# build tutorial stuff
 	make -C build-tree/$(DEB_TAR_SRCDIR)/src/tutorial NO_PGXS=1
 
-install/postgresql-doc-8.2::
+install/postgresql-doc-8.3::
 	install build-tree/$(DEB_TAR_SRCDIR)/src/tutorial/*.c build-tree/$(DEB_TAR_SRCDIR)/src/tutorial/*.source build-tree/$(DEB_TAR_SRCDIR)/src/tutorial/Makefile build-tree/$(DEB_TAR_SRCDIR)/src/tutorial/README debian/$(cdbs_curpkg)/usr/share/doc/$(cdbs_curpkg)/tutorial
 
-binary-predeb/postgresql-8.2::
+binary-predeb/postgresql-8.3::
 ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	# patch away the "don't execute as root" check for the test
 	# suite; doing it here will ensure that the actual debs have
@@ -79,12 +82,12 @@ ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 endif
 
 	# compress manpages
-	find debian/postgresql-8.2/usr/share/postgresql/8.2/man -type f -exec gzip -9 '{}' \;
+	find debian/postgresql-8.3/usr/share/postgresql/8.3/man -type f -exec gzip -9 '{}' \;
 
-binary-predeb/postgresql-client-8.2::
-	find debian/postgresql-client-8.2/usr/share/postgresql/8.2/man -type f -exec gzip -9 '{}' \;
+binary-predeb/postgresql-client-8.3::
+	find debian/postgresql-client-8.3/usr/share/postgresql/8.3/man -type f -exec gzip -9 '{}' \;
 
-binary-install/postgresql-plpython-8.2::
+binary-install/postgresql-plpython-8.3::
 	dh_pycentral -p$(cdbs_curpkg)
-	dh_python -p$(cdbs_curpkg) usr/lib/postgresql/8.2/lib
+	dh_python -p$(cdbs_curpkg) usr/lib/postgresql/8.3/lib
 

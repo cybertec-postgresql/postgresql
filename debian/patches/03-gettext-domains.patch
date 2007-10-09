@@ -1,324 +1,324 @@
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/backend/main/main.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/backend/main/main.c
---- postgresql-8.2beta2/src/backend/main/main.c	2006-10-04 02:29:53.000000000 +0200
-+++ postgresql-8.2beta2/src/backend/main/main.c	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/backend/main/main.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/backend/main/main.c
+--- postgresql-8.3beta1/src/backend/main/main.c	2007-03-07 14:35:02.000000000 +0100
++++ postgresql-8.3beta1/src/backend/main/main.c	2007-10-09 01:54:16.000000000 +0200
 @@ -87,7 +87,7 @@
  	 * error messages to be localized.
  	 */
  
 -	set_pglocale_pgservice(argv[0], "postgres");
-+	set_pglocale_pgservice(argv[0], "postgres-8.2");
++	set_pglocale_pgservice(argv[0], "postgres-8.3");
  
  #ifdef WIN32
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/backend/nls.mk postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/backend/nls.mk
---- postgresql-8.2beta2/src/backend/nls.mk	2005-10-04 13:14:03.000000000 +0200
-+++ postgresql-8.2beta2/src/backend/nls.mk	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/backend/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/backend/nls.mk
+--- postgresql-8.3beta1/src/backend/nls.mk	2005-10-04 13:14:03.000000000 +0200
++++ postgresql-8.3beta1/src/backend/nls.mk	2007-10-09 01:54:16.000000000 +0200
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/backend/nls.mk,v 1.20 2005/10/04 11:14:03 petere Exp $
 -CATALOG_NAME	:= postgres
-+CATALOG_NAME	:= postgres-8.2
++CATALOG_NAME	:= postgres-8.3
  AVAIL_LANGUAGES	:= af cs de es fr hr hu it ko nb pt_BR ro ru sk sl sv tr zh_CN zh_TW
  GETTEXT_FILES	:= + gettext-files
  # you can add "elog:2" and "errmsg_internal" to this list if you want to
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/initdb/initdb.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/initdb/initdb.c
---- postgresql-8.2beta2/src/bin/initdb/initdb.c	2006-10-04 20:58:08.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/initdb/initdb.c	2006-10-27 09:06:22.000000000 +0200
-@@ -2422,7 +2422,7 @@
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/initdb/initdb.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/initdb/initdb.c
+--- postgresql-8.3beta1/src/bin/initdb/initdb.c	2007-09-29 02:14:40.000000000 +0200
++++ postgresql-8.3beta1/src/bin/initdb/initdb.c	2007-10-09 01:54:16.000000000 +0200
+@@ -2432,7 +2432,7 @@
  	};
  
  	progname = get_progname(argv[0]);
 -	set_pglocale_pgservice(argv[0], "initdb");
-+	set_pglocale_pgservice(argv[0], "initdb-8.2");
++	set_pglocale_pgservice(argv[0], "initdb-8.3");
  
  	if (argc > 1)
  	{
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/initdb/nls.mk postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/initdb/nls.mk
---- postgresql-8.2beta2/src/bin/initdb/nls.mk	2005-01-09 18:38:18.000000000 +0100
-+++ postgresql-8.2beta2/src/bin/initdb/nls.mk	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/initdb/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/initdb/nls.mk
+--- postgresql-8.3beta1/src/bin/initdb/nls.mk	2005-01-09 18:38:18.000000000 +0100
++++ postgresql-8.3beta1/src/bin/initdb/nls.mk	2007-10-09 01:56:16.000000000 +0200
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/initdb/nls.mk,v 1.18 2005/01/09 17:38:18 petere Exp $
 -CATALOG_NAME	:= initdb
-+CATALOG_NAME	:= initdb-8.2
++CATALOG_NAME	:= initdb-8.3
  AVAIL_LANGUAGES	:= cs de es fr it ko pl pt_BR ro ru sk sl sv tr zh_CN zh_TW
  GETTEXT_FILES	:= initdb.c ../../port/dirmod.c ../../port/exec.c
  GETTEXT_TRIGGERS:= _ simple_prompt
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/pg_config/nls.mk postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/pg_config/nls.mk
---- postgresql-8.2beta2/src/bin/pg_config/nls.mk	2006-10-21 23:03:01.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/pg_config/nls.mk	2006-10-27 09:06:44.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/pg_config/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/pg_config/nls.mk
+--- postgresql-8.3beta1/src/bin/pg_config/nls.mk	2006-10-21 23:03:01.000000000 +0200
++++ postgresql-8.3beta1/src/bin/pg_config/nls.mk	2007-10-09 01:54:16.000000000 +0200
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/pg_config/nls.mk,v 1.16 2006/10/21 21:03:01 petere Exp $
 -CATALOG_NAME	:= pg_config
-+CATALOG_NAME	:= pg_config-8.2
++CATALOG_NAME	:= pg_config-8.3
  AVAIL_LANGUAGES	:= cs de es fr ko nb pl pt_BR ro ru sl sv tr zh_CN zh_TW
  GETTEXT_FILES	:= pg_config.c ../../port/exec.c
  GETTEXT_TRIGGERS:= _
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/pg_config/pg_config.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/pg_config/pg_config.c
---- postgresql-8.2beta2/src/bin/pg_config/pg_config.c	2006-10-04 02:30:04.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/pg_config/pg_config.c	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/pg_config/pg_config.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/pg_config/pg_config.c
+--- postgresql-8.3beta1/src/bin/pg_config/pg_config.c	2007-05-31 17:13:04.000000000 +0200
++++ postgresql-8.3beta1/src/bin/pg_config/pg_config.c	2007-10-09 01:54:16.000000000 +0200
 @@ -451,7 +451,7 @@
  	int			j;
  	int			ret;
  
 -	set_pglocale_pgservice(argv[0], "pg_config");
-+	set_pglocale_pgservice(argv[0], "pg_config-8.2");
++	set_pglocale_pgservice(argv[0], "pg_config-8.3");
  
  	progname = get_progname(argv[0]);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/pg_controldata/nls.mk postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/pg_controldata/nls.mk
---- postgresql-8.2beta2/src/bin/pg_controldata/nls.mk	2005-01-14 09:57:05.000000000 +0100
-+++ postgresql-8.2beta2/src/bin/pg_controldata/nls.mk	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/pg_controldata/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/pg_controldata/nls.mk
+--- postgresql-8.3beta1/src/bin/pg_controldata/nls.mk	2005-01-14 09:57:05.000000000 +0100
++++ postgresql-8.3beta1/src/bin/pg_controldata/nls.mk	2007-10-09 01:54:16.000000000 +0200
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/pg_controldata/nls.mk,v 1.16 2005/01/14 08:57:05 petere Exp $
 -CATALOG_NAME	:= pg_controldata
-+CATALOG_NAME	:= pg_controldata-8.2
++CATALOG_NAME	:= pg_controldata-8.3
  AVAIL_LANGUAGES	:= cs de es fa fr hu it ko nb pl pt_BR ro ru sk sl sv tr zh_CN zh_TW
  GETTEXT_FILES	:= pg_controldata.c
  GETTEXT_TRIGGERS:= _
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/pg_controldata/pg_controldata.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/pg_controldata/pg_controldata.c
---- postgresql-8.2beta2/src/bin/pg_controldata/pg_controldata.c	2006-08-21 18:16:31.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/pg_controldata/pg_controldata.c	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/pg_controldata/pg_controldata.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/pg_controldata/pg_controldata.c
+--- postgresql-8.3beta1/src/bin/pg_controldata/pg_controldata.c	2007-04-03 06:14:26.000000000 +0200
++++ postgresql-8.3beta1/src/bin/pg_controldata/pg_controldata.c	2007-10-09 01:54:16.000000000 +0200
 @@ -75,7 +75,7 @@
- 	char	   *strftime_fmt = "%c";
+ 	const char *strftime_fmt = "%c";
  	const char *progname;
  
 -	set_pglocale_pgservice(argv[0], "pg_controldata");
-+	set_pglocale_pgservice(argv[0], "pg_controldata-8.2");
++	set_pglocale_pgservice(argv[0], "pg_controldata-8.3");
  
  	progname = get_progname(argv[0]);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/pg_ctl/nls.mk postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/pg_ctl/nls.mk
---- postgresql-8.2beta2/src/bin/pg_ctl/nls.mk	2004-12-16 12:27:41.000000000 +0100
-+++ postgresql-8.2beta2/src/bin/pg_ctl/nls.mk	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/pg_ctl/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/pg_ctl/nls.mk
+--- postgresql-8.3beta1/src/bin/pg_ctl/nls.mk	2004-12-16 12:27:41.000000000 +0100
++++ postgresql-8.3beta1/src/bin/pg_ctl/nls.mk	2007-10-09 01:54:16.000000000 +0200
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/pg_ctl/nls.mk,v 1.15 2004/12/16 11:27:41 petere Exp $
 -CATALOG_NAME	:= pg_ctl
-+CATALOG_NAME	:= pg_ctl-8.2
++CATALOG_NAME	:= pg_ctl-8.3
  AVAIL_LANGUAGES	:= cs de es fr ko pt_BR ro ru sk sl sv tr zh_CN zh_TW
  GETTEXT_FILES	:= pg_ctl.c ../../port/exec.c
  GETTEXT_TRIGGERS:= _ simple_prompt
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/pg_ctl/pg_ctl.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/pg_ctl/pg_ctl.c
---- postgresql-8.2beta2/src/bin/pg_ctl/pg_ctl.c	2006-10-12 07:14:49.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/pg_ctl/pg_ctl.c	2006-10-27 09:06:22.000000000 +0200
-@@ -1509,7 +1509,7 @@
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/pg_ctl/pg_ctl.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/pg_ctl/pg_ctl.c
+--- postgresql-8.3beta1/src/bin/pg_ctl/pg_ctl.c	2007-09-25 18:29:34.000000000 +0200
++++ postgresql-8.3beta1/src/bin/pg_ctl/pg_ctl.c	2007-10-09 01:54:16.000000000 +0200
+@@ -1605,7 +1605,7 @@
  #endif
  
  	progname = get_progname(argv[0]);
 -	set_pglocale_pgservice(argv[0], "pg_ctl");
-+	set_pglocale_pgservice(argv[0], "pg_ctl-8.2");
++	set_pglocale_pgservice(argv[0], "pg_ctl-8.3");
  
  	/*
  	 * save argv[0] so do_start() can look for the postmaster if necessary. we
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/pg_dump/nls.mk postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/pg_dump/nls.mk
---- postgresql-8.2beta2/src/bin/pg_dump/nls.mk	2005-01-25 18:32:00.000000000 +0100
-+++ postgresql-8.2beta2/src/bin/pg_dump/nls.mk	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/pg_dump/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/pg_dump/nls.mk
+--- postgresql-8.3beta1/src/bin/pg_dump/nls.mk	2005-01-25 18:32:00.000000000 +0100
++++ postgresql-8.3beta1/src/bin/pg_dump/nls.mk	2007-10-09 01:54:16.000000000 +0200
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/pg_dump/nls.mk,v 1.19 2005/01/25 17:32:00 petere Exp $
 -CATALOG_NAME	:= pg_dump
-+CATALOG_NAME	:= pg_dump-8.2
++CATALOG_NAME	:= pg_dump-8.3
  AVAIL_LANGUAGES	:= cs de es fr it ko nb pt_BR ro ru sk sl sv tr zh_CN zh_TW
  GETTEXT_FILES	:= pg_dump.c common.c pg_backup_archiver.c pg_backup_custom.c \
                     pg_backup_db.c pg_backup_files.c pg_backup_null.c \
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/pg_dump/pg_dumpall.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/pg_dump/pg_dumpall.c
---- postgresql-8.2beta2/src/bin/pg_dump/pg_dumpall.c	2006-10-07 22:59:05.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/pg_dump/pg_dumpall.c	2006-10-27 09:06:22.000000000 +0200
-@@ -117,7 +117,7 @@
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/pg_dump/pg_dumpall.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/pg_dump/pg_dumpall.c
+--- postgresql-8.3beta1/src/bin/pg_dump/pg_dumpall.c	2007-07-08 21:07:38.000000000 +0200
++++ postgresql-8.3beta1/src/bin/pg_dump/pg_dumpall.c	2007-10-09 01:54:16.000000000 +0200
+@@ -126,7 +126,7 @@
  
  	int			optindex;
  
 -	set_pglocale_pgservice(argv[0], "pg_dump");
-+	set_pglocale_pgservice(argv[0], "pg_dump-8.2");
++	set_pglocale_pgservice(argv[0], "pg_dump-8.3");
  
  	progname = get_progname(argv[0]);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/pg_dump/pg_dump.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/pg_dump/pg_dump.c
---- postgresql-8.2beta2/src/bin/pg_dump/pg_dump.c	2006-10-10 01:36:59.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/pg_dump/pg_dump.c	2006-10-27 09:06:22.000000000 +0200
-@@ -266,7 +266,7 @@
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/pg_dump/pg_dump.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/pg_dump/pg_dump.c
+--- postgresql-8.3beta1/src/bin/pg_dump/pg_dump.c	2007-09-03 02:39:19.000000000 +0200
++++ postgresql-8.3beta1/src/bin/pg_dump/pg_dump.c	2007-10-09 01:54:16.000000000 +0200
+@@ -273,7 +273,7 @@
  	};
  	int			optindex;
  
 -	set_pglocale_pgservice(argv[0], "pg_dump");
-+	set_pglocale_pgservice(argv[0], "pg_dump-8.2");
++	set_pglocale_pgservice(argv[0], "pg_dump-8.3");
  
  	g_verbose = false;
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/pg_dump/pg_restore.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/pg_dump/pg_restore.c
---- postgresql-8.2beta2/src/bin/pg_dump/pg_restore.c	2006-10-15 01:07:22.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/pg_dump/pg_restore.c	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/pg_dump/pg_restore.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/pg_dump/pg_restore.c
+--- postgresql-8.3beta1/src/bin/pg_dump/pg_restore.c	2006-10-15 01:07:22.000000000 +0200
++++ postgresql-8.3beta1/src/bin/pg_dump/pg_restore.c	2007-10-09 01:54:16.000000000 +0200
 @@ -117,7 +117,7 @@
  		{NULL, 0, NULL, 0}
  	};
  
 -	set_pglocale_pgservice(argv[0], "pg_dump");
-+	set_pglocale_pgservice(argv[0], "pg_dump-8.2");
++	set_pglocale_pgservice(argv[0], "pg_dump-8.3");
  
  	opts = NewRestoreOptions();
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/pg_resetxlog/nls.mk postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/pg_resetxlog/nls.mk
---- postgresql-8.2beta2/src/bin/pg_resetxlog/nls.mk	2004-12-16 12:27:42.000000000 +0100
-+++ postgresql-8.2beta2/src/bin/pg_resetxlog/nls.mk	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/pg_resetxlog/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/pg_resetxlog/nls.mk
+--- postgresql-8.3beta1/src/bin/pg_resetxlog/nls.mk	2004-12-16 12:27:42.000000000 +0100
++++ postgresql-8.3beta1/src/bin/pg_resetxlog/nls.mk	2007-10-09 01:54:16.000000000 +0200
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/pg_resetxlog/nls.mk,v 1.17 2004/12/16 11:27:42 petere Exp $
 -CATALOG_NAME	:= pg_resetxlog
-+CATALOG_NAME	:= pg_resetxlog-8.2
++CATALOG_NAME	:= pg_resetxlog-8.3
  AVAIL_LANGUAGES	:= cs de es fr hu it ko nb pt_BR ro ru sk sl sv tr zh_CN zh_TW
  GETTEXT_FILES	:= pg_resetxlog.c
  GETTEXT_TRIGGERS:= _
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/pg_resetxlog/pg_resetxlog.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/pg_resetxlog/pg_resetxlog.c
---- postgresql-8.2beta2/src/bin/pg_resetxlog/pg_resetxlog.c	2006-10-04 02:30:05.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/pg_resetxlog/pg_resetxlog.c	2006-10-27 09:06:22.000000000 +0200
-@@ -86,7 +86,7 @@
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/pg_resetxlog/pg_resetxlog.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/pg_resetxlog/pg_resetxlog.c
+--- postgresql-8.3beta1/src/bin/pg_resetxlog/pg_resetxlog.c	2007-07-12 23:27:09.000000000 +0200
++++ postgresql-8.3beta1/src/bin/pg_resetxlog/pg_resetxlog.c	2007-10-09 01:54:16.000000000 +0200
+@@ -88,7 +88,7 @@
  	int			fd;
  	char		path[MAXPGPATH];
  
 -	set_pglocale_pgservice(argv[0], "pg_resetxlog");
-+	set_pglocale_pgservice(argv[0], "pg_resetxlog-8.2");
++	set_pglocale_pgservice(argv[0], "pg_resetxlog-8.3");
  
  	progname = get_progname(argv[0]);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/psql/nls.mk postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/psql/nls.mk
---- postgresql-8.2beta2/src/bin/psql/nls.mk	2004-12-13 17:30:48.000000000 +0100
-+++ postgresql-8.2beta2/src/bin/psql/nls.mk	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/psql/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/psql/nls.mk
+--- postgresql-8.3beta1/src/bin/psql/nls.mk	2004-12-13 17:30:48.000000000 +0100
++++ postgresql-8.3beta1/src/bin/psql/nls.mk	2007-10-09 01:54:16.000000000 +0200
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/psql/nls.mk,v 1.21 2004/12/13 16:30:48 petere Exp $
 -CATALOG_NAME	:= psql
-+CATALOG_NAME	:= psql-8.2
++CATALOG_NAME	:= psql-8.3
  AVAIL_LANGUAGES	:= cs de es fa fr hu it ko nb pt_BR ro ru sk sl sv tr zh_CN zh_TW
  GETTEXT_FILES	:= command.c common.c copy.c help.c input.c large_obj.c \
                     mainloop.c print.c startup.c describe.c sql_help.h \
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/psql/startup.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/psql/startup.c
---- postgresql-8.2beta2/src/bin/psql/startup.c	2006-10-04 02:30:06.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/psql/startup.c	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/psql/startup.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/psql/startup.c
+--- postgresql-8.3beta1/src/bin/psql/startup.c	2007-07-08 21:07:38.000000000 +0200
++++ postgresql-8.3beta1/src/bin/psql/startup.c	2007-10-09 01:54:16.000000000 +0200
 @@ -110,7 +110,7 @@
  	char	   *password_prompt = NULL;
- 	bool		need_pass;
+ 	bool		new_pass;
  
 -	set_pglocale_pgservice(argv[0], "psql");
-+	set_pglocale_pgservice(argv[0], "psql-8.2");
++	set_pglocale_pgservice(argv[0], "psql-8.3");
  
  	if (argc > 1)
  	{
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/scripts/clusterdb.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/scripts/clusterdb.c
---- postgresql-8.2beta2/src/bin/scripts/clusterdb.c	2006-03-05 16:58:52.000000000 +0100
-+++ postgresql-8.2beta2/src/bin/scripts/clusterdb.c	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/scripts/clusterdb.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/scripts/clusterdb.c
+--- postgresql-8.3beta1/src/bin/scripts/clusterdb.c	2007-06-04 12:02:40.000000000 +0200
++++ postgresql-8.3beta1/src/bin/scripts/clusterdb.c	2007-10-09 01:54:16.000000000 +0200
 @@ -56,7 +56,7 @@
  	char	   *table = NULL;
  
  	progname = get_progname(argv[0]);
 -	set_pglocale_pgservice(argv[0], "pgscripts");
-+	set_pglocale_pgservice(argv[0], "pgscripts-8.2");
++	set_pglocale_pgservice(argv[0], "pgscripts-8.3");
  
  	handle_help_version_opts(argc, argv, "clusterdb", help);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/scripts/createdb.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/scripts/createdb.c
---- postgresql-8.2beta2/src/bin/scripts/createdb.c	2006-06-01 02:15:36.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/scripts/createdb.c	2006-10-27 09:06:22.000000000 +0200
-@@ -60,7 +60,7 @@
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/scripts/createdb.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/scripts/createdb.c
+--- postgresql-8.3beta1/src/bin/scripts/createdb.c	2007-06-04 12:02:40.000000000 +0200
++++ postgresql-8.3beta1/src/bin/scripts/createdb.c	2007-10-09 01:54:16.000000000 +0200
+@@ -59,7 +59,7 @@
  	PGresult   *result;
  
  	progname = get_progname(argv[0]);
 -	set_pglocale_pgservice(argv[0], "pgscripts");
-+	set_pglocale_pgservice(argv[0], "pgscripts-8.2");
++	set_pglocale_pgservice(argv[0], "pgscripts-8.3");
  
  	handle_help_version_opts(argc, argv, "createdb", help);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/scripts/createlang.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/scripts/createlang.c
---- postgresql-8.2beta2/src/bin/scripts/createlang.c	2006-07-14 16:52:27.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/scripts/createlang.c	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/scripts/createlang.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/scripts/createlang.c
+--- postgresql-8.3beta1/src/bin/scripts/createlang.c	2007-08-10 02:39:31.000000000 +0200
++++ postgresql-8.3beta1/src/bin/scripts/createlang.c	2007-10-09 01:54:16.000000000 +0200
 @@ -52,7 +52,7 @@
  	PGresult   *result;
  
  	progname = get_progname(argv[0]);
 -	set_pglocale_pgservice(argv[0], "pgscripts");
-+	set_pglocale_pgservice(argv[0], "pgscripts-8.2");
++	set_pglocale_pgservice(argv[0], "pgscripts-8.3");
  
  	handle_help_version_opts(argc, argv, "createlang", help);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/scripts/createuser.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/scripts/createuser.c
---- postgresql-8.2beta2/src/bin/scripts/createuser.c	2006-10-04 02:30:06.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/scripts/createuser.c	2006-10-27 09:06:22.000000000 +0200
-@@ -82,7 +82,7 @@
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/scripts/createuser.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/scripts/createuser.c
+--- postgresql-8.3beta1/src/bin/scripts/createuser.c	2007-06-04 12:02:40.000000000 +0200
++++ postgresql-8.3beta1/src/bin/scripts/createuser.c	2007-10-09 01:54:16.000000000 +0200
+@@ -81,7 +81,7 @@
  	PGresult   *result;
  
  	progname = get_progname(argv[0]);
 -	set_pglocale_pgservice(argv[0], "pgscripts");
-+	set_pglocale_pgservice(argv[0], "pgscripts-8.2");
++	set_pglocale_pgservice(argv[0], "pgscripts-8.3");
  
  	handle_help_version_opts(argc, argv, "createuser", help);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/scripts/dropdb.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/scripts/dropdb.c
---- postgresql-8.2beta2/src/bin/scripts/dropdb.c	2006-09-22 20:50:41.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/scripts/dropdb.c	2006-10-27 09:06:22.000000000 +0200
-@@ -51,7 +51,7 @@
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/scripts/dropdb.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/scripts/dropdb.c
+--- postgresql-8.3beta1/src/bin/scripts/dropdb.c	2007-06-04 12:02:40.000000000 +0200
++++ postgresql-8.3beta1/src/bin/scripts/dropdb.c	2007-10-09 01:54:16.000000000 +0200
+@@ -50,7 +50,7 @@
  	PGresult   *result;
  
  	progname = get_progname(argv[0]);
 -	set_pglocale_pgservice(argv[0], "pgscripts");
-+	set_pglocale_pgservice(argv[0], "pgscripts-8.2");
++	set_pglocale_pgservice(argv[0], "pgscripts-8.3");
  
  	handle_help_version_opts(argc, argv, "dropdb", help);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/scripts/droplang.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/scripts/droplang.c
---- postgresql-8.2beta2/src/bin/scripts/droplang.c	2006-05-31 13:02:42.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/scripts/droplang.c	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/scripts/droplang.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/scripts/droplang.c
+--- postgresql-8.3beta1/src/bin/scripts/droplang.c	2007-08-10 02:39:31.000000000 +0200
++++ postgresql-8.3beta1/src/bin/scripts/droplang.c	2007-10-09 01:54:16.000000000 +0200
 @@ -63,7 +63,7 @@
  	PGresult   *result;
  
  	progname = get_progname(argv[0]);
 -	set_pglocale_pgservice(argv[0], "pgscripts");
-+	set_pglocale_pgservice(argv[0], "pgscripts-8.2");
++	set_pglocale_pgservice(argv[0], "pgscripts-8.3");
  
  	handle_help_version_opts(argc, argv, "droplang", help);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/scripts/dropuser.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/scripts/dropuser.c
---- postgresql-8.2beta2/src/bin/scripts/dropuser.c	2006-09-22 20:50:41.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/scripts/dropuser.c	2006-10-27 09:06:22.000000000 +0200
-@@ -51,7 +51,7 @@
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/scripts/dropuser.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/scripts/dropuser.c
+--- postgresql-8.3beta1/src/bin/scripts/dropuser.c	2007-06-04 12:02:40.000000000 +0200
++++ postgresql-8.3beta1/src/bin/scripts/dropuser.c	2007-10-09 01:54:16.000000000 +0200
+@@ -50,7 +50,7 @@
  	PGresult   *result;
  
  	progname = get_progname(argv[0]);
 -	set_pglocale_pgservice(argv[0], "pgscripts");
-+	set_pglocale_pgservice(argv[0], "pgscripts-8.2");
++	set_pglocale_pgservice(argv[0], "pgscripts-8.3");
  
  	handle_help_version_opts(argc, argv, "dropuser", help);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/scripts/nls.mk postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/scripts/nls.mk
---- postgresql-8.2beta2/src/bin/scripts/nls.mk	2006-09-22 20:50:41.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/scripts/nls.mk	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/scripts/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/scripts/nls.mk
+--- postgresql-8.3beta1/src/bin/scripts/nls.mk	2006-09-22 20:50:41.000000000 +0200
++++ postgresql-8.3beta1/src/bin/scripts/nls.mk	2007-10-09 01:54:16.000000000 +0200
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/scripts/nls.mk,v 1.20 2006/09/22 18:50:41 petere Exp $
 -CATALOG_NAME    := pgscripts
-+CATALOG_NAME    := pgscripts-8.2
++CATALOG_NAME    := pgscripts-8.3
  AVAIL_LANGUAGES := cs de es fr it ko pt_BR ro ru sk sl sv tr zh_CN zh_TW
  GETTEXT_FILES   := createdb.c createlang.c createuser.c \
                     dropdb.c droplang.c dropuser.c \
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/scripts/reindexdb.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/scripts/reindexdb.c
---- postgresql-8.2beta2/src/bin/scripts/reindexdb.c	2006-09-02 19:10:17.000000000 +0200
-+++ postgresql-8.2beta2/src/bin/scripts/reindexdb.c	2006-10-27 09:06:22.000000000 +0200
-@@ -65,7 +65,7 @@
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/scripts/reindexdb.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/scripts/reindexdb.c
+--- postgresql-8.3beta1/src/bin/scripts/reindexdb.c	2007-06-04 12:02:40.000000000 +0200
++++ postgresql-8.3beta1/src/bin/scripts/reindexdb.c	2007-10-09 01:54:16.000000000 +0200
+@@ -64,7 +64,7 @@
  	const char *index = NULL;
  
  	progname = get_progname(argv[0]);
 -	set_pglocale_pgservice(argv[0], "pgscripts");
-+	set_pglocale_pgservice(argv[0], "pgscripts-8.2");
++	set_pglocale_pgservice(argv[0], "pgscripts-8.3");
  
  	handle_help_version_opts(argc, argv, "reindexdb", help);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/bin/scripts/vacuumdb.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/bin/scripts/vacuumdb.c
---- postgresql-8.2beta2/src/bin/scripts/vacuumdb.c	2006-03-05 16:58:52.000000000 +0100
-+++ postgresql-8.2beta2/src/bin/scripts/vacuumdb.c	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/bin/scripts/vacuumdb.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/bin/scripts/vacuumdb.c
+--- postgresql-8.3beta1/src/bin/scripts/vacuumdb.c	2007-06-04 12:02:40.000000000 +0200
++++ postgresql-8.3beta1/src/bin/scripts/vacuumdb.c	2007-10-09 01:54:16.000000000 +0200
 @@ -64,7 +64,7 @@
  	bool		verbose = false;
  
  	progname = get_progname(argv[0]);
 -	set_pglocale_pgservice(argv[0], "pgscripts");
-+	set_pglocale_pgservice(argv[0], "pgscripts-8.2");
++	set_pglocale_pgservice(argv[0], "pgscripts-8.3");
  
  	handle_help_version_opts(argc, argv, "vacuumdb", help);
  
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/interfaces/libpq/fe-misc.c postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/interfaces/libpq/fe-misc.c
---- postgresql-8.2beta2/src/interfaces/libpq/fe-misc.c	2006-10-04 02:30:13.000000000 +0200
-+++ postgresql-8.2beta2/src/interfaces/libpq/fe-misc.c	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/interfaces/libpq/fe-misc.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/interfaces/libpq/fe-misc.c
+--- postgresql-8.3beta1/src/interfaces/libpq/fe-misc.c	2007-01-05 23:20:01.000000000 +0100
++++ postgresql-8.3beta1/src/interfaces/libpq/fe-misc.c	2007-10-09 01:54:16.000000000 +0200
 @@ -1139,7 +1139,7 @@
  		ldir = getenv("PGLOCALEDIR");
  		if (!ldir)
@@ -328,9 +328,9 @@ diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/interfaces/libpq/fe-
  #ifdef WIN32
  		SetLastError(save_errno);
  #else
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta2/src/interfaces/libpq/nls.mk postgresql-8.2.new/build-tree/postgresql-8.2beta2/src/interfaces/libpq/nls.mk
---- postgresql-8.2beta2/src/interfaces/libpq/nls.mk	2005-01-14 09:57:06.000000000 +0100
-+++ postgresql-8.2beta2/src/interfaces/libpq/nls.mk	2006-10-27 09:06:22.000000000 +0200
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/interfaces/libpq/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/interfaces/libpq/nls.mk
+--- postgresql-8.3beta1/src/interfaces/libpq/nls.mk	2005-01-14 09:57:06.000000000 +0100
++++ postgresql-8.3beta1/src/interfaces/libpq/nls.mk	2007-10-09 01:54:16.000000000 +0200
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/interfaces/libpq/nls.mk,v 1.20 2005/01/14 08:57:06 petere Exp $
 -CATALOG_NAME	:= libpq

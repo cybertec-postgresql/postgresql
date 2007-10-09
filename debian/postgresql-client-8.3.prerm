@@ -1,11 +1,10 @@
 #!/bin/sh -e
 
-VERSION=8.2
-
 #DEBHELPER#
+
+VERSION=8.3
 
 if [ "$1" = remove ]; then
     . /usr/share/postgresql-common/maintscripts-functions
-    remove_version $VERSION
+    remove_client_version $VERSION
 fi
-

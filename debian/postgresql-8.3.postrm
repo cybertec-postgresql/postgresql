@@ -2,7 +2,7 @@
 
 #DEBHELPER#
 
-VERSION=8.2
+VERSION=8.3
 
 clean_dir() {
     if [ -d "$1" ] && [ ! -L "$1" ]; then

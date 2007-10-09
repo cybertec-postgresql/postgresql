@@ -1,15 +1,20 @@
-postgresql-8.2 (8.2.5-2) UNRELEASED; urgency=low
+postgresql-8.3 (8.3~beta1-1) UNRELEASED; urgency=low
 
-  * Add debian/patches/00upstream-tsearch2-compareWORD.patch:
-    - Fix tsearch2's compareWORD() function to return 0 on identical strings.
-      This avoids endless loops for situations where identical strings appear
-      in sort lists (which Should Not Happen™, but do anyway).
-    - Patch taken from upstream CVS:
-      http://developer.postgresql.org/cvsweb.cgi/pgsql/contrib/tsearch2/tsvector.c?r1=1.26&r2=1.26.2.1
-    - Thanks to Stuart Bishop for finding the bug and providing a reproducer.
-    - (LP: #141637)
+  * First beta release of PostgreSQL 8.3. Branch off the 8.2 packaging.
+  * Drop debian/patches/12-m32r-tas.patch: Adopted upstream.
+  * Drop debian/patches/04-timezone-symlinks.patch: Upstream now offers
+    configure option --with-system-tzdata. Use it in debian/rules.
+  * Drop debian/patches/50-contrib-enablemodules.patch: xml2 is now built
+    conditionally. Supply --with-lib{xml,xslt} configure options in
+    debian/rules.
+  * Updated patches for new upstream version.
+  * debian/control: Bump postgresql-common dependencies to >= 79 to ensure
+    support of version 8.3.
+  * debian/control: Do not build the versionless metapackages like
+    'postgresql' until 8.3 is released and goes to unstable. Until then, 8.2
+    should remain the default.
 
- -- Martin Pitt <mpitt@debian.org>  Fri, 28 Sep 2007 14:55:08 +0200
+ -- Martin Pitt <mpitt@debian.org>  Tue, 09 Oct 2007 10:51:11 +0200
 
 postgresql-8.2 (8.2.5-1) unstable; urgency=low
 
