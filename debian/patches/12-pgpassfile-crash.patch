@@ -1,0 +1,11 @@
+diff -Nur postgresql-8.3/build-tree/postgresql-8.3beta1/src/interfaces/libpq/fe-connect.c postgresql-8.3.new/build-tree/postgresql-8.3beta1/src/interfaces/libpq/fe-connect.c
+--- postgresql-8.3beta1/src/interfaces/libpq/fe-connect.c	2007-07-23 19:52:06.000000000 +0200
++++ postgresql-8.3beta1/src/interfaces/libpq/fe-connect.c	2007-10-09 16:22:41.000000000 +0200
+@@ -3723,7 +3723,6 @@
+ 		fprintf(stderr,
+ 		libpq_gettext("WARNING: password file \"%s\" is not a plain file\n"),
+ 				pgpassfile);
+-		free(pgpassfile);
+ 		return NULL;
+ 	}
+ 
