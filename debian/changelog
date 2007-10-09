@@ -1,4 +1,4 @@
-postgresql-8.3 (8.3~beta1-1) UNRELEASED; urgency=low
+postgresql-8.3 (8.3~beta1-1) experimental; urgency=low
 
   * First beta release of PostgreSQL 8.3. Branch off the 8.2 packaging.
   * Drop debian/patches/12-m32r-tas.patch: Adopted upstream.
