@@ -18,32 +18,34 @@ endif
 
 DEB_DH_INSTALL_SOURCEDIR=debian/tmp
 DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/8.3/man \
-                    --with-docdir=\$${prefix}/share/doc/postgresql-doc-8.3 \
-		    --datadir=\$${prefix}/share/postgresql/8.3 \
-                    --bindir=\$${prefix}/lib/postgresql/8.3/bin \
-                    --includedir=\$${prefix}/include/postgresql/ \
-                    --enable-nls \
-                    --enable-integer-datetimes \
-		    --enable-thread-safety \
-                    --enable-debug \
-                    --disable-rpath \
-                    --with-tcl \
-                    --with-perl \
-                    --with-python \
-                    --with-pam \
-                    --with-krb5 \
-                    --with-openssl \
-		    --with-libxml \
-		    --with-libxslt \
-                    --with-gnu-ld \
-                    --with-tclconfig=/usr/lib/tcl$(TCL_VER) \
-                    --with-tkconfig=/usr/lib/tk$(TCL_VER) \
-                    --with-includes=/usr/include/tcl$(TCL_VER) \
-		    --with-system-tzdata=/usr/share/zoneinfo \
-                    --with-pgport=5432 \
-		    $(ARCH_OPTS) \
-		    CFLAGS='$(CFLAGS)' \
-		    LDFLAGS='$(LDFLAGS)'
+  --with-docdir=\$${prefix}/share/doc/postgresql-doc-8.3 \
+  --datadir=\$${prefix}/share/postgresql/8.3 \
+  --bindir=\$${prefix}/lib/postgresql/8.3/bin \
+  --includedir=\$${prefix}/include/postgresql/ \
+  --enable-nls \
+  --enable-integer-datetimes \
+  --enable-thread-safety \
+  --enable-debug \
+  --disable-rpath \
+  --with-tcl \
+  --with-perl \
+  --with-python \
+  --with-pam \
+  --with-krb5 \
+  --with-gssapi \
+  --with-openssl \
+  --with-libxml \
+  --with-libxslt \
+  --with-ldap \
+  --with-gnu-ld \
+  --with-tclconfig=/usr/lib/tcl$(TCL_VER) \
+  --with-tkconfig=/usr/lib/tk$(TCL_VER) \
+  --with-includes=/usr/include/tcl$(TCL_VER) \
+  --with-system-tzdata=/usr/share/zoneinfo \
+  --with-pgport=5432 \
+  $(ARCH_OPTS) \
+  CFLAGS='$(CFLAGS)' \
+  LDFLAGS='$(LDFLAGS)'
 
 DEB_DH_MAKESHLIBS_ARGS := -Xusr/lib/postgresql/8.3
 DEB_DH_INSTALLCHANGELOGS_ARGS := build-tree/postgresql-*/HISTORY
