@@ -174,9 +174,11 @@ Description: additional facilities for PostgreSQL
   lo             - Large Object maintenance
   ltree          - Tree-like data structures
   oid2name       - Maps OIDs to table names
+  pageinspect    - Inspection of database pages
   pg_buffercache - Real time queries on the shared buffer cache
   pg_freespacemap- Displays the contents of the free space map (FSM)
   pg_trgm        - Determine the similarity of text based on trigram matching
+  pg_standby     - Create a warm stand-by server
   pgbench        - TPC-B like benchmark
   pgcrypto       - Cryptographic functions
   pgrowlocks     - A function to return row locking information
@@ -195,9 +197,8 @@ Description: additional facilities for PostgreSQL
                                 integrity.
                    timetravel - Re-implements in user code the time travel
                                 feature that was removed in 6.3.
-  tsearch2       - Full-text-index support using GiST
+  uuid-ossp      - UUID generation functions
   vacuumlo       - Remove orphaned large objects
-  xml2           - Manipulate XML documents in the database
  .
  PostgreSQL is an object-relational SQL database management system.
 

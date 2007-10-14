@@ -1,3 +1,9 @@
+postgresql-8.3 (8.3~beta1-2) UNRELEASED; urgency=low
+
+  * debian/control: Update -contrib description for new modules.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 14 Oct 2007 13:16:58 +0200
+
 postgresql-8.3 (8.3~beta1-1) experimental; urgency=low
 
   * First beta release of PostgreSQL 8.3. Branch off the 8.2 packaging.
