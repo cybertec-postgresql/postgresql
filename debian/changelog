@@ -6,6 +6,12 @@ postgresql-8.3 (8.3~beta1-2) UNRELEASED; urgency=low
   * Add debian/patches/00upstream-encoding-abibreakage.patch: Fix libpq ABI
     breakage wrt. ordering of encoding names. Taken from upstream CVS head.
     This requires a catalog bump, thus upgrades from 8.3~beta1-1 will break.
+  * debian/postgresql-8.3.postrm:
+    - Clean up rotated logs on purge when postgresql-common is already gone.
+      (Closes: #447445)
+    - Clean up default data dir/log file if 'pgdata'/'log' symbolic links do
+      not exist.
+    - Clean up environment file.
 
  -- Martin Pitt <mpitt@debian.org>  Sun, 14 Oct 2007 13:30:32 +0200
 
