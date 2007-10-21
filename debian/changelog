@@ -3,6 +3,9 @@ postgresql-8.3 (8.3~beta1-2) UNRELEASED; urgency=low
   * debian/control: Update -contrib description for new modules.
   * debian/{control,rules}: Enable GSSAPI and LDAP support and add build
     dependencies libgssapi-dev and libldap2-dev.
+  * Add debian/patches/00upstream-encoding-abibreakage.patch: Fix libpq ABI
+    breakage wrt. ordering of encoding names. Taken from upstream CVS head.
+    This requires a catalog bump, thus upgrades from 8.3~beta1-1 will break.
 
  -- Martin Pitt <mpitt@debian.org>  Sun, 14 Oct 2007 13:30:32 +0200
 
