@@ -1,4 +1,4 @@
-postgresql-8.3 (8.3~beta1-2) UNRELEASED; urgency=low
+postgresql-8.3 (8.3~beta1-2) experimental; urgency=low
 
   * debian/control: Update -contrib description for new modules.
   * debian/{control,rules}: Enable GSSAPI and LDAP support and add build
