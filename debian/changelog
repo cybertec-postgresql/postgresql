@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2.5-2) UNRELEASED; urgency=low
+postgresql-8.2 (8.2.5-2) unstable; urgency=low
 
   * Add debian/patches/00upstream-tsearch2-compareWORD.patch:
     - Fix tsearch2's compareWORD() function to return 0 on identical strings.
