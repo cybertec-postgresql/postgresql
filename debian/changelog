@@ -1,4 +1,4 @@
-postgresql-8.3 (8.3~beta2-1) UNRELEASED; urgency=low
+postgresql-8.3 (8.3~beta2-1) experimental; urgency=low
 
   * Second beta release of PostgreSQL 8.3.
   * Remove patches which are upstream now:
