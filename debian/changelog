@@ -1,3 +1,12 @@
+postgresql-8.3 (8.3~beta2-1) UNRELEASED; urgency=low
+
+  * Second beta release of PostgreSQL 8.3.
+  * Remove patches which are upstream now:
+    00upstream-encoding-abibreakage.patch, 12-pgpassfile-crash.patch
+  * 03-gettext-domains.patch: Adapt to new upstream version.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 28 Oct 2007 12:37:43 -0400
+
 postgresql-8.3 (8.3~beta1-2) experimental; urgency=low
 
   * debian/control: Update -contrib description for new modules.
