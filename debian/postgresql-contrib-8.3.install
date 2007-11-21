@@ -34,4 +34,6 @@ usr/lib/postgresql/8.3/lib/hstore.so
 usr/lib/postgresql/8.3/lib/pgrowlocks.so
 usr/lib/postgresql/8.3/lib/pg_freespacemap.so
 usr/lib/postgresql/8.3/lib/uuid-ossp.so
-
+usr/lib/postgresql/8.3/lib/test_parser.so
+usr/lib/postgresql/8.3/lib/dict_int.so
+usr/lib/postgresql/8.3/lib/dict_xsyn.so
