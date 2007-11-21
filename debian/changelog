@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2.5-3) UNRELEASED; urgency=low
+postgresql-8.2 (8.2.5-3) unstable; urgency=low
 
   * debian/rules:
     - Ignore test suite failure on alpha for now, since it behaves weird on
