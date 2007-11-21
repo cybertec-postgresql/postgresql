@@ -1,8 +1,14 @@
 postgresql-8.3 (8.3~beta3-1) UNRELEASED; urgency=low
 
   * Third beta release of PostgreSQL 8.3.
+  * debian/rules:
+    - Ignore test suite failure on alpha for now, since it behaves weird on
+      some floating point operations (regression in glibc and gcc-4.2). Bug is
+      under investigation. Fixes FTBFS for now. (see #449002)
+    - Remove test suite ignoring for mips and mipsel again, seems the buildds
+      finally got a fixed kernel.
 
- -- Martin Pitt <mpitt@debian.org>  Wed, 21 Nov 2007 00:01:14 +0100
+ -- Martin Pitt <mpitt@debian.org>  Wed, 21 Nov 2007 16:53:18 +0100
 
 postgresql-8.3 (8.3~beta2-1) experimental; urgency=low
 
