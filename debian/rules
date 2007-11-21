@@ -37,6 +37,7 @@ DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/8.3/man \
   --with-libxml \
   --with-libxslt \
   --with-ldap \
+  --with-ossp-uuid \
   --with-gnu-ld \
   --with-tclconfig=/usr/lib/tcl$(TCL_VER) \
   --with-tkconfig=/usr/lib/tk$(TCL_VER) \
