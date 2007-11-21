@@ -13,8 +13,10 @@ postgresql-8.3 (8.3~beta3-1) UNRELEASED; urgency=low
   * Enable OSSP UUID support, add build dependency libossp-uuid-dev.
     (Closes: #451336)
   * Install some missing .so libraries.
+  * debian/rules: Check that all files in debian/tmp get installed to
+    somewhere, and fail the build if not.
 
- -- Martin Pitt <mpitt@debian.org>  Wed, 21 Nov 2007 17:56:11 +0100
+ -- Martin Pitt <mpitt@debian.org>  Wed, 21 Nov 2007 20:18:44 +0100
 
 postgresql-8.3 (8.3~beta2-1) experimental; urgency=low
 

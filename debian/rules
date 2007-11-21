@@ -53,6 +53,16 @@ DEB_DH_INSTALLCHANGELOGS_ARGS := build-tree/postgresql-*/HISTORY
 DEB_COMPRESS_EXCLUDE := .source .c
 DEB_DH_INSTALLINIT_ARGS := -u'defaults 19'
 
+common-binary-predeb-arch::
+	# verify that all files are installed; ignore manpages, since
+	# they are handled by dh_installman
+	missing=`dh_install --sourcedir=debian/tmp --list-missing --no-act 2>&1 | grep -v man/man`; \
+	if [ -n "$$missing" ]; then \
+	    echo "Not all files are installed:"; \
+	    echo "$$missing"; \
+	    exit 1; \
+	fi
+
 common-post-build-arch::
 	# generate POT files for translators
 	find build-tree -name nls.mk -exec sh -c "make -C \$$(dirname {}) init-po" \;
