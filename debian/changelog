@@ -1,4 +1,4 @@
-postgresql-8.3 (8.3~beta3-2) UNRELEASED; urgency=low
+postgresql-8.3 (8.3~beta3-2) experimental; urgency=low
 
   * debian/control: Drop libgssapi-dev build dependency, current krb does not
     need it any more. (Closes: #452549)
