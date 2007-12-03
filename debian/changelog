@@ -1,3 +1,9 @@
+postgresql-8.3 (8.3~beta4-1) UNRELEASED; urgency=low
+
+  * Fourth beta release of PostgreSQL 8.3.
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 03 Dec 2007 08:35:34 +0100
+
 postgresql-8.3 (8.3~beta3-2) experimental; urgency=low
 
   * debian/control: Drop libgssapi-dev build dependency, current krb does not
