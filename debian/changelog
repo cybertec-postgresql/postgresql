@@ -1,3 +1,12 @@
+postgresql-8.2 (8.2.5-4) UNRELEASED; urgency=low
+
+  * debian/rules: 
+    - Build with -O1 on sparc and alpha until the miscompilation with -O2 is
+      sorted out (http://lists.debian.org/debian-alpha/2007/11/msg00025.html).
+    - Have a failed test suite fail the build on all architectures again.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 04 Dec 2007 23:49:08 +0100
+
 postgresql-8.2 (8.2.5-3) unstable; urgency=low
 
   * debian/rules:

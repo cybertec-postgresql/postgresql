@@ -11,10 +11,13 @@ LDFLAGS+= -Wl,--as-needed
 CFLAGS+= -fPIC
 
 ifneq ($(findstring $(DEB_BUILD_ARCH), sparc alpha),)
-   TESTSUITE_FAIL_CMD=true
-else
-   TESTSUITE_FAIL_CMD=exit 1
+# sparc and alpha's gcc currently miscompiles; see
+# http://lists.debian.org/debian-alpha/2007/11/msg00025.html
+    CFLAGS+=-O1
 endif
+
+# build should fail on test suite failures on all arches
+TESTSUITE_FAIL_CMD=exit 1
 
 DEB_DH_INSTALL_SOURCEDIR=debian/tmp
 DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/8.2/man \
