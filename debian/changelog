@@ -1,4 +1,4 @@
-postgresql-8.2 (8.2.5-4) UNRELEASED; urgency=low
+postgresql-8.2 (8.2.5-4) unstable; urgency=medium
 
   * debian/rules: 
     - Build with -O1 on sparc and alpha until the miscompilation with -O2 is
