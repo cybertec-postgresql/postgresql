@@ -12,6 +12,6 @@ usr/include/postgresql/8.3/server/mb/pg_wchar.h /usr/include/postgresql/mb
 usr/lib/libpgport.a
 usr/lib/libpq.a
 usr/lib/libpq.so
-usr/lib/postgresql/8.3/bin/pg_config
+usr/lib/postgresql/8.3/bin/pg_config usr/bin
 usr/share/postgresql/8.3/man/man1/pg_config.1
 usr/share/locale/*/LC_MESSAGES/pg_config-8.3.mo

@@ -125,8 +125,8 @@ Package: postgresql-server-dev-8.3
 Architecture: any
 Section: libdevel
 Depends: ${shlibs:Depends}, libpq-dev (>= 8.3~beta)
-Conflicts: pgxs
-Replaces: pgxs
+Conflicts: pgxs, libpq-dev (<< 8.3~beta4-2)
+Replaces: pgxs, libpq-dev (<< 8.3~beta4-2)
 Description: development files for PostgreSQL 8.3 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
