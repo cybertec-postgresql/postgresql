@@ -1,2 +1,4 @@
 usr/include/postgresql/8.2/*
 usr/lib/postgresql/8.2/lib/pgxs/*
+usr/lib/postgresql/8.2/bin/pg_config
+usr/share/postgresql/8.2/man/man1/pg_config.1

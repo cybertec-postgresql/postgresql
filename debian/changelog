@@ -1,3 +1,13 @@
+postgresql-8.2 (8.2.5-5) UNRELEASED; urgency=low
+
+  * Ship pg_config in postgresql-server-dev, and ship a copy in /usr/bin in
+    libpq-dev, instead of libpq-dev shipping it in
+    /usr/lib/postgresql/<version>/bin. This makes it possible to use a
+    libpq-dev from a different major version (like 8.3 from experimental).
+    (Closes: #455509)
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 11 Dec 2007 10:17:30 +0100
+
 postgresql-8.2 (8.2.5-4) unstable; urgency=medium
 
   * debian/rules: 
