@@ -8,8 +8,7 @@ postgresql-8.3 (8.3~beta4-2) UNRELEASED; urgency=low
   * Ship pg_config in postgresql-server-dev, and ship a copy in /usr/bin in
     libpq-dev, instead of libpq-dev shipping it in
     /usr/lib/postgresql/<version>/bin. This makes it possible to use a
-    libpq-dev from a different major version (like 8.3 from experimental).
-    (See #455509)
+    libpq-dev from a different major version. (See #455509)
 
  -- Martin Pitt <mpitt@debian.org>  Mon, 03 Dec 2007 10:30:11 +0100
 
