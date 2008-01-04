@@ -107,3 +107,14 @@ binary-install/postgresql-plpython-8.3::
 	dh_pycentral -p$(cdbs_curpkg)
 	dh_python -p$(cdbs_curpkg) usr/lib/postgresql/8.3/lib
 
+# run tests in contrib in temporary test installations
+contrib-check:
+	set -e; cd build-tree/$(DEB_TAR_SRCDIR)/contrib; \
+	for d in *; do \
+	    [ -d $$d/sql ] || continue; \
+	    echo "==============  Running tests in $$d"; \
+	    (cd $$d; \
+	    if ! ../../src/test/regress/pg_regress --top-builddir=../.. --temp-install=$(CURDIR)/build-tree/tmp_check --dbname=contrib_regression `cd sql; ls *.sql | sed 's/.sql$$//'`; then \
+		 cat regression.diffs; \
+	    fi); \
+	done
