@@ -27,8 +27,10 @@ postgresql-8.3 (8.3~rc1-1) UNRELEASED; urgency=low
     libpq-dev from a different major version. (See #455509)
   * debian/control: Mention tablefunc in -contrib description.
     (Closes: #458752)
+  * debian/rules: Run make bigcheck instead of check, to run the numeric_big
+    test, too.
 
- -- Martin Pitt <mpitt@debian.org>  Fri, 04 Jan 2008 16:36:40 +0100
+ -- Martin Pitt <mpitt@debian.org>  Fri, 04 Jan 2008 17:50:19 +0100
 
 postgresql-8.3 (8.3~beta4-1) experimental; urgency=low
 
