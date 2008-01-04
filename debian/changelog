@@ -1,7 +1,23 @@
-postgresql-8.3 (8.3~beta4-2) UNRELEASED; urgency=low
+postgresql-8.3 (8.3~rc1-1) UNRELEASED; urgency=low
 
+  * First release candidate of PostgreSQL 8.3. This also provides the security
+    bug fixes of 8.2.6:
+    - Prevent functions in indexes from executing with the privileges of
+      the user running "VACUUM", "ANALYZE", etc. "SET ROLE" is now forbidden
+      within a SECURITY DEFINER context. [CVE-2007-6600]
+    - Suitably crafted regular-expression patterns could cause crashes,
+      infinite or near-infinite looping, and/or massive memory
+      consumption, all of which pose denial-of-service hazards for
+      applications that accept regex search patterns from untrustworthy
+      sources. [CVE-2007-4769, CVE-2007-4772, CVE-2007-6067]
+    - Require non-superusers who use "/contrib/dblink" to use only
+      password authentication, as a security measure.
+      The fix that appeared for this in 8.2.5 was incomplete, as it
+      plugged the hole for only some "dblink" functions. [CVE-2007-6601,
+      CVE-2007-3278]
+  * debian/patches/04-psql-passwordprompt.patch: Update for new version.
   * Bump Standards-Version to 3.7.3 (no changes necessary).
-  * debian/rules: 
+  * debian/rules:
     - Build with -O1 on sparc and alpha until the miscompilation with -O2 is
       sorted out (http://lists.debian.org/debian-alpha/2007/11/msg00025.html).
     - Have a failed test suite fail the build on all architectures again.
@@ -10,7 +26,7 @@ postgresql-8.3 (8.3~beta4-2) UNRELEASED; urgency=low
     /usr/lib/postgresql/<version>/bin. This makes it possible to use a
     libpq-dev from a different major version. (See #455509)
 
- -- Martin Pitt <mpitt@debian.org>  Mon, 03 Dec 2007 10:30:11 +0100
+ -- Martin Pitt <mpitt@debian.org>  Fri, 04 Jan 2008 15:11:07 +0100
 
 postgresql-8.3 (8.3~beta4-1) experimental; urgency=low
 
