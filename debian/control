@@ -197,6 +197,7 @@ Description: additional facilities for PostgreSQL
                                 integrity.
                    timetravel - Re-implements in user code the time travel
                                 feature that was removed in 6.3.
+  tablefunc      - examples of functions returning tables
   uuid-ossp      - UUID generation functions
   vacuumlo       - Remove orphaned large objects
  .
