@@ -107,7 +107,8 @@ binary-install/postgresql-plpython-8.3::
 	dh_pycentral -p$(cdbs_curpkg)
 	dh_python -p$(cdbs_curpkg) usr/lib/postgresql/8.3/lib
 
-# run tests in contrib in temporary test installations
+# run tests in contrib in temporary test installations, using programs
+# from build-tree
 contrib-check:
 	set -e; cd build-tree/$(DEB_TAR_SRCDIR)/contrib; \
 	for d in *; do \
@@ -118,3 +119,21 @@ contrib-check:
 		 cat regression.diffs; \
 	    fi); \
 	done
+
+# run tests in contrib in temporary test installation, using programs
+# from system installation
+contrib-installcheck:
+	# set up temporary db
+	rm -rf build-tree/tmp_data
+	mkdir build-tree/tmp_data
+	/usr/lib/postgresql/8.3/bin/initdb -D build-tree/tmp_data
+	/usr/lib/postgresql/8.3/bin/pg_ctl -D build-tree/tmp_data -l build-tree/tmp_data/postgres.log -o '-k /tmp' start
+	# wait until it started up
+	while !/usr/lib/postgresql/8.3/bin/psql -h /tmp -l >/dev/null 2>&1; do sleep 1; done
+	sleep 1
+	while !/usr/lib/postgresql/8.3/bin/psql -h /tmp -l >/dev/null 2>&1; do sleep 1; done
+	# run the tests
+	-cd build-tree/$(DEB_TAR_SRCDIR)/contrib; make installcheck
+	/usr/lib/postgresql/8.3/bin/pg_ctl -D build-tree/tmp_data stop
+	# find and print the regression diffs
+	find build-tree/$(DEB_TAR_SRCDIR)/contrib/ -name regression.diffs -exec cat '{}' \;
