@@ -1,4 +1,4 @@
-postgresql-8.3 (8.3~rc1-1) UNRELEASED; urgency=low
+postgresql-8.3 (8.3~rc1-1) experimental; urgency=low
 
   * First release candidate of PostgreSQL 8.3. This also provides the security
     bug fixes of 8.2.6:
