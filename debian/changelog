@@ -1,3 +1,10 @@
+postgresql-8.3 (8.3~rc1-2) UNRELEASED; urgency=low
+
+  * debian/control: Build the versionless metapackages from this source now
+    and let them point to 8.3.
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 16 Jan 2008 00:39:05 +0100
+
 postgresql-8.3 (8.3~rc1-1) experimental; urgency=low
 
   * First release candidate of PostgreSQL 8.3. This also provides the security
