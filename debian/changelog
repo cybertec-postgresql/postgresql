@@ -5,8 +5,12 @@ postgresql-8.3 (8.3~rc2-1) UNRELEASED; urgency=low
     and let them point to 8.3.
   * debian/postgresql-server-dev-8.3.install: Do not ship pg_config.1, it's
     already shipped by libpq-dev. (Closes: #459746)
+  * debian/rules: Stop postgresql at priority 21, not 19, so that services at
+    runlevel 20 which use postgresql (such as postfix, pdns) can shutdown
+    cleanly. Do the transition on upgrades, too
+    (debian/postgresql-8.3.postinst). (Closes: #447063)
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 19 Jan 2008 16:25:24 +0100
+ -- Martin Pitt <mpitt@debian.org>  Sat, 19 Jan 2008 16:44:37 +0100
 
 postgresql-8.3 (8.3~rc1-1) experimental; urgency=low
 
