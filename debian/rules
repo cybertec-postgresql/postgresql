@@ -23,6 +23,7 @@ TESTSUITE_FAIL_CMD=exit 1
 DEB_DH_INSTALL_SOURCEDIR=debian/tmp
 DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/$(MAJOR_VER)/man \
   --with-docdir=\$${prefix}/share/doc/postgresql-doc-$(MAJOR_VER) \
+  --sysconfdir=/etc/postgresql-common \
   --datadir=\$${prefix}/share/postgresql/$(MAJOR_VER) \
   --bindir=\$${prefix}/lib/postgresql/$(MAJOR_VER)/bin \
   --includedir=\$${prefix}/include/postgresql/ \

@@ -9,8 +9,13 @@ postgresql-8.3 (8.3~rc2-1) UNRELEASED; urgency=low
     runlevel 20 which use postgresql (such as postfix, pdns) can shutdown
     cleanly. Do the transition on upgrades, too
     (debian/postgresql-8.3.postinst). (Closes: #447063)
+  * debian/rules: set SYSCONFDIR to /etc/postgresql-common, so that
+    pg_service.conf is searched there. (Closes: #439026)
+  * Add debian/patches/13-pg_service.conf_directory_doc.patch: Change
+    documentation comment in sample pg_service.conf to point to Debian's
+    sysconfdir (/etc/postgresql-common) instead of /usr/local/pgsql/etc.
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 19 Jan 2008 16:44:37 +0100
+ -- Martin Pitt <mpitt@debian.org>  Sat, 19 Jan 2008 17:26:17 +0100
 
 postgresql-8.3 (8.3~rc1-1) experimental; urgency=low
 
