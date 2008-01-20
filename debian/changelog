@@ -1,6 +1,8 @@
-postgresql-8.3 (8.3~rc2-1) UNRELEASED; urgency=low
+postgresql-8.3 (8.3~rc2-1) unstable; urgency=low
 
-  * Second release candidate of PostgreSQL 8.3.
+  * Second release candidate of PostgreSQL 8.3. Upload to unstable now, the
+    database format is not likely to change any more, and we want more
+    widespread testing now.
   * debian/control: Build the versionless metapackages from this source now
     and let them point to 8.3.
   * debian/postgresql-server-dev-8.3.install: Do not ship pg_config.1, it's
