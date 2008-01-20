@@ -48,7 +48,7 @@ Description: run-time library for ECPG programs
 Package: libecpg-dev
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, libpq-dev, libecpg-compat2, libpgtypes2
+Depends: ${shlibs:Depends}, libpq-dev, libecpg-compat3, libpgtypes3
 Conflicts: postgresql-dev, libecpg3-dev
 Description: development files for ECPG (Embedded PostgreSQL for C)
  This package contains the necessary files to build ECPG (Embedded
