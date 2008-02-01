@@ -1,3 +1,9 @@
+postgresql-8.3 (8.3.0-1) UNRELEASED; urgency=low
+
+  * Final 8.3.0 release.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 01 Feb 2008 15:28:43 +0100
+
 postgresql-8.3 (8.3~rc2-1) unstable; urgency=low
 
   * Second release candidate of PostgreSQL 8.3. Upload to unstable now, the
