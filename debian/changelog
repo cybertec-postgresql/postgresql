@@ -2,8 +2,12 @@ postgresql-8.3 (8.3.0-1) UNRELEASED; urgency=low
 
   * Final 8.3.0 release. (Closes: #462070)
   * debian/watch: Update for a currently working mirror. (Closes: #462821)
+  * Add debian/patches/14-pg_config-paths.patch: Disable PostgreSQL's
+    automagic path mangling and fix libdir for pg_config, so that pg_config in
+    /usr/bin and /usr/lib/postgresql/8.3/bin behave identically.
+    (Closes: #462037)
 
- -- Martin Pitt <mpitt@debian.org>  Fri, 01 Feb 2008 18:48:48 +0100
+ -- Martin Pitt <mpitt@debian.org>  Sun, 03 Feb 2008 12:14:56 +0100
 
 postgresql-8.3 (8.3~rc2-1) unstable; urgency=low
 
