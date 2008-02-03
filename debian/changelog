@@ -1,4 +1,4 @@
-postgresql-8.3 (8.3.0-1) UNRELEASED; urgency=low
+postgresql-8.3 (8.3.0-1) unstable; urgency=low
 
   * Final 8.3.0 release. (Closes: #462070)
   * debian/watch: Update for a currently working mirror. (Closes: #462821)
