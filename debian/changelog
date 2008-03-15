@@ -48,8 +48,13 @@ postgresql-8.3 (8.3.1-1) UNRELEASED; urgency=low
       failure. (Closes: #358546)
     - Use "-fwrapv" to defend against possible misoptimization in recent
       gcc versions (4.3 and later).
+  * debian/postgresql-8.3.init:
+    - Remove erroneous 'S' from Should-Stop.
+    - Require $remote_fs for startup, since postgresql needs /usr.
+    - Thanks to Petter Reinholdtsen!
+    - Closes: #470935
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 15 Mar 2008 14:50:44 +0100
+ -- Martin Pitt <mpitt@debian.org>  Sat, 15 Mar 2008 18:39:36 +0100
 
 postgresql-8.3 (8.3.0-1) unstable; urgency=low
 
