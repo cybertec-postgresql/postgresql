@@ -1,3 +1,56 @@
+postgresql-8.3 (8.3.1-1) UNRELEASED; urgency=low
+
+  * New upstream bugfix release:
+    - Repair corner-case bugs in "VACUUM FULL".
+    - Fix misbehavior of foreign key checks involving character or bit
+      columns.
+    - Avoid needless deadlock failures in no-op foreign-key checks.
+    - Fix possible core dump when re-planning a prepared query.
+    - Fix possible failure when re-planning a query that calls an
+      SPI-using function.
+    - Fix failure in row-wise comparisons involving columns of different
+      datatypes.
+    - Fix longstanding "LISTEN"/"NOTIFY" race condition.
+    - Disallow "LISTEN" and "UNLISTEN" within a prepared transaction
+      This was formerly allowed but trying to do it had various
+      unpleasant consequences, notably that the originating backend could
+      not exit as long as an "UNLISTEN" remained uncommitted.
+    - Disallow dropping a temporary table within a prepared transaction
+      This was correctly disallowed by 8.1, but the check was
+      inadvertently broken in 8.2 and 8.3.
+    - Fix rare crash when an error occurs during a query using a hash
+      index.
+    - Fix incorrect comparison of tsquery values.
+    - Fix incorrect behavior of LIKE with non-ASCII characters in
+      single-byte encodings. (Closes: #469180)
+    - Disable xmlvalidate. This function should have been removed before 8.3
+      release, but was inadvertently left in the source code. It poses a small
+      security risk since unprivileged users could use it to read the first
+      few characters of any file accessible to the server.
+    - Fix memory leaks in certain usages of set-returning functions.
+    - Make encode(bytea, 'escape') convert all high-bit-set byte values
+      into \"nnn" octal escape sequences.
+      This is necessary to avoid encoding problems when the database
+      encoding is multi-byte. This change could pose compatibility issues
+      for applications that are expecting specific results from encode.
+    - Fix input of datetime values for February 29 in years BC.
+      The former coding was mistaken about which years were leap years.
+    . Fix "unrecognized node type" error in some variants of "ALTER
+      OWNER".
+    - Avoid tablespace permissions errors in "CREATE TABLE LIKE INCLUDING
+      INDEXES".
+    - Ensure pg_stat_activity.waiting flag is cleared when a lock wait is
+      aborted.
+    - Fix ecpg problems with arrays.
+    - Fix pg_ctl to correctly extract the postmaster's port number from
+      command-line options. Previously, pg_ctl start -w could try to contact
+      the postmaster on the wrong port, leading to bogus reports of startup
+      failure. (Closes: #358546)
+    - Use "-fwrapv" to defend against possible misoptimization in recent
+      gcc versions (4.3 and later).
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 15 Mar 2008 14:50:44 +0100
+
 postgresql-8.3 (8.3.0-1) unstable; urgency=low
 
   * Final 8.3.0 release. (Closes: #462070)
