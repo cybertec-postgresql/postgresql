@@ -52,7 +52,7 @@ postgresql-8.3 (8.3.1-1) UNRELEASED; urgency=low
     - Remove erroneous 'S' from Should-Stop.
     - Require $remote_fs for startup, since postgresql needs /usr.
     - Thanks to Petter Reinholdtsen!
-    - Closes: #470935
+    - (Closes: #470935)
 
  -- Martin Pitt <mpitt@debian.org>  Sat, 15 Mar 2008 18:39:36 +0100
 
