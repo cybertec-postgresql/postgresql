@@ -1,3 +1,12 @@
+postgresql-8.3 (8.3.1-2) UNRELEASED; urgency=low
+
+  * debian/control: Change description of the metapackages from "latest
+    available" to "currently supported", since after a distro release, the
+    latest available upstream version changes, and thus this becomes slightly
+    confusing.
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 17 Mar 2008 08:45:01 +0100
+
 postgresql-8.3 (8.3.1-1) unstable; urgency=low
 
   * New upstream bugfix release:
