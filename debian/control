@@ -168,6 +168,7 @@ Description: additional facilities for PostgreSQL
   earthdistance  - Operator for computing the distance (in miles) between
                    two points on the earth's surface
   fuzzystrmatch  - Levenshtein, metaphone, and soundex fuzzy string matching
+  hstore         - Store (key, value) pairs
   intagg         - Integer aggregator/enumerator
   intarray       - Index support for arrays of int4, using GiST
   isn            - type extensions for ISBN, ISSN, ISMN, EAN13 product numbers

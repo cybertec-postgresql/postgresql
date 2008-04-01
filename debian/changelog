@@ -4,8 +4,9 @@ postgresql-8.3 (8.3.1-2) UNRELEASED; urgency=low
     available" to "currently supported", since after a distro release, the
     latest available upstream version changes, and thus this becomes slightly
     confusing.
+  * debian/control: Add missing description of 'hstore' to p-contrib.
 
- -- Martin Pitt <mpitt@debian.org>  Mon, 17 Mar 2008 08:45:01 +0100
+ -- Martin Pitt <mpitt@debian.org>  Tue, 01 Apr 2008 08:40:54 +0200
 
 postgresql-8.3 (8.3.1-1) unstable; urgency=low
 
