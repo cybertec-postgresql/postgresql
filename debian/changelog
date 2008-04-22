@@ -5,8 +5,9 @@ postgresql-8.3 (8.3.1-2) UNRELEASED; urgency=low
     latest available upstream version changes, and thus this becomes slightly
     confusing.
   * debian/control: Add missing description of 'hstore' to p-contrib.
+  * debian/control: Wrap build dependencies.
 
- -- Martin Pitt <mpitt@debian.org>  Tue, 01 Apr 2008 08:40:54 +0200
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Tue, 22 Apr 2008 17:35:10 +0200
 
 postgresql-8.3 (8.3.1-1) unstable; urgency=low
 
