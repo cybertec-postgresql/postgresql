@@ -5,7 +5,7 @@ Abstract: The documentation for the PostgreSQL database management system,
  version 8.3. PostgreSQL is a sophisticated Object-Relational DBMS, supporting
  almost all SQL constructs, including subselects, transactions, and
  user-defined types and functions.
-Section: Apps/Databases
+Section: Data Management
 
 Format: HTML
 Index: /usr/share/doc/postgresql-doc-8.3/html/index.html
