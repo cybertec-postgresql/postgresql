@@ -1,3 +1,100 @@
+postgresql-8.3 (8.3.3-1) UNRELEASED; urgency=low
+
+  * New upstream bugfix release (note that 8.3.2 was never officially released
+    due to the discovery of another major bug):
+    - Make pg_get_ruledef() parenthesize negative constants.
+      Before this fix, a negative constant in a view or rule might be
+      dumped as, say, -42::integer, which is subtly incorrect: it should
+      be (-42)::integer due to operator precedence rules. Usually this
+      would make little difference, but it could interact with another
+      recent patch to cause PostgreSQL to reject what had been a valid
+      "SELECT DISTINCT" view query. Since this could result in pg_dump
+      output failing to reload, it is being treated as a high-priority
+      fix. The only released versions in which dump output is actually
+      incorrect are 8.3.1 and 8.2.7.
+    - Make "ALTER AGGREGATE ... OWNER TO" update pg_shdepend.
+      This oversight could lead to problems if the aggregate was later
+      involved in a "DROP OWNED" or "REASSIGN OWNED" operation.
+    - Fix incorrect archive truncation point calculation for the %r macro
+      in recovery_command parameters. This could lead to data loss if a
+      warm-standby script relied on %r to decide when to throw away WAL
+      segment files.
+    - Fix "ALTER TABLE ADD COLUMN ... PRIMARY KEY" so that the new column
+      is correctly checked to see if it's been initialized to all
+      non-nulls.
+    - Fix "REASSIGN OWNED" so that it works on procedural languages too.
+    - Fix problems with "SELECT FOR UPDATE/SHARE" occurring as a subquery
+      in a query with a non-"SELECT" top-level operation.
+    - Fix possible "CREATE TABLE" failure when inheriting the "same"
+      constraint from multiple parent relations that inherited that
+      constraint from a common ancestor.
+    - Fix pg_get_ruledef() to show the alias, if any, attached to the
+      target table of an "UPDATE" or "DELETE".
+    - Restore the pre-8.3 behavior that an out-of-range block number in a
+      TID being used in a TidScan plan results in silently not matching
+      any rows. 8.3.0 and 8.3.1 threw an error instead.
+    - Fix GIN bug that could result in a too many LWLocks taken failure.
+    - Fix broken GiST comparison function for tsquery.
+    - Fix tsvector_update_trigger() and ts_stat() to accept domains over
+      the types they expect to work with.
+    - Fix failure to support enum data types as foreign keys.
+    - Avoid possible crash when decompressing corrupted data.
+    - Fix race conditions between delayed unlinks and "DROP DATABASE".
+      In the worst case this could result in deleting a newly created
+      table in a new database that happened to get the same OID as the
+      recently-dropped one; but of course that is an extremely
+      low-probability scenario.
+    - Repair two places where SIGTERM exit of a backend could leave
+      corrupted state in shared memory.
+    - Fix possible crash due to incorrect plan generated for an x IN
+      (SELECT y FROM ...) clause when "x" and "y" have different data
+      types; and make sure the behavior is semantically correct when the
+      conversion from "y"'s type to "x"'s type is lossy.
+    - Fix oversight that prevented the planner from substituting known
+      Param values as if they were constants.
+    - Fix planner failure when an indexable MIN or MAX aggregate is used
+      with DISTINCT or ORDER BY.
+    - Fix planner to ensure it never uses a "physical tlist" for a plan
+      node that is feeding a Sort node.
+    - Avoid unnecessary copying of query strings.
+    - Make TransactionIdIsCurrentTransactionId() use binary search
+      instead of linear search when checking child-transaction XIDs.
+      This fixes some cases in which 8.3.0 was significantly slower than
+      earlier releases.
+    - Fix conversions between ISO-8859-5 and other encodings to handle
+      Cyrillic "Yo" characters (e and E with two dots).
+    - Fix several datatype input functions, notably array_in(), that were
+      allowing unused bytes in their results to contain uninitialized,
+      unpredictable values. This could lead to failures in which two
+      apparently identical literal values were not seen as equal, resulting in
+      the parser complaining about unmatched ORDER BY and DISTINCT
+      expressions.
+    - Fix a corner case in regular-expression substring matching
+      (substring(string from pattern)).
+      The problem occurs when there is a match to the pattern overall but
+      the user has specified a parenthesized subexpression and that
+      subexpression hasn't got a match. An example is substring('foo'
+      from 'foo(bar)?'). This should return NULL, since (bar) isn't
+      matched, but it was mistakenly returning the whole-pattern match
+      instead (ie, foo).
+    - Prevent cancellation of an auto-vacuum that was launched to prevent
+      XID wraparound.
+    - Improve "ANALYZE"'s handling of in-doubt tuples (those inserted or
+      deleted by a not-yet-committed transaction) so that the counts it
+      reports to the stats collector are more likely to be correct.
+    - Fix initdb to reject a relative path for its --xlogdir (-X) option.
+    - Make psql print tab characters as an appropriate number of spaces,
+      rather than \x09 as was done in 8.3.0 and 8.3.1.
+    - Add ECPGget_PGconn() function to ecpglib. Dropped
+      00upstream-ecpg-get-connection.patch, which backported this fix.
+    - Fix incorrect result from ecpg's PGTYPEStimestamp_sub() function.
+    - Fix handling of continuation line markers in ecpg.
+    - Fix possible crashes in "contrib/cube" functions.
+    - Fix core dump in "contrib/xml2"'s xpath_table() function when the
+      input query returns a NULL value.
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 09 Jun 2008 17:13:16 +0200
+
 postgresql-8.3 (8.3.1-2) unstable; urgency=low
 
   * debian/control: Change description of the metapackages from "latest
