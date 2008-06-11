@@ -93,8 +93,9 @@ postgresql-8.3 (8.3.3-1) UNRELEASED; urgency=low
     - Fix core dump in "contrib/xml2"'s xpath_table() function when the
       input query returns a NULL value.
   * Build against tcl 8.5.
+  * debian/control: Fix bad wrapping in build dependencies.
 
- -- Martin Pitt <mpitt@debian.org>  Wed, 11 Jun 2008 20:40:11 +0200
+ -- Martin Pitt <mpitt@debian.org>  Wed, 11 Jun 2008 20:43:07 +0200
 
 postgresql-8.3 (8.3.1-2) unstable; urgency=low
 
