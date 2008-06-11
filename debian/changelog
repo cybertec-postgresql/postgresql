@@ -1,4 +1,4 @@
-postgresql-8.3 (8.3.3-1) UNRELEASED; urgency=low
+postgresql-8.3 (8.3.3-1) unstable; urgency=low
 
   * New upstream bugfix release (note that 8.3.2 was never officially released
     due to the discovery of another major bug):
