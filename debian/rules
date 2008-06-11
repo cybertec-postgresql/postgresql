@@ -1,5 +1,5 @@
 #!/usr/bin/make	-f 
-TCL_VER := 8.4
+TCL_VER := 8.5
 MAJOR_VER := 8.3
 DEB_TAR_SRCDIR:=postgresql-8.3.3
 
