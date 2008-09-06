@@ -1,3 +1,9 @@
+postgresql-8.3 (8.3.3-2) UNRELEASED; urgency=low
+
+  * debian/control: Bump Standards-Version (no changes necessary).
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 06 Sep 2008 10:46:00 +0200
+
 postgresql-8.3 (8.3.3-1) unstable; urgency=low
 
   * New upstream bugfix release (note that 8.3.2 was never officially released
