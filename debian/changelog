@@ -75,8 +75,9 @@ postgresql-8.3 (8.3.4-1) UNRELEASED; urgency=low
       across a restart.
     - Fix erroneous WAL file cutoff point calculation in pg_standby.
   * debian/control: Bump Standards-Version (no changes necessary).
+  * debian/control: intarray contrib module was renamed to _int. (LP: #250483)
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 20 Sep 2008 11:57:30 -0700
+ -- Martin Pitt <mpitt@debian.org>  Sat, 20 Sep 2008 13:07:53 -0700
 
 postgresql-8.3 (8.3.3-1) unstable; urgency=low
 
