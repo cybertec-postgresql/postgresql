@@ -1,8 +1,82 @@
-postgresql-8.3 (8.3.3-2) UNRELEASED; urgency=low
+postgresql-8.3 (8.3.4-1) UNRELEASED; urgency=low
 
+  * New upstream bugfix release:
+    - Fix bug in btree WAL recovery code. Recovery failed if the WAL ended
+      partway through a page split operation.
+    - Fix potential use of wrong cutoff XID for HOT page pruning.
+      This error created a risk of corruption in system catalogs that are
+      consulted by "VACUUM": dead tuple versions might be removed too
+      soon. The impact of this on actual database operations would be
+      minimal, since the system doesn't follow MVCC rules while examining
+      catalogs, but it might result in transiently wrong output from
+      pg_dump or other client programs.
+    - Fix potential miscalculation of datfrozenxid.
+    - Fix incorrect HOT updates after pg_class is reindexed.
+      Corruption of pg_class could occur if REINDEX TABLE pg_class was
+      followed in the same session by an ALTER TABLE RENAME or ALTER
+      TABLE SET SCHEMA command.
+    - Fix missed "combo cid" case. This error made rows incorrectly invisible
+      to a transaction in which they had been deleted by multiple
+      subtransactions that all aborted.
+    - Prevent autovacuum from crashing if the table it's currently
+      checking is deleted at just the wrong time.
+    - Widen local lock counters from 32 to 64 bits. This responds to reports
+      that the counters could overflow in sufficiently long transactions,
+      leading to unexpected "lock is already held" errors.
+    - Fix possible duplicate output of tuples during a GiST index scan.
+    - Regenerate foreign key checking queries from scratch when either
+      table is modified. Previously, 8.3 would attempt to replan the query,
+      but would work from previously generated query text. This led to
+      failures if a table or column was renamed.
+    - Fix missed permissions checks when a view contains a simple UNION
+      ALL construct. Permissions for the referenced tables were checked
+      properly, but not permissions for the view itself.
+    - Add checks in executor startup to ensure that the tuples produced
+      by an "INSERT" or "UPDATE" will match the target table's current
+      rowtype. This situation is believed to be impossible in 8.3, but it can
+      happen in prior releases, so a check seems prudent.
+    - Fix possible repeated drops during "DROP OWNED". This would typically
+      result in strange errors such as "cache lookup failed for relation NNN".
+    - Fix several memory leaks in XML operations.
+    - Fix xmlserialize() to raise error properly for unacceptable target
+      data type.
+    - Fix a couple of places that mis-handled multibyte characters in
+      text search configuration file parsing. Certain characters occurring in
+      configuration files would always cause "invalid byte sequence for
+      encoding" failures.
+    - Provide file name and line number location for all errors reported
+      in text search configuration files.
+    - Fix AT TIME ZONE to first try to interpret its timezone argument as
+      a timezone abbreviation, and only try it as a full timezone name if
+      that fails, rather than the other way around as formerly.
+    - Fix datetime input functions to correctly detect integer overflow
+      when running on a 64-bit platform.
+    - Prevent integer overflows during units conversion when displaying a
+      configuration parameter that has units.
+    - Improve performance of writing very long log messages to syslog.
+    - Allow spaces in the suffix part of an LDAP URL in "pg_hba.conf".
+    - Fix bug in backwards scanning of a cursor on a SELECT DISTINCT ON
+      query.
+    - Fix planner bug that could improperly push down IS NULL tests below
+      an outer join.
+    - Fix planner bug with nested sub-select expressions.
+    - Fix planner to estimate that GROUP BY expressions yielding boolean
+      results always result in two groups, regardless of the expressions'
+      contents.
+    - Fix PL/PgSQL to not fail when a FOR loop's target variable is a
+      record containing composite-type fields.
+    - Fix PL/Tcl to behave correctly with Tcl 8.5, and to be more careful
+      about the encoding of data sent to or from Tcl.
+    - Improve performance of PQescapeBytea().
+    - Fix ecpg to handle variables properly in "SET" commands.
+    - Improve pg_dump and pg_restore's error reporting after failure to
+      send a SQL command.
+    - Fix pg_ctl to properly preserve postmaster command-line arguments
+      across a restart.
+    - Fix erroneous WAL file cutoff point calculation in pg_standby.
   * debian/control: Bump Standards-Version (no changes necessary).
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 06 Sep 2008 10:46:00 +0200
+ -- Martin Pitt <mpitt@debian.org>  Sat, 20 Sep 2008 11:57:30 -0700
 
 postgresql-8.3 (8.3.3-1) unstable; urgency=low
 
