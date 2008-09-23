@@ -1,4 +1,4 @@
-postgresql-8.3 (8.3.4-1) UNRELEASED; urgency=low
+postgresql-8.3 (8.3.4-1) unstable; urgency=low
 
   * New upstream bugfix release:
     - Fix bug in btree WAL recovery code. Recovery failed if the WAL ended
@@ -77,7 +77,7 @@ postgresql-8.3 (8.3.4-1) UNRELEASED; urgency=low
   * debian/control: Bump Standards-Version (no changes necessary).
   * debian/control: intarray contrib module was renamed to _int. (LP: #250483)
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 20 Sep 2008 13:07:53 -0700
+ -- Martin Pitt <mpitt@debian.org>  Tue, 23 Sep 2008 21:29:11 +0200
 
 postgresql-8.3 (8.3.3-1) unstable; urgency=low
 
