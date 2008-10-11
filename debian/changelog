@@ -1,5 +1,6 @@
-postgresql-8.3 (8.3.4-2) UNRELEASED; urgency=low
+postgresql-8.3 (8.3.4-2) unstable; urgency=medium
 
+  * Urgency medium due to RC bug fix (breaks upgrades).
   * Add dependency to ssl-cert. This has always been implicitly there through
     postgresql-common, but when upgrading -8.3 and ssl-cert at the same time,
     apt does not ensure to configure ssl-cert before postgresql-8.3 if there
@@ -8,7 +9,7 @@ postgresql-8.3 (8.3.4-2) UNRELEASED; urgency=low
     to release, so we do not enable that yet for Debian. Add hardening-wrapper
     and lsb-release build dependencies for this.
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 11 Oct 2008 14:22:48 +0200
+ -- Martin Pitt <mpitt@debian.org>  Sat, 11 Oct 2008 14:28:34 +0200
 
 postgresql-8.3 (8.3.4-1) unstable; urgency=low
 
