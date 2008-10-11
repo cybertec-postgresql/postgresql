@@ -87,7 +87,7 @@ Description: shared library libpgtypes for PostgreSQL 8.3
 Package: postgresql-8.3
 Architecture: any
 Section: misc
-Depends: ${shlibs:Depends}, postgresql-client-8.3, postgresql-common (>= 79), tzdata
+Depends: ${shlibs:Depends}, postgresql-client-8.3, postgresql-common (>= 79), tzdata, ssl-cert
 Suggests: oidentd | ident-server
 Conflicts: postgresql (<< 7.5)
 Description: object-relational SQL database, version 8.3 server
