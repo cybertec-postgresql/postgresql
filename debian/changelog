@@ -3,8 +3,12 @@ postgresql-8.3 (8.3.4-3) UNRELEASED; urgency=low
   * Drop -contrib's libdbd-pg-perl to Suggests:, since it is only really
     needed for bench.pl of the _int module. Changed description to point that
     out.
+  * debian/control: Add explicit dependency to locales, to ensure that the
+    locales package is configured before postgresql-8.3. Otherwise, the server
+    fails to start up when locales is unpacked while postgresql-8.3 is
+    configured. (LP: #280135)
 
- -- Martin Pitt <mpitt@debian.org>  Fri, 17 Oct 2008 18:34:16 +0200
+ -- Martin Pitt <mpitt@debian.org>  Sun, 19 Oct 2008 15:26:57 +0200
 
 postgresql-8.3 (8.3.4-2) unstable; urgency=medium
 
