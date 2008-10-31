@@ -1,5 +1,52 @@
-postgresql-8.3 (8.3.4-3) UNRELEASED; urgency=low
+postgresql-8.3 (8.3.5-1) UNRELEASED; urgency=low
 
+  * New upstream bug fix release:
+    - Fix GiST index corruption due to marking the wrong index entry
+      "dead" after a deletion. This would result in index searches failing to
+      find rows they should have found.
+    - Fix backend crash when the client encoding cannot represent a
+      localized error message.
+    - Fix possible crash in bytea-to-XML mapping.
+    - Fix possible crash when deeply nested functions are invoked from a
+      trigger.
+    - Improve optimization of "expression" IN ("expression-list") queries.
+    - Fix mis-expansion of rule queries when a sub-SELECT appears in a
+      function call in FROM, a multi-row VALUES list, or a RETURNING list.
+    - Fix Assert failure during rescan of an IS NULL search of a GiST
+      index.
+    - Fix memory leak during rescan of a hashed aggregation plan.
+    - Ensure an error is reported when a newly-defined PL/pgSQL trigger
+      function is invoked as a normal function.
+    - Force a checkpoint before "CREATE DATABASE" starts to copy files.
+      This prevents a possible failure if files had recently been deleted
+      in the source database.
+    - Prevent possible collision of relfilenode numbers when moving a
+      table to another tablespace with "ALTER SET TABLESPACE". The command
+      tried to re-use the existing filename, instead of picking one that is
+      known unused in the destination directory.
+    - Fix incorrect text search headline generation when single query
+      item matches first word of text.
+    - Fix improper display of fractional seconds in interval values when
+      using a non-ISO datestyle.
+    - Make ILIKE compare characters case-insensitively even when they're
+      escaped.
+    - Ensure "DISCARD" is handled properly by statement logging.
+    - Fix incorrect logging of last-completed-transaction time during
+      PITR recovery.
+    - Ensure SPI_getvalue and SPI_getbinval behave correctly when the
+      passed tuple and tuple descriptor have different numbers of columns.
+      This situation is normal when a table has had columns added or
+      removed, but these two functions didn't handle it properly. The
+      only likely consequence is an incorrect error indication.
+    - Mark SessionReplicationRole as PGDLLIMPORT so it can be used by
+      Slony on Windows.
+    - Fix small memory leak when using libpq's gsslib parameter.
+      The space used by the parameter string was not freed at connection
+      close.
+    - Ensure libgssapi is linked into libpq if needed.
+    - Fix ecpg's parsing of "CREATE ROLE".
+    - Fix recent breakage of pg_ctl restart.
+  * 03-gettext-domains.patch: Unfuzz for new upstream version.
   * Drop -contrib's libdbd-pg-perl to Suggests:, since it is only really
     needed for bench.pl of the _int module. Changed description to point that
     out.
@@ -8,7 +55,7 @@ postgresql-8.3 (8.3.4-3) UNRELEASED; urgency=low
     fails to start up when locales is unpacked while postgresql-8.3 is
     configured. (LP: #280135)
 
- -- Martin Pitt <mpitt@debian.org>  Sun, 19 Oct 2008 15:26:57 +0200
+ -- Martin Pitt <mpitt@debian.org>  Fri, 31 Oct 2008 19:34:49 +0100
 
 postgresql-8.3 (8.3.4-2) unstable; urgency=medium
 

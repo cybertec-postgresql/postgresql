@@ -1,6 +1,6 @@
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/backend/main/main.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/backend/main/main.c
---- postgresql-8.3.1/src/backend/main/main.c	2008-01-01 20:45:49.000000000 +0100
-+++ postgresql-8.3.1/src/backend/main/main.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/backend/main/main.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/backend/main/main.c
+--- postgresql-8.3.5/src/backend/main/main.c	2008-01-01 20:45:49.000000000 +0100
++++ postgresql-8.3.5/src/backend/main/main.c	2008-10-31 19:32:48.000000000 +0100
 @@ -87,7 +87,7 @@
  	 * error messages to be localized.
  	 */
@@ -10,19 +10,19 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bac
  
  #ifdef WIN32
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/backend/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.1/src/backend/nls.mk
---- postgresql-8.3.1/src/backend/nls.mk	2008-03-14 05:46:29.000000000 +0100
-+++ postgresql-8.3.1/src/backend/nls.mk	2008-03-15 14:49:46.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/backend/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.5/src/backend/nls.mk
+--- postgresql-8.3.5/src/backend/nls.mk	2008-10-27 20:37:28.000000000 +0100
++++ postgresql-8.3.5/src/backend/nls.mk	2008-10-31 19:33:10.000000000 +0100
 @@ -1,5 +1,5 @@
- # $PostgreSQL: pgsql/src/backend/nls.mk,v 1.21.2.1 2008/03/14 04:46:29 petere Exp $
+ # $PostgreSQL: pgsql/src/backend/nls.mk,v 1.21.2.2 2008/10/27 19:37:28 tgl Exp $
 -CATALOG_NAME	:= postgres
 +CATALOG_NAME	:= postgres-8.3
  AVAIL_LANGUAGES	:= af cs de es fr hr hu it ko nb nl pl pt_BR ro ru sk sl sv tr zh_CN zh_TW
  GETTEXT_FILES	:= + gettext-files
- # you can add "elog:2" and "errmsg_internal" to this list if you want to
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/initdb/initdb.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/initdb/initdb.c
---- postgresql-8.3.1/src/bin/initdb/initdb.c	2008-03-01 00:31:42.000000000 +0100
-+++ postgresql-8.3.1/src/bin/initdb/initdb.c	2008-03-15 14:48:39.000000000 +0100
+ GETTEXT_TRIGGERS:= _ errmsg errdetail errhint errcontext write_stderr yyerror
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/initdb/initdb.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/initdb/initdb.c
+--- postgresql-8.3.5/src/bin/initdb/initdb.c	2008-10-30 09:51:13.000000000 +0100
++++ postgresql-8.3.5/src/bin/initdb/initdb.c	2008-10-31 19:32:48.000000000 +0100
 @@ -2456,7 +2456,7 @@
  	};
  
@@ -32,9 +32,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	if (argc > 1)
  	{
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/initdb/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/initdb/nls.mk
---- postgresql-8.3.1/src/bin/initdb/nls.mk	2007-10-27 02:13:42.000000000 +0200
-+++ postgresql-8.3.1/src/bin/initdb/nls.mk	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/initdb/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/initdb/nls.mk
+--- postgresql-8.3.5/src/bin/initdb/nls.mk	2007-10-27 02:13:42.000000000 +0200
++++ postgresql-8.3.5/src/bin/initdb/nls.mk	2008-10-31 19:32:49.000000000 +0100
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/initdb/nls.mk,v 1.19 2007/10/27 00:13:42 petere Exp $
 -CATALOG_NAME	:= initdb
@@ -42,9 +42,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  AVAIL_LANGUAGES	:= cs de es fr it ko pl pt_BR ro ru sk sl sv ta tr zh_CN zh_TW
  GETTEXT_FILES	:= initdb.c ../../port/dirmod.c ../../port/exec.c
  GETTEXT_TRIGGERS:= _ simple_prompt
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/pg_config/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/pg_config/nls.mk
---- postgresql-8.3.1/src/bin/pg_config/nls.mk	2007-11-15 21:38:15.000000000 +0100
-+++ postgresql-8.3.1/src/bin/pg_config/nls.mk	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/pg_config/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/pg_config/nls.mk
+--- postgresql-8.3.5/src/bin/pg_config/nls.mk	2007-11-15 21:38:15.000000000 +0100
++++ postgresql-8.3.5/src/bin/pg_config/nls.mk	2008-10-31 19:32:49.000000000 +0100
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/pg_config/nls.mk,v 1.17 2007/11/15 20:38:15 petere Exp $
 -CATALOG_NAME	:= pg_config
@@ -52,9 +52,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  AVAIL_LANGUAGES	:= cs de es fr ko nb pl pt_BR ro ru sl sv ta tr zh_CN zh_TW
  GETTEXT_FILES	:= pg_config.c ../../port/exec.c
  GETTEXT_TRIGGERS:= _
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/pg_config/pg_config.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/pg_config/pg_config.c
---- postgresql-8.3.1/src/bin/pg_config/pg_config.c	2008-01-01 20:45:55.000000000 +0100
-+++ postgresql-8.3.1/src/bin/pg_config/pg_config.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/pg_config/pg_config.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/pg_config/pg_config.c
+--- postgresql-8.3.5/src/bin/pg_config/pg_config.c	2008-01-01 20:45:55.000000000 +0100
++++ postgresql-8.3.5/src/bin/pg_config/pg_config.c	2008-10-31 19:32:49.000000000 +0100
 @@ -451,7 +451,7 @@
  	int			j;
  	int			ret;
@@ -64,9 +64,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	progname = get_progname(argv[0]);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/pg_controldata/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/pg_controldata/nls.mk
---- postgresql-8.3.1/src/bin/pg_controldata/nls.mk	2007-11-15 21:38:15.000000000 +0100
-+++ postgresql-8.3.1/src/bin/pg_controldata/nls.mk	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/pg_controldata/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/pg_controldata/nls.mk
+--- postgresql-8.3.5/src/bin/pg_controldata/nls.mk	2007-11-15 21:38:15.000000000 +0100
++++ postgresql-8.3.5/src/bin/pg_controldata/nls.mk	2008-10-31 19:32:49.000000000 +0100
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/pg_controldata/nls.mk,v 1.17 2007/11/15 20:38:15 petere Exp $
 -CATALOG_NAME	:= pg_controldata
@@ -74,9 +74,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  AVAIL_LANGUAGES	:= cs de es fa fr hu it ko nb pl pt_BR ro ru sk sl sv ta tr zh_CN zh_TW
  GETTEXT_FILES	:= pg_controldata.c
  GETTEXT_TRIGGERS:= _
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/pg_controldata/pg_controldata.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/pg_controldata/pg_controldata.c
---- postgresql-8.3.1/src/bin/pg_controldata/pg_controldata.c	2008-01-21 12:17:46.000000000 +0100
-+++ postgresql-8.3.1/src/bin/pg_controldata/pg_controldata.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/pg_controldata/pg_controldata.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/pg_controldata/pg_controldata.c
+--- postgresql-8.3.5/src/bin/pg_controldata/pg_controldata.c	2008-09-24 10:59:46.000000000 +0200
++++ postgresql-8.3.5/src/bin/pg_controldata/pg_controldata.c	2008-10-31 19:32:49.000000000 +0100
 @@ -75,7 +75,7 @@
  	const char *strftime_fmt = "%c";
  	const char *progname;
@@ -86,9 +86,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	progname = get_progname(argv[0]);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/pg_ctl/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/pg_ctl/nls.mk
---- postgresql-8.3.1/src/bin/pg_ctl/nls.mk	2007-11-15 21:38:15.000000000 +0100
-+++ postgresql-8.3.1/src/bin/pg_ctl/nls.mk	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/pg_ctl/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/pg_ctl/nls.mk
+--- postgresql-8.3.5/src/bin/pg_ctl/nls.mk	2007-11-15 21:38:15.000000000 +0100
++++ postgresql-8.3.5/src/bin/pg_ctl/nls.mk	2008-10-31 19:32:49.000000000 +0100
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/pg_ctl/nls.mk,v 1.16 2007/11/15 20:38:15 petere Exp $
 -CATALOG_NAME	:= pg_ctl
@@ -96,10 +96,10 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  AVAIL_LANGUAGES	:= cs de es fr ko pt_BR ro ru sk sl sv ta tr zh_CN zh_TW
  GETTEXT_FILES	:= pg_ctl.c ../../port/exec.c
  GETTEXT_TRIGGERS:= _ simple_prompt
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/pg_ctl/pg_ctl.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/pg_ctl/pg_ctl.c
---- postgresql-8.3.1/src/bin/pg_ctl/pg_ctl.c	2008-03-01 00:31:42.000000000 +0100
-+++ postgresql-8.3.1/src/bin/pg_ctl/pg_ctl.c	2008-03-15 14:48:39.000000000 +0100
-@@ -1646,7 +1646,7 @@
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/pg_ctl/pg_ctl.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/pg_ctl/pg_ctl.c
+--- postgresql-8.3.5/src/bin/pg_ctl/pg_ctl.c	2008-09-30 15:14:07.000000000 +0200
++++ postgresql-8.3.5/src/bin/pg_ctl/pg_ctl.c	2008-10-31 19:32:49.000000000 +0100
+@@ -1651,7 +1651,7 @@
  #endif
  
  	progname = get_progname(argv[0]);
@@ -108,9 +108,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	/*
  	 * save argv[0] so do_start() can look for the postmaster if necessary. we
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/pg_dump/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/pg_dump/nls.mk
---- postgresql-8.3.1/src/bin/pg_dump/nls.mk	2005-01-25 18:32:00.000000000 +0100
-+++ postgresql-8.3.1/src/bin/pg_dump/nls.mk	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/pg_dump/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/pg_dump/nls.mk
+--- postgresql-8.3.5/src/bin/pg_dump/nls.mk	2005-01-25 18:32:00.000000000 +0100
++++ postgresql-8.3.5/src/bin/pg_dump/nls.mk	2008-10-31 19:32:49.000000000 +0100
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/pg_dump/nls.mk,v 1.19 2005/01/25 17:32:00 petere Exp $
 -CATALOG_NAME	:= pg_dump
@@ -118,9 +118,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  AVAIL_LANGUAGES	:= cs de es fr it ko nb pt_BR ro ru sk sl sv tr zh_CN zh_TW
  GETTEXT_FILES	:= pg_dump.c common.c pg_backup_archiver.c pg_backup_custom.c \
                     pg_backup_db.c pg_backup_files.c pg_backup_null.c \
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/pg_dump/pg_dumpall.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/pg_dump/pg_dumpall.c
---- postgresql-8.3.1/src/bin/pg_dump/pg_dumpall.c	2008-01-01 20:45:55.000000000 +0100
-+++ postgresql-8.3.1/src/bin/pg_dump/pg_dumpall.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/pg_dump/pg_dumpall.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/pg_dump/pg_dumpall.c
+--- postgresql-8.3.5/src/bin/pg_dump/pg_dumpall.c	2008-01-01 20:45:55.000000000 +0100
++++ postgresql-8.3.5/src/bin/pg_dump/pg_dumpall.c	2008-10-31 19:32:49.000000000 +0100
 @@ -125,7 +125,7 @@
  
  	int			optindex;
@@ -130,9 +130,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	progname = get_progname(argv[0]);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/pg_dump/pg_dump.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/pg_dump/pg_dump.c
---- postgresql-8.3.1/src/bin/pg_dump/pg_dump.c	2008-01-30 19:35:55.000000000 +0100
-+++ postgresql-8.3.1/src/bin/pg_dump/pg_dump.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/pg_dump/pg_dump.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/pg_dump/pg_dump.c
+--- postgresql-8.3.5/src/bin/pg_dump/pg_dump.c	2008-01-30 19:35:55.000000000 +0100
++++ postgresql-8.3.5/src/bin/pg_dump/pg_dump.c	2008-10-31 19:32:49.000000000 +0100
 @@ -272,7 +272,7 @@
  	};
  	int			optindex;
@@ -142,9 +142,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	g_verbose = false;
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/pg_dump/pg_restore.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/pg_dump/pg_restore.c
---- postgresql-8.3.1/src/bin/pg_dump/pg_restore.c	2007-12-11 20:01:06.000000000 +0100
-+++ postgresql-8.3.1/src/bin/pg_dump/pg_restore.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/pg_dump/pg_restore.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/pg_dump/pg_restore.c
+--- postgresql-8.3.5/src/bin/pg_dump/pg_restore.c	2007-12-11 20:01:06.000000000 +0100
++++ postgresql-8.3.5/src/bin/pg_dump/pg_restore.c	2008-10-31 19:32:49.000000000 +0100
 @@ -117,7 +117,7 @@
  		{NULL, 0, NULL, 0}
  	};
@@ -154,9 +154,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	opts = NewRestoreOptions();
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/pg_resetxlog/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/pg_resetxlog/nls.mk
---- postgresql-8.3.1/src/bin/pg_resetxlog/nls.mk	2007-11-15 21:38:15.000000000 +0100
-+++ postgresql-8.3.1/src/bin/pg_resetxlog/nls.mk	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/pg_resetxlog/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/pg_resetxlog/nls.mk
+--- postgresql-8.3.5/src/bin/pg_resetxlog/nls.mk	2007-11-15 21:38:15.000000000 +0100
++++ postgresql-8.3.5/src/bin/pg_resetxlog/nls.mk	2008-10-31 19:32:49.000000000 +0100
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/pg_resetxlog/nls.mk,v 1.18 2007/11/15 20:38:15 petere Exp $
 -CATALOG_NAME	:= pg_resetxlog
@@ -164,9 +164,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  AVAIL_LANGUAGES	:= cs de es fr hu it ko nb pt_BR ro ru sk sl sv ta tr zh_CN zh_TW
  GETTEXT_FILES	:= pg_resetxlog.c
  GETTEXT_TRIGGERS:= _
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/pg_resetxlog/pg_resetxlog.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/pg_resetxlog/pg_resetxlog.c
---- postgresql-8.3.1/src/bin/pg_resetxlog/pg_resetxlog.c	2008-01-01 20:45:55.000000000 +0100
-+++ postgresql-8.3.1/src/bin/pg_resetxlog/pg_resetxlog.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/pg_resetxlog/pg_resetxlog.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/pg_resetxlog/pg_resetxlog.c
+--- postgresql-8.3.5/src/bin/pg_resetxlog/pg_resetxlog.c	2008-09-24 10:59:46.000000000 +0200
++++ postgresql-8.3.5/src/bin/pg_resetxlog/pg_resetxlog.c	2008-10-31 19:32:49.000000000 +0100
 @@ -88,7 +88,7 @@
  	int			fd;
  	char		path[MAXPGPATH];
@@ -176,9 +176,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	progname = get_progname(argv[0]);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/psql/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/psql/nls.mk
---- postgresql-8.3.1/src/bin/psql/nls.mk	2004-12-13 17:30:48.000000000 +0100
-+++ postgresql-8.3.1/src/bin/psql/nls.mk	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/psql/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/psql/nls.mk
+--- postgresql-8.3.5/src/bin/psql/nls.mk	2004-12-13 17:30:48.000000000 +0100
++++ postgresql-8.3.5/src/bin/psql/nls.mk	2008-10-31 19:32:49.000000000 +0100
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/psql/nls.mk,v 1.21 2004/12/13 16:30:48 petere Exp $
 -CATALOG_NAME	:= psql
@@ -186,9 +186,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  AVAIL_LANGUAGES	:= cs de es fa fr hu it ko nb pt_BR ro ru sk sl sv tr zh_CN zh_TW
  GETTEXT_FILES	:= command.c common.c copy.c help.c input.c large_obj.c \
                     mainloop.c print.c startup.c describe.c sql_help.h \
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/psql/startup.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/psql/startup.c
---- postgresql-8.3.1/src/bin/psql/startup.c	2008-01-01 20:45:56.000000000 +0100
-+++ postgresql-8.3.1/src/bin/psql/startup.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/psql/startup.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/psql/startup.c
+--- postgresql-8.3.5/src/bin/psql/startup.c	2008-01-01 20:45:56.000000000 +0100
++++ postgresql-8.3.5/src/bin/psql/startup.c	2008-10-31 19:32:49.000000000 +0100
 @@ -108,7 +108,7 @@
  	char	   *password_prompt = NULL;
  	bool		new_pass;
@@ -198,9 +198,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	if (argc > 1)
  	{
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/scripts/clusterdb.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/scripts/clusterdb.c
---- postgresql-8.3.1/src/bin/scripts/clusterdb.c	2008-01-01 20:45:56.000000000 +0100
-+++ postgresql-8.3.1/src/bin/scripts/clusterdb.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/scripts/clusterdb.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/scripts/clusterdb.c
+--- postgresql-8.3.5/src/bin/scripts/clusterdb.c	2008-01-01 20:45:56.000000000 +0100
++++ postgresql-8.3.5/src/bin/scripts/clusterdb.c	2008-10-31 19:32:49.000000000 +0100
 @@ -56,7 +56,7 @@
  	char	   *table = NULL;
  
@@ -210,9 +210,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	handle_help_version_opts(argc, argv, "clusterdb", help);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/scripts/createdb.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/scripts/createdb.c
---- postgresql-8.3.1/src/bin/scripts/createdb.c	2008-01-01 20:45:56.000000000 +0100
-+++ postgresql-8.3.1/src/bin/scripts/createdb.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/scripts/createdb.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/scripts/createdb.c
+--- postgresql-8.3.5/src/bin/scripts/createdb.c	2008-01-01 20:45:56.000000000 +0100
++++ postgresql-8.3.5/src/bin/scripts/createdb.c	2008-10-31 19:32:49.000000000 +0100
 @@ -57,7 +57,7 @@
  	PGresult   *result;
  
@@ -222,9 +222,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	handle_help_version_opts(argc, argv, "createdb", help);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/scripts/createlang.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/scripts/createlang.c
---- postgresql-8.3.1/src/bin/scripts/createlang.c	2008-01-01 20:45:56.000000000 +0100
-+++ postgresql-8.3.1/src/bin/scripts/createlang.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/scripts/createlang.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/scripts/createlang.c
+--- postgresql-8.3.5/src/bin/scripts/createlang.c	2008-01-01 20:45:56.000000000 +0100
++++ postgresql-8.3.5/src/bin/scripts/createlang.c	2008-10-31 19:32:49.000000000 +0100
 @@ -52,7 +52,7 @@
  	PGresult   *result;
  
@@ -234,9 +234,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	handle_help_version_opts(argc, argv, "createlang", help);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/scripts/createuser.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/scripts/createuser.c
---- postgresql-8.3.1/src/bin/scripts/createuser.c	2008-01-01 20:45:56.000000000 +0100
-+++ postgresql-8.3.1/src/bin/scripts/createuser.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/scripts/createuser.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/scripts/createuser.c
+--- postgresql-8.3.5/src/bin/scripts/createuser.c	2008-01-01 20:45:56.000000000 +0100
++++ postgresql-8.3.5/src/bin/scripts/createuser.c	2008-10-31 19:32:49.000000000 +0100
 @@ -81,7 +81,7 @@
  	PGresult   *result;
  
@@ -246,9 +246,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	handle_help_version_opts(argc, argv, "createuser", help);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/scripts/dropdb.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/scripts/dropdb.c
---- postgresql-8.3.1/src/bin/scripts/dropdb.c	2008-01-01 20:45:56.000000000 +0100
-+++ postgresql-8.3.1/src/bin/scripts/dropdb.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/scripts/dropdb.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/scripts/dropdb.c
+--- postgresql-8.3.5/src/bin/scripts/dropdb.c	2008-01-01 20:45:56.000000000 +0100
++++ postgresql-8.3.5/src/bin/scripts/dropdb.c	2008-10-31 19:32:49.000000000 +0100
 @@ -50,7 +50,7 @@
  	PGresult   *result;
  
@@ -258,9 +258,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	handle_help_version_opts(argc, argv, "dropdb", help);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/scripts/droplang.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/scripts/droplang.c
---- postgresql-8.3.1/src/bin/scripts/droplang.c	2008-01-01 20:45:56.000000000 +0100
-+++ postgresql-8.3.1/src/bin/scripts/droplang.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/scripts/droplang.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/scripts/droplang.c
+--- postgresql-8.3.5/src/bin/scripts/droplang.c	2008-01-01 20:45:56.000000000 +0100
++++ postgresql-8.3.5/src/bin/scripts/droplang.c	2008-10-31 19:32:49.000000000 +0100
 @@ -63,7 +63,7 @@
  	PGresult   *result;
  
@@ -270,9 +270,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	handle_help_version_opts(argc, argv, "droplang", help);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/scripts/dropuser.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/scripts/dropuser.c
---- postgresql-8.3.1/src/bin/scripts/dropuser.c	2008-01-01 20:45:56.000000000 +0100
-+++ postgresql-8.3.1/src/bin/scripts/dropuser.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/scripts/dropuser.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/scripts/dropuser.c
+--- postgresql-8.3.5/src/bin/scripts/dropuser.c	2008-01-01 20:45:56.000000000 +0100
++++ postgresql-8.3.5/src/bin/scripts/dropuser.c	2008-10-31 19:32:49.000000000 +0100
 @@ -50,7 +50,7 @@
  	PGresult   *result;
  
@@ -282,9 +282,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	handle_help_version_opts(argc, argv, "dropuser", help);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/scripts/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/scripts/nls.mk
---- postgresql-8.3.1/src/bin/scripts/nls.mk	2007-11-29 09:50:35.000000000 +0100
-+++ postgresql-8.3.1/src/bin/scripts/nls.mk	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/scripts/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/scripts/nls.mk
+--- postgresql-8.3.5/src/bin/scripts/nls.mk	2007-11-29 09:50:35.000000000 +0100
++++ postgresql-8.3.5/src/bin/scripts/nls.mk	2008-10-31 19:32:49.000000000 +0100
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/bin/scripts/nls.mk,v 1.21 2007/11/29 08:50:35 petere Exp $
 -CATALOG_NAME    := pgscripts
@@ -292,9 +292,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  AVAIL_LANGUAGES := cs de es fr it ko pt_BR ro ru sk sl sv ta tr zh_CN zh_TW
  GETTEXT_FILES   := createdb.c createlang.c createuser.c \
                     dropdb.c droplang.c dropuser.c \
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/scripts/reindexdb.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/scripts/reindexdb.c
---- postgresql-8.3.1/src/bin/scripts/reindexdb.c	2008-01-01 20:45:56.000000000 +0100
-+++ postgresql-8.3.1/src/bin/scripts/reindexdb.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/scripts/reindexdb.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/scripts/reindexdb.c
+--- postgresql-8.3.5/src/bin/scripts/reindexdb.c	2008-01-01 20:45:56.000000000 +0100
++++ postgresql-8.3.5/src/bin/scripts/reindexdb.c	2008-10-31 19:32:49.000000000 +0100
 @@ -64,7 +64,7 @@
  	const char *index = NULL;
  
@@ -304,9 +304,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	handle_help_version_opts(argc, argv, "reindexdb", help);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin/scripts/vacuumdb.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/bin/scripts/vacuumdb.c
---- postgresql-8.3.1/src/bin/scripts/vacuumdb.c	2008-01-01 20:45:56.000000000 +0100
-+++ postgresql-8.3.1/src/bin/scripts/vacuumdb.c	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/bin/scripts/vacuumdb.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/bin/scripts/vacuumdb.c
+--- postgresql-8.3.5/src/bin/scripts/vacuumdb.c	2008-01-01 20:45:56.000000000 +0100
++++ postgresql-8.3.5/src/bin/scripts/vacuumdb.c	2008-10-31 19:32:49.000000000 +0100
 @@ -64,7 +64,7 @@
  	bool		verbose = false;
  
@@ -316,10 +316,10 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/bin
  
  	handle_help_version_opts(argc, argv, "vacuumdb", help);
  
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/interfaces/libpq/fe-misc.c postgresql-8.3.new/build-tree/postgresql-8.3.1/src/interfaces/libpq/fe-misc.c
---- postgresql-8.3.1/src/interfaces/libpq/fe-misc.c	2008-01-01 20:46:00.000000000 +0100
-+++ postgresql-8.3.1/src/interfaces/libpq/fe-misc.c	2008-03-15 14:48:39.000000000 +0100
-@@ -1143,7 +1143,7 @@
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/interfaces/libpq/fe-misc.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/interfaces/libpq/fe-misc.c
+--- postgresql-8.3.5/src/interfaces/libpq/fe-misc.c	2008-08-20 13:53:51.000000000 +0200
++++ postgresql-8.3.5/src/interfaces/libpq/fe-misc.c	2008-10-31 19:32:49.000000000 +0100
+@@ -1152,7 +1152,7 @@
  		ldir = getenv("PGLOCALEDIR");
  		if (!ldir)
  			ldir = LOCALEDIR;
@@ -328,9 +328,9 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/int
  #ifdef WIN32
  		SetLastError(save_errno);
  #else
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.1/src/interfaces/libpq/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.1/src/interfaces/libpq/nls.mk
---- postgresql-8.3.1/src/interfaces/libpq/nls.mk	2007-10-27 02:13:43.000000000 +0200
-+++ postgresql-8.3.1/src/interfaces/libpq/nls.mk	2008-03-15 14:48:39.000000000 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/interfaces/libpq/nls.mk postgresql-8.3.new/build-tree/postgresql-8.3.5/src/interfaces/libpq/nls.mk
+--- postgresql-8.3.5/src/interfaces/libpq/nls.mk	2007-10-27 02:13:43.000000000 +0200
++++ postgresql-8.3.5/src/interfaces/libpq/nls.mk	2008-10-31 19:32:49.000000000 +0100
 @@ -1,5 +1,5 @@
  # $PostgreSQL: pgsql/src/interfaces/libpq/nls.mk,v 1.21 2007/10/27 00:13:43 petere Exp $
 -CATALOG_NAME	:= libpq
