@@ -1,11 +1,11 @@
-postgresql-8.3 (8.3.5-2) UNRELEASED; urgency=low
+postgresql-8.3 (8.3.5-2) experimental; urgency=low
 
   * Add 15-dict-fallback-dir.patch: If a tsearch/stem dictionary is
     not found in sharedir/tsearch_data/ll_cc.{dict,affix}, fall back
     to sharedir/tsearch_data/system_ll_cc.{dict,affix}, where
     postgresql-common creates them from system directories. (LP: #301770)
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 06 Dec 2008 11:38:33 -0800
+ -- Martin Pitt <mpitt@debian.org>  Sat, 06 Dec 2008 11:39:31 -0800
 
 postgresql-8.3 (8.3.5-1) unstable; urgency=low
 
