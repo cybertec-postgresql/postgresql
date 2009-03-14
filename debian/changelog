@@ -67,6 +67,8 @@ postgresql-8.3 (8.3.7-1) UNRELEASED; urgency=low
        known timezone abbreviations (Xavier Bugaud)
   * debian/postgresql-8.3.init: Drop obsolete autovac-* commands.
     (Closes: #519582)
+  * debian/rules: Enable build hardening on Debian now. Drop lsb-release build
+    dependency, since we do not need it any more.
 
  -- Martin Pitt <mpitt@debian.org>  Sat, 14 Mar 2009 19:17:23 +0100
 
