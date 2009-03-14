@@ -36,15 +36,6 @@ case "$1" in
     status)
         status $VERSION
 	;;
-    autovac-start)
-	autovac_start $VERSION
-	;;
-    autovac-stop)
-	autovac_stop $VERSION
-	;;
-    autovac-restart)
-	autovac_restart $VERSION
-	;;
     *)
         echo "Usage: $0 {start|stop|restart|reload|force-reload|status|autovac-start|autovac-stop|autovac-restart}"
         exit 1

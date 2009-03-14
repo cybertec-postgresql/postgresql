@@ -65,6 +65,8 @@ postgresql-8.3 (8.3.7-1) UNRELEASED; urgency=low
        function.
      - Add MUST (Mauritius Island Summer Time) to the default list of
        known timezone abbreviations (Xavier Bugaud)
+  * debian/postgresql-8.3.init: Drop obsolete autovac-* commands.
+    (Closes: #519582)
 
  -- Martin Pitt <mpitt@debian.org>  Sat, 14 Mar 2009 19:17:23 +0100
 
