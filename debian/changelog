@@ -1,4 +1,74 @@
-postgresql-8.3 (8.3.6-1) UNRELEASED; urgency=low
+postgresql-8.3 (8.3.7-1) UNRELEASED; urgency=low
+
+  * New upstream bug fix release:
+     - Prevent error recursion crashes when encoding conversion fails.
+       This change extends fixes made in the last two minor releases for
+       related failure scenarios. The previous fixes were narrowly
+       tailored for the original problem reports, but we have now
+       recognized that *any* error thrown by an encoding conversion
+       function could potentially lead to infinite recursion while trying
+       to report the error. The solution therefore is to disable
+       translation and encoding conversion and report the plain-ASCII form
+       of any error message, if we find we have gotten into a recursive
+       error reporting situation. (Closes: #517405)
+     - Disallow "CREATE CONVERSION" with the wrong encodings for the
+       specified conversion function. This prevents one possible scenario for
+       encoding conversion failure. The previous change is a backstop to guard
+       against other kinds of failures in the same area.
+     - Fix xpath() to not modify the path expression unless necessary, and
+       to make a saner attempt at it when necessary.
+       The SQL standard suggests that xpath should work on data that is a
+       document fragment, but libxml doesn't support that, and indeed it's
+       not clear that this is sensible according to the XPath standard.
+       xpath attempted to work around this mismatch by modifying both the
+       data and the path expression, but the modification was buggy and
+       could cause valid searches to fail. Now, xpath checks whether the
+       data is in fact a well-formed document, and if so invokes libxml
+       with no change to the data or path expression. Otherwise, a
+       different modification method that is somewhat less likely to fail
+       is used.
+       Note: The new modification method is still not 100% satisfactory,
+       and it seems likely that no real solution is possible. This patch
+       should therefore be viewed as a band-aid to keep from breaking
+       existing applications unnecessarily. It is likely that PostgreSQL
+       8.4 will simply reject use of xpath on data that is not a
+       well-formed document.
+     - Fix core dump when to_char() is given format codes that are
+       inappropriate for the type of the data argument.
+     - Fix extreme inefficiency in text search parser's handling of an
+       email-like string containing multiple @ characters.
+     - Fix planner problem with sub-"SELECT" in the output list of a
+       larger subquery.
+     - Fix decompilation of CASE WHEN with an implicit coercion.
+     - Fix possible misassignment of the owner of a TOAST table's rowtype.
+       If "CLUSTER" or a rewriting variant of "ALTER TABLE" were executed
+       by someone other than the table owner, the pg_type entry for the
+       table's TOAST table would end up marked as owned by that someone.
+       This caused no immediate problems, since the permissions on the
+       TOAST rowtype aren't examined by any ordinary database operation.
+       However, it could lead to unexpected failures if one later tried to
+       drop the role that issued the command (in 8.1 or 8.2), or "owner of
+       data type appears to be invalid" warnings from pg_dump after having
+       done so (in 8.3).
+     - Change "UNLISTEN" to exit quickly if the current session has never
+       executed any "LISTEN" command.
+       Most of the time this is not a particularly useful optimization,
+       but since "DISCARD ALL" invokes "UNLISTEN", the previous coding
+       caused a substantial performance problem for applications that made
+       heavy use of "DISCARD ALL".
+     - Fix PL/pgSQL to not treat INTO after "INSERT" as an INTO-variables
+       clause anywhere in the string, not only at the start; in
+       particular, don't fail for "INSERT INTO" within "CREATE RULE".
+     - Clean up PL/pgSQL error status variables fully at block exit.
+       This is not a problem for PL/pgSQL itself, but the omission could
+       cause the PL/pgSQL Debugger to crash while examining the state of a
+       function.
+     - Add MUST (Mauritius Island Summer Time) to the default list of
+       known timezone abbreviations (Xavier Bugaud)
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 14 Mar 2009 19:17:23 +0100
+
+postgresql-8.3 (8.3.6-1) unstable; urgency=low
 
   * New upstream bug fix release:
     - Make "DISCARD ALL" release advisory locks, in addition to
@@ -69,7 +139,7 @@ postgresql-8.3 (8.3.6-1) UNRELEASED; urgency=low
       appropriate, instead of the now-decommissioned pgsql-ports and
       pgsql-patches mailing lists.
 
- -- Martin Pitt <mpitt@debian.org>  Fri, 06 Feb 2009 22:35:43 +0100
+ -- Martin Pitt <mpitt@debian.org>  Fri, 06 Feb 2009 23:10:40 +0100
 
 postgresql-8.3 (8.3.5-2) experimental; urgency=low
 
