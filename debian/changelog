@@ -1,4 +1,4 @@
-postgresql-8.3 (8.3.7-1) UNRELEASED; urgency=low
+postgresql-8.3 (8.3.7-1) unstable; urgency=low
 
   * New upstream bug fix release:
      - Prevent error recursion crashes when encoding conversion fails.
@@ -70,7 +70,7 @@ postgresql-8.3 (8.3.7-1) UNRELEASED; urgency=low
   * debian/rules: Enable build hardening on Debian now. Drop lsb-release build
     dependency, since we do not need it any more.
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 14 Mar 2009 19:17:23 +0100
+ -- Martin Pitt <mpitt@debian.org>  Sat, 14 Mar 2009 20:11:20 +0100
 
 postgresql-8.3 (8.3.6-1) unstable; urgency=low
 
