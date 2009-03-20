@@ -1,5 +1,5 @@
 Source: postgresql-8.3
-Section: misc
+Section: database
 Priority: optional
 Maintainer: Martin Pitt <mpitt@debian.org>
 Standards-Version: 3.8.0
@@ -86,7 +86,6 @@ Description: shared library libpgtypes for PostgreSQL 8.3
 
 Package: postgresql-8.3
 Architecture: any
-Section: misc
 Depends: ${shlibs:Depends}, postgresql-client-8.3, postgresql-common (>= 79), tzdata, ssl-cert, locales
 Suggests: oidentd | ident-server
 Conflicts: postgresql (<< 7.5)
@@ -107,7 +106,6 @@ Description: object-relational SQL database, version 8.3 server
 
 Package: postgresql-client-8.3
 Architecture: any
-Section: misc
 Depends: ${shlibs:Depends}, postgresql-client-common
 Conflicts: postgresql (<< 7.5)
 Suggests: postgresql-8.3, postgresql-doc-8.3
@@ -153,7 +151,6 @@ Description: documentation for the PostgreSQL database management system
 
 Package: postgresql-contrib-8.3
 Architecture: any
-Section: misc
 Depends: postgresql-8.3, ${shlibs:Depends}, postgresql-common (>= 79)
 Suggests: libdbd-pg-perl
 Conflicts: postgresql-contrib (<< 7.5)
@@ -242,7 +239,6 @@ Description: PL/Tcl procedural language for PostgreSQL 8.3
 
 Package: postgresql
 Architecture: all
-Section: misc
 Depends: postgresql-8.3
 Description: object-relational SQL database (supported version)
  PostgreSQL is a fully featured object-relational database management
@@ -258,7 +254,6 @@ Description: object-relational SQL database (supported version)
 
 Package: postgresql-client
 Architecture: all
-Section: misc
 Depends: postgresql-client-8.3
 Description: front-end programs for PostgreSQL (supported version)
  This package contains client and administrative programs for
@@ -286,7 +281,6 @@ Description: documentation for the PostgreSQL database management system
 
 Package: postgresql-contrib
 Architecture: all
-Section: misc
 Depends: postgresql-contrib-8.3
 Description: additional facilities for PostgreSQL (supported version)
  The PostgreSQL contrib package provides several additional features
