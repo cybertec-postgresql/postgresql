@@ -1,2 +1,2 @@
 version=3
-http://ftp8.us.postgresql.org/postgresql/source/(v8\.3.*)/postgresql-(8\.3.*)\.tar\.bz2
+http://www.postgresql.org/ftp/source/ /ftp/source/v(8\.3.*)/
