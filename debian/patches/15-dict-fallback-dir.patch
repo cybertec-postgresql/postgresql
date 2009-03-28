@@ -1,6 +1,5 @@
 # Description: If a tsearch/stem dictionary is not found in sharedir/tsearch_data/ll_cc.{dict,affix}, fall back to sharedir/tsearch_data/system_ll_cc.{dict,affix}, where postgresql-common creates them from system directories.
 # Ubuntu: https://launchpad.net/bugs/301770
-diff -Nur -x '*.orig' -x '*~' postgresql-8.3/build-tree/postgresql-8.3.5/src/backend/tsearch/ts_utils.c postgresql-8.3.new/build-tree/postgresql-8.3.5/src/backend/tsearch/ts_utils.c
 --- postgresql-8.3.5/src/backend/tsearch/ts_utils.c	2008-06-19 09:52:31.000000000 -0700
 +++ postgresql-8.3.5/src/backend/tsearch/ts_utils.c	2008-12-05 12:48:02.000000000 -0800
 @@ -15,6 +15,7 @@

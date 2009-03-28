@@ -1,22 +1,21 @@
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta1/src/backend/libpq/be-secure.c postgresql-8.2.new/build-tree/postgresql-8.2beta1/src/backend/libpq/be-secure.c
---- postgresql-8.2beta1/src/backend/libpq/be-secure.c	2006-09-04 16:57:27.000000000 +0200
-+++ postgresql-8.2beta1/src/backend/libpq/be-secure.c	2006-09-25 19:24:13.000000000 +0200
-@@ -751,13 +751,15 @@
+diff -Nur -x '*.orig' -x '*~' postgresql-8.4-8.4~0cvs20090328/src/backend/libpq/be-secure.c postgresql-8.4-8.4~0cvs20090328.new/src/backend/libpq/be-secure.c
+--- postgresql-8.4-8.4~0cvs20090328/src/backend/libpq/be-secure.c	2009-03-28 23:04:14.000000000 +0100
++++ postgresql-8.4-8.4~0cvs20090328.new/src/backend/libpq/be-secure.c	2009-03-28 23:27:43.543184264 +0100
+@@ -752,12 +752,15 @@
  		 * directory permission check in postmaster.c)
  		 */
  #if !defined(WIN32) && !defined(__CYGWIN__)
--		if (!S_ISREG(buf.st_mode) || (buf.st_mode & (S_IRWXG | S_IRWXO)) ||
--			buf.st_uid != geteuid())
+-		if (!S_ISREG(buf.st_mode) || buf.st_mode & (S_IRWXG | S_IRWXO))
 +		if (!S_ISREG(buf.st_mode) || (buf.st_mode & (S_IWGRP | S_IRWXO)) ||
 +			(buf.st_uid != geteuid()) && buf.st_uid != 0)
  			ereport(FATAL,
  					(errcode(ERRCODE_CONFIG_FILE_ERROR),
- 					 errmsg("unsafe permissions on private key file \"%s\"",
+ 					 errmsg("private key file \"%s\" has group or world access",
  							SERVER_PRIVATE_KEY_FILE),
--					 errdetail("File must be owned by the database user and must have no permissions for \"group\" or \"other\".")));
+-					 errdetail("Permissions should be u=rw (0600) or less.")));
 +					 errdetail("File must be owned by the \
 +database user or root, must have no write permission for \"group\", and must \
 +have no permissions for \"other\".")));
  #endif
  
- 		if (!SSL_CTX_use_PrivateKey_file(SSL_context,
+ 		if (SSL_CTX_use_PrivateKey_file(SSL_context,

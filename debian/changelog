@@ -2,7 +2,10 @@ postgresql-8.4 (8.4~0cvs20090328-1) UNRELEASED; urgency=low
 
   * Package current trunk, which will become 8.4 in time. Packaging branched
     from 8.3 packaging trunk. Move from cdbs' tarball.mk to bzr-builddeb.
-  * Drop debian/patches/03-gettext-domains.patch: Upstream now uses major
-    version specific gettext domains.
+  * Drop obsolete patches:
+    - 03-gettext-domains.patch: Adopted upstream.
+    - 04-psql-passwordprompt.patch: Obsoleted by new psql -w option.
+    - 05-check-rlimits-nofile.patch: Adopted upstream.
+  * Update remaining patches for new upstream version.
 
  -- Martin Pitt <mpitt@debian.org>  Fri, 20 Mar 2009 12:00:13 +0100
