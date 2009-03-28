@@ -2,7 +2,7 @@
 
 #DEBHELPER#
 
-VERSION=8.3
+VERSION=8.4
 
 if [ "$1" = remove ]; then
     . /usr/share/postgresql-common/maintscripts-functions

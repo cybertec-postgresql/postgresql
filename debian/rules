@@ -1,9 +1,7 @@
 #!/usr/bin/make	-f 
 TCL_VER := 8.5
-MAJOR_VER := 8.3
-DEB_TAR_SRCDIR:=postgresql-8.3.7
+MAJOR_VER := 8.4
 
-include /usr/share/cdbs/1/rules/tarball.mk
 include /usr/share/cdbs/1/rules/simple-patchsys.mk
 include /usr/share/cdbs/1/class/autotools.mk
 include /usr/share/cdbs/1/rules/debhelper.mk

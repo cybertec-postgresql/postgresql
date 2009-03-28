@@ -1,4 +1,4 @@
-Source: postgresql-8.3
+Source: postgresql-8.4
 Section: database
 Priority: optional
 Maintainer: Martin Pitt <mpitt@debian.org>
@@ -16,7 +16,7 @@ Section: libdevel
 Depends: ${shlibs:Depends}, libpq5 (= ${binary:Version}), libssl-dev, libkrb5-dev, comerr-dev
 Conflicts: postgresql-dev (<< 7.5)
 Replaces: postgresql-dev
-Suggests: postgresql-doc-8.3
+Suggests: postgresql-doc-8.4
 Description: header files for libpq5 (PostgreSQL library)
  Header files and static library for compiling C programs to link
  with the libpq library in order to communicate with a PostgreSQL
@@ -78,18 +78,18 @@ Package: libpgtypes3
 Architecture: any
 Section: libs
 Depends:  ${shlibs:Depends}
-Description: shared library libpgtypes for PostgreSQL 8.3
+Description: shared library libpgtypes for PostgreSQL 8.4
  The libpgtypes shared library is used by programs built with ecpg.
  (Embedded PostgreSQL for C).
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-8.3
+Package: postgresql-8.4
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-client-8.3, postgresql-common (>= 79), tzdata, ssl-cert, locales
+Depends: ${shlibs:Depends}, postgresql-client-8.4, postgresql-common (>= 79), tzdata, ssl-cert, locales
 Suggests: oidentd | ident-server
 Conflicts: postgresql (<< 7.5)
-Description: object-relational SQL database, version 8.3 server
+Description: object-relational SQL database, version 8.4 server
  PostgreSQL is a fully featured object-relational database management
  system.  It supports a large part of the SQL standard and is designed
  to be extensible by users in many aspects.  Some of the features are:
@@ -98,38 +98,38 @@ Description: object-relational SQL database, version 8.3 server
  concurrency control.  Graphical user interfaces and bindings for many
  programming languages are available as well.
  .
- This package provides the database server for PostgreSQL 8.3. Servers
+ This package provides the database server for PostgreSQL 8.4. Servers
  for other major release versions can be installed simultaneously and
  are coordinated by the postgresql-common package. A package providing
  ident-server is needed if you want to authenticate remote connections
  with identd.
 
-Package: postgresql-client-8.3
+Package: postgresql-client-8.4
 Architecture: any
 Depends: ${shlibs:Depends}, postgresql-client-common
 Conflicts: postgresql (<< 7.5)
-Suggests: postgresql-8.3, postgresql-doc-8.3
+Suggests: postgresql-8.4, postgresql-doc-8.4
 Provides: postgresql-client
-Description: front-end programs for PostgreSQL 8.3
+Description: front-end programs for PostgreSQL 8.4
  This package contains client and administrative programs for
  PostgreSQL: these are the interactive terminal client psql and
  programs for creating and removing users and databases.
  .
- This is the client package for PostgreSQL 8.3. If you install
- PostgreSQL 8.3 on a standalone machine, you need the server package
- postgresql-8.3, too. On a network, you can install this package on
+ This is the client package for PostgreSQL 8.4. If you install
+ PostgreSQL 8.4 on a standalone machine, you need the server package
+ postgresql-8.4, too. On a network, you can install this package on
  many client machines, while the server package may be installed on
  only one machine.
  .  
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-server-dev-8.3
+Package: postgresql-server-dev-8.4
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, libpq-dev (>= 8.3~beta)
-Conflicts: pgxs, libpq-dev (<< 8.3~beta4-2)
-Replaces: pgxs, libpq-dev (<< 8.3~beta4-2)
-Description: development files for PostgreSQL 8.3 server-side programming
+Depends: ${shlibs:Depends}, libpq-dev (>= 8.4~beta)
+Conflicts: pgxs, libpq-dev (<< 8.4~beta4-2)
+Replaces: pgxs, libpq-dev (<< 8.4~beta4-2)
+Description: development files for PostgreSQL 8.4 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
  .
@@ -139,26 +139,26 @@ Description: development files for PostgreSQL 8.3 server-side programming
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-doc-8.3
+Package: postgresql-doc-8.4
 Architecture: all
 Section: doc
 Conflicts: postgresql-doc (<< 7.5)
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
- PostgreSQL 8.3. The manual is in HTML format.
+ PostgreSQL 8.4. The manual is in HTML format.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-contrib-8.3
+Package: postgresql-contrib-8.4
 Architecture: any
-Depends: postgresql-8.3, ${shlibs:Depends}, postgresql-common (>= 79)
+Depends: postgresql-8.4, ${shlibs:Depends}, postgresql-common (>= 79)
 Suggests: libdbd-pg-perl
 Conflicts: postgresql-contrib (<< 7.5)
-Replaces: postgresql-client-8.3 (<< 8.3~beta1-2)
+Replaces: postgresql-client-8.4 (<< 8.4~beta1-2)
 Description: additional facilities for PostgreSQL
  The PostgreSQL contrib package provides several additional features
  for the PostgreSQL database. This version is built to work with the
- server package postgresql-8.3.  contrib often serves as a testbed for
+ server package postgresql-8.4.  contrib often serves as a testbed for
  features before they are adopted into PostgreSQL proper:
  .
   adminpack      - File and log manipulation routines, used by pgAdmin
@@ -206,40 +206,40 @@ Description: additional facilities for PostgreSQL
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plperl-8.3
+Package: postgresql-plperl-8.4
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-8.3, perl
-Description: PL/Perl procedural language for PostgreSQL 8.3
+Depends: ${shlibs:Depends}, postgresql-8.4, perl
+Description: PL/Perl procedural language for PostgreSQL 8.4
  PL/Perl enables an SQL developer to write procedural language functions
- for PostgreSQL 8.3 in Perl.  You need this package if you have any
- PostgreSQL 8.3 functions that use the languages plperl or plperlu.
+ for PostgreSQL 8.4 in Perl.  You need this package if you have any
+ PostgreSQL 8.4 functions that use the languages plperl or plperlu.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plpython-8.3
+Package: postgresql-plpython-8.4
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-8.3
+Depends: ${shlibs:Depends}, postgresql-8.4
 XB-Python-Version: ${python:Versions}
-Description: PL/Python procedural language for PostgreSQL 8.3
+Description: PL/Python procedural language for PostgreSQL 8.4
  PL/Python enables an SQL developer to write procedural language functions
- for PostgreSQL 8.3 in Python.  You need this package if you have any
- PostgreSQL 8.3 functions that use the languages plpython or plpythonu.
+ for PostgreSQL 8.4 in Python.  You need this package if you have any
+ PostgreSQL 8.4 functions that use the languages plpython or plpythonu.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-pltcl-8.3
+Package: postgresql-pltcl-8.4
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-8.3
-Description: PL/Tcl procedural language for PostgreSQL 8.3
+Depends: ${shlibs:Depends}, postgresql-8.4
+Description: PL/Tcl procedural language for PostgreSQL 8.4
  PL/Tcl enables an SQL developer to write procedural language functions
- for PostgreSQL 8.3 in Tcl.  You need this package if you have any
- PostgreSQL 8.3 functions that use the languages pltcl or pltclu.
+ for PostgreSQL 8.4 in Tcl.  You need this package if you have any
+ PostgreSQL 8.4 functions that use the languages pltcl or pltclu.
  .
  PostgreSQL is an object-relational SQL database management system.
 
 Package: postgresql
 Architecture: all
-Depends: postgresql-8.3
+Depends: postgresql-8.4
 Description: object-relational SQL database (supported version)
  PostgreSQL is a fully featured object-relational database management
  system.  It supports a large part of the SQL standard and is designed
@@ -254,7 +254,7 @@ Description: object-relational SQL database (supported version)
 
 Package: postgresql-client
 Architecture: all
-Depends: postgresql-client-8.3
+Depends: postgresql-client-8.4
 Description: front-end programs for PostgreSQL (supported version)
  This package contains client and administrative programs for
  PostgreSQL: these are the interactive terminal client psql and
@@ -271,7 +271,7 @@ Description: front-end programs for PostgreSQL (supported version)
 Package: postgresql-doc
 Architecture: all
 Section: doc
-Depends: postgresql-doc-8.3
+Depends: postgresql-doc-8.4
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
  the currently supported PostgreSQL version. The manual is in HTML
@@ -281,7 +281,7 @@ Description: documentation for the PostgreSQL database management system
 
 Package: postgresql-contrib
 Architecture: all
-Depends: postgresql-contrib-8.3
+Depends: postgresql-contrib-8.4
 Description: additional facilities for PostgreSQL (supported version)
  The PostgreSQL contrib package provides several additional features
  for the PostgreSQL database. contrib often serves as a testbed for
