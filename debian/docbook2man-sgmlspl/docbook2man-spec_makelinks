@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+while(<STDIN>)
+{
+	chomp;
+	($main, $link) = split(/\t/);
+	
+	$n = $main;
+	$n =~ s/^.*\.(\d).*$/$1/;
+	
+	open(LINK, ">$link");
+	print LINK ".so man$n/$main\n";
+	close(LINK);
+}
+
