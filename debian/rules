@@ -70,21 +70,21 @@ common-binary-predeb-arch::
 
 common-post-build-arch::
 	# generate POT files for translators
-	find build-tree -name nls.mk -exec sh -c "make -C \$$(dirname {}) init-po" \;
+	find -name nls.mk -exec sh -c "make -C \$$(dirname {}) init-po" \;
 	
 common-post-build-indep::
 	# build tutorial stuff
-	make -C build-tree/$(DEB_TAR_SRCDIR)/src/tutorial NO_PGXS=1
+	make -C src/tutorial NO_PGXS=1
 
 install/postgresql-doc-$(MAJOR_VER)::
-	install build-tree/$(DEB_TAR_SRCDIR)/src/tutorial/*.c build-tree/$(DEB_TAR_SRCDIR)/src/tutorial/*.source build-tree/$(DEB_TAR_SRCDIR)/src/tutorial/Makefile build-tree/$(DEB_TAR_SRCDIR)/src/tutorial/README debian/$(cdbs_curpkg)/usr/share/doc/$(cdbs_curpkg)/tutorial
+	install src/tutorial/*.c src/tutorial/*.source src/tutorial/Makefile src/tutorial/README debian/$(cdbs_curpkg)/usr/share/doc/$(cdbs_curpkg)/tutorial
 
 binary-predeb/postgresql-$(MAJOR_VER)::
 ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	# patch away the "don't execute as root" check for the test
 	# suite; doing it here will ensure that the actual debs have
 	# the check.
-	set -e; cd build-tree/$(DEB_TAR_SRCDIR); \
+	set -e; \
 	patch --no-backup-if-mismatch -p1 < ../../debian/disable-root-check.patch; \
 	make -C src/test/regress bigcheck || fail=1; \
 	patch --no-backup-if-mismatch -Rp1 < ../../debian/disable-root-check.patch; \
@@ -110,14 +110,14 @@ binary-install/postgresql-plpython-$(MAJOR_VER)::
 	dh_python -p$(cdbs_curpkg) usr/lib/postgresql/$(MAJOR_VER)/lib
 
 # run tests in contrib in temporary test installations, using programs
-# from build-tree
+# from local tree
 contrib-check:
-	set -e; cd build-tree/$(DEB_TAR_SRCDIR)/contrib; \
+	set -e; cd contrib; \
 	for d in *; do \
 	    [ -d $$d/sql ] || continue; \
 	    echo "==============  Running tests in $$d"; \
 	    (cd $$d; \
-	    if ! ../../src/test/regress/pg_regress --top-builddir=../.. --temp-install=$(CURDIR)/build-tree/tmp_check --dbname=contrib_regression `cd sql; ls *.sql | sed 's/.sql$$//'`; then \
+	    if ! ../../src/test/regress/pg_regress --top-builddir=../.. --temp-install=tmp_check --dbname=contrib_regression `cd sql; ls *.sql | sed 's/.sql$$//'`; then \
 		 cat regression.diffs; \
 	    fi); \
 	done
@@ -126,16 +126,16 @@ contrib-check:
 # from system installation
 contrib-installcheck:
 	# set up temporary db
-	rm -rf build-tree/tmp_data
-	mkdir build-tree/tmp_data
-	/usr/lib/postgresql/$(MAJOR_VER)/bin/initdb -D build-tree/tmp_data
-	/usr/lib/postgresql/$(MAJOR_VER)/bin/pg_ctl -D build-tree/tmp_data -l build-tree/tmp_data/postgres.log -o '-k /tmp' start
+	rm -rf tmp_data
+	mkdir tmp_data
+	/usr/lib/postgresql/$(MAJOR_VER)/bin/initdb -D tmp_data
+	/usr/lib/postgresql/$(MAJOR_VER)/bin/pg_ctl -D tmp_data -l tmp_data/postgres.log -o '-k /tmp' start
 	# wait until it started up
 	while !/usr/lib/postgresql/$(MAJOR_VER)/bin/psql -h /tmp -l >/dev/null 2>&1; do sleep 1; done
 	sleep 1
 	while !/usr/lib/postgresql/$(MAJOR_VER)/bin/psql -h /tmp -l >/dev/null 2>&1; do sleep 1; done
 	# run the tests
-	-cd build-tree/$(DEB_TAR_SRCDIR)/contrib; make installcheck
-	/usr/lib/postgresql/$(MAJOR_VER)/bin/pg_ctl -D build-tree/tmp_data stop
+	-cd contrib; make installcheck
+	/usr/lib/postgresql/$(MAJOR_VER)/bin/pg_ctl -D tmp_data stop
 	# find and print the regression diffs
-	find build-tree/$(DEB_TAR_SRCDIR)/contrib/ -name regression.diffs -exec cat '{}' \;
+	find contrib/ -name regression.diffs -exec cat '{}' \;
