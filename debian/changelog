@@ -11,8 +11,8 @@ postgresql-8.4 (8.4~0cvs20090328-1) UNRELEASED; urgency=low
     Debian version in docbook-utils is way too old and broken (see #275715,
     #271611), locally ship the current ones from upstream, in order to build
     manpages.
-  * debian/rules: Build documentation tarball if not present (as with building
-    from CVS). Add necessary build dependencies docbook-utils, openjade,
-    and docbook.
+  * debian/rules: Build documentation and manpage tarballs if not present (as
+    with building from CVS). Add necessary build dependencies docbook-utils,
+    openjade, and docbook.
 
  -- Martin Pitt <mpitt@debian.org>  Fri, 20 Mar 2009 12:00:13 +0100
