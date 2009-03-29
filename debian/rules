@@ -104,9 +104,9 @@ ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	# suite; doing it here will ensure that the actual debs have
 	# the check.
 	set -e; \
-	patch --no-backup-if-mismatch -p1 < ../../debian/disable-root-check.patch; \
+	patch --no-backup-if-mismatch -p1 < debian/disable-root-check.patch; \
 	make -C src/test/regress bigcheck || fail=1; \
-	patch --no-backup-if-mismatch -Rp1 < ../../debian/disable-root-check.patch; \
+	patch --no-backup-if-mismatch -Rp1 < debian/disable-root-check.patch; \
 	if [ -n "$$fail" ]; then \
 	    for l in regression.diffs log/initdb.log log/postmaster.log; do \
 	    	if [ -e src/test/regress/$$l ]; then \
