@@ -54,7 +54,8 @@ DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/$(MAJOR_VER)/
   LDFLAGS='$(LDFLAGS)'
 
 DEB_DH_MAKESHLIBS_ARGS := -Xusr/lib/postgresql/$(MAJOR_VER)
-DEB_DH_INSTALLCHANGELOGS_ARGS := build-tree/postgresql-*/HISTORY
+# disabled for CVS builds
+#DEB_DH_INSTALLCHANGELOGS_ARGS := HISTORY
 DEB_COMPRESS_EXCLUDE := .source .c
 DEB_DH_INSTALLINIT_ARGS := -u'defaults 19 21'
 
