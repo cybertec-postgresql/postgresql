@@ -1,5 +1,4 @@
 usr/lib/postgresql/8.4/bin/initdb
-usr/lib/postgresql/8.4/bin/ipcclean
 usr/lib/postgresql/8.4/bin/pg_controldata
 usr/lib/postgresql/8.4/bin/pg_ctl
 usr/lib/postgresql/8.4/bin/pg_resetxlog
@@ -14,8 +13,8 @@ usr/share/locale/*/LC_MESSAGES/pg_controldata-8.4.mo
 usr/share/locale/*/LC_MESSAGES/pg_ctl-8.4.mo
 usr/share/locale/*/LC_MESSAGES/pg_resetxlog-8.4.mo
 usr/share/locale/*/LC_MESSAGES/postgres-8.4.mo
+usr/share/locale/*/LC_MESSAGES/plpgsql-8.4.mo
 usr/share/postgresql/8.4/man/man1/initdb.1
-usr/share/postgresql/8.4/man/man1/ipcclean.1
 usr/share/postgresql/8.4/man/man1/pg_controldata.1
 usr/share/postgresql/8.4/man/man1/pg_ctl.1
 usr/share/postgresql/8.4/man/man1/pg_resetxlog.1

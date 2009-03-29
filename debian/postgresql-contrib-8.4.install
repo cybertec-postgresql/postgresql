@@ -1,4 +1,4 @@
-usr/share/doc/postgresql-doc-8.4/contrib/* usr/share/doc/postgresql-contrib-8.4
+usr/share/doc/postgresql/contrib/* usr/share/doc/postgresql-contrib-8.4
 usr/share/postgresql/8.4/contrib/*
 usr/lib/postgresql/8.4/bin/oid2name
 usr/lib/postgresql/8.4/bin/pgbench
@@ -13,7 +13,6 @@ usr/lib/postgresql/8.4/lib/dblink.so
 usr/lib/postgresql/8.4/lib/earthdistance.so
 usr/lib/postgresql/8.4/lib/fuzzystrmatch.so
 usr/lib/postgresql/8.4/lib/insert_username.so
-usr/lib/postgresql/8.4/lib/int_aggregate.so
 usr/lib/postgresql/8.4/lib/lo.so
 usr/lib/postgresql/8.4/lib/ltree.so
 usr/lib/postgresql/8.4/lib/moddatetime.so
@@ -37,3 +36,7 @@ usr/lib/postgresql/8.4/lib/uuid-ossp.so
 usr/lib/postgresql/8.4/lib/test_parser.so
 usr/lib/postgresql/8.4/lib/dict_int.so
 usr/lib/postgresql/8.4/lib/dict_xsyn.so
+usr/lib/postgresql/8.4/lib/auto_explain.so
+usr/lib/postgresql/8.4/lib/pg_stat_statements.so
+usr/lib/postgresql/8.4/lib/citext.so exists
+usr/lib/postgresql/8.4/lib/btree_gin.so
