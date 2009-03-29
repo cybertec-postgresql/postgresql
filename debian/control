@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 5.0.37.2), cdbs (>= 0.4.43), perl (>= 5.8),
  zlib1g-dev | libz-dev, libpam0g-dev | libpam-dev, libxml2-dev, libkrb5-dev,
  libldap2-dev, libxslt1-dev, libossp-uuid-dev, python-dev,
  python-central (>= 0.5), gettext, bzip2, hardening-wrapper,
- bison, flex
+ bison, flex, docbook-utils, openjade, docbook
 
 Package: libpq-dev
 Architecture: any

@@ -7,5 +7,8 @@ postgresql-8.4 (8.4~0cvs20090328-1) UNRELEASED; urgency=low
     - 04-psql-passwordprompt.patch: Obsoleted by new psql -w option.
     - 05-check-rlimits-nofile.patch: Adopted upstream.
   * Update remaining patches for new upstream version.
+  * debian/rules: Build documentation tarball if not present (as with building
+    from CVS). Add necessary build dependencies docbook-utils, openjade,
+    and docbook.
 
  -- Martin Pitt <mpitt@debian.org>  Fri, 20 Mar 2009 12:00:13 +0100

@@ -59,6 +59,15 @@ DEB_DH_MAKESHLIBS_ARGS := -Xusr/lib/postgresql/$(MAJOR_VER)
 DEB_COMPRESS_EXCLUDE := .source .c
 DEB_DH_INSTALLINIT_ARGS := -u'defaults 19 21'
 
+# build documentation tarball if not present
+common-configure-indep:: doc/postgres.tar.gz
+common-configure-arch:: doc/postgres.tar.gz
+
+doc/postgres.tar.gz:
+	make -C doc/src postgres.tar
+	mv doc/src/postgres.tar doc/
+	gzip -9 doc/postgres.tar
+
 common-binary-predeb-arch::
 	# verify that all files are installed; ignore manpages, since
 	# they are handled by dh_installman
