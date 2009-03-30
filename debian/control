@@ -127,9 +127,7 @@ Description: front-end programs for PostgreSQL 8.4
 Package: postgresql-server-dev-8.4
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, libpq-dev (>= 8.4~beta)
-Conflicts: pgxs, libpq-dev (<< 8.4~beta4-2)
-Replaces: pgxs, libpq-dev (<< 8.4~beta4-2)
+Depends: ${shlibs:Depends}, libpq-dev (>= 8.4~)
 Description: development files for PostgreSQL 8.4 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
@@ -155,7 +153,6 @@ Architecture: any
 Depends: postgresql-8.4, ${shlibs:Depends}, postgresql-common (>= 79)
 Suggests: libdbd-pg-perl
 Conflicts: postgresql-contrib (<< 7.5)
-Replaces: postgresql-client-8.4 (<< 8.4~beta1-2)
 Description: additional facilities for PostgreSQL
  The PostgreSQL contrib package provides several additional features
  for the PostgreSQL database. This version is built to work with the
