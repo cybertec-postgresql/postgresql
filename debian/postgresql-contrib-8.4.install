@@ -38,5 +38,5 @@ usr/lib/postgresql/8.4/lib/dict_int.so
 usr/lib/postgresql/8.4/lib/dict_xsyn.so
 usr/lib/postgresql/8.4/lib/auto_explain.so
 usr/lib/postgresql/8.4/lib/pg_stat_statements.so
-usr/lib/postgresql/8.4/lib/citext.so exists
+usr/lib/postgresql/8.4/lib/citext.so
 usr/lib/postgresql/8.4/lib/btree_gin.so
