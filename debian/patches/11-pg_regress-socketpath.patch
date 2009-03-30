@@ -15,7 +15,7 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.4-8.4~0cvs20090328/src/test/regress/p
  		 */
  		snprintf(buf2, sizeof(buf2),
 -				 SYSTEMQUOTE "\"%s/psql\" -X postgres <%s 2>%s" SYSTEMQUOTE,
-+				 SYSTEMQUOTE "\"%s/psql\" h /tmp -X postgres <%s 2>%s" SYSTEMQUOTE,
++				 SYSTEMQUOTE "\"%s/psql\" -h /tmp -X postgres <%s 2>%s" SYSTEMQUOTE,
  				 bindir, DEVNULL, DEVNULL);
  
  		for (i = 0; i < 16; i++)
