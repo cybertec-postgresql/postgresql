@@ -1,3 +1,9 @@
+postgresql-8.4 (8.4~0cvs20090407-1) UNRELEASED; urgency=low
+
+  * Update to current cvs head.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 07 Apr 2009 15:51:28 -0700
+
 postgresql-8.4 (8.4~0cvs20090328-1) experimental; urgency=low
 
   * Package current trunk, which will become 8.4 in time. Packaging branched
