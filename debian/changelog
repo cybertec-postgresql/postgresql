@@ -1,6 +1,7 @@
-postgresql-8.4 (8.4~0cvs20090407-1) UNRELEASED; urgency=low
+postgresql-8.4 (8.4~beta1-1) UNRELEASED; urgency=low
 
-  * Update to current cvs head.
+  * First public beta of 8.4.
+  * debian/*.install: Add new gettext translations.
 
  -- Martin Pitt <mpitt@debian.org>  Tue, 07 Apr 2009 15:51:28 -0700
 

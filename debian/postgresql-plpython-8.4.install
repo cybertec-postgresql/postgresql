@@ -1,1 +1,2 @@
 usr/lib/postgresql/8.4/lib/plpython.so
+/usr/share/locale/*/*/plpython-*.mo
