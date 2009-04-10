@@ -2,6 +2,8 @@ postgresql-8.4 (8.4~beta1-1) UNRELEASED; urgency=low
 
   * First public beta of 8.4.
   * debian/*.install: Add new gettext translations.
+  * debian/control: Bump p-common dependency to >= 98 to ensure support for
+    8.4.
 
  -- Martin Pitt <mpitt@debian.org>  Tue, 07 Apr 2009 15:51:28 -0700
 
