@@ -1,4 +1,4 @@
-postgresql-8.4 (8.4~beta1-1) UNRELEASED; urgency=low
+postgresql-8.4 (8.4~beta1-1) experimental; urgency=low
 
   * First public beta of 8.4.
   * debian/*.install: Add new gettext translations.
@@ -6,7 +6,7 @@ postgresql-8.4 (8.4~beta1-1) UNRELEASED; urgency=low
     8.4.
   * debian/rules: Build with --enable-cassert while in beta.
 
- -- Martin Pitt <mpitt@debian.org>  Tue, 07 Apr 2009 15:51:28 -0700
+ -- Martin Pitt <mpitt@debian.org>  Mon, 27 Apr 2009 08:35:30 +0200
 
 postgresql-8.4 (8.4~0cvs20090328-1) experimental; urgency=low
 
