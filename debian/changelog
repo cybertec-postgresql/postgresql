@@ -1,3 +1,9 @@
+postgresql-8.4 (8.4~beta1+cvs20090503-1) UNRELEASED; urgency=low
+
+  * New upstream snapshot.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 03 May 2009 14:38:28 +0200
+
 postgresql-8.4 (8.4~beta1-1) experimental; urgency=low
 
   * First public beta of 8.4.
