@@ -87,7 +87,7 @@ Description: shared library libpgtypes for PostgreSQL 8.4
 
 Package: postgresql-8.4
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-client-8.4, postgresql-common (>= 98), tzdata, ssl-cert, locales
+Depends: ${shlibs:Depends}, postgresql-client-8.4, postgresql-common (>= 98~), tzdata, ssl-cert, locales
 Suggests: oidentd | ident-server
 Conflicts: postgresql (<< 7.5)
 Description: object-relational SQL database, version 8.4 server
@@ -107,7 +107,7 @@ Description: object-relational SQL database, version 8.4 server
 
 Package: postgresql-client-8.4
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-client-common (>= 98)
+Depends: ${shlibs:Depends}, postgresql-client-common (>= 98~)
 Conflicts: postgresql (<< 7.5)
 Suggests: postgresql-8.4, postgresql-doc-8.4
 Provides: postgresql-client
@@ -150,7 +150,7 @@ Description: documentation for the PostgreSQL database management system
 
 Package: postgresql-contrib-8.4
 Architecture: any
-Depends: postgresql-8.4, ${shlibs:Depends}, postgresql-common (>= 98)
+Depends: postgresql-8.4, ${shlibs:Depends}, postgresql-common (>= 98~)
 Suggests: libdbd-pg-perl
 Conflicts: postgresql-contrib (<< 7.5)
 Description: additional facilities for PostgreSQL

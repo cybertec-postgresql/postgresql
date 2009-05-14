@@ -1,3 +1,10 @@
+postgresql-8.4 (8.4~beta1+cvs20090503-2) UNRELEASED; urgency=low
+
+  * debian/control: Slightly lower the dependencies for postgresql-common to
+    >= 98~, so that backports also match.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 14 May 2009 09:17:55 +0200
+
 postgresql-8.4 (8.4~beta1+cvs20090503-1) experimental; urgency=low
 
   * New upstream snapshot.
