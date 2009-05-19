@@ -1,5 +1,6 @@
-postgresql-8.4 (8.4~beta1+cvs20090503-2) UNRELEASED; urgency=low
+postgresql-8.4 (8.4~beta2-2) UNRELEASED; urgency=low
 
+  * Second public beta of 8.4.
   * debian/control: Slightly lower the dependencies for postgresql-common to
     >= 98~, so that backports also match.
 
