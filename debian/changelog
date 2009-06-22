@@ -1,8 +1,8 @@
-postgresql-8.4 (8.4~rc1-1) UNRELEASED; urgency=low
+postgresql-8.4 (8.4~rc1-1) experimental; urgency=low
 
   * First release candidate of 8.4.
 
- -- Martin Pitt <mpitt@debian.org>  Mon, 22 Jun 2009 07:31:32 +0200
+ -- Martin Pitt <mpitt@debian.org>  Mon, 22 Jun 2009 09:17:52 +0200
 
 postgresql-8.4 (8.4~beta2-2) experimental; urgency=low
 
