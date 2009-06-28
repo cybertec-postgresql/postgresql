@@ -1,5 +1,25 @@
-postgresql-8.4 (8.4~rc1-2) UNRELEASED; urgency=low
+postgresql-8.4 (8.4.0-1) UNRELEASED; urgency=low
 
+  * Final 8.4.0 release. Major enhancements:
+    - Windowing Functions
+    - Common Table Expressions and Recursive Queries
+    - Default and variadic parameters for functions
+    - Parallel Restore
+    - Column Permissions
+    - Per-database locale settings
+    - Improved hash indexes
+    - Improved join performance for EXISTS and NOT EXISTS queries
+    - Easier-to-use Warm Standby
+    - Automatic sizing of the Free Space Map
+    - Visibility Map (greatly reduces vacuum overhead for slowly-changing
+      tables)
+    - Version-aware psql (backslash commands work against older servers)
+    - Support SSL certificates for user authentication
+    - Per-function runtime statistics
+    - Easy editing of functions in psql
+    - New contrib modules: pg_stat_statements, auto_explain, citext,
+      btree_gin 
+    Upload to unstable, 8.4 is the new default. 
   * debian/control: Build the versionless metapackages and have them point to
     8.4.
 
