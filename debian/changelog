@@ -1,3 +1,10 @@
+postgresql-8.4 (8.4~rc1-2) UNRELEASED; urgency=low
+
+  * debian/control: Build the versionless metapackages and have them point to
+    8.4.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 28 Jun 2009 19:51:55 +0200
+
 postgresql-8.4 (8.4~rc1-1) experimental; urgency=low
 
   * First release candidate of 8.4.
