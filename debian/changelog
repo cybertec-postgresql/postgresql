@@ -1,4 +1,4 @@
-postgresql-8.4 (8.4.0-1) UNRELEASED; urgency=low
+postgresql-8.4 (8.4.0-1) unstable; urgency=low
 
   * Final 8.4.0 release. Major enhancements:
     - Windowing Functions
@@ -23,7 +23,7 @@ postgresql-8.4 (8.4.0-1) UNRELEASED; urgency=low
   * debian/control: Build the versionless metapackages and have them point to
     8.4.
 
- -- Martin Pitt <mpitt@debian.org>  Sun, 28 Jun 2009 19:51:55 +0200
+ -- Martin Pitt <mpitt@debian.org>  Wed, 01 Jul 2009 17:41:41 +0200
 
 postgresql-8.4 (8.4~rc1-1) experimental; urgency=low
 
