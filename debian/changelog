@@ -1,6 +1,7 @@
 postgresql-8.4 (8.4.0-2) UNRELEASED; urgency=low
 
   * debian/libpq-dev.install: Ship catalog/genbki.h. (Closes: #536139)
+  * debian/rules: Drop --enable-cassert for final release.
 
  -- Martin Pitt <mpitt@debian.org>  Sat, 11 Jul 2009 16:54:24 +0200
 

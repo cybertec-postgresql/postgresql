@@ -31,7 +31,6 @@ DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/$(MAJOR_VER)/
   --enable-integer-datetimes \
   --enable-thread-safety \
   --enable-debug \
-  --enable-cassert \
   --disable-rpath \
   --with-tcl \
   --with-perl \
