@@ -1,3 +1,9 @@
+postgresql-8.4 (8.4.0-2) UNRELEASED; urgency=low
+
+  * debian/libpq-dev.install: Ship catalog/genbki.h. (Closes: #536139)
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 11 Jul 2009 16:54:24 +0200
+
 postgresql-8.4 (8.4.0-1) unstable; urgency=low
 
   * Final 8.4.0 release. Major enhancements:

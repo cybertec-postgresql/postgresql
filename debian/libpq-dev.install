@@ -5,6 +5,7 @@ usr/include/postgresql/libpq/libpq-fs.h
 usr/include/postgresql/pg_config*.h
 usr/include/postgresql/postgres_ext.h
 usr/include/postgresql/8.4/server/catalog/pg_type.h /usr/include/postgresql/catalog
+usr/include/postgresql/8.4/server/catalog/genbki.h /usr/include/postgresql/catalog
 usr/include/postgresql/8.4/server/nodes/nodes.h /usr/include/postgresql/nodes
 usr/include/postgresql/8.4/server/utils/{elog,errcodes,palloc}.h /usr/include/postgresql/utils
 usr/include/postgresql/8.4/server/{c,pg_config,pg_config_manual,pg_config_os,port,pg_trace}.h /usr/include/postgresql/
