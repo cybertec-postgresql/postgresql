@@ -1,3 +1,12 @@
+postgresql-8.5 (8.5~alpha1-0.1) UNRELEASED; urgency=low
+
+  * New upstream alpha release. Packaging branched from 8.4 packaging trunk, 
+    but don't build default packages from this one.
+  * Temporarily different maintainer.
+  * Dropped obsolete documentation build.
+
+ -- Peter Eisentraut <petere@debian.org>  Thu, 03 Sep 2009 22:46:16 +0300
+
 postgresql-8.4 (8.4.0-3) UNRELEASED; urgency=low
 
   * debian/control: Bump Standards-Version to 3.8.2 (no changes necessary).

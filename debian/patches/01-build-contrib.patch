@@ -1,21 +1,22 @@
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta1/GNUmakefile.in postgresql-8.2.new/build-tree/postgresql-8.2beta1/GNUmakefile.in
---- postgresql-8.2beta1/GNUmakefile.in	2006-08-18 21:58:05.000000000 +0200
-+++ postgresql-8.2beta1/GNUmakefile.in	2006-09-25 19:15:34.000000000 +0200
-@@ -12,18 +14,21 @@
+diff -Nur -x '*.orig' -x '*~' postgresql-8.5-8.5~alpha1/GNUmakefile.in postgresql-8.5-8.5~alpha1.new/GNUmakefile.in
+--- postgresql-8.5-8.5~alpha1/GNUmakefile.in	2009-08-15 00:37:18.000000000 +0300
++++ postgresql-8.5-8.5~alpha1.new/GNUmakefile.in	2009-09-03 23:25:58.000000000 +0300
+@@ -12,6 +12,7 @@
  	$(MAKE) -C doc all
  	$(MAKE) -C src all
  	$(MAKE) -C config all
 +	$(MAKE) -C contrib all
  	@echo "All of PostgreSQL successfully made. Ready to install."
  
- install:
+ html man:
+@@ -21,12 +22,14 @@
  	$(MAKE) -C doc $@
  	$(MAKE) -C src $@
  	$(MAKE) -C config $@
 +	$(MAKE) -C contrib $@
  	@echo "PostgreSQL installation complete."
  
- installdirs uninstall:
+ installdirs uninstall coverage:
  	$(MAKE) -C doc $@
  	$(MAKE) -C src $@
  	$(MAKE) -C config $@

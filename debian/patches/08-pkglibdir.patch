@@ -6,7 +6,7 @@ diff -ruN postgresql-8.2beta4-old/src/Makefile.global.in postgresql-8.2beta4/src
  ifeq "$(findstring pgsql, $(pkglibdir))" ""
  ifeq "$(findstring postgres, $(pkglibdir))" ""
 -override pkglibdir := $(pkglibdir)/postgresql
-+override pkglibdir := $(pkglibdir)/postgresql/8.4/lib
++override pkglibdir := $(pkglibdir)/postgresql/8.5/lib
  endif
  endif
  

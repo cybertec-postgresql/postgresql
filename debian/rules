@@ -1,6 +1,6 @@
 #!/usr/bin/make	-f 
 TCL_VER := 8.5
-MAJOR_VER := 8.4
+MAJOR_VER := 8.5
 
 include /usr/share/cdbs/1/rules/simple-patchsys.mk
 include /usr/share/cdbs/1/class/autotools.mk
@@ -54,28 +54,9 @@ DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/$(MAJOR_VER)/
   LDFLAGS='$(LDFLAGS)'
 
 DEB_DH_MAKESHLIBS_ARGS := -Xusr/lib/postgresql/$(MAJOR_VER)
-# disabled for CVS builds
-#DEB_DH_INSTALLCHANGELOGS_ARGS := HISTORY
+DEB_DH_INSTALLCHANGELOGS_ARGS := HISTORY
 DEB_COMPRESS_EXCLUDE := .source .c
 DEB_DH_INSTALLINIT_ARGS := -u'defaults 19 21'
-
-# build documentation tarball if not present
-common-configure-indep:: doc/postgres.tar.gz doc/man.tar.gz
-common-configure-arch:: doc/postgres.tar.gz doc/man.tar.gz
-
-doc/postgres.tar.gz:
-	make -C doc/src postgres.tar
-	mv doc/src/postgres.tar doc/
-	gzip -9 doc/postgres.tar
-
-doc/man.tar.gz:
-	chmod 755 debian/docbook2man-sgmlspl/*
-	make -C doc/src man.tar D2MDIR=`pwd`/debian/docbook2man-sgmlspl
-	mv doc/src/man.tar doc/
-	gzip -9 doc/man.tar
-
-clean::
-	rm -f doc/postgres.tar.gz doc/man.tar.gz
 
 common-binary-predeb-arch::
 	# verify that all files are installed; ignore manpages, since
