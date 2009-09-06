@@ -1,5 +1,6 @@
-postgresql-8.4 (8.4.1-1) UNRELEASED; urgency=low
+postgresql-8.4 (8.4.1-1) unstable; urgency=medium
 
+  * Urgency medium due to security fix.
   * New upstream security/bug fix release:
     - Disallow "RESET ROLE" and "RESET SESSION AUTHORIZATION" inside
       security-definer functions. This covers a case that was missed in the
@@ -66,7 +67,7 @@ postgresql-8.4 (8.4.1-1) UNRELEASED; urgency=low
       of "division by zero" on some platforms.
   * debian/control: Bump Standards-Version to 3.8.3 (no changes necessary).
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 11 Jul 2009 17:28:07 +0200
+ -- Martin Pitt <mpitt@debian.org>  Sun, 06 Sep 2009 14:11:13 +0200
 
 postgresql-8.4 (8.4.0-2) unstable; urgency=low
 
