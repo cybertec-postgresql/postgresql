@@ -64,7 +64,7 @@ postgresql-8.4 (8.4.1-1) UNRELEASED; urgency=low
       both libraries are installed.
     - Work around gcc bug that causes "floating-point exception" instead
       of "division by zero" on some platforms.
-  * debian/control: Bump Standards-Version to 3.8.2 (no changes necessary).
+  * debian/control: Bump Standards-Version to 3.8.3 (no changes necessary).
 
  -- Martin Pitt <mpitt@debian.org>  Sat, 11 Jul 2009 17:28:07 +0200
 
