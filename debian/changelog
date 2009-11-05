@@ -4,6 +4,7 @@ postgresql-8.4 (8.4.1-2.1) UNRELEASED; urgency=low
   * debian/control: Added ${misc:Depends} on all packages, per lintian
   * debian/control: Added versioned dependencies on the shared libraries used 
     by the libecpg-dev package
+  * debian/control: Removed obsolete build dependency bzip2
 
  -- Peter Eisentraut <petere@debian.org>  Thu, 05 Nov 2009 19:27:40 +0200
 
