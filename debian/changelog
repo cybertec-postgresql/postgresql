@@ -1,6 +1,7 @@
 postgresql-8.4 (8.4.1-2.1) UNRELEASED; urgency=low
 
   * debian/control: Added Homepage
+  * debian/control: Added ${misc:Depends} on all packages, per lintian
 
  -- Peter Eisentraut <petere@debian.org>  Thu, 05 Nov 2009 19:27:40 +0200
 

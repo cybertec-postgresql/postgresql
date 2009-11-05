@@ -15,7 +15,7 @@ Homepage: http://www.postgresql.org/
 Package: libpq-dev
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, libpq5 (= ${binary:Version}), libssl-dev, libkrb5-dev, comerr-dev
+Depends: ${misc:Depends}, ${shlibs:Depends}, libpq5 (= ${binary:Version}), libssl-dev, libkrb5-dev, comerr-dev
 Conflicts: postgresql-dev (<< 7.5)
 Replaces: postgresql-dev
 Suggests: postgresql-doc-8.4
@@ -29,7 +29,7 @@ Description: header files for libpq5 (PostgreSQL library)
 Package: libpq5
 Architecture: any
 Section: libs
-Depends: ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: PostgreSQL C client library
  libpq is a C library that enables user programs to communicate with
  the PostgreSQL database server.  The server can be on another machine
@@ -44,7 +44,7 @@ Description: PostgreSQL C client library
 Package: libecpg6
 Architecture: any
 Section: libs
-Depends:  ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: run-time library for ECPG programs
  The libecpg shared library is used by programs built with ECPG
  (Embedded PostgreSQL for C).
@@ -54,7 +54,7 @@ Description: run-time library for ECPG programs
 Package: libecpg-dev
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, libpq-dev, libecpg-compat3, libpgtypes3
+Depends: ${misc:Depends}, ${shlibs:Depends}, libpq-dev, libecpg-compat3, libpgtypes3
 Conflicts: postgresql-dev, libecpg3-dev
 Description: development files for ECPG (Embedded PostgreSQL for C)
  This package contains the necessary files to build ECPG (Embedded
@@ -69,7 +69,7 @@ Description: development files for ECPG (Embedded PostgreSQL for C)
 Package: libecpg-compat3
 Architecture: any
 Section: libs
-Depends:  ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: older version of run-time library for ECPG programs
  The libecpg_compat shared library is used by programs built with ecpg.
  (Embedded PostgreSQL for C).
@@ -79,7 +79,7 @@ Description: older version of run-time library for ECPG programs
 Package: libpgtypes3
 Architecture: any
 Section: libs
-Depends:  ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: shared library libpgtypes for PostgreSQL 8.4
  The libpgtypes shared library is used by programs built with ecpg.
  (Embedded PostgreSQL for C).
@@ -88,7 +88,7 @@ Description: shared library libpgtypes for PostgreSQL 8.4
 
 Package: postgresql-8.4
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-client-8.4, postgresql-common (>= 98~), tzdata, ssl-cert, locales
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-8.4, postgresql-common (>= 98~), tzdata, ssl-cert, locales
 Suggests: oidentd | ident-server
 Conflicts: postgresql (<< 7.5)
 Description: object-relational SQL database, version 8.4 server
@@ -108,7 +108,7 @@ Description: object-relational SQL database, version 8.4 server
 
 Package: postgresql-client-8.4
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-client-common (>= 98~)
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-common (>= 98~)
 Conflicts: postgresql (<< 7.5)
 Suggests: postgresql-8.4, postgresql-doc-8.4
 Provides: postgresql-client
@@ -128,7 +128,7 @@ Description: front-end programs for PostgreSQL 8.4
 Package: postgresql-server-dev-8.4
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, libpq-dev (>= 8.4~)
+Depends: ${misc:Depends}, ${shlibs:Depends}, libpq-dev (>= 8.4~)
 Description: development files for PostgreSQL 8.4 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
@@ -142,6 +142,7 @@ Description: development files for PostgreSQL 8.4 server-side programming
 Package: postgresql-doc-8.4
 Architecture: all
 Section: doc
+Depends: ${misc:Depends}
 Conflicts: postgresql-doc (<< 7.5)
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
@@ -151,7 +152,7 @@ Description: documentation for the PostgreSQL database management system
 
 Package: postgresql-contrib-8.4
 Architecture: any
-Depends: postgresql-8.4, ${shlibs:Depends}, postgresql-common (>= 98~)
+Depends: postgresql-8.4, ${misc:Depends}, ${shlibs:Depends}, postgresql-common (>= 98~)
 Suggests: libdbd-pg-perl
 Conflicts: postgresql-contrib (<< 7.5)
 Description: additional facilities for PostgreSQL
@@ -207,7 +208,7 @@ Description: additional facilities for PostgreSQL
 
 Package: postgresql-plperl-8.4
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-8.4, perl
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-8.4, perl
 Description: PL/Perl procedural language for PostgreSQL 8.4
  PL/Perl enables an SQL developer to write procedural language functions
  for PostgreSQL 8.4 in Perl.  You need this package if you have any
@@ -217,7 +218,7 @@ Description: PL/Perl procedural language for PostgreSQL 8.4
 
 Package: postgresql-plpython-8.4
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-8.4
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-8.4
 XB-Python-Version: ${python:Versions}
 Description: PL/Python procedural language for PostgreSQL 8.4
  PL/Python enables an SQL developer to write procedural language functions
@@ -228,7 +229,7 @@ Description: PL/Python procedural language for PostgreSQL 8.4
 
 Package: postgresql-pltcl-8.4
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-8.4
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-8.4
 Description: PL/Tcl procedural language for PostgreSQL 8.4
  PL/Tcl enables an SQL developer to write procedural language functions
  for PostgreSQL 8.4 in Tcl.  You need this package if you have any
@@ -238,7 +239,7 @@ Description: PL/Tcl procedural language for PostgreSQL 8.4
 
 Package: postgresql
 Architecture: all
-Depends: postgresql-8.4
+Depends: postgresql-8.4, ${misc:Depends}
 Description: object-relational SQL database (supported version)
  PostgreSQL is a fully featured object-relational database management
  system.  It supports a large part of the SQL standard and is designed
@@ -253,7 +254,7 @@ Description: object-relational SQL database (supported version)
 
 Package: postgresql-client
 Architecture: all
-Depends: postgresql-client-8.4
+Depends: postgresql-client-8.4, ${misc:Depends}
 Description: front-end programs for PostgreSQL (supported version)
  This package contains client and administrative programs for
  PostgreSQL: these are the interactive terminal client psql and
@@ -270,7 +271,7 @@ Description: front-end programs for PostgreSQL (supported version)
 Package: postgresql-doc
 Architecture: all
 Section: doc
-Depends: postgresql-doc-8.4
+Depends: postgresql-doc-8.4, ${misc:Depends}
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
  the currently supported PostgreSQL version. The manual is in HTML
@@ -280,7 +281,7 @@ Description: documentation for the PostgreSQL database management system
 
 Package: postgresql-contrib
 Architecture: all
-Depends: postgresql-contrib-8.4
+Depends: postgresql-contrib-8.4, ${misc:Depends}
 Description: additional facilities for PostgreSQL (supported version)
  The PostgreSQL contrib package provides several additional features
  for the PostgreSQL database. contrib often serves as a testbed for
