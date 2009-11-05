@@ -10,6 +10,7 @@ Build-Depends: debhelper (>= 5.0.37.2), cdbs (>= 0.4.43), perl (>= 5.8),
  libldap2-dev, libxslt1-dev, libossp-uuid-dev, python-dev,
  python-central (>= 0.5), gettext, bzip2, hardening-wrapper,
  bison, flex, docbook-utils, openjade, docbook
+Homepage: http://www.postgresql.org/
 
 Package: libpq-dev
 Architecture: any
