@@ -1,7 +1,7 @@
-diff -Nur -x '*.orig' -x '*~' postgresql-8.4-8.4~0cvs20090328/src/test/regress/pg_regress.c postgresql-8.4-8.4~0cvs20090328.new/src/test/regress/pg_regress.c
---- postgresql-8.4-8.4~0cvs20090328/src/test/regress/pg_regress.c	2009-03-28 23:04:14.000000000 +0100
-+++ postgresql-8.4-8.4~0cvs20090328.new/src/test/regress/pg_regress.c	2009-03-28 23:32:54.660811088 +0100
-@@ -888,7 +888,7 @@
+diff -Nur -x '*.orig' -x '*~' postgresql-8.5-8.5~alpha2/src/test/regress/pg_regress.c postgresql-8.5-8.5~alpha2.new/src/test/regress/pg_regress.c
+--- postgresql-8.5-8.5~alpha2/src/test/regress/pg_regress.c	2009-08-18 13:30:41.000000000 +0300
++++ postgresql-8.5-8.5~alpha2.new/src/test/regress/pg_regress.c	2009-11-05 23:52:05.000000000 +0200
+@@ -889,7 +889,7 @@
  
  	/* And now we can build and execute the shell command */
  	snprintf(psql_cmd, sizeof(psql_cmd),
@@ -10,7 +10,7 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.4-8.4~0cvs20090328/src/test/regress/p
  			 psqldir ? psqldir : "",
  			 psqldir ? "/" : "",
  			 query_escaped,
-@@ -2122,7 +2122,7 @@
+@@ -2139,7 +2139,7 @@
  		 * Check if there is a postmaster running already.
  		 */
  		snprintf(buf2, sizeof(buf2),
@@ -19,7 +19,7 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.4-8.4~0cvs20090328/src/test/regress/p
  				 bindir, DEVNULL, DEVNULL);
  
  		for (i = 0; i < 16; i++)
-@@ -2154,7 +2154,7 @@
+@@ -2171,7 +2171,7 @@
  		 */
  		header(_("starting postmaster"));
  		snprintf(buf, sizeof(buf),
@@ -28,15 +28,15 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.4-8.4~0cvs20090328/src/test/regress/p
  				 bindir, temp_install,
  				 debug ? " -d 5" : "",
  				 hostname ? hostname : "",
-diff -Nur -x '*.orig' -x '*~' postgresql-8.4-8.4~0cvs20090328/src/test/regress/pg_regress_main.c postgresql-8.4-8.4~0cvs20090328.new/src/test/regress/pg_regress_main.c
---- postgresql-8.4-8.4~0cvs20090328/src/test/regress/pg_regress_main.c	2009-03-28 23:04:14.000000000 +0100
-+++ postgresql-8.4-8.4~0cvs20090328.new/src/test/regress/pg_regress_main.c	2009-03-28 23:31:22.307182553 +0100
+diff -Nur -x '*.orig' -x '*~' postgresql-8.5-8.5~alpha2/src/test/regress/pg_regress_main.c postgresql-8.5-8.5~alpha2.new/src/test/regress/pg_regress_main.c
+--- postgresql-8.5-8.5~alpha2/src/test/regress/pg_regress_main.c	2009-10-14 00:04:01.000000000 +0300
++++ postgresql-8.5-8.5~alpha2.new/src/test/regress/pg_regress_main.c	2009-11-05 23:52:58.000000000 +0200
 @@ -59,7 +59,7 @@
  	add_stringlist_item(expectfiles, expectfile);
  
  	snprintf(psql_cmd, sizeof(psql_cmd),
--			 SYSTEMQUOTE "\"%s%spsql\" -X -a -q -d \"%s\" < \"%s\" > \"%s\" 2>&1" SYSTEMQUOTE,
-+			 SYSTEMQUOTE "\"%s%spsql\" -h /tmp -X -a -q -d \"%s\" < \"%s\" > \"%s\" 2>&1" SYSTEMQUOTE,
+-			 SYSTEMQUOTE "\"%s%spsql\" -X -a -q -P linestyle=ascii -d \"%s\" < \"%s\" > \"%s\" 2>&1" SYSTEMQUOTE,
++			 SYSTEMQUOTE "\"%s%spsql\" -h /tmp -X -a -q -P linestyle=ascii -d \"%s\" < \"%s\" > \"%s\" 2>&1" SYSTEMQUOTE,
  			 psqldir ? psqldir : "",
  			 psqldir ? "/" : "",
  			 dblist->str,
