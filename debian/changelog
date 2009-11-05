@@ -2,6 +2,7 @@ postgresql-8.5 (8.5~alpha2-0.1) UNRELEASED; urgency=low
 
   * New upstream alpha release.
     - Adjusted 11-pg_regress-socketpath.patch
+    - Obsoletes: 03-sh-architecture.patch
 
  -- Peter Eisentraut <petere@debian.org>  Thu, 05 Nov 2009 22:58:19 +0200
 
