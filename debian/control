@@ -11,6 +11,8 @@ Build-Depends: debhelper (>= 5.0.37.2), cdbs (>= 0.4.43), perl (>= 5.8),
  python-central (>= 0.5), gettext, hardening-wrapper,
  bison, flex, docbook-utils, openjade, docbook
 Homepage: http://www.postgresql.org/
+Vcs-Browser: https://code.launchpad.net/~pitti/postgresql/debian-8.4
+Vcs-Bzr: lp:~pitti/postgresql/debian-8.4
 
 Package: libpq-dev
 Architecture: any
