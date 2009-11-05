@@ -2,18 +2,20 @@ Source: postgresql-8.5
 Section: database
 Priority: optional
 Maintainer: Peter Eisentraut <petere@debian.org>
-Standards-Version: 3.8.2
+Standards-Version: 3.8.3
 XS-Python-Version: current
 Build-Depends: debhelper (>= 5.0.37.2), cdbs (>= 0.4.43), perl (>= 5.8),
- libperl-dev, tcl8.5-dev, libreadline5-dev (>= 4.2), libssl-dev, 
+ libperl-dev, tcl8.5-dev, libreadline-dev | libreadline5-dev, libssl-dev, 
  zlib1g-dev | libz-dev, libpam0g-dev | libpam-dev, libxml2-dev, libkrb5-dev,
  libldap2-dev, libxslt1-dev, libossp-uuid-dev, python-dev,
- python-central (>= 0.5), gettext, bzip2, hardening-wrapper
+ python-central (>= 0.5), gettext, bzip2, hardening-wrapper,
+ bison, flex, docbook-utils, openjade, docbook
+Homepage: http://www.postgresql.org/
 
 Package: libpq-dev
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, libpq5 (= ${binary:Version}), libssl-dev, libkrb5-dev, comerr-dev
+Depends: ${misc:Depends}, ${shlibs:Depends}, libpq5 (= ${binary:Version}), libssl-dev, libkrb5-dev, comerr-dev
 Conflicts: postgresql-dev (<< 7.5)
 Replaces: postgresql-dev
 Suggests: postgresql-doc-8.5
@@ -27,7 +29,7 @@ Description: header files for libpq5 (PostgreSQL library)
 Package: libpq5
 Architecture: any
 Section: libs
-Depends: ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: PostgreSQL C client library
  libpq is a C library that enables user programs to communicate with
  the PostgreSQL database server.  The server can be on another machine
@@ -42,7 +44,7 @@ Description: PostgreSQL C client library
 Package: libecpg6
 Architecture: any
 Section: libs
-Depends:  ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: run-time library for ECPG programs
  The libecpg shared library is used by programs built with ECPG
  (Embedded PostgreSQL for C).
@@ -52,7 +54,7 @@ Description: run-time library for ECPG programs
 Package: libecpg-dev
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, libpq-dev, libecpg-compat3, libpgtypes3
+Depends: ${misc:Depends}, ${shlibs:Depends}, libpq-dev, libecpg6 (= ${binary:Version}), libecpg-compat3 (= ${binary:Version}), libpgtypes3 (= ${binary:Version})
 Conflicts: postgresql-dev, libecpg3-dev
 Description: development files for ECPG (Embedded PostgreSQL for C)
  This package contains the necessary files to build ECPG (Embedded
@@ -67,7 +69,7 @@ Description: development files for ECPG (Embedded PostgreSQL for C)
 Package: libecpg-compat3
 Architecture: any
 Section: libs
-Depends:  ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: older version of run-time library for ECPG programs
  The libecpg_compat shared library is used by programs built with ecpg.
  (Embedded PostgreSQL for C).
@@ -77,7 +79,7 @@ Description: older version of run-time library for ECPG programs
 Package: libpgtypes3
 Architecture: any
 Section: libs
-Depends:  ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: shared library libpgtypes for PostgreSQL 8.5
  The libpgtypes shared library is used by programs built with ecpg.
  (Embedded PostgreSQL for C).
@@ -86,7 +88,7 @@ Description: shared library libpgtypes for PostgreSQL 8.5
 
 Package: postgresql-8.5
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-client-8.5, postgresql-common (>= 98~), tzdata, ssl-cert, locales
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-8.5, postgresql-common (>= 98~), tzdata, ssl-cert, locales
 Suggests: oidentd | ident-server
 Conflicts: postgresql (<< 7.5)
 Description: object-relational SQL database, version 8.5 server
@@ -106,7 +108,7 @@ Description: object-relational SQL database, version 8.5 server
 
 Package: postgresql-client-8.5
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-client-common (>= 98~)
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-common (>= 98~)
 Conflicts: postgresql (<< 7.5)
 Suggests: postgresql-8.5, postgresql-doc-8.5
 Provides: postgresql-client
@@ -126,7 +128,7 @@ Description: front-end programs for PostgreSQL 8.5
 Package: postgresql-server-dev-8.5
 Architecture: any
 Section: libdevel
-Depends: ${shlibs:Depends}, libpq-dev (>= 8.5~)
+Depends: ${misc:Depends}, ${shlibs:Depends}, libpq-dev (>= 8.5~)
 Description: development files for PostgreSQL 8.5 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
@@ -140,6 +142,7 @@ Description: development files for PostgreSQL 8.5 server-side programming
 Package: postgresql-doc-8.5
 Architecture: all
 Section: doc
+Depends: ${misc:Depends}
 Conflicts: postgresql-doc (<< 7.5)
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
@@ -149,7 +152,7 @@ Description: documentation for the PostgreSQL database management system
 
 Package: postgresql-contrib-8.5
 Architecture: any
-Depends: postgresql-8.5, ${shlibs:Depends}, postgresql-common (>= 98~)
+Depends: postgresql-8.5, ${misc:Depends}, ${shlibs:Depends}, postgresql-common (>= 98~)
 Suggests: libdbd-pg-perl
 Conflicts: postgresql-contrib (<< 7.5)
 Description: additional facilities for PostgreSQL
@@ -205,7 +208,7 @@ Description: additional facilities for PostgreSQL
 
 Package: postgresql-plperl-8.5
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-8.5, perl
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-8.5, perl
 Description: PL/Perl procedural language for PostgreSQL 8.5
  PL/Perl enables an SQL developer to write procedural language functions
  for PostgreSQL 8.5 in Perl.  You need this package if you have any
@@ -215,7 +218,7 @@ Description: PL/Perl procedural language for PostgreSQL 8.5
 
 Package: postgresql-plpython-8.5
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-8.5
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-8.5
 XB-Python-Version: ${python:Versions}
 Description: PL/Python procedural language for PostgreSQL 8.5
  PL/Python enables an SQL developer to write procedural language functions
@@ -226,7 +229,7 @@ Description: PL/Python procedural language for PostgreSQL 8.5
 
 Package: postgresql-pltcl-8.5
 Architecture: any
-Depends: ${shlibs:Depends}, postgresql-8.5
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-8.5
 Description: PL/Tcl procedural language for PostgreSQL 8.5
  PL/Tcl enables an SQL developer to write procedural language functions
  for PostgreSQL 8.5 in Tcl.  You need this package if you have any

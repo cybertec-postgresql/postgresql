@@ -7,11 +7,93 @@ postgresql-8.5 (8.5~alpha1-0.1) UNRELEASED; urgency=low
 
  -- Peter Eisentraut <petere@debian.org>  Thu, 03 Sep 2009 22:46:16 +0300
 
-postgresql-8.4 (8.4.0-3) UNRELEASED; urgency=low
+postgresql-8.4 (8.4.1-2.1) UNRELEASED; urgency=low
 
-  * debian/control: Bump Standards-Version to 3.8.2 (no changes necessary).
+  * debian/control: Added Homepage
+  * debian/control: Added ${misc:Depends} on all packages, per lintian
+  * debian/control: Added versioned dependencies on the shared libraries used 
+    by the libecpg-dev package
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 11 Jul 2009 17:28:07 +0200
+ -- Peter Eisentraut <petere@debian.org>  Thu, 05 Nov 2009 19:27:40 +0200
+
+postgresql-8.4 (8.4.1-2) UNRELEASED; urgency=low
+
+  * debian/control: libreadline5-dev → libreadline-dev. (Closes: #553831)
+  * Add 03-sh-architecture.patch: Support Renesas' SuperH architecture, thanks
+    Nobuhiro Iwamatsu! (Closes: #548847)
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 14 Sep 2009 09:17:05 +0200
+
+postgresql-8.4 (8.4.1-1) unstable; urgency=medium
+
+  * Urgency medium due to security fix.
+  * New upstream security/bug fix release:
+    - Disallow "RESET ROLE" and "RESET SESSION AUTHORIZATION" inside
+      security-definer functions. This covers a case that was missed in the
+      previous patch that disallowed "SET ROLE" and "SET SESSION
+      AUTHORIZATION" inside security-definer functions. [CVE-2007-6600]
+    - Fix WAL page header initialization at the end of archive recovery.
+      This could lead to failure to process the WAL in a subsequent archive
+      recovery.
+    - Fix "cannot make new WAL entries during recovery" error.
+    - Fix problem that could make expired rows visible after a crash.
+      This bug involved a page status bit potentially not being set
+      correctly after a server crash.
+    - Make "LOAD" of an already-loaded loadable module into a no-op.
+      Formerly, "LOAD" would attempt to unload and re-load the module,
+      but this is unsafe and not all that useful.
+    - Make window function PARTITION BY and ORDER BY items always be
+      interpreted as simple expressions.
+      In 8.4.0 these lists were parsed following the rules used for
+      top-level GROUP BY and ORDER BY lists. But this was not correct per
+      the SQL standard, and it led to possible circularity.
+    - Fix several errors in planning of semi-joins. These led to wrong query
+      results in some cases where IN or EXISTS was used together with another
+      join.
+    - Fix handling of whole-row references to subqueries that are within
+      an outer join. An example is SELECT COUNT(ss.-) FROM ... LEFT JOIN
+      (SELECT ...) ss ON .... Here, ss.- would be treated as
+      ROW(NULL,NULL,...) for null-extended join rows, which is not the same as
+      a simple NULL.  Now it is treated as a simple NULL.
+    - Fix locale handling with plperl. This bug could cause the server's
+      locale setting to change when a plperl function is called, leading to
+      data corruption.
+    - Fix handling of reloptions to ensure setting one option doesn't
+      force default values for others.
+    - Ensure that a "fast shutdown" request will forcibly terminate open
+      sessions, even if a "smart shutdown" was already in progress.
+    - Avoid memory leak for array_agg() in GROUP BY queries.
+    - Treat to_char(..., 'TH') as an uppercase ordinal suffix with
+      'HH'/'HH12'.  It was previously handled as 'th'.
+    - Include the fractional part in the result of EXTRACT(second) and
+      EXTRACT(milliseconds) for time and time with time zone inputs.
+      This has always worked for floating-point datetime configurations,
+      but was broken in the integer datetime code.
+    - Fix overflow for INTERVAL 'x ms' when "x" is more than 2 million
+      and integer datetimes are in use.
+    - Improve performance when processing toasted values in index scans.
+      This is particularly useful for PostGIS.
+    - Fix a typo that disabled commit_delay.
+    - Output early-startup messages to "postmaster.log" if the server is
+      started in silent mode. Previously such error messages were discarded,
+      leading to difficulty in debugging.
+    - Remove translated FAQs. They are now on the wiki. The main FAQ was moved
+      to the wiki some time ago.
+    - Fix pg_ctl to not go into an infinite loop if "postgresql.conf" is
+      empty.
+    - Fix several errors in pg_dump's --binary-upgrade mode. pg_dump
+      --binary-upgrade is used by pg_migrator.
+    - Fix "contrib/xml2"'s xslt_process() to properly handle the maximum
+      number of parameters (twenty).
+    - Improve robustness of libpq's code to recover from errors during
+      "COPY FROM STDIN".
+    - Avoid including conflicting readline and editline header files when
+      both libraries are installed.
+    - Work around gcc bug that causes "floating-point exception" instead
+      of "division by zero" on some platforms.
+  * debian/control: Bump Standards-Version to 3.8.3 (no changes necessary).
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 06 Sep 2009 14:11:13 +0200
 
 postgresql-8.4 (8.4.0-2) unstable; urgency=low
 
