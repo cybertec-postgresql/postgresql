@@ -1,5 +1,14 @@
 postgresql-8.4 (8.4.1-2) UNRELEASED; urgency=low
 
+  [ Peter Eisentraut ]
+  * debian/control: Added Homepage
+  * debian/control: Added ${misc:Depends} on all packages, per lintian
+  * debian/control: Added versioned dependencies on the shared libraries used 
+    by the libecpg-dev package
+  * debian/control: Removed obsolete build dependency bzip2
+  * debian/control: Added Vcs fields
+
+  [ Martin Pitt ]
   * debian/control: libreadline5-dev → libreadline-dev. (Closes: #553831)
   * Add 03-sh-architecture.patch: Support Renesas' SuperH architecture, thanks
     Nobuhiro Iwamatsu! (Closes: #548847)
