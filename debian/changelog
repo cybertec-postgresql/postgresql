@@ -1,4 +1,4 @@
-postgresql-8.4 (8.4.1-2) UNRELEASED; urgency=low
+postgresql-8.4 (8.4.2-1) UNRELEASED; urgency=low
 
   [ Peter Eisentraut ]
   * debian/control: Added Homepage
@@ -9,6 +9,100 @@ postgresql-8.4 (8.4.1-2) UNRELEASED; urgency=low
   * debian/control: Added Vcs fields
 
   [ Martin Pitt ]
+  * New upstream security/bug fix release:
+    - Protect against indirect security threats caused by index functions
+      changing session-local state. This change prevents allegedly-immutable
+      index functions from possibly subverting a superuser's session
+      (CVE-2009-4136).
+    - Reject SSL certificates containing an embedded null byte in the
+      common name (CN) field. This prevents unintended matching of a
+      certificate to a server or client name during SSL validation
+      (CVE-2009-4034).
+    - Fix hash index corruption. The 8.4 change that made hash indexes keep
+      entries sorted by hash value failed to update the bucket splitting and
+      compaction routines to preserve the ordering. So application of either
+      of those operations could lead to permanent corruption of an index, in
+      the sense that searches might fail to find entries that are present. To
+      deal with this, it is recommended to REINDEX any hash indexes you may
+      have after installing this update.
+    - Fix possible crash during backend-startup-time cache initialization.
+    - Avoid crash on empty thesaurus dictionary.
+    - Prevent signals from interrupting VACUUM at unsafe times.
+    - Fix possible crash due to integer overflow in hash table size
+      calculation.
+    - Fix crash if a DROP is attempted on an internally-dependent object.
+    - Fix very rare crash in inet/cidr comparisons.
+    - Ensure that shared tuple-level locks held by prepared transactions
+      are not ignored.
+    - Fix premature drop of temporary files used for a cursor that is
+      accessed within a subtransaction.
+    - Fix memory leak in syslogger process when rotating to a new CSV
+      logfile.
+    - Fix memory leak in postmaster when re-parsing "pg_hba.conf".
+    - Make FOR UPDATE/SHARE in the primary query not propagate into WITH
+      queries.
+    - Fix bug with a WITH RECURSIVE query immediately inside another one.
+    - Fix concurrency bug in hash indexes.
+    - Fix incorrect logic for GiST index page splits, when the split
+      depends on a non-first column of the index.
+    - Fix wrong search results for a multi-column GIN index with
+      fastupdate enabled.
+    - Fix bugs in WAL entry creation for GIN indexes.
+    - Don't error out if recycling or removing an old WAL file fails at
+      the end of checkpoint.
+    - Fix PAM password processing to be more robust.
+      The previous code is known to fail with the combination of the
+      Linux pam_krb5 PAM module with Microsoft Active Directory as the
+      domain controller. It might have problems elsewhere too, since it
+      was making unjustified assumptions about what arguments the PAM
+      stack would pass to it.
+    - Raise the maximum authentication token (Kerberos ticket) size in
+      GSSAPI and SSPI authentication methods. While the old 2000-byte limit
+      was more than enough for Unix Kerberos implementations, tickets issued
+      by Windows Domain Controllers can be much larger.
+    - Ensure that domain constraints are enforced in constructs like
+      ARRAY[...]::domain, where the domain is over an array type.
+    - Fix foreign-key logic for some cases involving composite-type
+      columns as foreign keys.
+    - Ensure that a cursor's snapshot is not modified after it is created.
+    - Fix CREATE TABLE to properly merge default expressions coming from
+      different inheritance parent tables. This used to work but was broken in
+      8.4.
+    - Re-enable collection of access statistics for sequences. This used to
+      work but was broken in 8.3.
+    - Fix processing of ownership dependencies during CREATE OR REPLACE
+      FUNCTION.
+    - Fix incorrect handling of WHERE "x"="x" conditions.
+      In some cases these could get ignored as redundant, but they aren't
+      -- they're equivalent to "x" IS NOT NULL.
+    - Fix incorrect plan construction when using hash aggregation to
+      implement DISTINCT for textually identical volatile expressions
+    - Fix Assert failure for a volatile SELECT DISTINCT ON expression
+    - Fix ts_stat() to not fail on an empty tsvector value
+    - Make text search parser accept underscores in XML attributes
+    - Fix encoding handling in xml binary input.
+      If the XML header doesn't specify an encoding, we now assume UTF-8
+      by default; the previous handling was inconsistent.
+    - Fix bug with calling plperl from plperlu or vice versa.
+    - Fix session-lifespan memory leak when a PL/Perl function is
+      redefined.
+    - Ensure that Perl arrays are properly converted to PostgreSQL arrays
+      when returned by a set-returning PL/Perl function.
+    - Fix rare crash in exception processing in PL/Python.
+    - Fix ecpg problem with comments in DECLARE CURSOR statements
+    - Fix ecpg to not treat recently-added keywords as reserved words
+      This affected the keywords CALLED, CATALOG, DEFINER, ENUM,
+      FOLLOWING, INVOKER, OPTIONS, PARTITION, PRECEDING, RANGE, SECURITY,
+      SERVER, UNBOUNDED, and WRAPPER.
+    - Re-allow regular expression special characters in psql's \df
+      function name parameter.
+    - Put FREEZE and VERBOSE options in the right order in the VACUUM
+      command that "contrib/vacuumdb" produces.
+    - Fix possible leak of connections when "contrib/dblink" encounters
+      an error
+    - Make the postmaster ignore any application_name parameter in
+      connection request packets, to improve compatibility with future
+      libpq versions.
   * debian/control: libreadline5-dev → libreadline-dev. (Closes: #553831)
   * Add 03-sh-architecture.patch: Support Renesas' SuperH architecture, thanks
     Nobuhiro Iwamatsu! (Closes: #548847)
