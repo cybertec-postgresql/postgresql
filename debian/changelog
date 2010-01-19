@@ -4,6 +4,10 @@ postgresql-8.4 (8.4.2-2) UNRELEASED; urgency=low
   * Add 04-armel-tas.patch: Fix ftbfs on armel: Use gcc intrinsics rather
     than assembler to implement tas (test and set). (LP: #497331)
 
+  [ Martin Pitt ]
+  * Drop 15-dict-fallback-dir.patch: p-common 104 now directly creates the
+    names tsearch is looking for. Bump p-common dependency accordingly.
+
  -- Martin Pitt <mpitt@debian.org>  Mon, 04 Jan 2010 14:25:11 +0100
 
 postgresql-8.4 (8.4.2-1) unstable; urgency=medium
