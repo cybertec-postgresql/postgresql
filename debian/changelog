@@ -1,5 +1,119 @@
-postgresql-8.4 (8.4.2-3) UNRELEASED; urgency=low
+postgresql-8.4 (8.4.3-1) UNRELEASED; urgency=low
 
+  * New upstream bug fix release:
+    - Add new configuration parameter ssl_renegotiation_limit to control
+      how often we do session key renegotiation for an SSL connection.
+      This can be set to zero to disable renegotiation completely, which
+      may be required if a broken SSL library is used. In particular,
+      some vendors are shipping stopgap patches for CVE-2009-3555 that
+      cause renegotiation attempts to fail.
+    - Fix possible deadlock during backend startup.
+    - Fix possible crashes due to not handling errors during relcache
+      reload cleanly.
+    - Fix possible crash due to use of dangling pointer to a cached plan.
+    - Fix possible crash due to overenthusiastic invalidation of cached
+      plan for "ROLLBACK".
+    - Fix possible crashes when trying to recover from a failure in
+      subtransaction start.
+    - Fix server memory leak associated with use of savepoints and a
+      client encoding different from server's encoding.
+    - Fix incorrect WAL data emitted during end-of-recovery cleanup of a
+      GIST index page split.
+    - Fix bug in WAL redo cleanup method for GIN indexes.
+    - Fix incorrect comparison of scan key in GIN index search.
+    - Make substring() for bit types treat any negative length as meaning
+      "all the rest of the string". The previous coding treated only -1 that
+      way, and would produce an invalid result value for other negative
+      values, possibly leading to a crash (CVE-2010-0442).
+    - Fix integer-to-bit-string conversions to handle the first
+      fractional byte correctly when the output bit width is wider than
+      the given integer by something other than a multiple of 8 bits.
+    - Fix some cases of pathologically slow regular expression matching.
+    - Fix bug occurring when trying to inline a SQL function that returns
+      a set of a composite type that contains dropped columns.
+    - Fix bug with trying to update a field of an element of a
+      composite-type array column.
+    - Avoid failure when "EXPLAIN" has to print a FieldStore or
+      assignment ArrayRef expression.
+      These cases can arise now that "EXPLAIN VERBOSE" tries to print
+      plan node target lists.
+    - Avoid an unnecessary coercion failure in some cases where an
+      undecorated literal string appears in a subquery within
+      "UNION"/"INTERSECT"/"EXCEPT".
+      This fixes a regression for some cases that worked before 8.4.
+    - Avoid undesirable rowtype compatibility check failures in some
+      cases where a whole-row Var has a rowtype that contains dropped
+      columns.
+    - Fix the STOP WAL LOCATION entry in backup history files to report
+      the next WAL segment's name when the end location is exactly at a
+      segment boundary.
+    - Always pass the catalog ID to an option validator function
+      specified in "CREATE FOREIGN DATA WRAPPER".
+    - Fix some more cases of temporary-file leakage.
+      This corrects a problem introduced in the previous minor release.
+      One case that failed is when a plpgsql function returning set is
+      called within another function's exception handler.
+    - Add support for doing FULL JOIN ON FALSE.
+      This prevents a regression from pre-8.4 releases for some queries
+      that can now be simplified to a constant-false join condition.
+    - Improve constraint exclusion processing of boolean-variable cases,
+      in particular make it possible to exclude a partition that has a
+      "bool_column = false" constraint.
+    - Prevent treating an INOUT cast as representing binary compatibility.
+    - Include column name in the message when warning about inability to
+      grant or revoke column-level privileges.
+      This is more useful than before and helps to prevent confusion when
+      a "REVOKE" generates multiple messages, which formerly appeared to
+      be duplicates.
+    - When reading "pg_hba.conf" and related files, do not treat
+      @something as a file inclusion request if the @ appears inside
+      quote marks; also, never treat @ by itself as a file inclusion
+      request.
+      This prevents erratic behavior if a role or database name starts
+      with @. If you need to include a file whose path name contains
+      spaces, you can still do so, but you must write @"/path to/file"
+      rather than putting the quotes around the whole construct.
+    - Prevent infinite loop on some platforms if a directory is named as
+      an inclusion target in "pg_hba.conf" and related files.
+    - Fix possible infinite loop if SSL_read or SSL_write fails without
+      setting errno.
+      This is reportedly possible with some Windows versions of openssl.
+    - Disallow GSSAPI authentication on local connections, since it
+      requires a hostname to function correctly.
+    - Protect ecpg against applications freeing strings unexpectedly.
+    - Make ecpg report the proper SQLSTATE if the connection disappears.
+    - Fix translation of cell contents in psql \d output.
+    - Fix psql's numericlocale option to not format strings it shouldn't
+      in latex and troff output formats.
+    - Fix a small per-query memory leak in psql.
+    - Make psql return the correct exit status (3) when ON_ERROR_STOP and
+      --single-transaction are both specified and an error occurs during
+      the implied "COMMIT".
+    - Fix pg_dump's output of permissions for foreign servers.
+    - Fix possible crash in parallel pg_restore due to out-of-range
+      dependency IDs.
+    - Fix plpgsql failure in one case where a composite column is set to
+      NULL.
+    - Fix possible failure when calling PL/Perl functions from PL/PerlU
+      or vice versa.
+    - Add volatile markings in PL/Python to avoid possible
+      compiler-specific misbehavior>
+    - Ensure PL/Tcl initializes the Tcl interpreter.
+      The only known symptom of this oversight is that the Tcl clock
+      command misbehaves if using Tcl 8.5 or later.
+    - Prevent ExecutorEnd from being run on portals created within a
+      failed transaction or subtransaction.
+      This is known to cause issues when using "contrib/auto_explain".
+    - Prevent crash in "contrib/dblink" when too many key columns are
+      specified to a dblink_build_sql_- function.
+    - Allow zero-dimensional arrays in "contrib/ltree" operations.
+      This case was formerly rejected as an error, but it's more
+      convenient to treat it the same as a zero-element array. In
+      particular this avoids unnecessary failures when an ltree operation
+      is applied to the result of ARRAY(SELECT ...) and the sub-select
+      returns no rows.
+    - Fix assorted crashes in "contrib/xml2" caused by sloppy memory
+      management.
   * Rebuild against libossp-uuid16. (Closes: #570108, LP: #538284)
 
  -- Martin Pitt <mpitt@debian.org>  Fri, 19 Feb 2010 23:49:33 +0100
