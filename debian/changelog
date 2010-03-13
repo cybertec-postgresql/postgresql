@@ -1,6 +1,6 @@
 postgresql-8.4 (8.4.2-3) UNRELEASED; urgency=low
 
-  * Rebuild against libossp-uuid16. (Closes: #570108)
+  * Rebuild against libossp-uuid16. (Closes: #570108, LP: #538284)
 
  -- Martin Pitt <mpitt@debian.org>  Fri, 19 Feb 2010 23:49:33 +0100
 
