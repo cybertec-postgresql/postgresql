@@ -1,3 +1,12 @@
+postgresql-9.0 (9.0~alpha4-0.1) UNRELEASED; urgency=low
+
+  * New upstream alpha release.
+    - Adjusted 11-pg_regress-socketpath.patch
+  * debian/rules: Use make world/install-world targets, obsoletes
+    01-build-contrib.patch.
+
+ -- Peter Eisentraut <petere@debian.org>  Sat, 27 Mar 2010 22:27:29 +0200
+
 postgresql-8.5 (8.5~alpha2-0.1) UNRELEASED; urgency=low
 
   * New upstream alpha release.

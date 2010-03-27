@@ -1,0 +1,4 @@
+usr/lib/postgresql/9.0/lib/pltcl.so
+usr/lib/postgresql/9.0/bin/pltcl_*
+usr/share/postgresql/9.0/unknown.pltcl
+/usr/share/locale/*/*/pltcl-*.mo

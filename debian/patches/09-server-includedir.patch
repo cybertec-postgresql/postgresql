@@ -6,7 +6,7 @@ diff -ruN postgresql-8.2.0-old/src/Makefile.global.in postgresql-8.2.0/src/Makef
  # These derived path variables aren't separately configurable.
  
 -includedir_server = $(pkgincludedir)/server
-+includedir_server = $(pkgincludedir)/8.5/server
++includedir_server = $(pkgincludedir)/9.0/server
  includedir_internal = $(pkgincludedir)/internal
  pgxsdir = $(pkglibdir)/pgxs
  

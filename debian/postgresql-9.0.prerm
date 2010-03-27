@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-VERSION=8.5
+VERSION=9.0
 
 #DEBHELPER#
 
