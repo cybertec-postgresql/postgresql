@@ -1,7 +1,7 @@
-postgresql-9.0 (9.0~alpha4-0.1) UNRELEASED; urgency=low
+postgresql-9.0 (9.0~alpha5-0.1) UNRELEASED; urgency=low
 
   [ Peter Eisentraut ]
-  * New upstream alpha release. Packaging branched from 8.4 packaging trunk, 
+  * New upstream alpha 4 release. Packaging branched from 8.4 packaging trunk, 
     but don't build default packages from this one.
     - Adjusted 11-pg_regress-socketpath.patch
     - Obsoletes 03-sh-architecture.patch
@@ -11,6 +11,7 @@ postgresql-9.0 (9.0~alpha4-0.1) UNRELEASED; urgency=low
   * debian/watch: Adjusted for alpha releases.
 
   [ Martin Pitt ]
+  * Update to upstream alpha 5 release.
   * debian/postgresql-9.0.postinst: Drop obsolete init script migration code.
 
  -- Peter Eisentraut <petere@debian.org>  Sun, 28 Mar 2010 00:23:13 +0200
