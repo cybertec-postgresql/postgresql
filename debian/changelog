@@ -20,6 +20,8 @@ postgresql-9.0 (9.0~alpha5-0.1) UNRELEASED; urgency=low
     calls. While most of them are harmless, they lead to a build failure with
     -Werror (which is enabled by default in alpha releases). The one in
     fe-connect.c fixes a real potential crasher, though.
+  * 14-pg_config-paths.patch: Drop now unused "ret" variable (fix FTBFS with
+    -Werror). Add a DEP3 compatible header.
 
  -- Peter Eisentraut <petere@debian.org>  Sun, 28 Mar 2010 00:23:13 +0200
 
