@@ -1,29 +1,16 @@
 postgresql-9.0 (9.0~alpha4-0.1) UNRELEASED; urgency=low
 
-  * New upstream alpha release.
+  [ Peter Eisentraut ]
+  * New upstream alpha release. Packaging branched from 8.4 packaging trunk, 
+    but don't build default packages from this one.
     - Adjusted 11-pg_regress-socketpath.patch
+    - Obsoletes 03-sh-architecture.patch
+  * Dropped obsolete documentation build.
   * debian/rules: Use make world/install-world targets, obsoletes
     01-build-contrib.patch.
   * debian/watch: Adjusted for alpha releases.
 
  -- Peter Eisentraut <petere@debian.org>  Sun, 28 Mar 2010 00:23:13 +0200
-
-postgresql-8.5 (8.5~alpha2-0.1) UNRELEASED; urgency=low
-
-  * New upstream alpha release.
-    - Adjusted 11-pg_regress-socketpath.patch
-    - Obsoletes: 03-sh-architecture.patch
-
- -- Peter Eisentraut <petere@debian.org>  Thu, 05 Nov 2009 22:58:19 +0200
-
-postgresql-8.5 (8.5~alpha1-0.1) UNRELEASED; urgency=low
-
-  * New upstream alpha release. Packaging branched from 8.4 packaging trunk, 
-    but don't build default packages from this one.
-  * Temporarily different maintainer.
-  * Dropped obsolete documentation build.
-
- -- Peter Eisentraut <petere@debian.org>  Thu, 03 Sep 2009 22:46:16 +0300
 
 postgresql-8.4 (8.4.3-1) unstable; urgency=low
 
