@@ -22,6 +22,8 @@ postgresql-9.0 (9.0~alpha5-0.1) UNRELEASED; urgency=low
     fe-connect.c fixes a real potential crasher, though.
   * 14-pg_config-paths.patch: Drop now unused "ret" variable (fix FTBFS with
     -Werror). Add a DEP3 compatible header.
+  * debian/control: Bump p-common dependency to >= 107~ to ensure support for
+    9.0.
 
  -- Peter Eisentraut <petere@debian.org>  Sun, 28 Mar 2010 00:23:13 +0200
 
