@@ -16,6 +16,10 @@ postgresql-9.0 (9.0~alpha5-0.1) UNRELEASED; urgency=low
   * 07-relax-sslkey-permscheck.patch: Add parentheses around || .. &&
     construct to avoid a compiler warning (which turns into an error due to
     -Werror in alpha builds). Also add a DEP3 compatible header.
+  * Add 01-fix-unchecked-results.patch: Check results from fgets() and write()
+    calls. While most of them are harmless, they lead to a build failure with
+    -Werror (which is enabled by default in alpha releases). The one in
+    fe-connect.c fixes a real potential crasher, though.
 
  -- Peter Eisentraut <petere@debian.org>  Sun, 28 Mar 2010 00:23:13 +0200
 
