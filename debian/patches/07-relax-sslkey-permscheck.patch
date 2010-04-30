@@ -1,4 +1,8 @@
-diff -Nur -x '*.orig' -x '*~' postgresql-8.4-8.4~rc1/src/backend/libpq/be-secure.c postgresql-8.4-8.4~rc1.new/src/backend/libpq/be-secure.c
+Description: Relax security check on private SSL key file: The file is also considered safe if it has owner and/or group "root", and if it is group-readable (unless the group is something other than root or the database owner group).
+Author: Martin Pitt <mpitt@debian.org>
+Forwarded: Yes, but rejected upstream
+Bug-Debian: http://bugs.debian.org/327901
+
 --- postgresql-8.4-8.4~rc1/src/backend/libpq/be-secure.c	2009-06-11 16:48:58.000000000 +0200
 +++ postgresql-8.4-8.4~rc1.new/src/backend/libpq/be-secure.c	2009-06-22 07:49:45.873269466 +0200
 @@ -751,12 +751,15 @@
@@ -7,7 +11,7 @@ diff -Nur -x '*.orig' -x '*~' postgresql-8.4-8.4~rc1/src/backend/libpq/be-secure
  #if !defined(WIN32) && !defined(__CYGWIN__)
 -		if (!S_ISREG(buf.st_mode) || buf.st_mode & (S_IRWXG | S_IRWXO))
 +		if (!S_ISREG(buf.st_mode) || (buf.st_mode & (S_IWGRP | S_IRWXO)) ||
-+			(buf.st_uid != geteuid()) && buf.st_uid != 0)
++			((buf.st_uid != geteuid()) && buf.st_uid != 0))
  			ereport(FATAL,
  					(errcode(ERRCODE_CONFIG_FILE_ERROR),
  				  errmsg("private key file \"%s\" has group or world access",
