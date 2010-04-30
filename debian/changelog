@@ -1,4 +1,4 @@
-postgresql-9.0 (9.0~alpha5-0.1) UNRELEASED; urgency=low
+postgresql-9.0 (9.0~beta1-0.1) UNRELEASED; urgency=low
 
   [ Peter Eisentraut ]
   * New upstream alpha 4 release. Packaging branched from 8.4 packaging trunk, 
@@ -11,7 +11,7 @@ postgresql-9.0 (9.0~alpha5-0.1) UNRELEASED; urgency=low
   * debian/watch: Adjusted for alpha releases.
 
   [ Martin Pitt ]
-  * Update to upstream alpha 5 release.
+  * Update to upstream beta 1 release.
   * debian/postgresql-9.0.postinst: Drop obsolete init script migration code.
   * 07-relax-sslkey-permscheck.patch: Add parentheses around || .. &&
     construct to avoid a compiler warning (which turns into an error due to
