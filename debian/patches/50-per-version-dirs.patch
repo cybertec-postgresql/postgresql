@@ -1,0 +1,72 @@
+Author: Martin Pitt <mpitt@debian.org>
+Description: Use version specific installation directories so that several major versions can be installed in parallel.
+Forwarded: No, Debian specific packaging with postgresql-common
+
+ * Install lib files into /usr/lib/postgresql/<version>/lib/
+ * Install server related header files into /usr/include/postgresql/<version>/server/
+ * Disable PostgreSQL's automagic path mangling and fix libdir for pg_config,
+   so that pg_config in /usr/bin and /usr/lib/postgresql/<version>/bin behave
+   identically.
+
+Bug-Debian: http://bugs.debian.org/462037
+
+Index: postgresql-9.0-9.0~beta1/src/Makefile.global.in
+===================================================================
+--- postgresql-9.0-9.0~beta1.orig/src/Makefile.global.in	2010-03-24 14:14:02.000000000 +0100
++++ postgresql-9.0-9.0~beta1/src/Makefile.global.in	2010-05-01 15:01:33.224729892 +0200
+@@ -90,7 +90,7 @@
+ pkglibdir = $(libdir)
+ ifeq "$(findstring pgsql, $(pkglibdir))" ""
+ ifeq "$(findstring postgres, $(pkglibdir))" ""
+-override pkglibdir := $(pkglibdir)/postgresql
++override pkglibdir := $(pkglibdir)/postgresql/9.0/lib
+ endif
+ endif
+ 
+Index: postgresql-9.0-9.0~beta1/src/Makefile.global.in
+===================================================================
+--- postgresql-9.0-9.0~beta1.orig/src/Makefile.global.in	2010-05-01 15:01:33.224729892 +0200
++++ postgresql-9.0-9.0~beta1/src/Makefile.global.in	2010-05-01 15:01:38.794731708 +0200
+@@ -138,7 +138,7 @@
+ 
+ # These derived path variables aren't separately configurable.
+ 
+-includedir_server = $(pkgincludedir)/server
++includedir_server = $(pkgincludedir)/9.0/server
+ includedir_internal = $(pkgincludedir)/internal
+ pgxsdir = $(pkglibdir)/pgxs
+ 
+--- postgresql-9.0-9.0~alpha5/src/bin/pg_config/pg_config.c	2010-01-02 17:57:58.000000000 +0100
++++ postgresql-9.0-9.0~alpha5.new/src/bin/pg_config/pg_config.c	2010-04-30 12:57:42.726134778 +0200
+@@ -26,6 +26,8 @@
+ 
+ #include "port.h"
+ 
++#include "../port/pg_config_paths.h"
++
+ static const char *progname;
+ static char mypath[MAXPGPATH];
+ 
+@@ -463,7 +465,6 @@
+ {
+ 	int			i;
+ 	int			j;
+-	int			ret;
+ 
+ 	set_pglocale_pgservice(argv[0], PG_TEXTDOMAIN("pg_config"));
+ 
+@@ -479,13 +480,7 @@
+ 		}
+ 	}
+ 
+-	ret = find_my_exec(argv[0], mypath);
+-
+-	if (ret)
+-	{
+-		fprintf(stderr, _("%s: could not find own program executable\n"), progname);
+-		exit(1);
+-	}
++	snprintf(mypath, sizeof(mypath), "%s/%s", PGBINDIR, progname);
+ 
+ 	/* no arguments -> print everything */
+ 	if (argc < 2)
