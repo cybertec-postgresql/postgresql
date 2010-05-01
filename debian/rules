@@ -2,7 +2,6 @@
 TCL_VER := 8.5
 MAJOR_VER := 9.0
 
-include /usr/share/cdbs/1/rules/simple-patchsys.mk
 include /usr/share/cdbs/1/class/autotools.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
 

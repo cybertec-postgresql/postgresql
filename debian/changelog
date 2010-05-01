@@ -20,5 +20,6 @@ postgresql-9.0 (9.0~beta1-0.1) UNRELEASED; urgency=low
   * debian/control: Bump p-common dependency to >= 107~ to ensure support for
     9.0.
   * debian/disable-root-check.patch: Refresh to apply cleanly.
+  * Convert source package to "3.0 (quilt)" format.
 
  -- Peter Eisentraut <petere@debian.org>  Sun, 28 Mar 2010 00:23:13 +0200

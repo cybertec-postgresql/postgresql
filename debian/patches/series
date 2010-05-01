@@ -1,0 +1,11 @@
+02-pager.patch
+04-armel-tas.patch
+06-libpq-defaultsocketdir.patch
+07-relax-sslkey-permscheck.patch
+08-pkglibdir.patch
+09-server-includedir.patch
+10-tutorial-README.patch
+11-pg_regress-socketpath.patch
+12-psql-sensible-editor.patch
+13-pg_service.conf_directory_doc.patch
+14-pg_config-paths.patch
