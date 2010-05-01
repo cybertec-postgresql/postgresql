@@ -27,5 +27,7 @@ postgresql-9.0 (9.0~beta1-0.1) UNRELEASED; urgency=low
   * Merge 08-pkglibdir.patch, 09-server-includedir.patch, and
     14-pg_config-paths.patch into 50-per-version-dirs.patch, since they really
     belong together.
+  * Merge 06-libpq-defaultsocketdir.patch and 11-pg_regress-socketpath.patch
+    into 51-default-sockets-in-var.patch, they really belong together.
 
  -- Peter Eisentraut <petere@debian.org>  Sun, 28 Mar 2010 00:23:13 +0200
