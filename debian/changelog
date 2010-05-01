@@ -32,5 +32,7 @@ postgresql-9.0 (9.0~beta1-0.1) UNRELEASED; urgency=low
   * Re-enumerate 10-tutorial-README.patch and
     13-pg_service.conf_directory_doc.patch to 5x-*, since they are Debian
     specific.
+  * Merge 02-pager.patch and 12-psql-sensible-editor.patch into
+    54-debian-alternatives-for-external-tools.patch.
 
  -- Peter Eisentraut <petere@debian.org>  Sun, 28 Mar 2010 00:23:13 +0200
