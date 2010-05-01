@@ -1,3 +1,7 @@
+Author: Martin Pitt <mpitt@debian.org>
+Description: Install server related header files into /usr/include/postgresql/<version>/server/, so that several major versions can be installed in parallel.
+Forwarded: No, Debian specific configuration with postgresql-common
+
 Index: postgresql-9.0-9.0~beta1/src/Makefile.global.in
 ===================================================================
 --- postgresql-9.0-9.0~beta1.orig/src/Makefile.global.in	2010-05-01 15:01:33.224729892 +0200

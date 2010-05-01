@@ -1,3 +1,7 @@
+Author: Martin Pitt <mpitt@debian.org>
+Description: Use sensible-editor alternative instead of hardcoding "vi".
+Forwarded: No, Debian specific
+
 --- postgresql-8.3beta3/src/bin/psql/settings.h	2007-01-05 23:19:49.000000000 +0100
 +++ postgresql-8.3beta3/src/bin/psql/settings.h	2007-11-21 17:10:38.000000000 +0100
 @@ -19,7 +19,7 @@
