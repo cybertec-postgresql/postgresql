@@ -34,5 +34,6 @@ postgresql-9.0 (9.0~beta1-0.1) UNRELEASED; urgency=low
     specific.
   * Merge 02-pager.patch and 12-psql-sensible-editor.patch into
     54-debian-alternatives-for-external-tools.patch.
+  * Re-enumerate remaining patches.
 
  -- Peter Eisentraut <petere@debian.org>  Sun, 28 Mar 2010 00:23:13 +0200
