@@ -1,6 +1,7 @@
-diff -Nur -x '*.orig' -x '*~' postgresql-9.0-9.0~alpha4//src/test/regress/pg_regress.c postgresql-9.0-9.0~alpha4.new//src/test/regress/pg_regress.c
---- postgresql-9.0-9.0~alpha4//src/test/regress/pg_regress.c	2010-01-02 18:58:15.000000000 +0200
-+++ postgresql-9.0-9.0~alpha4.new//src/test/regress/pg_regress.c	2010-03-27 22:59:11.000000000 +0200
+Index: postgresql-9.0-9.0~beta1/src/test/regress/pg_regress.c
+===================================================================
+--- postgresql-9.0-9.0~beta1.orig/src/test/regress/pg_regress.c	2010-02-26 03:01:39.000000000 +0100
++++ postgresql-9.0-9.0~beta1/src/test/regress/pg_regress.c	2010-05-01 15:01:47.244728844 +0200
 @@ -899,7 +899,7 @@
  
  	/* And now we can build and execute the shell command */
@@ -10,7 +11,7 @@ diff -Nur -x '*.orig' -x '*~' postgresql-9.0-9.0~alpha4//src/test/regress/pg_reg
  			 psqldir ? psqldir : "",
  			 psqldir ? "/" : "",
  			 query_escaped,
-@@ -2153,7 +2153,7 @@
+@@ -2154,7 +2154,7 @@
  		 * Check if there is a postmaster running already.
  		 */
  		snprintf(buf2, sizeof(buf2),
@@ -19,7 +20,7 @@ diff -Nur -x '*.orig' -x '*~' postgresql-9.0-9.0~alpha4//src/test/regress/pg_reg
  				 bindir, DEVNULL, DEVNULL);
  
  		for (i = 0; i < 16; i++)
-@@ -2185,7 +2185,7 @@
+@@ -2186,7 +2186,7 @@
  		 */
  		header(_("starting postmaster"));
  		snprintf(buf, sizeof(buf),
@@ -28,9 +29,10 @@ diff -Nur -x '*.orig' -x '*~' postgresql-9.0-9.0~alpha4//src/test/regress/pg_reg
  				 bindir, temp_install,
  				 debug ? " -d 5" : "",
  				 hostname ? hostname : "",
-diff -Nur -x '*.orig' -x '*~' postgresql-9.0-9.0~alpha4//src/test/regress/pg_regress_main.c postgresql-9.0-9.0~alpha4.new//src/test/regress/pg_regress_main.c
---- postgresql-9.0-9.0~alpha4//src/test/regress/pg_regress_main.c	2010-01-02 18:58:16.000000000 +0200
-+++ postgresql-9.0-9.0~alpha4.new//src/test/regress/pg_regress_main.c	2010-03-27 23:00:57.000000000 +0200
+Index: postgresql-9.0-9.0~beta1/src/test/regress/pg_regress_main.c
+===================================================================
+--- postgresql-9.0-9.0~beta1.orig/src/test/regress/pg_regress_main.c	2010-01-02 17:58:16.000000000 +0100
++++ postgresql-9.0-9.0~beta1/src/test/regress/pg_regress_main.c	2010-05-01 15:01:47.244728844 +0200
 @@ -59,7 +59,7 @@
  	add_stringlist_item(expectfiles, expectfile);
  

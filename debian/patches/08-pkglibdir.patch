@@ -1,7 +1,8 @@
-diff -ruN postgresql-8.2beta4-old/src/Makefile.global.in postgresql-8.2beta4/src/Makefile.global.in
---- postgresql-8.2beta4-old/src/Makefile.global.in	2005-09-27 18:39:32.000000000 +0100
-+++ postgresql-8.2beta4/src/Makefile.global.in	2005-10-26 20:40:52.000000000 +0100
-@@ -89,7 +89,7 @@
+Index: postgresql-9.0-9.0~beta1/src/Makefile.global.in
+===================================================================
+--- postgresql-9.0-9.0~beta1.orig/src/Makefile.global.in	2010-03-24 14:14:02.000000000 +0100
++++ postgresql-9.0-9.0~beta1/src/Makefile.global.in	2010-05-01 15:01:33.224729892 +0200
+@@ -90,7 +90,7 @@
  pkglibdir = $(libdir)
  ifeq "$(findstring pgsql, $(pkglibdir))" ""
  ifeq "$(findstring postgres, $(pkglibdir))" ""

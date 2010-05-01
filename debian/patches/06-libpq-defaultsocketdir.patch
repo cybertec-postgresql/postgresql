@@ -1,7 +1,8 @@
-diff -ruN postgresql-8.2.3-old/src/include/pg_config_manual.h postgresql-8.2.3/src/include/pg_config_manual.h
---- postgresql-8.2.3-old/src/include/pg_config_manual.h	2004-09-10 16:27:37.000000000 +0200
-+++ postgresql-8.2.3/src/include/pg_config_manual.h	2005-06-14 19:21:28.200000000 +0200
-@@ -160,7 +160,7 @@
+Index: postgresql-9.0-9.0~beta1/src/include/pg_config_manual.h
+===================================================================
+--- postgresql-9.0-9.0~beta1.orig/src/include/pg_config_manual.h	2010-01-07 05:53:35.000000000 +0100
++++ postgresql-9.0-9.0~beta1/src/include/pg_config_manual.h	2010-05-01 15:01:17.697230346 +0200
+@@ -141,7 +141,7 @@
   * here's where to twiddle it.  You can also override this at runtime
   * with the postmaster's -k switch.
   */

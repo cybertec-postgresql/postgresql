@@ -3,9 +3,11 @@ Author: Martin Pitt <mpitt@debian.org>
 Forwarded: Yes, but rejected upstream
 Bug-Debian: http://bugs.debian.org/327901
 
---- postgresql-8.4-8.4~rc1/src/backend/libpq/be-secure.c	2009-06-11 16:48:58.000000000 +0200
-+++ postgresql-8.4-8.4~rc1.new/src/backend/libpq/be-secure.c	2009-06-22 07:49:45.873269466 +0200
-@@ -751,12 +751,15 @@
+Index: postgresql-9.0-9.0~beta1/src/backend/libpq/be-secure.c
+===================================================================
+--- postgresql-9.0-9.0~beta1.orig/src/backend/libpq/be-secure.c	2010-02-26 03:00:42.000000000 +0100
++++ postgresql-9.0-9.0~beta1/src/backend/libpq/be-secure.c	2010-05-01 15:01:22.497230485 +0200
+@@ -760,12 +760,15 @@
  		 * directory permission check in postmaster.c)
  		 */
  #if !defined(WIN32) && !defined(__CYGWIN__)

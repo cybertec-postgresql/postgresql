@@ -1,8 +1,9 @@
-diff -Nur postgresql-8.2/build-tree/postgresql-8.2beta1/src/bin/psql/print.h postgresql-8.2.new/build-tree/postgresql-8.2beta1/src/bin/psql/print.h
---- postgresql-8.2beta1/src/bin/psql/print.h	2006-08-30 00:25:07.000000000 +0200
-+++ postgresql-8.2beta1/src/bin/psql/print.h	2006-09-25 19:18:54.000000000 +0200
-@@ -89,7 +89,7 @@
- void		setDecimalLocale(void);
+Index: postgresql-9.0-9.0~beta1/src/bin/psql/print.h
+===================================================================
+--- postgresql-9.0-9.0~beta1.orig/src/bin/psql/print.h	2010-03-01 21:55:45.000000000 +0100
++++ postgresql-9.0-9.0~beta1/src/bin/psql/print.h	2010-05-01 15:01:10.477226993 +0200
+@@ -172,7 +172,7 @@
+ extern const printTextFormat *get_line_style(const printTableOpt *opt);
  
  #ifndef __CYGWIN__
 -#define DEFAULT_PAGER "more"

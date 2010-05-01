@@ -1,7 +1,8 @@
-diff -ruN postgresql-8.2.3-old/src/tutorial/README postgresql-8.2.3/src/tutorial/README
---- postgresql-8.2.3-old/src/tutorial/README	2001-10-26 22:45:33.000000000 +0200
-+++ postgresql-8.2.3/src/tutorial/README	2006-04-10 22:17:29.000000000 +0200
-@@ -1,8 +1,7 @@
+Index: postgresql-9.0-9.0~beta1/src/tutorial/README
+===================================================================
+--- postgresql-9.0-9.0~beta1.orig/src/tutorial/README	2008-03-21 14:23:29.000000000 +0100
++++ postgresql-9.0-9.0~beta1/src/tutorial/README	2010-05-01 15:01:42.747229787 +0200
+@@ -6,8 +6,7 @@
  This directory contains SQL tutorial scripts.  To look at them, first do a
  	% make
  to compile all the scripts and C files for the user-defined functions
