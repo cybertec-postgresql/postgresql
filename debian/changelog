@@ -1,4 +1,4 @@
-postgresql-9.0 (9.0~beta1-0.1) UNRELEASED; urgency=low
+postgresql-9.0 (9.0~beta1-1) experimental; urgency=low
 
   [ Peter Eisentraut ]
   * Create 9.0 package based on 8.4 packaging trunk. Don't build versionless
@@ -36,4 +36,4 @@ postgresql-9.0 (9.0~beta1-0.1) UNRELEASED; urgency=low
     54-debian-alternatives-for-external-tools.patch.
   * Re-enumerate remaining patches.
 
- -- Peter Eisentraut <petere@debian.org>  Sun, 28 Mar 2010 00:23:13 +0200
+ -- Martin Pitt <mpitt@debian.org>  Mon, 03 May 2010 07:45:23 +0200
