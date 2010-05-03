@@ -1,7 +1,8 @@
 Source: postgresql-9.0
 Section: database
 Priority: optional
-Maintainer: Peter Eisentraut <petere@debian.org>
+Maintainer: Martin Pitt <mpitt@debian.org>
+Uploaders: Peter Eisentraut <petere@debian.org>
 Standards-Version: 3.8.4
 XS-Python-Version: current
 Build-Depends: debhelper (>= 5.0.37.2), cdbs (>= 0.4.43), perl (>= 5.8),
