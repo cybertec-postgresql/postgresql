@@ -2,6 +2,7 @@ usr/lib/postgresql/9.0/bin/initdb
 usr/lib/postgresql/9.0/bin/pg_controldata
 usr/lib/postgresql/9.0/bin/pg_ctl
 usr/lib/postgresql/9.0/bin/pg_resetxlog
+usr/lib/postgresql/9.0/bin/pg_upgrade
 usr/lib/postgresql/9.0/bin/postgres
 usr/lib/postgresql/9.0/bin/postmaster
 usr/lib/postgresql/9.0/lib/*_and_*.so
@@ -9,6 +10,7 @@ usr/lib/postgresql/9.0/lib/euc2004_sjis2004.so
 usr/lib/postgresql/9.0/lib/libpqwalreceiver.so
 usr/lib/postgresql/9.0/lib/plpgsql.so
 usr/lib/postgresql/9.0/lib/dict_snowball.so
+usr/lib/postgresql/9.0/lib/pg_upgrade_support.so
 usr/lib/postgresql/9.0/lib/tsearch2.so
 usr/share/locale/*/LC_MESSAGES/initdb-9.0.mo
 usr/share/locale/*/LC_MESSAGES/pg_controldata-9.0.mo
