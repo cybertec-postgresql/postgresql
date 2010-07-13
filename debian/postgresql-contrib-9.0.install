@@ -1,5 +1,6 @@
 usr/share/doc/postgresql/contrib/* usr/share/doc/postgresql-contrib-9.0
 usr/share/postgresql/9.0/contrib/*
+usr/lib/postgresql/9.0/bin/pg_archivecleanup
 usr/lib/postgresql/9.0/bin/oid2name
 usr/lib/postgresql/9.0/bin/pgbench
 usr/lib/postgresql/9.0/bin/vacuumlo
