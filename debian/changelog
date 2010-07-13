@@ -1,9 +1,9 @@
-postgresql-9.0 (9.0~beta3-1) UNRELEASED; urgency=low
+postgresql-9.0 (9.0~beta3-1) experimental; urgency=low
 
   * New upstream beta release.
   * debian/postgresql-contrib-9.0.install: Add the new pg_archivecleanup.
 
- -- Martin Pitt <mpitt@debian.org>  Tue, 13 Jul 2010 08:08:19 +0200
+ -- Martin Pitt <mpitt@debian.org>  Tue, 13 Jul 2010 10:09:02 +0200
 
 postgresql-9.0 (9.0~beta2-1) experimental; urgency=low
 
