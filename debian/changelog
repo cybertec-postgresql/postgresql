@@ -1,4 +1,4 @@
-postgresql-9.0 (9.0~beta3-2) UNRELEASED; urgency=low
+postgresql-9.0 (9.0~beta3-2) experimental; urgency=low
 
   * Migrate to a common init script for all server versions, to avoid
     providing the "postgresql" service in multiple packages (which causes
@@ -11,7 +11,7 @@ postgresql-9.0 (9.0~beta3-2) UNRELEASED; urgency=low
     - debian/rules: Drop dh_installinit arguments.
     - (Closes: #589523)
 
- -- Martin Pitt <mpitt@debian.org>  Mon, 19 Jul 2010 23:30:47 +0200
+ -- Martin Pitt <mpitt@debian.org>  Mon, 19 Jul 2010 23:34:13 +0200
 
 postgresql-9.0 (9.0~beta3-1) experimental; urgency=low
 
