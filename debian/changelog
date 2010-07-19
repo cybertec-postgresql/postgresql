@@ -1,3 +1,18 @@
+postgresql-9.0 (9.0~beta3-2) UNRELEASED; urgency=low
+
+  * Migrate to a common init script for all server versions, to avoid
+    providing the "postgresql" service in multiple packages (which causes
+    insserv to complain bitterly):
+    - Drop debian/postgresql-9.0.init.
+    - debian/control: Bump dependency to postgresql-common to ensure we have a
+      common /etc/init.d/postgresql init script.
+    - debian/postgresql-9.0.preinst: Remove/rename our init script on upgrade.	
+    - debian/postgresql-9.0.prerm: Call stop_version on upgrade/removal.
+    - debian/rules: Drop dh_installinit arguments.
+    - (Closes: #589523)
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 19 Jul 2010 23:30:47 +0200
+
 postgresql-9.0 (9.0~beta3-1) experimental; urgency=low
 
   * New upstream beta release.

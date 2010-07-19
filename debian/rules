@@ -58,7 +58,6 @@ DEB_MAKE_INSTALL_TARGET := $(patsubst install,install-world,$(DEB_MAKE_INSTALL_T
 DEB_DH_MAKESHLIBS_ARGS := -Xusr/lib/postgresql/$(MAJOR_VER)
 DEB_DH_INSTALLCHANGELOGS_ARGS := HISTORY
 DEB_COMPRESS_EXCLUDE := .source .c
-DEB_DH_INSTALLINIT_ARGS := -u'defaults 19 21'
 
 common-binary-predeb-arch::
 	# verify that all files are installed; ignore manpages, since

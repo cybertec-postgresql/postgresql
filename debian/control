@@ -90,7 +90,7 @@ Description: shared library libpgtypes for PostgreSQL 9.0
 
 Package: postgresql-9.0
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-9.0, postgresql-common (>= 107~), tzdata, ssl-cert, locales
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-9.0, postgresql-common (>= 109~), tzdata, ssl-cert, locales
 Suggests: oidentd | ident-server
 Conflicts: postgresql (<< 7.5)
 Description: object-relational SQL database, version 9.0 server
@@ -154,7 +154,7 @@ Description: documentation for the PostgreSQL database management system
 
 Package: postgresql-contrib-9.0
 Architecture: any
-Depends: postgresql-9.0, ${misc:Depends}, ${shlibs:Depends}, postgresql-common (>= 107~)
+Depends: postgresql-9.0, ${misc:Depends}, ${shlibs:Depends}, postgresql-common (>= 109~)
 Suggests: libdbd-pg-perl
 Conflicts: postgresql-contrib (<< 7.5)
 Description: additional facilities for PostgreSQL
