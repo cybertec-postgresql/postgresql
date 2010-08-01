@@ -1,3 +1,9 @@
+postgresql-9.0 (9.0~beta4-1) UNRELEASED; urgency=low
+
+  * New upstream beta release.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 30 Jul 2010 19:31:56 +0200
+
 postgresql-9.0 (9.0~beta3-2) experimental; urgency=low
 
   * Migrate to a common init script for all server versions, to avoid
