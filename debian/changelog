@@ -1,3 +1,9 @@
+postgresql-9.0 (9.0~rc1-1) UNRELEASED; urgency=low
+
+  * First 9.0 release candidate.
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 01 Sep 2010 11:08:06 +0200
+
 postgresql-9.0 (9.0~beta4-1) experimental; urgency=low
 
   * New upstream beta release.
