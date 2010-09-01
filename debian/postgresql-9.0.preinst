@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+#DEBHELPER#
+
 rm_conffile() {
     PKGNAME="postgresql-9.0"
     CONFFILE="$1"

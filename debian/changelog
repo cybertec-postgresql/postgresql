@@ -1,3 +1,9 @@
+postgresql-9.0 (9.0~rc1-2) UNRELEASED; urgency=low
+
+  * debian/postgresql-9.0.preinst: Add missing debhelper token.
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 01 Sep 2010 12:16:03 +0200
+
 postgresql-9.0 (9.0~rc1-1) experimental; urgency=low
 
   * First 9.0 release candidate.
