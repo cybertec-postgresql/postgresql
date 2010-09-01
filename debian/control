@@ -3,7 +3,7 @@ Section: database
 Priority: optional
 Maintainer: Martin Pitt <mpitt@debian.org>
 Uploaders: Peter Eisentraut <petere@debian.org>
-Standards-Version: 3.8.4
+Standards-Version: 3.9.1
 XS-Python-Version: current
 Build-Depends: debhelper (>= 5.0.37.2), cdbs (>= 0.4.43), perl (>= 5.8),
  libperl-dev, tcl8.5-dev, libreadline-dev | libreadline5-dev, libssl-dev, 
