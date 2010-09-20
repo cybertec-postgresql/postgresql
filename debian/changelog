@@ -1,11 +1,11 @@
-postgresql-9.0 (9.0.0-3) UNRELEASED; urgency=low
+postgresql-9.0 (9.0.0-3) unstable; urgency=low
 
   * debian/postgresql-9.0.preinst: Add missing debhelper token.
   * debian/rules: debian/rules: Set DPKG_GENSYMBOLS_CHECK_LEVEL to 4 to point
     out outdated .symbols files more strongly.
   * Add symbols files for libecpg-compat3, libecpg6, and libpgtypes3.
 
- -- Martin Pitt <mpitt@debian.org>  Mon, 20 Sep 2010 23:18:38 +0200
+ -- Martin Pitt <mpitt@debian.org>  Tue, 21 Sep 2010 01:23:54 +0200
 
 postgresql-9.0 (9.0.0-2) unstable; urgency=low
 
