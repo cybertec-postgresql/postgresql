@@ -1,4 +1,4 @@
-postgresql-9.0 (9.0.0-2) UNRELEASED; urgency=low
+postgresql-9.0 (9.0.0-2) unstable; urgency=low
 
   * debian/rules: Reenable building with -O1 on sparc and alpha, floating
     point with -O2 is still broken there.
@@ -6,7 +6,7 @@ postgresql-9.0 (9.0.0-2) UNRELEASED; urgency=low
     This keeps the reverse dependencies of libpq5 to >= 8.4, unless they use
     one of the four new functions.
 
- -- Martin Pitt <mpitt@debian.org>  Mon, 20 Sep 2010 17:17:38 +0200
+ -- Martin Pitt <mpitt@debian.org>  Mon, 20 Sep 2010 19:46:33 +0200
 
 postgresql-9.0 (9.0.0-1) unstable; urgency=low
 
