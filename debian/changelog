@@ -1,4 +1,4 @@
-postgresql-9.0 (9.0.0-1) UNRELEASED; urgency=low
+postgresql-9.0 (9.0.0-1) unstable; urgency=low
 
   * Final 9.0 release, upload to unstable (will not go into Squeeze, though).
   * debian/postgresql-9.0.preinst: Add missing debhelper token.
@@ -9,7 +9,7 @@ postgresql-9.0 (9.0.0-1) UNRELEASED; urgency=low
   * debian/rules: Drop special-case building with -O1 on sparc and alpha,
     let's see how the current compiler does.
 
- -- Martin Pitt <mpitt@debian.org>  Wed, 01 Sep 2010 12:16:03 +0200
+ -- Martin Pitt <mpitt@debian.org>  Fri, 17 Sep 2010 11:41:29 +0200
 
 postgresql-9.0 (9.0~rc1-1) experimental; urgency=low
 
