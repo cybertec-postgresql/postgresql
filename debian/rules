@@ -8,11 +8,11 @@ include /usr/share/cdbs/1/rules/debhelper.mk
 LDFLAGS+= -Wl,--as-needed
 CFLAGS+= -fPIC
 
-#ifneq ($(findstring $(DEB_BUILD_ARCH), sparc alpha),)
-## sparc and alpha's gcc currently miscompiles; see
-## http://lists.debian.org/debian-alpha/2007/11/msg00025.html
-#    CFLAGS+=-O1
-#endif
+ifneq ($(findstring $(DEB_BUILD_ARCH), sparc alpha),)
+# sparc and alpha's gcc currently miscompiles; see
+# http://lists.debian.org/debian-alpha/2007/11/msg00025.html
+    CFLAGS+=-O1
+endif
 
 export DEB_BUILD_HARDENING=1
 
