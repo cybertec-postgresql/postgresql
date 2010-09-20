@@ -27,3 +27,6 @@ if [ "$1" = "upgrade" ] || [ "$1" = "install" ] && \
     rm_conffile /etc/init.d/postgresql-9.0
 fi
 
+#DEBHELPER#
+
+exit 0
