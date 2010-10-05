@@ -1,3 +1,50 @@
+postgresql-9.0 (9.0.1-1) UNRELEASED; urgency=low
+
+  * New upstream security/bug fix release:
+    - Use a separate interpreter for each calling SQL userid in PL/Perl
+      and PL/Tcl.
+      This change prevents security problems that can be caused by
+      subverting Perl or Tcl code that will be executed later in the same
+      session under another SQL user identity (for example, within a
+      SECURITY DEFINER function). Most scripting languages offer numerous
+      ways that that might be done, such as redefining standard functions
+      or operators called by the target function. Without this change,
+      any SQL user with Perl or Tcl language usage rights can do
+      essentially anything with the SQL privileges of the target
+      function's owner.
+      The cost of this change is that intentional communication among
+      Perl and Tcl functions becomes more difficult. To provide an escape
+      hatch, PL/PerlU and PL/TclU functions continue to use only one
+      interpreter per session. This is not considered a security issue
+      since all such functions execute at the trust level of a database
+      superuser already.
+      It is likely that third-party procedural languages that claim to
+      offer trusted execution have similar security issues. We advise
+      contacting the authors of any PL you are depending on for
+      security-critical purposes.
+      Our thanks to Tim Bunce for pointing out this issue
+      (CVE-2010-3433).
+    - Improve pg_get_expr() security fix so that the function can still
+      be used on the output of a sub-select.
+    - Fix incorrect placement of placeholder evaluation.
+      This bug could result in query outputs being non-null when they
+      should be null, in cases where the inner side of an outer join is a
+      sub-select with non-strict expressions in its output list.
+    - Fix join removal's handling of placeholder expressions.
+    - Fix possible duplicate scans of UNION ALL member relations.
+    - Prevent infinite loop in ProcessIncomingNotify() after unlistening.
+    - Prevent show_session_authorization() from crashing within
+      autovacuum processes.
+    - Re-allow input of Julian dates prior to 0001-01-01 AD.
+      Input such as 'J100000'::date worked before 8.4, but was
+      unintentionally broken by added error-checking.
+    - Make psql recognize "DISCARD ALL" as a command that should not be
+      encased in a transaction block in autocommit-off mode.
+    - Update build infrastructure and documentation to reflect the source
+      code repository's move from CVS to Git.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 05 Oct 2010 20:15:50 +0200
+
 postgresql-9.0 (9.0.0-3) unstable; urgency=low
 
   * debian/postgresql-9.0.preinst: Add missing debhelper token.
