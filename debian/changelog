@@ -1,10 +1,10 @@
-postgresql-9.0 (9.0.1-2) UNRELEASED; urgency=low
+postgresql-9.0 (9.0.1-2) unstable; urgency=low
 
   * debian/control: Build against libedit instead of libreadline. We can't
     simultaneously link against readline (GPL) and libssl (incompatible with
     GPL). (Closes: #603599)
 
- -- Martin Pitt <mpitt@debian.org>  Tue, 16 Nov 2010 13:14:24 +0100
+ -- Martin Pitt <mpitt@debian.org>  Wed, 17 Nov 2010 15:07:58 +0100
 
 postgresql-9.0 (9.0.1-1) unstable; urgency=low
 
