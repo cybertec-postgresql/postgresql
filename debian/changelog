@@ -1,3 +1,125 @@
+postgresql-9.0 (9.0.2-1) UNRELEASED; urgency=low
+
+  * New upstream bug fix release:
+    - Force the default wal_sync_method to be fdatasync on Linux.
+      The default on Linux has actually been fdatasync for many years,
+      but recent kernel changes caused PostgreSQL to choose open_datasync
+      instead. This choice did not result in any performance improvement,
+      and caused outright failures on certain filesystems, notably ext4
+      with the data=journal mount option.
+    - Fix "too many KnownAssignedXids" error during Hot Standby replay.
+    - Fix race condition in lock acquisition during Hot Standby.
+    - Avoid unnecessary conflicts during Hot Standby.
+      This fixes some cases where replay was considered to conflict with
+      standby queries (causing delay of replay or possibly cancellation
+      of the queries), but there was no real conflict.
+    - Fix assorted bugs in WAL replay logic for GIN indexes.
+      This could result in "bad buffer id: 0" failures or corruption of
+      index contents during replication.
+    - Fix recovery from base backup when the starting checkpoint WAL
+      record is not in the same WAL segment as its redo point.
+    - Fix corner-case bug when streaming replication is enabled
+      immediately after creating the master database cluster.
+    - Fix persistent slowdown of autovacuum workers when multiple workers
+      remain active for a long time.
+      The effective vacuum_cost_limit for an autovacuum worker could drop
+      to nearly zero if it processed enough tables, causing it to run
+      extremely slowly.
+    - Fix long-term memory leak in autovacuum launcher.
+    - Avoid failure when trying to report an impending transaction
+      wraparound condition from outside a transaction.
+      This oversight prevented recovery after transaction wraparound got
+      too close, because database startup processing would fail.
+    - Add support for detecting register-stack overrun on IA64.
+      The IA64 architecture has two hardware stacks. Full prevention of
+      stack-overrun failures requires checking both.
+    - Add a check for stack overflow in copyObject().
+      Certain code paths could crash due to stack overflow given a
+      sufficiently complex query.
+    - Fix detection of page splits in temporary GiST indexes.
+      It is possible to have a "concurrent" page split in a temporary
+      index, if for example there is an open cursor scanning the index
+      when an insertion is done. GiST failed to detect this case and
+      hence could deliver wrong results when execution of the cursor
+      continued.
+    - Fix error checking during early connection processing.
+      The check for too many child processes was skipped in some cases,
+      possibly leading to postmaster crash when attempting to add the new
+      child process to fixed-size arrays.
+    - Improve efficiency of window functions. Certain cases where a large
+      number of tuples needed to be read in advance, but work_mem was large
+      enough to allow them all to be held in memory, were unexpectedly slow.
+      percent_rank(), cume_dist() and ntile() in particular were subject to
+      this problem.
+    - Avoid memory leakage while "ANALYZE"'ing complex index expressions.
+    - Ensure an index that uses a whole-row Var still depends on its
+      table.
+      An index declared like create index i on t (foo(t.-)) would not
+      automatically get dropped when its table was dropped.
+    - Add missing support in "DROP OWNED BY" for removing foreign data
+      wrapper/server privileges belonging to a user.
+    - Do not "inline" a SQL function with multiple OUT parameters.
+      This avoids a possible crash due to loss of information about the
+      expected result rowtype.
+    - Fix crash when inline-ing a set-returning function whose argument
+      list contains a reference to an inline-able user function.
+    - Behave correctly if ORDER BY, LIMIT, FOR UPDATE, or WITH is
+      attached to the VALUES part of INSERT ... VALUES.
+    - Make the OFF keyword unreserved.
+      This prevents problems with using off as a variable name in
+      PL/pgSQL. That worked before 9.0, but was now broken because
+      PL/pgSQL now treats all core reserved words as reserved.
+    - Fix constant-folding of COALESCE() expressions.
+      The planner would sometimes attempt to evaluate sub-expressions
+      that in fact could never be reached, possibly leading to unexpected
+      errors.
+    - Fix "could not find pathkey item to sort" planner failure with
+      comparison of whole-row Vars.
+    - Fix postmaster crash when connection acceptance (accept() or one of
+      the calls made immediately after it) fails, and the postmaster was
+      compiled with GSSAPI support.
+    - Retry after receiving an invalid response packet from a RADIUS
+      authentication server.
+      This fixes a low-risk potential denial of service condition.
+    - Fix missed unlink of temporary files when log_temp_files is active.
+      If an error occurred while attempting to emit the log message, the
+      unlink was not done, resulting in accumulation of temp files.
+    - Add print functionality for InhRelation nodes.
+      This avoids a failure when debug_print_parse is enabled and certain
+      types of query are executed.
+    - Fix incorrect calculation of distance from a point to a horizontal
+      line segment.
+      This bug affected several different geometric distance-measurement
+      operators.
+    - Fix incorrect calculation of transaction status in ecpg.
+    - Fix errors in psql's Unicode-escape support.
+    - Speed up parallel pg_restore when the archive contains many large
+      objects (blobs).
+    - Fix PL/pgSQL's handling of "simple" expressions to not fail in
+      recursion or error-recovery cases.
+    - Fix PL/pgSQL's error reporting for no-such-column cases.
+      As of 9.0, it would sometimes report "missing FROM-clause entry for
+      table foo" when "record foo has no field bar" would be more
+      appropriate.
+    - Fix PL/Python to honor typmod (i.e., length or precision
+      restrictions) when assigning to tuple fields.
+      This fixes a regression from 8.4.
+    - Fix PL/Python's handling of set-returning functions.
+      Attempts to call SPI functions within the iterator generating a set
+      result would fail.
+    - Fix bug in "contrib/cube"'s GiST picksplit algorithm.
+      This could result in considerable inefficiency, though not actually
+      incorrect answers, in a GiST index on a cube column. If you have
+      such an index, consider "REINDEX"ing it after installing this
+      update.
+    - Don't emit "identifier will be truncated" notices in
+      "contrib/dblink" except when creating new connections.
+    - Fix potential coredump on missing public key in "contrib/pgcrypto".
+    - Fix buffer overrun in "contrib/pg_upgrade".
+    - Fix memory leak in "contrib/xml2"'s XPath query functions.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 16 Dec 2010 16:34:48 +0100
+
 postgresql-9.0 (9.0.1-2) unstable; urgency=low
 
   * debian/control: Build against libedit instead of libreadline. We can't
