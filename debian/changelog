@@ -1,3 +1,60 @@
+postgresql-9.0 (9.0.3-1) UNRELEASED; urgency=low
+
+  * New upstream security/bug fix release:
+    - Fix buffer overrun in "contrib/intarray"'s input function for the
+      query_int type.
+      This bug is a security risk since the function's return address
+      could be overwritten. Thanks to Apple Inc's security team for
+      reporting this issue and supplying the fix. (CVE-2010-4015)
+    - Before exiting walreceiver, ensure all the received WAL is fsync'd
+      to disk. Otherwise the standby server could replay some un-synced WAL,
+      conceivably leading to data corruption if the system crashes just
+      at that point.
+    - Avoid excess fsync activity in walreceiver.
+    - Make "ALTER TABLE" revalidate uniqueness and exclusion constraints
+      when needed. This was broken in 9.0 by a change that was intended to
+      suppress revalidation during "VACUUM FULL" and "CLUSTER", but
+      unintentionally affected "ALTER TABLE" as well.
+    - Fix EvalPlanQual for "UPDATE" of an inheritance tree in which the
+      tables are not all alike.
+      Any variation in the table row types (including dropped columns
+      present in only some child tables) would confuse the EvalPlanQual
+      code, leading to misbehavior or even crashes. Since EvalPlanQual is
+      only executed during concurrent updates to the same row, the
+      problem was only seen intermittently.
+    - Avoid failures when "EXPLAIN" tries to display a simple-form CASE
+      expression.
+      If the CASE's test expression was a constant, the planner could
+      simplify the CASE into a form that confused the expression-display
+      code, resulting in "unexpected CASE WHEN clause" errors.
+    - Fix assignment to an array slice that is before the existing range
+      of subscripts.
+      If there was a gap between the newly added subscripts and the first
+      pre-existing subscript, the code miscalculated how many entries
+      needed to be copied from the old array's null bitmap, potentially
+      leading to data corruption or crash.
+    - Avoid unexpected conversion overflow in planner for very distant
+      date values.
+      The date type supports a wider range of dates than can be
+      represented by the timestamp types, but the planner assumed it
+      could always convert a date to timestamp with impunity.
+    - Fix PL/Python crash when an array contains null entries.
+    - Remove ecpg's fixed length limit for constants defining an array
+      dimension.
+    - Fix erroneous parsing of tsquery values containing ... &
+      !(subexpression) | ... .
+      Queries containing this combination of operators were not executed
+      correctly. The same error existed in "contrib/intarray"'s query_int
+      type and "contrib/ltree"'s ltxtquery type.
+    - Fix bug in "contrib/seg"'s GiST picksplit algorithm.
+      This could result in considerable inefficiency, though not actually
+      incorrect answers, in a GiST index on a seg column. If you have
+      such an index, consider "REINDEX"ing it after installing this
+      update. (This is identical to the bug that was fixed in
+      "contrib/cube" in the previous update.)
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 01 Feb 2011 16:28:16 +0100
+
 postgresql-9.0 (9.0.2-1) unstable; urgency=low
 
   * New upstream bug fix release:
