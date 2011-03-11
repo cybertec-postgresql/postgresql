@@ -1,6 +1,9 @@
 postgresql-9.0 (9.0.3-2) UNRELEASED; urgency=low
 
   * debian/control: Build debug package. (Closes: #551880)
+  * Add 03_divbyzero.patch: Avoid undefined division by zero, causing sparc64
+    FTBFS due to a test failure. Thanks to Aurelien Jarno for the initial
+    patch! (Closes: #616180)
 
  -- Martin Pitt <mpitt@debian.org>  Sun, 13 Feb 2011 22:36:31 +0100
 

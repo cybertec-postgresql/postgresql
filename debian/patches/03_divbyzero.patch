@@ -1,0 +1,89 @@
+From 734d86c9482d545f38c9c51e173d7f2287f521bf Mon Sep 17 00:00:00 2001
+From: Martin Pitt <mpitt@debian.org>
+Date: Fri, 11 Mar 2011 18:38:54 +0100
+Subject: [PATCH] Avoid undefined division by zero
+
+Various division by zero operations in the test suite currently cause test
+failures on sparc64, as the compiler does not throw a SIGFPE like on most other
+platforms.
+
+Apply the already existing NULL returns from some division functions to
+int{8,82,84}div() as well, and update the comment to say that it isn't a gcc
+bug (see http://gcc.gnu.org/bugzilla/show_bug.cgi?id=29968 and
+http://www.open-std.org/jtc1/sc22/WG14/www/docs/n1256.pdf section 6.5.5
+paragraph 5).
+
+Thanks to Aurelien Jarno for the initial patch!
+
+Bug-Debian: http://bugs.debian.org/616180
+---
+ src/backend/utils/adt/int8.c |   16 ++++++++++++++--
+ 1 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/src/backend/utils/adt/int8.c b/src/backend/utils/adt/int8.c
+index bbab90c..d92b599 100644
+--- a/src/backend/utils/adt/int8.c
++++ b/src/backend/utils/adt/int8.c
+@@ -590,9 +590,13 @@ int8div(PG_FUNCTION_ARGS)
+ 	int64		result;
+ 
+ 	if (arg2 == 0)
++	{
+ 		ereport(ERROR,
+ 				(errcode(ERRCODE_DIVISION_BY_ZERO),
+ 				 errmsg("division by zero")));
++		/* ensure we don't reach the division, as this is undefined */
++		PG_RETURN_NULL();
++	}
+ 
+ 	result = arg1 / arg2;
+ 
+@@ -813,9 +817,13 @@ int84div(PG_FUNCTION_ARGS)
+ 	int64		result;
+ 
+ 	if (arg2 == 0)
++	{
+ 		ereport(ERROR,
+ 				(errcode(ERRCODE_DIVISION_BY_ZERO),
+ 				 errmsg("division by zero")));
++		/* ensure we don't reach the division, as this is undefined */
++		PG_RETURN_NULL();
++	}
+ 
+ 	result = arg1 / arg2;
+ 
+@@ -912,7 +920,7 @@ int48div(PG_FUNCTION_ARGS)
+ 		ereport(ERROR,
+ 				(errcode(ERRCODE_DIVISION_BY_ZERO),
+ 				 errmsg("division by zero")));
+-		/* ensure compiler realizes we mustn't reach the division (gcc bug) */
++		/* ensure we don't reach the division, as this is undefined */
+ 		PG_RETURN_NULL();
+ 	}
+ 
+@@ -997,9 +1005,13 @@ int82div(PG_FUNCTION_ARGS)
+ 	int64		result;
+ 
+ 	if (arg2 == 0)
++	{
+ 		ereport(ERROR,
+ 				(errcode(ERRCODE_DIVISION_BY_ZERO),
+ 				 errmsg("division by zero")));
++		/* ensure we don't reach the division, as this is undefined */
++		PG_RETURN_NULL();
++	}
+ 
+ 	result = arg1 / arg2;
+ 
+@@ -1096,7 +1108,7 @@ int28div(PG_FUNCTION_ARGS)
+ 		ereport(ERROR,
+ 				(errcode(ERRCODE_DIVISION_BY_ZERO),
+ 				 errmsg("division by zero")));
+-		/* ensure compiler realizes we mustn't reach the division (gcc bug) */
++		/* ensure we don't reach the division, as this is undefined */
+ 		PG_RETURN_NULL();
+ 	}
+ 
+-- 
+1.7.4.1
+
