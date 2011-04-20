@@ -1,9 +1,58 @@
-postgresql-9.0 (9.0.3-2) UNRELEASED; urgency=low
+postgresql-9.0 (9.0.4-1) UNRELEASED; urgency=low
 
+  * New upstream bug fix release:
+    - If your installation was upgraded from a previous major release by
+      running pg_upgrade, you should take action to prevent possible data loss
+      due to a now-fixed bug in pg_upgrade. The recommended solution is to run
+      "VACUUM FREEZE" on all TOAST tables.  More information is available at
+      http://wiki.postgresql.org/wiki/20110408pg_upgrade_fix.
+    - Fix pg_upgrade's handling of TOAST tables.
+      This error poses a significant risk of data loss for installations
+      that have been upgraded with pg_upgrade. This patch corrects the
+      problem for future uses of pg_upgrade, but does not in itself cure
+      the issue in installations that have been processed with a buggy
+      version of pg_upgrade.
+    - Suppress incorrect "PD_ALL_VISIBLE flag was incorrectly set"
+      warning.
+    - Use better SQLSTATE error codes for hot standby conflict cases.
+    - Prevent intermittent hang in interactions of startup process with
+      bgwriter process.  This affected recovery in non-hot-standby cases.
+    - Disallow including a composite type in itself.
+    - Avoid potential deadlock during catalog cache initialization.
+    - Fix dangling-pointer problem in BEFORE ROW UPDATE trigger handling
+      when there was a concurrent update to the target tuple.
+    - Disallow "DROP TABLE" when there are pending deferred trigger
+      events for the table.
+      Formerly the "DROP" would go through, leading to "could not open
+      relation with OID nnn" errors when the triggers were eventually
+      fired.
+    - Allow "replication" as a user name in "pg_hba.conf".
+      "replication" is special in the database name column, but it was
+      mistakenly also treated as special in the user name column.
+    - Prevent crash triggered by constant-false WHERE conditions during
+      GEQO optimization.
+    - Improve planner's handling of semi-join and anti-join cases.
+    - Fix handling of SELECT FOR UPDATE in a sub-SELECT.
+      This bug typically led to "cannot extract system attribute from
+      virtual tuple" errors.
+    - Fix selectivity estimation for text search to account for NULLs.
+    - Fix get_actual_variable_range() to support hypothetical indexes
+      injected by an index adviser plugin.
+    - Fix PL/Python memory leak involving array slices.
+    - Allow libpq's SSL initialization to succeed when user's home
+      directory is unavailable.
+      If the SSL mode is such that a root certificate file is not
+      required, there is no need to fail. This change restores the
+      behavior to what it was in pre-9.0 releases.
+    - Fix libpq to return a useful error message for errors detected in
+      conninfo_array_parse.
+    - Fix ecpg preprocessor's handling of float constants.
+    - Fix parallel pg_restore to handle comments on POST_DATA items
+      correctly.
+    - Fix pg_restore to cope with long lines (over 1KB) in TOC files.
+    - Put in more safeguards against crashing due to division-by-zero
+      with overly enthusiastic compiler optimization. (Closes: #616180)
   * debian/control: Build debug package. (Closes: #551880)
-  * Add 03_divbyzero.patch: Avoid undefined division by zero, causing sparc64
-    FTBFS due to a test failure. Thanks to Aurelien Jarno for the initial
-    patch! (Closes: #616180)
 
  -- Martin Pitt <mpitt@debian.org>  Sun, 13 Feb 2011 22:36:31 +0100
 
