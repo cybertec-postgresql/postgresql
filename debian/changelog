@@ -1,4 +1,6 @@
-postgresql-9.0 (9.0.4-1) UNRELEASED; urgency=low
+postgresql-9.0 (9.0.4-1) unstable; urgency=medium
+
+  Priority medium due to data-loss pg_upgrade bug.
 
   * New upstream bug fix release:
     - If your installation was upgraded from a previous major release by
@@ -57,7 +59,7 @@ postgresql-9.0 (9.0.4-1) UNRELEASED; urgency=low
     Python extension/module, so we don't need a python helper at all.
     (Closes: #616949)
 
- -- Martin Pitt <mpitt@debian.org>  Sun, 13 Feb 2011 22:36:31 +0100
+ -- Martin Pitt <mpitt@debian.org>  Wed, 20 Apr 2011 15:08:32 +0200
 
 postgresql-9.0 (9.0.3-1) unstable; urgency=low
 
