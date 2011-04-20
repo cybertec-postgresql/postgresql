@@ -53,6 +53,9 @@ postgresql-9.0 (9.0.4-1) UNRELEASED; urgency=low
     - Put in more safeguards against crashing due to division-by-zero
       with overly enthusiastic compiler optimization. (Closes: #616180)
   * debian/control: Build debug package. (Closes: #551880)
+  * debian/control, debian/rules: Drop usage of pycentral. We don't ship any
+    Python extension/module, so we don't need a python helper at all.
+    (Closes: #616949)
 
  -- Martin Pitt <mpitt@debian.org>  Sun, 13 Feb 2011 22:36:31 +0100
 

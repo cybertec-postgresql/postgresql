@@ -108,10 +108,6 @@ endif
 binary-predeb/postgresql-client-$(MAJOR_VER)::
 	find debian/postgresql-client-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/man -type f -exec gzip -9 '{}' \;
 
-binary-install/postgresql-plpython-$(MAJOR_VER)::
-	dh_pycentral -p$(cdbs_curpkg)
-	dh_python -p$(cdbs_curpkg) usr/lib/postgresql/$(MAJOR_VER)/lib
-
 # run tests in contrib in temporary test installations, using programs
 # from local tree
 contrib-check:
