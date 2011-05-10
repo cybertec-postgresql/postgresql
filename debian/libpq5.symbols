@@ -67,6 +67,7 @@ libpq.so.5 libpq5 #MINVER#
  PQisBusy@Base 8.4~
  PQisnonblocking@Base 8.4~
  PQisthreadsafe@Base 8.4~
+ PQlibVersion@Base 9.1~beta1
  PQmakeEmptyPGresult@Base 8.4~
  PQmblen@Base 8.4~
  PQnfields@Base 8.4~
@@ -79,6 +80,8 @@ libpq.so.5 libpq5 #MINVER#
  PQparameterStatus@Base 8.4~
  PQparamtype@Base 8.4~
  PQpass@Base 8.4~
+ PQping@Base 9.1~beta1
+ PQpingParams@Base 9.1~beta1
  PQport@Base 8.4~
  PQprepare@Base 8.4~
  PQprint@Base 8.4~
