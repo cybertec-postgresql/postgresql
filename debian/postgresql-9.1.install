@@ -1,7 +1,9 @@
 usr/lib/postgresql/9.1/bin/initdb
+usr/lib/postgresql/9.1/bin/pg_basebackup
 usr/lib/postgresql/9.1/bin/pg_controldata
 usr/lib/postgresql/9.1/bin/pg_ctl
 usr/lib/postgresql/9.1/bin/pg_resetxlog
+usr/lib/postgresql/9.1/bin/pg_test_fsync
 usr/lib/postgresql/9.1/bin/pg_upgrade
 usr/lib/postgresql/9.1/bin/postgres
 usr/lib/postgresql/9.1/bin/postmaster

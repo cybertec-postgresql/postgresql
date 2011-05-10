@@ -1,5 +1,6 @@
 usr/share/doc/postgresql/extension/* usr/share/doc/postgresql-contrib-9.1
 usr/share/postgresql/9.1/extension/*
+usr/lib/postgresql/9.1/lib/auth_delay.so
 usr/lib/postgresql/9.1/bin/pg_archivecleanup
 usr/lib/postgresql/9.1/bin/oid2name
 usr/lib/postgresql/9.1/bin/pgbench
@@ -11,7 +12,9 @@ usr/lib/postgresql/9.1/lib/btree_gist.so
 usr/lib/postgresql/9.1/lib/chkpass.so
 usr/lib/postgresql/9.1/lib/cube.so
 usr/lib/postgresql/9.1/lib/dblink.so
+usr/lib/postgresql/9.1/lib/dummy_seclabel.so
 usr/lib/postgresql/9.1/lib/earthdistance.so
+usr/lib/postgresql/9.1/lib/file_fdw.so
 usr/lib/postgresql/9.1/lib/fuzzystrmatch.so
 usr/lib/postgresql/9.1/lib/insert_username.so
 usr/lib/postgresql/9.1/lib/lo.so
