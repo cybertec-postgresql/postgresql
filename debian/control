@@ -89,7 +89,7 @@ Description: shared library libpgtypes for PostgreSQL 9.1
 
 Package: postgresql-9.1
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-9.1, postgresql-common (>= 109~), tzdata, ssl-cert, locales
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-9.1, postgresql-common (>= 115~), tzdata, ssl-cert, locales
 Suggests: oidentd | ident-server
 Conflicts: postgresql (<< 7.5)
 Description: object-relational SQL database, version 9.1 server
@@ -125,7 +125,7 @@ Description: debug symbols for postgresql-9.1
 
 Package: postgresql-client-9.1
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-common (>= 107~)
+Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-common (>= 115~)
 Conflicts: postgresql (<< 7.5)
 Suggests: postgresql-9.1, postgresql-doc-9.1
 Provides: postgresql-client
@@ -169,7 +169,7 @@ Description: documentation for the PostgreSQL database management system
 
 Package: postgresql-contrib-9.1
 Architecture: any
-Depends: postgresql-9.1, ${misc:Depends}, ${shlibs:Depends}, postgresql-common (>= 109~)
+Depends: postgresql-9.1, ${misc:Depends}, ${shlibs:Depends}, postgresql-common (>= 115~)
 Suggests: libdbd-pg-perl
 Conflicts: postgresql-contrib (<< 7.5)
 Description: additional facilities for PostgreSQL
