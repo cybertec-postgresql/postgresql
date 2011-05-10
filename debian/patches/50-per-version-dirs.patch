@@ -19,7 +19,7 @@ Index: postgresql-9.1-9.1~beta1/src/Makefile.global.in
  ifeq "$(findstring pgsql, $(pkglibdir))" ""
  ifeq "$(findstring postgres, $(pkglibdir))" ""
 -override pkglibdir := $(pkglibdir)/postgresql
-+override pkglibdir := $(pkglibdir)/postgresql/9.0/lib
++override pkglibdir := $(pkglibdir)/postgresql/9.1/lib
  endif
  endif
  
@@ -28,7 +28,7 @@ Index: postgresql-9.1-9.1~beta1/src/Makefile.global.in
  # These derived path variables aren't separately configurable.
  
 -includedir_server = $(pkgincludedir)/server
-+includedir_server = $(pkgincludedir)/9.0/server
++includedir_server = $(pkgincludedir)/9.1/server
  includedir_internal = $(pkgincludedir)/internal
  pgxsdir = $(pkglibdir)/pgxs
  
