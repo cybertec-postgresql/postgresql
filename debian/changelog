@@ -1,8 +1,6 @@
 postgresql-9.1 (9.1~beta1-1) UNRELEASED; urgency=low
 
   * First 9.1 beta release. Packaging based on 9.1 branch.
-  * debian/rules: Run the test suite under the C locale, otherwise the
-    "collate" test is prone to fail.
   * debian/control: Do not build the versionless metapackages for now, as long
     as 9.0 is still the default.
 
