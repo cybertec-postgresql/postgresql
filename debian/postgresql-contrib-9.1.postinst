@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-VERSION=9.0
+VERSION=9.1
 
 . /usr/share/postgresql-common/maintscripts-functions
 

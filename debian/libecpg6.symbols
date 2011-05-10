@@ -14,14 +14,14 @@ libecpg.so.6 libecpg6 #MINVER#
  ECPGget_desc@Base 8.4~
  ECPGget_desc_header@Base 8.4~
  ECPGget_sqlca@Base 8.4~
- ECPGget_var@Base 9.0~
+ ECPGget_var@Base 9.1~
  ECPGis_noind_null@Base 8.4~
  ECPGprepare@Base 8.4~
  ECPGprepared_statement@Base 8.4~
  ECPGset_desc@Base 8.4~
  ECPGset_desc_header@Base 8.4~
  ECPGset_noind_null@Base 8.4~
- ECPGset_var@Base 9.0~
+ ECPGset_var@Base 9.1~
  ECPGsetcommit@Base 8.4~
  ECPGsetconn@Base 8.4~
  ECPGstatus@Base 8.4~

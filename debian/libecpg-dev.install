@@ -4,7 +4,7 @@ usr/include/postgresql/pgtypes_*.h
 usr/include/postgresql/sql3types.h
 usr/include/postgresql/sqlca.h
 usr/include/postgresql/sqlda*.h
-usr/lib/postgresql/9.0/bin/ecpg usr/bin
+usr/lib/postgresql/9.1/bin/ecpg usr/bin
 usr/lib/libecpg.so
 usr/lib/libecpg_compat.so
 usr/lib/libpgtypes.so

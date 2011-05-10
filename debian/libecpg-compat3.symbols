@@ -1,6 +1,6 @@
 libecpg_compat.so.3 libecpg-compat3 #MINVER#
  ECPG_informix_get_var@Base 8.4~
- ECPG_informix_reset_sqlca@Base 9.0~
+ ECPG_informix_reset_sqlca@Base 9.1~
  ECPG_informix_set_var@Base 8.4~
  byleng@Base 8.4~
  decadd@Base 8.4~

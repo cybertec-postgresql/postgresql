@@ -4,7 +4,7 @@ set -e
 #DEBHELPER#
 
 rm_conffile() {
-    PKGNAME="postgresql-9.0"
+    PKGNAME="postgresql-9.1"
     CONFFILE="$1"
 
     if [ -e "$CONFFILE" ]; then
@@ -23,8 +23,8 @@ rm_conffile() {
 
 # earlier releases used per-version init scripts, now replaced with common one 
 if [ "$1" = "upgrade" ] || [ "$1" = "install" ] && \
-	dpkg --compare-versions "$2" le-nl "9.0~beta3-2"; then
-    rm_conffile /etc/init.d/postgresql-9.0
+	dpkg --compare-versions "$2" le-nl "9.1~beta3-2"; then
+    rm_conffile /etc/init.d/postgresql-9.1
 fi
 
 #DEBHELPER#
