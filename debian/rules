@@ -17,9 +17,7 @@ endif
 export DEB_BUILD_HARDENING=1
 
 # build should fail on test suite failures on all arches
-#TESTSUITE_FAIL_CMD=exit 1
-# 9.1beta1 currently fails "collate" test, ignore for now
-TESTSUITE_FAIL_CMD=true
+TESTSUITE_FAIL_CMD=exit 1
 
 DEB_DH_INSTALL_SOURCEDIR=debian/tmp
 DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/$(MAJOR_VER)/man \
@@ -91,7 +89,7 @@ ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	# the check.
 	set -e; \
 	patch --no-backup-if-mismatch -p1 < debian/disable-root-check.patch; \
-	make -C src/test/regress bigcheck || fail=1; \
+	LC_ALL=C make -C src/test/regress bigcheck || fail=1; \
 	patch --no-backup-if-mismatch -Rp1 < debian/disable-root-check.patch; \
 	if [ -n "$$fail" ]; then \
 	    for l in regression.diffs log/initdb.log log/postmaster.log; do \
