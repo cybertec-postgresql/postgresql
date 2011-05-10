@@ -10,10 +10,10 @@ set it as default.
 As a consequence of this, we now need to explicitly specify the pg_regress
 socket dir as /tmp, since it runs the server as the invoking user.
 
-Index: postgresql-9.0-9.0~beta1/src/include/pg_config_manual.h
+Index: postgresql-9.1-9.1~beta1/src/include/pg_config_manual.h
 ===================================================================
---- postgresql-9.0-9.0~beta1.orig/src/include/pg_config_manual.h	2010-01-07 05:53:35.000000000 +0100
-+++ postgresql-9.0-9.0~beta1/src/include/pg_config_manual.h	2010-05-01 15:01:17.697230346 +0200
+--- postgresql-9.1-9.1~beta1.orig/src/include/pg_config_manual.h	2011-04-27 23:17:22.000000000 +0200
++++ postgresql-9.1-9.1~beta1/src/include/pg_config_manual.h	2011-05-10 11:24:47.331949788 +0200
 @@ -141,7 +141,7 @@
   * here's where to twiddle it.  You can also override this at runtime
   * with the postmaster's -k switch.
@@ -23,11 +23,11 @@ Index: postgresql-9.0-9.0~beta1/src/include/pg_config_manual.h
  
  /*
   * The random() function is expected to yield values between 0 and
-Index: postgresql-9.0-9.0~beta1/src/test/regress/pg_regress.c
+Index: postgresql-9.1-9.1~beta1/src/test/regress/pg_regress.c
 ===================================================================
---- postgresql-9.0-9.0~beta1.orig/src/test/regress/pg_regress.c	2010-02-26 03:01:39.000000000 +0100
-+++ postgresql-9.0-9.0~beta1/src/test/regress/pg_regress.c	2010-05-01 15:01:47.244728844 +0200
-@@ -899,7 +899,7 @@
+--- postgresql-9.1-9.1~beta1.orig/src/test/regress/pg_regress.c	2011-04-27 23:17:22.000000000 +0200
++++ postgresql-9.1-9.1~beta1/src/test/regress/pg_regress.c	2011-05-10 11:24:47.331949788 +0200
+@@ -906,7 +906,7 @@
  
  	/* And now we can build and execute the shell command */
  	snprintf(psql_cmd, sizeof(psql_cmd),
@@ -36,7 +36,7 @@ Index: postgresql-9.0-9.0~beta1/src/test/regress/pg_regress.c
  			 psqldir ? psqldir : "",
  			 psqldir ? "/" : "",
  			 query_escaped,
-@@ -2154,7 +2154,7 @@
+@@ -2207,7 +2207,7 @@
  		 * Check if there is a postmaster running already.
  		 */
  		snprintf(buf2, sizeof(buf2),
@@ -45,7 +45,7 @@ Index: postgresql-9.0-9.0~beta1/src/test/regress/pg_regress.c
  				 bindir, DEVNULL, DEVNULL);
  
  		for (i = 0; i < 16; i++)
-@@ -2186,7 +2186,7 @@
+@@ -2239,7 +2239,7 @@
  		 */
  		header(_("starting postmaster"));
  		snprintf(buf, sizeof(buf),
@@ -54,14 +54,14 @@ Index: postgresql-9.0-9.0~beta1/src/test/regress/pg_regress.c
  				 bindir, temp_install,
  				 debug ? " -d 5" : "",
  				 hostname ? hostname : "",
-Index: postgresql-9.0-9.0~beta1/src/test/regress/pg_regress_main.c
+Index: postgresql-9.1-9.1~beta1/src/test/regress/pg_regress_main.c
 ===================================================================
---- postgresql-9.0-9.0~beta1.orig/src/test/regress/pg_regress_main.c	2010-01-02 17:58:16.000000000 +0100
-+++ postgresql-9.0-9.0~beta1/src/test/regress/pg_regress_main.c	2010-05-01 15:01:47.244728844 +0200
-@@ -59,7 +59,7 @@
- 	add_stringlist_item(expectfiles, expectfile);
+--- postgresql-9.1-9.1~beta1.orig/src/test/regress/pg_regress_main.c	2011-04-27 23:17:22.000000000 +0200
++++ postgresql-9.1-9.1~beta1/src/test/regress/pg_regress_main.c	2011-05-10 11:25:19.291949792 +0200
+@@ -64,7 +64,7 @@
+ 						   "%s ", launcher);
  
- 	snprintf(psql_cmd, sizeof(psql_cmd),
+ 	snprintf(psql_cmd + offset, sizeof(psql_cmd) - offset,
 -			 SYSTEMQUOTE "\"%s%spsql\" -X -a -q -d \"%s\" < \"%s\" > \"%s\" 2>&1" SYSTEMQUOTE,
 +			 SYSTEMQUOTE "\"%s%spsql\" -h /tmp -X -a -q -d \"%s\" < \"%s\" > \"%s\" 2>&1" SYSTEMQUOTE,
  			 psqldir ? psqldir : "",
