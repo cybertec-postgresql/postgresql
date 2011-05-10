@@ -1,5 +1,5 @@
-usr/share/doc/postgresql/contrib/* usr/share/doc/postgresql-contrib-9.1
-usr/share/postgresql/9.1/contrib/*
+usr/share/doc/postgresql/extension/* usr/share/doc/postgresql-contrib-9.1
+usr/share/postgresql/9.1/extension/*
 usr/lib/postgresql/9.1/bin/pg_archivecleanup
 usr/lib/postgresql/9.1/bin/oid2name
 usr/lib/postgresql/9.1/bin/pgbench
