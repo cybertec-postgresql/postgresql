@@ -1,7 +1,7 @@
-postgresql-9.1 (9.1~beta1-1) UNRELEASED; urgency=low
+postgresql-9.1 (9.1~beta1-1) experimental; urgency=low
 
   * First 9.1 beta release. Packaging based on 9.1 branch.
   * debian/control: Do not build the versionless metapackages for now, as long
     as 9.0 is still the default.
 
- -- Martin Pitt <mpitt@debian.org>  Thu, 21 Apr 2011 12:29:11 +0200
+ -- Martin Pitt <mpitt@debian.org>  Wed, 11 May 2011 09:18:56 +0200
