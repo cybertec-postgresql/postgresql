@@ -15,5 +15,5 @@ usr/lib/libpgport.a
 usr/lib/libpq.a
 usr/lib/libpq.so
 usr/lib/postgresql/9.1/bin/pg_config usr/bin
-usr/share/postgresql/9.1/man/man1/pg_config.1
 usr/share/locale/*/LC_MESSAGES/pg_config-9.1.mo
+usr/share/postgresql/9.1/man/man1/pg_config.1 /usr/share/man/man1

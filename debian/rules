@@ -1,10 +1,6 @@
 #!/usr/bin/make	-f 
 TCL_VER := 8.5
 MAJOR_VER := 9.1
-
-include /usr/share/cdbs/1/class/autotools.mk
-include /usr/share/cdbs/1/rules/debhelper.mk
-
 LDFLAGS+= -Wl,--as-needed
 CFLAGS+= -fPIC
 
@@ -15,17 +11,23 @@ ifneq ($(findstring $(DEB_BUILD_ARCH), sparc alpha),)
 endif
 
 export DEB_BUILD_HARDENING=1
+export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
 # build should fail on test suite failures on all arches
 TESTSUITE_FAIL_CMD=exit 1
 
-DEB_DH_INSTALL_SOURCEDIR=debian/tmp
-DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/$(MAJOR_VER)/man \
-  --with-docdir=\$${prefix}/share/doc/postgresql-doc-$(MAJOR_VER) \
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+  --mandir=/usr/share/postgresql/$(MAJOR_VER)/man \
+  --with-docdir=/usr/share/doc/postgresql-doc-$(MAJOR_VER) \
   --sysconfdir=/etc/postgresql-common \
-  --datadir=\$${prefix}/share/postgresql/$(MAJOR_VER) \
-  --bindir=\$${prefix}/lib/postgresql/$(MAJOR_VER)/bin \
-  --includedir=\$${prefix}/include/postgresql/ \
+  --datadir=/usr/share/postgresql/$(MAJOR_VER) \
+  --bindir=/usr/lib/postgresql/$(MAJOR_VER)/bin \
+  --includedir=/usr/include/postgresql/ \
   --enable-nls \
   --enable-integer-datetimes \
   --enable-thread-safety \
@@ -48,41 +50,44 @@ DEB_CONFIGURE_EXTRA_FLAGS := --mandir=\$${prefix}/share/postgresql/$(MAJOR_VER)/
   --with-includes=/usr/include/tcl$(TCL_VER) \
   --with-system-tzdata=/usr/share/zoneinfo \
   --with-pgport=5432 \
-  $(ARCH_OPTS) \
   CFLAGS='$(CFLAGS)' \
   LDFLAGS='$(LDFLAGS)'
 
-DEB_MAKE_BUILD_TARGET = world
-DEB_MAKE_INSTALL_TARGET := $(patsubst install,install-world,$(DEB_MAKE_INSTALL_TARGET))
+override_dh_auto_build:
+	make world
 
-DEB_DH_MAKESHLIBS_ARGS := -Xusr/lib/postgresql/$(MAJOR_VER)
-DEB_DH_INSTALLCHANGELOGS_ARGS := HISTORY
-DEB_COMPRESS_EXCLUDE := .source .c
-DPKG_GENSYMBOLS_CHECK_LEVEL=4
-export DPKG_GENSYMBOLS_CHECK_LEVEL
-
-common-binary-predeb-arch::
-	# verify that all files are installed; ignore manpages, since
-	# they are handled by dh_installman
-	missing=`dh_install --sourcedir=debian/tmp --list-missing --no-act 2>&1 | grep -v man/man`; \
-	if [ -n "$$missing" ]; then \
-	    echo "Not all files are installed:"; \
-	    echo "$$missing"; \
-	    exit 1; \
-	fi
-
-common-post-build-arch::
 	# generate POT files for translators
 	find -name nls.mk -exec sh -c "make -C \$$(dirname {}) init-po" \;
-	
-common-post-build-indep::
+
 	# build tutorial stuff
 	make -C src/tutorial NO_PGXS=1
 
-install/postgresql-doc-$(MAJOR_VER)::
-	install src/tutorial/*.c src/tutorial/*.source src/tutorial/Makefile src/tutorial/README debian/$(cdbs_curpkg)/usr/share/doc/$(cdbs_curpkg)/tutorial
+override_dh_auto_install:
+	make install-world DESTDIR=$(CURDIR)/debian/tmp
 
-binary-predeb/postgresql-$(MAJOR_VER)::
+override_dh_makeshlibs:
+	dh_makeshlibs -Xusr/lib/postgresql/$(MAJOR_VER)
+
+override_dh_auto_clean:
+	[ ! -f GNUmakefile ] || dh_auto_clean	
+
+override_dh_installchangelogs:
+	dh_installchangelogs HISTORY
+
+override_dh_compress:
+	dh_compress -X.source -X.c
+
+override_dh_install:
+	dh_install --fail-missing
+
+	install src/tutorial/*.c src/tutorial/*.source src/tutorial/Makefile src/tutorial/README debian/postgresql-doc-$(MAJOR_VER)/usr/share/doc/postgresql-doc-$(MAJOR_VER)/tutorial
+
+	# compress manpages
+	find debian/postgresql-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/man -type f -exec gzip -9 '{}' \;
+
+	find debian/postgresql-client-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/man -type f -exec gzip -9 '{}' \;
+
+override_dh_auto_test:
 ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	# patch away the "don't execute as root" check for the test
 	# suite; doing it here will ensure that the actual debs have
@@ -102,11 +107,8 @@ ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	fi
 endif
 
-	# compress manpages
-	find debian/postgresql-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/man -type f -exec gzip -9 '{}' \;
-
-binary-predeb/postgresql-client-$(MAJOR_VER)::
-	find debian/postgresql-client-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/man -type f -exec gzip -9 '{}' \;
+override_dh_strip:
+	dh_strip --dbg-package=postgresql-$(MAJOR_VER)-dbg
 
 # run tests in contrib in temporary test installations, using programs
 # from local tree
