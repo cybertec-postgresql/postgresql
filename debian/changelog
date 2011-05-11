@@ -1,3 +1,9 @@
+postgresql-9.1 (9.1~beta1-2) UNRELEASED; urgency=low
+
+  * debian/control: Add missing ${misc:Depends} to -dbg.
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Wed, 11 May 2011 09:43:01 +0200
+
 postgresql-9.1 (9.1~beta1-1) experimental; urgency=low
 
   * First 9.1 beta release. Packaging based on 9.1 branch.
