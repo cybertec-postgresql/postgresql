@@ -92,6 +92,7 @@ Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-9.1, postgresql-common (>= 115~), tzdata, ssl-cert, locales
 Suggests: oidentd | ident-server
 Conflicts: postgresql (<< 7.5)
+Replaces: postgresql-contrib-9.1 (<< 9.1~beta1-3~)
 Description: object-relational SQL database, version 9.1 server
  PostgreSQL is a fully featured object-relational database management
  system.  It supports a large part of the SQL standard and is designed
@@ -227,6 +228,7 @@ Description: additional facilities for PostgreSQL
 Package: postgresql-plperl-9.1
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-9.1, perl
+Replaces: postgresql-contrib-9.1 (<< 9.1~beta1-3~)
 Description: PL/Perl procedural language for PostgreSQL 9.1
  PL/Perl enables an SQL developer to write procedural language functions
  for PostgreSQL 9.1 in Perl.  You need this package if you have any
@@ -237,6 +239,7 @@ Description: PL/Perl procedural language for PostgreSQL 9.1
 Package: postgresql-plpython-9.1
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-9.1
+Replaces: postgresql-contrib-9.1 (<< 9.1~beta1-3~)
 Description: PL/Python procedural language for PostgreSQL 9.1
  PL/Python enables an SQL developer to write procedural language functions
  for PostgreSQL 9.1 in Python.  You need this package if you have any
@@ -247,6 +250,7 @@ Description: PL/Python procedural language for PostgreSQL 9.1
 Package: postgresql-pltcl-9.1
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-9.1
+Replaces: postgresql-contrib-9.1 (<< 9.1~beta1-3~)
 Description: PL/Tcl procedural language for PostgreSQL 9.1
  PL/Tcl enables an SQL developer to write procedural language functions
  for PostgreSQL 9.1 in Tcl.  You need this package if you have any

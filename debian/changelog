@@ -1,3 +1,10 @@
+postgresql-9.1 (9.1~beta1-3) UNRELEASED; urgency=low
+
+  * Move /usr/share/postgresql/9.1/extension/pl* from -contrib into the actual
+    -pl* packages, and ship PL/pgsql in postgresql-9.1.
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Sat, 14 May 2011 22:27:25 +0200
+
 postgresql-9.1 (9.1~beta1-2) experimental; urgency=low
 
   * debian/control: Add missing ${misc:Depends} to -dbg.
