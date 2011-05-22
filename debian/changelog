@@ -5,6 +5,9 @@ postgresql-9.1 (9.1~beta1-3) UNRELEASED; urgency=low
   * debian/copyright: Convert to DEP-5.
   * debian/copyright: Add current copyrights, thanks to Ansgar Burchardt for
     noticing.
+  * Add 03-cmsgcred-size.patch: Fix size of struct cmsgcred to fix ident
+    authentication on kFreeBSD 64 bit. Thanks to Petr Salinger for the
+    patch! (Closes: #627597)
 
  -- Martin Pitt <mpitt@debian.org>  Sat, 14 May 2011 22:27:25 +0200
 

@@ -1,0 +1,32 @@
+From e4630822de32ad24888711ae1699e4fb33086af4 Mon Sep 17 00:00:00 2001
+From: Petr Salinger <Petr.Salinger@seznam.cz>
+Date: Sun, 22 May 2011 15:24:49 +0200
+Subject: [PATCH] Fix size of struct cmsgcred
+
+The sizeof(struct cmsgcred) is 84 on kfrebsd-amd64, there is no reason for
+padding it  at the end to 8-byte boundary by kernel. However, the process is
+blocking on receiving those extra 4 bytes, which will never come.
+
+This breaks ident authentication on kFreeBSD 64 bit.
+
+http://bugs.debian.org/612888
+---
+ src/backend/libpq/auth.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/backend/libpq/auth.c b/src/backend/libpq/auth.c
+index 618f007..865819b 100644
+--- a/src/backend/libpq/auth.c
++++ b/src/backend/libpq/auth.c
+@@ -1897,7 +1897,7 @@ auth_peer(hbaPort *port)
+ 	Cred	   *cred;
+ 
+ 	/* Compute size without padding */
+-	char		cmsgmem[ALIGN(sizeof(struct cmsghdr)) + ALIGN(sizeof(Cred))];	/* for NetBSD */
++	char		cmsgmem[ALIGN(sizeof(struct cmsghdr)) + sizeof(Cred)];	/* for NetBSD */
+ 
+ 	/* Point to start of first structure */
+ 	struct cmsghdr *cmsg = (struct cmsghdr *) cmsgmem;
+-- 
+1.7.5.1
+
