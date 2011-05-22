@@ -3,6 +3,8 @@ postgresql-9.1 (9.1~beta1-3) UNRELEASED; urgency=low
   * Move /usr/share/postgresql/9.1/extension/pl* from -contrib into the actual
     -pl* packages, and ship PL/pgsql in postgresql-9.1.
   * debian/copyright: Convert to DEP-5.
+  * debian/copyright: Add current copyrights, thanks to Ansgar Burchardt for
+    noticing.
 
  -- Martin Pitt <mpitt@debian.org>  Sat, 14 May 2011 22:27:25 +0200
 
