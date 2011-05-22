@@ -1,4 +1,4 @@
-postgresql-9.1 (9.1~beta1-3) UNRELEASED; urgency=low
+postgresql-9.1 (9.1~beta1-3) experimental; urgency=low
 
   * Move /usr/share/postgresql/9.1/extension/pl* from -contrib into the actual
     -pl* packages, and ship PL/pgsql in postgresql-9.1.
@@ -9,7 +9,7 @@ postgresql-9.1 (9.1~beta1-3) UNRELEASED; urgency=low
     authentication on kFreeBSD 64 bit. Thanks to Petr Salinger for the
     patch! (Closes: #627597)
 
- -- Martin Pitt <mpitt@debian.org>  Sat, 14 May 2011 22:27:25 +0200
+ -- Martin Pitt <mpitt@debian.org>  Sun, 22 May 2011 20:44:36 +0200
 
 postgresql-9.1 (9.1~beta1-2) experimental; urgency=low
 
