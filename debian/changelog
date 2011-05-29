@@ -3,6 +3,10 @@ postgresql-9.1 (9.1~beta1-4) UNRELEASED; urgency=low
   * debian/control: Add postgresql-common dependency to -server-dev, so that
     we get the pg_config diversion.
   * 52-tutorial-README.patch: Fix server-dev version in comment.
+  * 51-default-sockets-in-var.patch: Move the pg_regress patching parts to
+    debian/pg_regress-in-tmp.patch and temporarily apply it only for running
+    the local checks. In the installed system it seems we actually do want it
+    to use the /var/run/postgresql socket dir. (Closes: #554166)
 
  -- Martin Pitt <mpitt@debian.org>  Sun, 29 May 2011 17:41:49 +0200
 
