@@ -1,3 +1,10 @@
+postgresql-9.1 (9.1~beta1-4) UNRELEASED; urgency=low
+
+  * debian/control: Add postgresql-common dependency to -server-dev, so that
+    we get the pg_config diversion.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 29 May 2011 17:41:49 +0200
+
 postgresql-9.1 (9.1~beta1-3) experimental; urgency=low
 
   * Move /usr/share/postgresql/9.1/extension/pl* from -contrib into the actual
