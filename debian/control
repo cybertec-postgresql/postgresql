@@ -146,7 +146,7 @@ Description: front-end programs for PostgreSQL 9.1
 Package: postgresql-server-dev-9.1
 Architecture: any
 Section: libdevel
-Depends: ${misc:Depends}, ${shlibs:Depends}, libpq-dev (>= 9.1~), postgresql-common (>= 117)
+Depends: ${misc:Depends}, ${shlibs:Depends}, libpq-dev (>= 9.1~), postgresql-common (>= 117~)
 Description: development files for PostgreSQL 9.1 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
