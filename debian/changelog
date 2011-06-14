@@ -1,4 +1,4 @@
-postgresql-9.1 (9.1~beta2-1) UNRELEASED; urgency=low
+postgresql-9.1 (9.1~beta2-1) experimental; urgency=low
 
   * New upstream beta release.
   * Drop 03-cmsgcred-size.patch, fixed upstream.
@@ -11,7 +11,7 @@ postgresql-9.1 (9.1~beta2-1) UNRELEASED; urgency=low
   * debian/postgresql-9.1.preinst: Fail the package upgrade early when
     upgrading from beta-1, as the DB format changed.
 
- -- Martin Pitt <mpitt@debian.org>  Mon, 06 Jun 2011 07:49:34 +0200
+ -- Martin Pitt <mpitt@debian.org>  Tue, 14 Jun 2011 09:53:29 +0200
 
 postgresql-9.1 (9.1~beta1-4) experimental; urgency=low
 
