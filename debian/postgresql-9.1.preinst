@@ -27,6 +27,15 @@ if [ "$1" = "upgrade" ] || [ "$1" = "install" ] && \
     rm_conffile /etc/init.d/postgresql-9.1
 fi
 
+# DB format changed between beta 1 and 2
+if [ "$1" = "upgrade" ] || [ "$1" = "install" ] && \
+	dpkg --compare-versions "$2" lt-nl "9.1~beta2"; then
+    if pg_lsclusters -h | grep -q '^9.1'; then
+	echo "ERROR: The database format changed between beta 1 and 2. Please dump your 9.1 clusters first and remove them, before attempting to upgrade the package." >&2
+	exit 1
+    fi
+fi
+
 #DEBHELPER#
 
 exit 0

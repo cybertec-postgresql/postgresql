@@ -8,6 +8,8 @@ postgresql-9.1 (9.1~beta2-1) UNRELEASED; urgency=low
   * debian/watch: Fix for beta versions.
   * debian/copyright: Add pointers to GPL and Artistic licenses for the Perl
     terms.
+  * debian/postgresql-9.1.preinst: Fail the package upgrade early when
+    upgrading from beta-1, as the DB format changed.
 
  -- Martin Pitt <mpitt@debian.org>  Mon, 06 Jun 2011 07:49:34 +0200
 
