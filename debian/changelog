@@ -1,5 +1,8 @@
-postgresql-9.1 (9.1~beta1-5) UNRELEASED; urgency=low
+postgresql-9.1 (9.1~beta2-1) UNRELEASED; urgency=low
 
+  * New upstream beta release.
+  * Drop 03-cmsgcred-size.patch, fixed upstream.
+  * debian/postgresql-9.1.install: Install new pg_basebackup translations.
   * debian/control: Fix the server-dev dependency to p-common to also work for
     backports.
   * debian/watch: Fix for beta versions.
