@@ -6,6 +6,8 @@ postgresql-9.1 (9.1~beta2-1) UNRELEASED; urgency=low
   * debian/control: Fix the server-dev dependency to p-common to also work for
     backports.
   * debian/watch: Fix for beta versions.
+  * debian/copyright: Add pointers to GPL and Artistic licenses for the Perl
+    terms.
 
  -- Martin Pitt <mpitt@debian.org>  Mon, 06 Jun 2011 07:49:34 +0200
 
