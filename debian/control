@@ -90,7 +90,7 @@ Description: shared library libpgtypes for PostgreSQL 9.1
 Package: postgresql-9.1
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-9.1, postgresql-common (>= 115~), tzdata, ssl-cert, locales
-Suggests: oidentd | ident-server
+Suggests: oidentd | ident-server, locales-all
 Conflicts: postgresql (<< 7.5)
 Replaces: postgresql-contrib-9.1 (<< 9.1~beta1-3~)
 Description: object-relational SQL database, version 9.1 server
