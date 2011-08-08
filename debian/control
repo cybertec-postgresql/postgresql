@@ -4,11 +4,21 @@ Priority: optional
 Maintainer: Martin Pitt <mpitt@debian.org>
 Uploaders: Peter Eisentraut <petere@debian.org>
 Standards-Version: 3.9.2
-Build-Depends: debhelper (>= 7.0.50~), perl (>= 5.8),
- libperl-dev, tcl8.5-dev, libedit-dev, libssl-dev, 
- zlib1g-dev | libz-dev, libpam0g-dev | libpam-dev, libxml2-dev, libkrb5-dev,
- libldap2-dev, libxslt1-dev, libossp-uuid-dev, python-dev,
- gettext, hardening-wrapper
+Build-Depends: debhelper (>= 7.0.50~),
+ perl (>= 5.8),
+ libperl-dev,
+ tcl8.5-dev,
+ libedit-dev,
+ libssl-dev, 
+ zlib1g-dev | libz-dev,
+ libpam0g-dev | libpam-dev,
+ libxml2-dev, libkrb5-dev,
+ libldap2-dev,
+ libxslt1-dev,
+ libossp-uuid-dev,
+ python-dev,
+ gettext,
+ hardening-wrapper
 Homepage: http://www.postgresql.org/
 Vcs-Browser: http://bazaar.launchpad.net/~pitti/postgresql/debian-9.1
 Vcs-Bzr: https://code.launchpad.net/~pitti/postgresql/debian-9.1
@@ -16,7 +26,12 @@ Vcs-Bzr: https://code.launchpad.net/~pitti/postgresql/debian-9.1
 Package: libpq-dev
 Architecture: any
 Section: libdevel
-Depends: ${misc:Depends}, ${shlibs:Depends}, libpq5 (= ${binary:Version}), libssl-dev, libkrb5-dev, comerr-dev
+Depends: ${misc:Depends},
+ ${shlibs:Depends},
+ libpq5 (= ${binary:Version}),
+ libssl-dev,
+ libkrb5-dev,
+ comerr-dev
 Conflicts: postgresql-dev (<< 7.5)
 Replaces: postgresql-dev
 Suggests: postgresql-doc-9.1
@@ -55,7 +70,12 @@ Description: run-time library for ECPG programs
 Package: libecpg-dev
 Architecture: any
 Section: libdevel
-Depends: ${misc:Depends}, ${shlibs:Depends}, libpq-dev, libecpg6 (= ${binary:Version}), libecpg-compat3 (= ${binary:Version}), libpgtypes3 (= ${binary:Version})
+Depends: ${misc:Depends},
+ ${shlibs:Depends},
+ libpq-dev,
+ libecpg6 (= ${binary:Version}),
+ libecpg-compat3 (= ${binary:Version}),
+ libpgtypes3 (= ${binary:Version})
 Conflicts: postgresql-dev, libecpg3-dev
 Description: development files for ECPG (Embedded PostgreSQL for C)
  This package contains the necessary files to build ECPG (Embedded
@@ -89,7 +109,13 @@ Description: shared library libpgtypes for PostgreSQL 9.1
 
 Package: postgresql-9.1
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-9.1, postgresql-common (>= 115~), tzdata, ssl-cert, locales
+Depends: ${misc:Depends},
+ ${shlibs:Depends},
+ postgresql-client-9.1,
+ postgresql-common (>= 115~),
+ tzdata,
+ ssl-cert,
+ locales
 Suggests: oidentd | ident-server, locales-all
 Conflicts: postgresql (<< 7.5)
 Replaces: postgresql-contrib-9.1 (<< 9.1~beta1-3~)
@@ -126,7 +152,9 @@ Description: debug symbols for postgresql-9.1
 
 Package: postgresql-client-9.1
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-client-common (>= 115~)
+Depends: ${misc:Depends},
+ ${shlibs:Depends},
+ postgresql-client-common (>= 115~)
 Conflicts: postgresql (<< 7.5)
 Suggests: postgresql-9.1, postgresql-doc-9.1
 Provides: postgresql-client
@@ -146,7 +174,10 @@ Description: front-end programs for PostgreSQL 9.1
 Package: postgresql-server-dev-9.1
 Architecture: any
 Section: libdevel
-Depends: ${misc:Depends}, ${shlibs:Depends}, libpq-dev (>= 9.1~), postgresql-common (>= 117~)
+Depends: ${misc:Depends},
+ ${shlibs:Depends},
+ libpq-dev (>= 9.1~),
+ postgresql-common (>= 117~)
 Description: development files for PostgreSQL 9.1 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
@@ -170,7 +201,10 @@ Description: documentation for the PostgreSQL database management system
 
 Package: postgresql-contrib-9.1
 Architecture: any
-Depends: postgresql-9.1, ${misc:Depends}, ${shlibs:Depends}, postgresql-common (>= 115~)
+Depends: postgresql-9.1,
+ ${misc:Depends},
+ ${shlibs:Depends},
+ postgresql-common (>= 115~)
 Suggests: libdbd-pg-perl
 Conflicts: postgresql-contrib (<< 7.5)
 Description: additional facilities for PostgreSQL
