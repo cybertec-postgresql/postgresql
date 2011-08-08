@@ -17,6 +17,7 @@ Build-Depends: debhelper (>= 7.0.50~),
  libxslt1-dev,
  libossp-uuid-dev,
  python-dev,
+ jade,
  gettext,
  hardening-wrapper
 Homepage: http://www.postgresql.org/
