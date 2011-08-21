@@ -1,5 +1,7 @@
-postgresql-9.1 (9.1~beta3-2) UNRELEASED; urgency=low
+postgresql-9.1 (9.1~rc1-1) UNRELEASED; urgency=low
 
+  * New upstream release.
+  * 54-debian-alternatives-for-external-tools.patch: Unfuzz for new release.
   * debian/control: Suggest locales-all. (Closes: #629875)
   * debian/control: Wrap dependencies.
   * debian/control: Add explicit jade build dependency. (see #621492 for the
