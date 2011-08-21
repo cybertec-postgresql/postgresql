@@ -1,13 +1,15 @@
-postgresql-9.1 (9.1~rc1-1) UNRELEASED; urgency=low
+postgresql-9.1 (9.1~rc1-1) unstable; urgency=low
 
   * New upstream release.
+  * Upload to unstable now that the final 9.1 release will come soon. 9.1 will
+    most probably be the version supported in the Wheezy release.
   * 54-debian-alternatives-for-external-tools.patch: Unfuzz for new release.
   * debian/control: Suggest locales-all. (Closes: #629875)
   * debian/control: Wrap dependencies.
   * debian/control: Add explicit jade build dependency. (see #621492 for the
     corresponding 9.0 bug report)
 
- -- Martin Pitt <mpitt@debian.org>  Thu, 04 Aug 2011 17:31:19 +0200
+ -- Martin Pitt <mpitt@debian.org>  Sun, 21 Aug 2011 20:59:58 +0200
 
 postgresql-9.1 (9.1~beta3-1) experimental; urgency=low
 
