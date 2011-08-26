@@ -1,3 +1,10 @@
+postgresql-9.1 (9.1~rc1-3) UNRELEASED; urgency=low
+
+  * debian/watch: Fix for mangling ~rc, thanks Peter Eisentraut. 
+    (Closes: #639357)
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 26 Aug 2011 16:47:30 +0200
+
 postgresql-9.1 (9.1~rc1-2) unstable; urgency=low
 
   * debian/control: Build the versionless metapackages again, and point them
