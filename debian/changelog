@@ -2,6 +2,8 @@ postgresql-9.1 (9.1~rc1-3) UNRELEASED; urgency=low
 
   * debian/watch: Fix for mangling ~rc, thanks Peter Eisentraut. 
     (Closes: #639357)
+  * debian/control: Add versionless Provides: to the PL* extensions, as per
+    request from Christoph Berg.
 
  -- Martin Pitt <mpitt@debian.org>  Fri, 26 Aug 2011 16:47:30 +0200
 
