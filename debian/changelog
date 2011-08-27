@@ -4,6 +4,8 @@ postgresql-9.1 (9.1~rc1-3) UNRELEASED; urgency=low
     (Closes: #639357)
   * debian/control: Add versionless Provides: to the PL* extensions, as per
     request from Christoph Berg.
+  * debian/control: Add "Replaces: postgresql-9.0-dbg" to fix file conflict.
+    (Closes: #639258)
 
  -- Martin Pitt <mpitt@debian.org>  Fri, 26 Aug 2011 16:47:30 +0200
 
