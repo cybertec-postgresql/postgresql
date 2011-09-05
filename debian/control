@@ -263,7 +263,10 @@ Description: additional facilities for PostgreSQL
 
 Package: postgresql-plperl-9.1
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-9.1, perl
+Depends: ${misc:Depends}, 
+ ${shlibs:Depends},
+ postgresql-9.1 (= ${binary:Version}),
+ perl
 Replaces: postgresql-contrib-9.1 (<< 9.1~beta1-3~)
 Provides: postgresql-plperl
 Description: PL/Perl procedural language for PostgreSQL 9.1
@@ -275,7 +278,9 @@ Description: PL/Perl procedural language for PostgreSQL 9.1
 
 Package: postgresql-plpython-9.1
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-9.1
+Depends: ${misc:Depends},
+ ${shlibs:Depends},
+ postgresql-9.1 (= ${binary:Version})
 Replaces: postgresql-contrib-9.1 (<< 9.1~beta1-3~)
 Provides: postgresql-plpython
 Description: PL/Python procedural language for PostgreSQL 9.1
@@ -287,7 +292,9 @@ Description: PL/Python procedural language for PostgreSQL 9.1
 
 Package: postgresql-pltcl-9.1
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, postgresql-9.1
+Depends: ${misc:Depends},
+ ${shlibs:Depends},
+ postgresql-9.1 (= ${binary:Version})
 Replaces: postgresql-contrib-9.1 (<< 9.1~beta1-3~)
 Provides: postgresql-pltcl
 Description: PL/Tcl procedural language for PostgreSQL 9.1

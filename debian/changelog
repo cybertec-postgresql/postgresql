@@ -1,3 +1,10 @@
+postgresql-9.1 (9.1~rc1-4) UNRELEASED; urgency=low
+
+  * debian/control: Tighten the dependencies of the -pl* extensions to
+    postgresql-9.1 to the same binary version. (Closes: #640335)
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 05 Sep 2011 06:30:41 +0200
+
 postgresql-9.1 (9.1~rc1-3) unstable; urgency=low
 
   * debian/watch: Fix for mangling ~rc, thanks Peter Eisentraut. 
