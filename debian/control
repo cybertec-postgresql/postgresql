@@ -203,7 +203,7 @@ Description: documentation for the PostgreSQL database management system
 
 Package: postgresql-contrib-9.1
 Architecture: any
-Depends: postgresql-9.1,
+Depends: postgresql-9.1 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends},
  postgresql-common (>= 115~)
