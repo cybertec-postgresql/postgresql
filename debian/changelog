@@ -1,5 +1,8 @@
-postgresql-9.1 (9.1~rc1-4) UNRELEASED; urgency=low
+postgresql-9.1 (9.1.0-1) UNRELEASED; urgency=low
 
+  * Final 9.1 release.
+  * 02-relax-sslkey-permscheck.patch, 50-per-version-dirs.patch: Refresh to
+    apply cleanly.
   * debian/control: Tighten the dependencies of the -pl* extensions/-contrib
     to postgresql-9.1 to the same binary version. (Closes: #640335)
 
