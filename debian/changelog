@@ -1,4 +1,4 @@
-postgresql-9.1 (9.1.1-1) UNRELEASED; urgency=low
+postgresql-9.1 (9.1.1-1) unstable; urgency=low
 
   * New upstream bug fix release:
     - Make pg_options_to_table return NULL for an option with no value.
@@ -11,7 +11,7 @@ postgresql-9.1 (9.1.1-1) UNRELEASED; urgency=low
     - Fix explicit reference to pg_temp schema in "CREATE TEMPORARY
       TABLE". This used to be allowed, but failed in 9.1.0.
 
- -- Martin Pitt <mpitt@debian.org>  Mon, 26 Sep 2011 14:31:30 +0200
+ -- Martin Pitt <mpitt@debian.org>  Mon, 26 Sep 2011 14:35:36 +0200
 
 postgresql-9.1 (9.1.0-1) unstable; urgency=low
 
