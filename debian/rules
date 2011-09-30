@@ -64,6 +64,8 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	make install-world DESTDIR=$(CURDIR)/debian/tmp
+	# compress manpages
+	gzip -9n $(CURDIR)/debian/tmp/usr/share/postgresql/*/man/man*/*.[137]
 
 override_dh_makeshlibs:
 	dh_makeshlibs -Xusr/lib/postgresql/$(MAJOR_VER)
@@ -87,11 +89,6 @@ override_dh_install:
 	if [ -d debian/postgresql-doc-$(MAJOR_VER) ]; then \
 		install src/tutorial/*.c src/tutorial/*.source src/tutorial/Makefile src/tutorial/README debian/postgresql-doc-$(MAJOR_VER)/usr/share/doc/postgresql-doc-$(MAJOR_VER)/tutorial; \
 	fi
-
-	# compress manpages
-	find debian/postgresql-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/man -type f -exec gzip -9 '{}' \;
-
-	find debian/postgresql-client-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/man -type f -exec gzip -9 '{}' \;
 
 override_dh_auto_test:
 ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))

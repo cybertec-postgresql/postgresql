@@ -7,6 +7,10 @@ postgresql-9.1 (9.1.1-2) UNRELEASED; urgency=low
     - brace-expansion-in-debhelper-config-file
     - maintainer-script-without-set-e
 
+  [ Martin Pitt ]
+  * debian/*.install, debian/rules: Compress manpages in debian/tmp instead of
+    just two binary packages and forgetting the others.
+
  -- Martin Pitt <mpitt@debian.org>  Fri, 30 Sep 2011 22:21:08 +0200
 
 postgresql-9.1 (9.1.1-1) unstable; urgency=low
