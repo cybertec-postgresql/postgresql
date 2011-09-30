@@ -7,9 +7,18 @@ usr/include/postgresql/postgres_ext.h
 usr/include/postgresql/9.1/server/catalog/pg_type.h /usr/include/postgresql/catalog
 usr/include/postgresql/9.1/server/catalog/genbki.h /usr/include/postgresql/catalog
 usr/include/postgresql/9.1/server/nodes/nodes.h /usr/include/postgresql/nodes
-usr/include/postgresql/9.1/server/utils/{elog,errcodes,palloc}.h /usr/include/postgresql/utils
-usr/include/postgresql/9.1/server/{c,pg_config,pg_config_manual,pg_config_os,port,pg_trace}.h /usr/include/postgresql/
-usr/include/postgresql/9.1/server/postgres{,_fe,_ext}.h /usr/include/postgresql/
+usr/include/postgresql/9.1/server/utils/elog.h /usr/include/postgresql/utils
+usr/include/postgresql/9.1/server/utils/errcodes.h /usr/include/postgresql/utils
+usr/include/postgresql/9.1/server/utils/palloc.h /usr/include/postgresql/utils
+usr/include/postgresql/9.1/server/c.h /usr/include/postgresql/
+usr/include/postgresql/9.1/server/pg_config.h /usr/include/postgresql/
+usr/include/postgresql/9.1/server/pg_config_manual.h /usr/include/postgresql/
+usr/include/postgresql/9.1/server/pg_config_os.h /usr/include/postgresql/
+usr/include/postgresql/9.1/server/port.h /usr/include/postgresql/
+usr/include/postgresql/9.1/server/pg_trace.h /usr/include/postgresql/
+usr/include/postgresql/9.1/server/postgres.h /usr/include/postgresql/
+usr/include/postgresql/9.1/server/postgres_fe.h /usr/include/postgresql/
+usr/include/postgresql/9.1/server/postgres_ext.h /usr/include/postgresql/
 usr/include/postgresql/9.1/server/mb/pg_wchar.h /usr/include/postgresql/mb
 usr/lib/libpgport.a
 usr/lib/libpq.a
