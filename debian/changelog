@@ -10,6 +10,8 @@ postgresql-9.1 (9.1.1-2) UNRELEASED; urgency=low
   [ Martin Pitt ]
   * debian/*.install, debian/rules: Compress manpages in debian/tmp instead of
     just two binary packages and forgetting the others.
+  * Build a new postgresql-plpython3-9.1 package for Python 3 support. This
+    requires some reorganization of debian/rules to do multiple builds.
 
  -- Martin Pitt <mpitt@debian.org>  Fri, 30 Sep 2011 22:21:08 +0200
 

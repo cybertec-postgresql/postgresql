@@ -13,6 +13,28 @@ endif
 export DEB_BUILD_HARDENING=1
 export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
+COMMON_CONFIGURE_FLAGS= \
+  --mandir=/usr/share/postgresql/$(MAJOR_VER)/man \
+  --docdir=/usr/share/doc/postgresql-doc-$(MAJOR_VER) \
+  --sysconfdir=/etc/postgresql-common \
+  --datarootdir=/usr/share/ \
+  --datadir=/usr/share/postgresql/$(MAJOR_VER) \
+  --bindir=/usr/lib/postgresql/$(MAJOR_VER)/bin \
+  --libdir=/usr/lib/ \
+  --libexecdir=/usr/lib/postgresql/ \
+  --includedir=/usr/include/postgresql/ \
+  --enable-nls \
+  --enable-integer-datetimes \
+  --enable-thread-safety \
+  --enable-debug \
+  --disable-rpath \
+  --with-ossp-uuid \
+  --with-gnu-ld \
+  --with-pgport=5432 \
+  --with-system-tzdata=/usr/share/zoneinfo \
+  CFLAGS='$(CFLAGS)' \
+  LDFLAGS='$(LDFLAGS)'
+
 # build should fail on test suite failures on all arches
 TESTSUITE_FAIL_CMD=exit 1
 
@@ -20,50 +42,56 @@ TESTSUITE_FAIL_CMD=exit 1
 %:
 	dh $@
 
-override_dh_auto_configure:
-	dh_auto_configure -- \
-  --mandir=/usr/share/postgresql/$(MAJOR_VER)/man \
-  --with-docdir=/usr/share/doc/postgresql-doc-$(MAJOR_VER) \
-  --sysconfdir=/etc/postgresql-common \
-  --datadir=/usr/share/postgresql/$(MAJOR_VER) \
-  --bindir=/usr/lib/postgresql/$(MAJOR_VER)/bin \
-  --includedir=/usr/include/postgresql/ \
-  --enable-nls \
-  --enable-integer-datetimes \
-  --enable-thread-safety \
-  --enable-debug \
-  --disable-rpath \
-  --with-tcl \
-  --with-perl \
-  --with-python \
-  --with-pam \
-  --with-krb5 \
-  --with-gssapi \
-  --with-openssl \
-  --with-libxml \
-  --with-libxslt \
-  --with-ldap \
-  --with-ossp-uuid \
-  --with-gnu-ld \
-  --with-tclconfig=/usr/lib/tcl$(TCL_VER) \
-  --with-tkconfig=/usr/lib/tk$(TCL_VER) \
-  --with-includes=/usr/include/tcl$(TCL_VER) \
-  --with-system-tzdata=/usr/share/zoneinfo \
-  --with-pgport=5432 \
-  CFLAGS='$(CFLAGS)' \
-  LDFLAGS='$(LDFLAGS)'
+override_dh_auto_configure: stamp/configure-build stamp/configure-build-py3
 
-override_dh_auto_build:
-	make world
+stamp/configure-build:
+	mkdir -p stamp build
+	cd build && ../configure \
+           --with-tcl \
+           --with-perl \
+           --with-python \
+           --with-pam \
+           --with-krb5 \
+           --with-gssapi \
+           --with-openssl \
+           --with-libxml \
+           --with-libxslt \
+           --with-ldap \
+           --with-tclconfig=/usr/lib/tcl$(TCL_VER) \
+           --with-tkconfig=/usr/lib/tk$(TCL_VER) \
+           --with-includes=/usr/include/tcl$(TCL_VER) \
+           PYTHON=/usr/bin/python \
+           $(COMMON_CONFIGURE_FLAGS)
+	touch "$@"
+	
+stamp/configure-build-py3:
+	mkdir build-py3
+	cd build-py3 && ../configure \
+           --with-python \
+           PYTHON=/usr/bin/python3 \
+           $(COMMON_CONFIGURE_FLAGS)
+	touch "$@"
+
+override_dh_auto_build: stamp/build stamp/build-py3
+
+stamp/build: stamp/configure-build
+	cd build && $(MAKE) world
 
 	# generate POT files for translators
 	find -name nls.mk -exec sh -c "make -C \$$(dirname {}) init-po" \;
 
 	# build tutorial stuff
-	make -C src/tutorial NO_PGXS=1
+	make -C build/src/tutorial NO_PGXS=1
+
+	touch "$@"
+
+stamp/build-py3: stamp/configure-build-py3
+	cd build-py3 && $(MAKE)
+	touch "$@"
 
 override_dh_auto_install:
-	make install-world DESTDIR=$(CURDIR)/debian/tmp
+	make -C build-py3 install DESTDIR=$(CURDIR)/debian/tmp
+	make -C build install-world DESTDIR=$(CURDIR)/debian/tmp
 	# compress manpages
 	gzip -9n $(CURDIR)/debian/tmp/usr/share/postgresql/*/man/man*/*.[137]
 
@@ -71,8 +99,7 @@ override_dh_makeshlibs:
 	dh_makeshlibs -Xusr/lib/postgresql/$(MAJOR_VER)
 
 override_dh_auto_clean:
-	[ ! -f GNUmakefile ] || dh_auto_clean	
-	rm -f src/backend/gettext-files
+	rm -rf build* stamp
 
 override_dh_installchangelogs:
 	dh_installchangelogs HISTORY
@@ -98,14 +125,14 @@ ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	set -e; \
 	patch --no-backup-if-mismatch -p1 < debian/disable-root-check.patch; \
 	patch --no-backup-if-mismatch -p1 < debian/pg_regress-in-tmp.patch; \
-	make -C src/test/regress bigcheck || fail=1; \
+	make -C build/src/test/regress bigcheck || fail=1; \
 	patch --no-backup-if-mismatch -Rp1 < debian/pg_regress-in-tmp.patch; \
 	patch --no-backup-if-mismatch -Rp1 < debian/disable-root-check.patch; \
 	if [ -n "$$fail" ]; then \
 	    for l in regression.diffs log/initdb.log log/postmaster.log; do \
-	    	if [ -e src/test/regress/$$l ]; then \
+	    	if [ -e build/src/test/regress/$$l ]; then \
 		    echo "********* $$l *******"; \
-		    cat src/test/regress/$$l; \
+		    cat build/src/test/regress/$$l; \
 		fi; \
 	    done; \
 	    $(TESTSUITE_FAIL_CMD); \
@@ -118,7 +145,7 @@ override_dh_strip:
 # run tests in contrib in temporary test installations, using programs
 # from local tree
 contrib-check:
-	set -e; cd contrib; \
+	set -e; cd build/contrib; \
 	for d in *; do \
 	    [ -d $$d/sql ] || continue; \
 	    echo "==============  Running tests in $$d"; \
@@ -141,7 +168,7 @@ contrib-installcheck:
 	sleep 1
 	while !/usr/lib/postgresql/$(MAJOR_VER)/bin/psql -h /tmp -l >/dev/null 2>&1; do sleep 1; done
 	# run the tests
-	-cd contrib; make installcheck
+	-cd build/contrib; make installcheck
 	/usr/lib/postgresql/$(MAJOR_VER)/bin/pg_ctl -D tmp_data stop
 	# find and print the regression diffs
-	find contrib/ -name regression.diffs -exec cat '{}' \;
+	find build/contrib/ -name regression.diffs -exec cat '{}' \;
