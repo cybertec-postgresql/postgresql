@@ -1,3 +1,10 @@
+postgresql-9.1 (9.1.1-4) UNRELEASED; urgency=low
+
+  * debian/rules: Fix build failure for binary-indep-only builds.
+    (Closes: #646079)
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 21 Oct 2011 08:40:30 +0200
+
 postgresql-9.1 (9.1.1-3) unstable; urgency=low
 
   * debian/rules: Build with LINUX_OOM_ADJ=0 on Linux, to allow the OOM killer
