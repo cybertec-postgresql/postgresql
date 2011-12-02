@@ -1,5 +1,147 @@
-postgresql-9.1 (9.1.1-4) UNRELEASED; urgency=low
+postgresql-9.1 (9.1.2-1) UNRELEASED; urgency=low
 
+  * New upstream bug fix release:
+    - Fix bugs in information_schema.referential_constraints view.
+      This view was being insufficiently careful about matching the
+      foreign-key constraint to the depended-on primary or unique key
+      constraint. That could result in failure to show a foreign key
+      constraint at all, or showing it multiple times, or claiming that
+      it depends on a different constraint than the one it really does.
+      Since the view definition is installed by initdb, merely upgrading
+      will not fix the problem. If you need to fix this in an existing
+      installation, you can (as a superuser) drop the information_schema
+      schema then re-create it by sourcing
+      "SHAREDIR/information_schema.sql". (Run pg_config --sharedir if
+      you're uncertain where "SHAREDIR" is.) This must be repeated in
+      each database to be fixed.
+    - Make "contrib/citext"'s upgrade script fix collations of citext
+      columns and indexes.
+      Existing citext columns and indexes aren't correctly marked as
+      being of a collatable data type during pg_upgrade from a pre-9.1
+      server. That leads to operations on them failing with errors such
+      as "could not determine which collation to use for string
+      comparison". This change allows them to be fixed by the same script
+      that upgrades the citext module into a proper 9.1 extension during
+      CREATE EXTENSION citext FROM unpackaged.
+      If you have a previously-upgraded database that is suffering from
+      this problem, and you already ran the "CREATE EXTENSION" command,
+      you can manually run (as superuser) the "UPDATE" commands found at
+      the end of "SHAREDIR/extension/citext--unpackaged--1.0.sql". (Run
+      pg_config --sharedir if you're uncertain where "SHAREDIR" is.)
+    - Fix possible crash during "UPDATE" or "DELETE" that joins to the
+      output of a scalar-returning function.
+    - Fix incorrect replay of WAL records for GIN index updates.
+    - Fix TOAST-related data corruption during CREATE TABLE dest AS
+      SELECT - FROM src or INSERT INTO dest SELECT * FROM src.
+    - Fix possible failures during hot standby startup.
+    - Start hot standby faster when initial snapshot is incomplete.
+    - Fix race condition during toast table access from stale syscache
+      entries. The typical symptom was transient errors like "missing chunk
+      number 0 for toast value NNNNN in pg_toast_2619", where the cited toast
+      table would always belong to a system catalog.
+    - Track dependencies of functions on items used in parameter default
+      expressions. Previously, a referenced object could be dropped without
+      having dropped or modified the function, leading to misbehavior when
+      the function was used. Note that merely installing this update will not
+      fix the missing dependency entries; to do that, you'd need to
+      "CREATE OR REPLACE" each such function afterwards. If you have
+      functions whose defaults depend on non-built-in objects, doing so
+      is recommended.
+    - Fix incorrect management of placeholder variables in nestloop joins.
+      This bug is known to lead to "variable not found in subplan target
+      list" planner errors, and could possibly result in wrong query
+      output when outer joins are involved.
+    - Fix window functions that sort by expressions involving aggregates.
+    - Fix "MergeAppend child's targetlist doesn't match MergeAppend"
+      planner errors.
+    - Fix index matching for operators with both collatable and
+      noncollatable inputs. In 9.1.0, an indexable operator that has a
+      non-collatable left-hand input type and a collatable right-hand input
+      type would not be recognized as matching the left-hand column's index.
+      An example is the hstore ? text operator.
+    - Allow inlining of set-returning SQL functions with multiple OUT
+      parameters.
+    - Don't trust deferred-unique indexes for join removal.
+    - Make DatumGetInetP() unpack inet datums that have a 1-byte header,
+      and add a new macro, DatumGetInetPP(), that does not.
+    - Improve locale support in money type's input and output.
+      Aside from not supporting all standard lc_monetary formatting
+      options, the input and output functions were inconsistent, meaning
+      there were locales in which dumped money values could not be
+      re-read.
+    - Don't let transform_null_equals affect CASE foo WHEN NULL ...
+      constructs.  transform_null_equals is only supposed to affect foo =
+      NULL expressions written directly by the user, not equality checks
+      generated internally by this form of CASE.
+    - Change foreign-key trigger creation order to better support
+      self-referential foreign keys.
+    - Fix IF EXISTS to work correctly in "DROP OPERATOR FAMILY".
+    - Disallow dropping of an extension from within its own script.
+    - Don't mark auto-generated types as extension members.
+    - Cope with invalid pre-existing search_path settings during "CREATE
+      EXTENSION".
+    - Avoid floating-point underflow while tracking buffer allocation
+      rate.
+    - Prevent autovacuum transactions from running in serializable mode.
+      Autovacuum formerly used the cluster-wide default transaction
+      isolation level, but there is no need for it to use anything higher
+      than READ COMMITTED, and using SERIALIZABLE could result in
+      unnecessary delays for other processes.
+    - Ensure walsender processes respond promptly to SIGTERM.
+    - Exclude "postmaster.opts" from base backups.
+    - Fix incorrect field alignment in ecpg's SQLDA area.
+    - Preserve blank lines within commands in psql's command history.
+      The former behavior could cause problems if an empty line was
+      removed from within a string literal, for example.
+    - Avoid platform-specific infinite loop in pg_dump.
+    - Fix compression of plain-text output format in pg_dump.
+      pg_dump has historically understood -Z with no -F switch to mean
+      that it should emit a gzip-compressed version of its plain text
+      output. Restore that behavior.
+    - Fix pg_dump to dump user-defined casts between auto-generated
+      types, such as table rowtypes.
+    - Fix missed quoting of foreign server names in pg_dump.
+    - Assorted fixes for pg_upgrade. Handle exclusion constraints correctly,
+      avoid failures on Windows, don't complain about mismatched toast table
+      names in 8.4 databases.
+    - In PL/pgSQL, allow foreign tables to define row types.
+    - Fix up conversions of PL/Perl functions' results.
+      Restore the pre-9.1 behavior that PL/Perl functions returning void
+      ignore the result value of their last Perl statement; 9.1.0 would
+      throw an error if that statement returned a reference. Also, make
+      sure it works to return a string value for a composite type, so
+      long as the string meets the type's input format. In addition,
+      throw errors for attempts to return Perl arrays or hashes when the
+      function's declared result type is not an array or composite type,
+      respectively. (Pre-9.1 versions rather uselessly returned strings
+      like ARRAY(0x221a9a0) or HASH(0x221aa90) in such cases.)
+    - Ensure PL/Perl strings are always correctly UTF8-encoded.
+    - Use the preferred version of xsubpp to build PL/Perl, not
+      necessarily the operating system's main copy.
+    - Correctly propagate SQLSTATE in PL/Python exceptions.
+    - Do not install PL/Python extension files for Python major versions
+      other than the one built against.
+    - Change all the "contrib" extension script files to report a useful
+      error message if they are fed to psql. This should help teach people
+      about the new method of using "CREATE EXTENSION" to load these files.
+      In most cases, sourcing the scripts directly would fail anyway, but
+      with harder-to-interpret messages.
+    - Fix incorrect coding in "contrib/dict_int" and "contrib/dict_xsyn".
+    - Remove "contrib/sepgsql" tests from the regular regression test
+      mechanism. Since these tests require root privileges for setup, they're
+      impractical to run automatically. Switch over to a manual approach
+      instead, and provide a testing script to help with that.
+    - Fix assorted errors in "contrib/unaccent"'s configuration file
+      parsing.
+    - Honor query cancel interrupts promptly in pgstatindex().
+    - Revert unintentional enabling of WAL_DEBUG. Fortunately, as debugging
+      tools go, this one is pretty cheap; but it's not intended to be enabled
+      by default, so revert.
+    - Ensure VPATH builds properly install all server header files.
+    - Shorten file names reported in verbose error messages.
+      Regular builds have always reported just the name of the C file
+      containing the error message call, but VPATH builds formerly
+      reported an absolute path name.
   * debian/rules: Fix build failure for binary-indep-only builds.
     (Closes: #646079)
 
