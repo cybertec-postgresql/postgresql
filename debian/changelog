@@ -1,3 +1,13 @@
+postgresql-9.1 (9.1.2-2) UNRELEASED; urgency=low
+
+  * 01-armel-tas.patch: Turn slock_t datatype into an int, and define
+    S_UNLOCK() to call __sync_lock_release() instead of using the default
+    implementation. This complies to the gcc built-in atomic operations
+    specifiction more strictly and now also works on the Panda boards.
+    (LP: #904828)
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 15 Dec 2011 21:17:58 +0100
+
 postgresql-9.1 (9.1.2-1) unstable; urgency=low
 
   * New upstream bug fix release:

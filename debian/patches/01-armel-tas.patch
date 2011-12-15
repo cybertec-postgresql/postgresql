@@ -2,9 +2,20 @@ Description: use gcc intrinsics rather than assembler to implement tas
 Author: Alexander Sack <asac@ubuntu.com>
 Bug-Ubuntu: https://launchpad.net/bugs/497331
 
---- postgresql-8.4-8.4.2/src/include/storage/s_lock.h	2010-01-04 14:21:40.789729336 +0100
-+++ postgresql-8.4-8.4.2.new/src/include/storage/s_lock.h	2010-01-04 14:23:46.918690895 +0100
-@@ -262,14 +262,7 @@
+Index: postgresql-9.1-9.1.2/src/include/storage/s_lock.h
+===================================================================
+--- postgresql-9.1-9.1.2.orig/src/include/storage/s_lock.h	2011-12-01 22:47:20.000000000 +0100
++++ postgresql-9.1-9.1.2/src/include/storage/s_lock.h	2011-12-15 21:17:32.965569760 +0100
+@@ -255,21 +255,15 @@
+ #if defined(__arm__) || defined(__arm)
+ #define HAS_TEST_AND_SET
+ 
+-typedef unsigned char slock_t;
++typedef unsigned int slock_t;
+ 
+ #define TAS(lock) tas(lock)
++#define S_UNLOCK(lock) __sync_lock_release(lock)
+ 
  static __inline__ int
  tas(volatile slock_t *lock)
  {
