@@ -1,6 +1,8 @@
 Description: use gcc intrinsics rather than assembler to implement tas
 Author: Alexander Sack <asac@ubuntu.com>
+Author: Martin Pitt <martin.pitt@ubuntu.com>
 Bug-Ubuntu: https://launchpad.net/bugs/497331
+Bug-Ubuntu: https://launchpad.net/bugs/904828
 
 Index: postgresql-9.1-9.1.2/src/include/storage/s_lock.h
 ===================================================================
