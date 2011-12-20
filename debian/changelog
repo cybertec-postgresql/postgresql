@@ -5,9 +5,9 @@ postgresql-9.1 (9.1.2-2) UNRELEASED; urgency=low
     implementation. This complies to the gcc built-in atomic operations
     specifiction more strictly and now also works on the Panda boards.
     (LP: #904828)
-  * Replace 01-armel-tas.patch with 01-atomic-builtins.patch to always use
-    gcc/intel atomic builtins if available, as we are unlikely to provide
-    better ones and they provide support for more architectures.
+  * Replace 01-armel-tas.patch with 01-atomic-builtins.patch to use
+    gcc/intel atomic builtins if available. Drop the arm implementation as it
+    does not work on newer thumb2/panda board.
 
  -- Martin Pitt <mpitt@debian.org>  Thu, 15 Dec 2011 21:17:58 +0100
 

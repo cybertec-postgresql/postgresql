@@ -1,10 +1,10 @@
-Description: Use gcc/intel cc builtin atomic operations for test-and-set, if available (http://gcc.gnu.org/onlinedocs/gcc-4.1.2/gcc/Atomic-Builtins.html)
+Description: Use gcc/intel cc builtin atomic operations for test-and-set, if available (http://gcc.gnu.org/onlinedocs/gcc-4.1.2/gcc/Atomic-Builtins.html). Remove the custom implementation for arm as it does not work with recent hardware (like -mthumb2).
 Author: Martin Pitt <mpitt@debian.org>
 
 Index: postgresql-9.1-9.1.2/configure.in
 ===================================================================
 --- postgresql-9.1-9.1.2.orig/configure.in	2011-12-01 22:47:20.000000000 +0100
-+++ postgresql-9.1-9.1.2/configure.in	2011-12-18 23:30:47.940475128 +0100
++++ postgresql-9.1-9.1.2/configure.in	2011-12-19 16:54:00.619535943 +0100
 @@ -1522,6 +1522,18 @@
  AC_SUBST(LDAP_LIBS_FE)
  AC_SUBST(LDAP_LIBS_BE)
@@ -27,7 +27,7 @@ Index: postgresql-9.1-9.1.2/configure.in
 Index: postgresql-9.1-9.1.2/configure
 ===================================================================
 --- postgresql-9.1-9.1.2.orig/configure	2011-12-01 22:47:20.000000000 +0100
-+++ postgresql-9.1-9.1.2/configure	2011-12-18 23:31:00.304475596 +0100
++++ postgresql-9.1-9.1.2/configure	2011-12-19 16:54:00.635535943 +0100
 @@ -23602,6 +23602,69 @@
  
  
@@ -101,7 +101,7 @@ Index: postgresql-9.1-9.1.2/configure
 Index: postgresql-9.1-9.1.2/src/include/pg_config.h.in
 ===================================================================
 --- postgresql-9.1-9.1.2.orig/src/include/pg_config.h.in	2011-12-01 22:47:20.000000000 +0100
-+++ postgresql-9.1-9.1.2/src/include/pg_config.h.in	2011-12-18 23:30:34.752474625 +0100
++++ postgresql-9.1-9.1.2/src/include/pg_config.h.in	2011-12-19 16:54:00.639535943 +0100
 @@ -87,6 +87,9 @@
  /* Define to 1 if you have the `cbrt' function. */
  #undef HAVE_CBRT
@@ -115,17 +115,46 @@ Index: postgresql-9.1-9.1.2/src/include/pg_config.h.in
 Index: postgresql-9.1-9.1.2/src/include/storage/s_lock.h
 ===================================================================
 --- postgresql-9.1-9.1.2.orig/src/include/storage/s_lock.h	2011-12-01 22:47:20.000000000 +0100
-+++ postgresql-9.1-9.1.2/src/include/storage/s_lock.h	2011-12-18 23:30:35.296474646 +0100
-@@ -77,8 +77,26 @@
++++ postgresql-9.1-9.1.2/src/include/storage/s_lock.h	2011-12-19 16:56:31.135541667 +0100
+@@ -252,29 +252,6 @@
+ #endif	 /* __ia64__ || __ia64 */
  
- #ifdef HAVE_SPINLOCKS	/* skip spinlocks if requested */
+ 
+-#if defined(__arm__) || defined(__arm)
+-#define HAS_TEST_AND_SET
+-
+-typedef unsigned char slock_t;
+-
+-#define TAS(lock) tas(lock)
+-
+-static __inline__ int
+-tas(volatile slock_t *lock)
+-{
+-	register slock_t _res = 1;
+-
+-	__asm__ __volatile__(
+-		"	swpb 	%0, %0, [%2]	\n"
+-:		"+r"(_res), "+m"(*lock)
+-:		"r"(lock)
+-:		"memory");
+-	return (int) _res;
+-}
+-
+-#endif	 /* __arm__ */
+-
+-
+ /* S/390 and S/390x Linux (32- and 64-bit zSeries) */
+ #if defined(__s390__) || defined(__s390x__)
+ #define HAS_TEST_AND_SET
+@@ -859,6 +836,24 @@
+ 
+ #endif	/* !defined(HAS_TEST_AND_SET) */
  
 +/*************************************************************************
 + * Use compiler provided atomic builtins if available (in particular, gcc and
-+ * Intel provide them for many platforms), as we are unlikely to come up with
-+ * better ones.
++ * Intel provide them for many platforms).
 + */
-+#ifdef HAVE_CC_ATOMICS
++#if !defined(HAS_TEST_AND_SET) && HAVE_CC_ATOMICS
 +#define HAS_TEST_AND_SET
 +typedef int slock_t;
 +
@@ -138,9 +167,7 @@ Index: postgresql-9.1-9.1.2/src/include/storage/s_lock.h
 +	return __sync_lock_test_and_set (lock, 1);
 +}
 +#endif
++
  
--#if defined(__GNUC__) || defined(__INTEL_COMPILER)
-+#if !defined(HAS_TEST_AND_SET) && (defined(__GNUC__) || defined(__INTEL_COMPILER))
- /*************************************************************************
-  * All the gcc inlines
-  * Gcc consistently defines the CPU as __cpu__.
+ /* Blow up if we didn't have any way to do spinlocks */
+ #ifndef HAS_TEST_AND_SET
