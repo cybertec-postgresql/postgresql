@@ -8,6 +8,9 @@ postgresql-9.1 (9.1.2-2) UNRELEASED; urgency=low
   * Replace 01-armel-tas.patch with 01-atomic-builtins.patch to use
     gcc/intel atomic builtins if available. Drop the arm implementation as it
     does not work on newer thumb2/panda board.
+  * Move PL/Python translations from -plpython-9.1 package to main
+    postgresql-9.1 package, as they are also used by the -plpython3 extension.
+    (Closes: #651837)
 
  -- Martin Pitt <mpitt@debian.org>  Thu, 15 Dec 2011 21:17:58 +0100
 
