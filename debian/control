@@ -163,6 +163,8 @@ Depends: ${misc:Depends},
 Conflicts: postgresql (<< 7.5)
 Suggests: postgresql-9.1, postgresql-doc-9.1
 Provides: postgresql-client
+Breaks: postgresql-9.1 (<< 9.1.2-2~)
+Replaces: postgresql-9.1 (<< 9.1.2-2~)
 Description: front-end programs for PostgreSQL 9.1
  This package contains client and administrative programs for
  PostgreSQL: these are the interactive terminal client psql and

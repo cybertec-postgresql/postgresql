@@ -1,6 +1,7 @@
 usr/lib/postgresql/9.1/bin/clusterdb
 usr/lib/postgresql/9.1/bin/pg_dumpall
 usr/lib/postgresql/9.1/bin/pg_dump
+usr/lib/postgresql/9.1/bin/pg_basebackup
 usr/lib/postgresql/9.1/bin/createdb
 usr/lib/postgresql/9.1/bin/createlang
 usr/lib/postgresql/9.1/bin/createuser
