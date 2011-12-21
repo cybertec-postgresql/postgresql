@@ -13,6 +13,9 @@ postgresql-9.1 (9.1.2-2) UNRELEASED; urgency=low
     (Closes: #651837)
   * Move pg_basebackup from the server to the client package, it's a
     client-side program.
+  * debian/control: Re-add bison and flex build dependencies, so that the
+    generated and shipped Makefile.global gets non-empty BISON and FLEX
+    values. (Closes: #647135)
 
  -- Martin Pitt <mpitt@debian.org>  Thu, 15 Dec 2011 21:17:58 +0100
 

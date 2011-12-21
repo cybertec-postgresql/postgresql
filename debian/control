@@ -18,6 +18,8 @@ Build-Depends: debhelper (>= 7.0.50~),
  libossp-uuid-dev,
  python-dev,
  python3-dev,
+ bison,
+ flex,
  jade,
  gettext,
  hardening-wrapper
