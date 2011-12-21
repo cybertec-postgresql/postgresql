@@ -1,4 +1,4 @@
-postgresql-9.1 (9.1.2-2) UNRELEASED; urgency=low
+postgresql-9.1 (9.1.2-2) unstable; urgency=low
 
   * 01-armel-tas.patch: Turn slock_t datatype into an int, and define
     S_UNLOCK() to call __sync_lock_release() instead of using the default
@@ -17,7 +17,7 @@ postgresql-9.1 (9.1.2-2) UNRELEASED; urgency=low
     generated and shipped Makefile.global gets non-empty BISON and FLEX
     values. (Closes: #647135)
 
- -- Martin Pitt <mpitt@debian.org>  Thu, 15 Dec 2011 21:17:58 +0100
+ -- Martin Pitt <mpitt@debian.org>  Wed, 21 Dec 2011 12:07:54 +0100
 
 postgresql-9.1 (9.1.2-1) unstable; urgency=low
 
