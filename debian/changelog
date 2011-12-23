@@ -1,3 +1,10 @@
+postgresql-9.1 (9.1.2-3) UNRELEASED; urgency=low
+
+  * debian/*.symbols: Update symbol versions to accurate historic data. Many
+    thanks to Christoph Berg for these! (Closes: #652931)
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 23 Dec 2011 14:24:15 +0100
+
 postgresql-9.1 (9.1.2-2) unstable; urgency=low
 
   * 01-armel-tas.patch: Turn slock_t datatype into an int, and define
