@@ -2,6 +2,9 @@ postgresql-9.1 (9.1.2-3) UNRELEASED; urgency=low
 
   * debian/*.symbols: Update symbol versions to accurate historic data. Many
     thanks to Christoph Berg for these! (Closes: #652931)
+  * Add 00git_inet_cidr_unpack.patch: Revert the behavior of inet/cidr
+    functions to not unpack the arguments. This fixes the memory leak when
+    sorting inet values. Patch taken from upstream git HEAD.
 
  -- Martin Pitt <mpitt@debian.org>  Fri, 23 Dec 2011 14:24:15 +0100
 
