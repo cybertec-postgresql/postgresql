@@ -5,6 +5,10 @@ postgresql-9.1 (9.1.2-3) UNRELEASED; urgency=low
   * Add 00git_inet_cidr_unpack.patch: Revert the behavior of inet/cidr
     functions to not unpack the arguments. This fixes the memory leak when
     sorting inet values. Patch taken from upstream git HEAD.
+  * debian/control: Add missing docbook-dsssl build dependency to fix
+    generation of documentation. (Closes: #654330)
+  * debian/control: Use openjade instead of the ancient jade for building the
+    documentation.
 
  -- Martin Pitt <mpitt@debian.org>  Fri, 23 Dec 2011 14:24:15 +0100
 
