@@ -1,4 +1,4 @@
-postgresql-9.1 (9.1.2-3) UNRELEASED; urgency=low
+postgresql-9.1 (9.1.2-3) unstable; urgency=low
 
   * debian/*.symbols: Update symbol versions to accurate historic data. Many
     thanks to Christoph Berg for these! (Closes: #652931)
@@ -10,7 +10,7 @@ postgresql-9.1 (9.1.2-3) UNRELEASED; urgency=low
   * debian/control: Use openjade instead of the ancient jade for building the
     documentation.
 
- -- Martin Pitt <mpitt@debian.org>  Fri, 23 Dec 2011 14:24:15 +0100
+ -- Martin Pitt <mpitt@debian.org>  Tue, 03 Jan 2012 16:48:21 +0100
 
 postgresql-9.1 (9.1.2-2) unstable; urgency=low
 
