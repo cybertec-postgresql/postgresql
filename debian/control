@@ -22,6 +22,9 @@ Build-Depends: debhelper (>= 7.0.50~),
  flex,
  openjade,
  docbook-dsssl,
+ docbook-xsl,
+ opensp,
+ xsltproc,
  gettext,
  hardening-wrapper
 Homepage: http://www.postgresql.org/

@@ -1,3 +1,9 @@
+postgresql-9.1 (9.1.2-4) UNRELEASED; urgency=low
+
+  * Add docbook-xsl, opensp and xsltproc build dependencies.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 03 Jan 2012 17:57:44 +0100
+
 postgresql-9.1 (9.1.2-3) unstable; urgency=low
 
   * debian/*.symbols: Update symbol versions to accurate historic data. Many
