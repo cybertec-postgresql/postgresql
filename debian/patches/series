@@ -1,5 +1,3 @@
-00git_inet_cidr_unpack.patch
-01-armel-tas.patch
 02-relax-sslkey-permscheck.patch
 50-per-version-dirs.patch
 51-default-sockets-in-var.patch

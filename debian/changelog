@@ -1,7 +1,207 @@
-postgresql-9.1 (9.1.2-5) UNRELEASED; urgency=low
+postgresql-9.1 (9.1.3-1) UNRELEASED; urgency=low
 
-  * 01-atomic-builtins.patch: Limit scope to ARM again as per upstream
-    discussiono. Rename back to 01-armel-tas.patch.
+  * New upstream security/bug fix release:
+    - Require execute permission on the trigger function for "CREATE
+      TRIGGER".
+      This missing check could allow another user to execute a trigger
+      function with forged input data, by installing it on a table he
+      owns. This is only of significance for trigger functions marked
+      SECURITY DEFINER, since otherwise trigger functions run as the
+      table owner anyway. (CVE-2012-0866)
+    - Remove arbitrary limitation on length of common name in SSL
+      certificates.
+      Both libpq and the server truncated the common name extracted from
+      an SSL certificate at 32 bytes. Normally this would cause nothing
+      worse than an unexpected verification failure, but there are some
+      rather-implausible scenarios in which it might allow one
+      certificate holder to impersonate another. The victim would have to
+      have a common name exactly 32 bytes long, and the attacker would
+      have to persuade a trusted CA to issue a certificate in which the
+      common name has that string as a prefix. Impersonating a server
+      would also require some additional exploit to redirect client
+      connections. (CVE-2012-0867)
+    - Convert newlines to spaces in names written in pg_dump comments.
+      pg_dump was incautious about sanitizing object names that are
+      emitted within SQL comments in its output script. A name containing
+      a newline would at least render the script syntactically incorrect.
+      Maliciously crafted object names could present a SQL injection risk
+      when the script is reloaded. (CVE-2012-0868)
+    - Fix btree index corruption from insertions concurrent with
+      vacuuming.
+      An index page split caused by an insertion could sometimes cause a
+      concurrently-running "VACUUM" to miss removing index entries that
+      it should remove. After the corresponding table rows are removed,
+      the dangling index entries would cause errors (such as "could not
+      read block N in file ...") or worse, silently wrong query results
+      after unrelated rows are re-inserted at the now-free table
+      locations. This bug has been present since release 8.2, but occurs
+      so infrequently that it was not diagnosed until now. If you have
+      reason to suspect that it has happened in your database, reindexing
+      the affected index will fix things.
+    - Fix transient zeroing of shared buffers during WAL replay.
+      The replay logic would sometimes zero and refill a shared buffer,
+      so that the contents were transiently invalid. In hot standby mode
+      this can result in a query that's executing in parallel seeing
+      garbage data. Various symptoms could result from that, but the most
+      common one seems to be "invalid memory alloc request size".
+    - Fix handling of data-modifying WITH subplans in READ COMMITTED
+      rechecking.
+      A WITH clause containing "INSERT"/"UPDATE"/"DELETE" would crash if
+      the parent "UPDATE" or "DELETE" command needed to be re-evaluated
+      at one or more rows due to concurrent updates in READ COMMITTED
+      mode.
+    - Fix corner case in SSI transaction cleanup.
+      When finishing up a read-write serializable transaction, a crash
+      could occur if all remaining active serializable transactions are
+      read-only.
+    - Fix postmaster to attempt restart after a hot-standby crash.
+      A logic error caused the postmaster to terminate, rather than
+      attempt to restart the cluster, if any backend process crashed
+      while operating in hot standby mode.
+    - Fix "CLUSTER"/"VACUUM FULL" handling of toast values owned by
+      recently-updated rows.
+      This oversight could lead to "duplicate key value violates unique
+      constraint" errors being reported against the toast table's index
+      during one of these commands.
+    - Update per-column permissions, not only per-table permissions, when
+      changing table owner.
+      Failure to do this meant that any previously granted column
+      permissions were still shown as having been granted by the old
+      owner. This meant that neither the new owner nor a superuser could
+      revoke the now-untraceable-to-table-owner permissions.
+    - Support foreign data wrappers and foreign servers in "REASSIGN
+      OWNED".
+      This command failed with "unexpected classid" errors if it needed
+      to change the ownership of any such objects.
+    - Allow non-existent values for some settings in "ALTER USER/DATABASE
+      SET".
+      Allow default_text_search_config, default_tablespace, and
+      temp_tablespaces to be set to names that are not known. This is
+      because they might be known in another database where the setting
+      is intended to be used, or for the tablespace cases because the
+      tablespace might not be created yet. The same issue was previously
+      recognized for search_path, and these settings now act like that
+      one.
+    - Fix "unsupported node type" error caused by COLLATE in an "INSERT"
+      expression.
+    - Avoid crashing when we have problems deleting table files
+      post-commit.
+      Dropping a table should lead to deleting the underlying disk files
+      only after the transaction commits. In event of failure then (for
+      instance, because of wrong file permissions) the code is supposed
+      to just emit a warning message and go on, since it's too late to
+      abort the transaction. This logic got broken as of release 8.4,
+      causing such situations to result in a PANIC and an unrestartable
+      database.
+    - Recover from errors occurring during WAL replay of "DROP
+      TABLESPACE".
+      Replay will attempt to remove the tablespace's directories, but
+      there are various reasons why this might fail (for example,
+      incorrect ownership or permissions on those directories). Formerly
+      the replay code would panic, rendering the database unrestartable
+      without manual intervention. It seems better to log the problem and
+      continue, since the only consequence of failure to remove the
+      directories is some wasted disk space.
+    - Fix race condition in logging AccessExclusiveLocks for hot standby.
+      Sometimes a lock would be logged as being held by "transaction
+      zero". This is at least known to produce assertion failures on
+      slave servers, and might be the cause of more serious problems.
+    - Track the OID counter correctly during WAL replay, even when it
+      wraps around.
+    - Prevent emitting misleading "consistent recovery state reached" log
+      message at the beginning of crash recovery.
+    - Fix initial value of pg_stat_replication.replay_location.
+    - Fix regular expression back-references with - attached.
+      Rather than enforcing an exact string match, the code would
+      effectively accept any string that satisfies the pattern
+      sub-expression referenced by the back-reference symbol.
+      A similar problem still afflicts back-references that are embedded
+      in a larger quantified expression, rather than being the immediate
+      subject of the quantifier. This will be addressed in a future
+      PostgreSQL release.
+    - Fix recently-introduced memory leak in processing of inet/cidr
+      values.
+    - Fix planner's ability to push down index-expression restrictions
+      through UNION ALL.
+    - Fix planning of WITH clauses referenced in "UPDATE"/"DELETE" on an
+      inherited table.
+      This bug led to "could not find plan for CTE" failures.
+    - Fix GIN cost estimation to handle column IN (...) index conditions.
+      This oversight would usually lead to crashes if such a condition
+      could be used with a GIN index.
+    - Fix dangling pointer after "CREATE TABLE AS"/"SELECT INTO" in a
+      SQL-language function.
+      In most cases this only led to an assertion failure in
+      assert-enabled builds, but worse consequences seem possible.
+    - Fix I/O-conversion-related memory leaks in plpgsql.
+    - Work around bug in perl's SvPVutf8() function.
+      This function crashes when handed a typeglob or certain read-only
+      objects such as $^V. Make plperl avoid passing those to it.
+    - In pg_dump, don't dump contents of an extension's configuration
+      tables if the extension itself is not being dumped.
+    - Improve pg_dump's handling of inherited table columns.
+      pg_dump mishandled situations where a child column has a different
+      default expression than its parent column. If the default is
+      textually identical to the parent's default, but not actually the
+      same (for instance, because of schema search path differences) it
+      would not be recognized as different, so that after dump and
+      restore the child would be allowed to inherit the parent's default.
+      Child columns that are NOT NULL where their parent is not could
+      also be restored subtly incorrectly.
+    - Fix pg_restore's direct-to-database mode for INSERT-style table data.
+      Direct-to-database restores from archive files made with
+      "--inserts" or "--column-inserts" options fail when using
+      pg_restore from a release dated September or December 2011, as a
+      result of an oversight in a fix for another problem. The archive
+      file itself is not at fault, and text-mode output is okay.
+    - Teach pg_upgrade to handle renaming of plpython's shared library.
+      Upgrading a pre-9.1 database that included plpython would fail
+      because of this oversight.
+    - Allow pg_upgrade to process tables containing regclass columns.
+      Since pg_upgrade now takes care to preserve pg_class OIDs, there
+      was no longer any reason for this restriction.
+    - Make libpq ignore ENOTDIR errors when looking for an SSL client
+      certificate file.
+      This allows SSL connections to be established, though without a
+      certificate, even when the user's home directory is set to
+      something like /dev/null.
+    - Fix some more field alignment issues in ecpg's SQLDA area.
+    - Allow AT option in ecpg DEALLOCATE statements.
+      The infrastructure to support this has been there for awhile, but
+      through an oversight there was still an error check rejecting the
+      case.
+    - Do not use the variable name when defining a varchar structure in
+      ecpg.
+    - Fix "contrib/auto_explain"'s JSON output mode to produce valid JSON.
+    - Fix error in "contrib/intarray"'s int[] & int[] operator.
+      If the smallest integer the two input arrays have in common is 1,
+      and there are smaller values in either array, then 1 would be
+      incorrectly omitted from the result.
+    - Fix error detection in "contrib/pgcrypto"'s encrypt_iv() and
+      decrypt_iv().
+      These functions failed to report certain types of invalid-input
+      errors, and would instead return random garbage values for
+      incorrect input.
+    - Fix one-byte buffer overrun in "contrib/test_parser".
+      The code would try to read one more byte than it should, which
+      would crash in corner cases. Since "contrib/test_parser" is only
+      example code, this is not a security issue in itself, but bad
+      example code is still bad.
+    - Use __sync_lock_test_and_set() for spinlocks on ARM, if available.
+      This function replaces our previous use of the SWPB instruction,
+      which is deprecated and not available on ARMv6 and later. Reports
+      suggest that the old code doesn't fail in an obvious way on recent
+      ARM boards, but simply doesn't interlock concurrent accesses,
+      leading to bizarre failures in multiprocess operation.
+    - Use "-fexcess-precision=standard" option when building with gcc
+      versions that accept it.
+      This prevents assorted scenarios wherein recent versions of gcc
+      will produce creative results.
+    - Allow use of threaded Python on FreeBSD (Chris Rees)
+      Our configure script previously believed that this combination
+      wouldn't work; but FreeBSD fixed the problem, so remove that error
+      check.
+  * Drop 00git_inet_cidr_unpack.patch, 01-armel-tas.patch: Applied upstream.
 
  -- Martin Pitt <mpitt@debian.org>  Sat, 07 Jan 2012 10:22:47 +0100
 
