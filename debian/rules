@@ -6,7 +6,7 @@ MAJOR_VER := 9.1
 export DEB_BUILD_HARDENING = 1
 DPKG_EXPORT_BUILDFLAGS = 1
 -include /usr/share/dpkg/buildflags.mk
-LDFLAGS+= -Wl,--as-needed
+LDFLAGS+= -Wl,--as-needed -Wl,-z,now
 CFLAGS+= -fPIC
 
 # When protecting the postmaster with oom_adj=-17, allow the OOM killer to slay
