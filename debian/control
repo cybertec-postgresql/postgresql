@@ -5,6 +5,7 @@ Maintainer: Martin Pitt <mpitt@debian.org>
 Uploaders: Peter Eisentraut <petere@debian.org>
 Standards-Version: 3.9.3
 Build-Depends: debhelper (>= 7.0.50~),
+ dpkg-dev (>= 1.16.1~) | hardening-wrapper,
  perl (>= 5.8),
  libperl-dev,
  tcl8.5-dev,
@@ -25,8 +26,7 @@ Build-Depends: debhelper (>= 7.0.50~),
  docbook-xsl,
  opensp,
  xsltproc,
- gettext,
- hardening-wrapper
+ gettext
 Homepage: http://www.postgresql.org/
 Vcs-Browser: http://bazaar.launchpad.net/~pitti/postgresql/debian-9.1
 Vcs-Bzr: https://code.launchpad.net/~pitti/postgresql/debian-9.1

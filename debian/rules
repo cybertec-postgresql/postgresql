@@ -1,6 +1,11 @@
 #!/usr/bin/make	-f 
 TCL_VER := 8.5
 MAJOR_VER := 9.1
+
+# support both hardening-wrapper (for backports) and dpkg-buildflags
+export DEB_BUILD_HARDENING = 1
+DPKG_EXPORT_BUILDFLAGS = 1
+-include /usr/share/dpkg/buildflags.mk
 LDFLAGS+= -Wl,--as-needed
 CFLAGS+= -fPIC
 
@@ -16,7 +21,6 @@ ifneq ($(findstring $(DEB_BUILD_ARCH), sparc alpha),)
     CFLAGS+=-O1
 endif
 
-export DEB_BUILD_HARDENING=1
 export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
 COMMON_CONFIGURE_FLAGS= \
