@@ -86,7 +86,7 @@ License: Perl / BSD
  HAS NO OBLIGATIONS TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR
  MODIFICATIONS.
 
-Files: contrib/pageinspect/btreefuncs.c, contrib/pgstattuple/pgstatindex.c
+Files: contrib/pageinspect/btreefuncs.c contrib/pgstattuple/pgstatindex.c
 Copyright: Copyright (c) 2006 Satoshi Nagayasu <nagayasus@nttdata.co.jp>
 License: BSD
  Permission to use, copy, modify, and distribute this software and
@@ -144,12 +144,12 @@ License: BSD-like
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
 
-Files: contrib/pgcrypto/fortuna.*, contrib/pgcrypto/mbuf.*, contrib/pgcrypto/pgp*
+Files: contrib/pgcrypto/fortuna.* contrib/pgcrypto/mbuf.* contrib/pgcrypto/pgp*
 Copyright: Copyright (c) 2005 Marko Kreen
 License: BSD-like
  Same license text as contrib/pgcrypto/crypt-des.c
 
-Files: contrib/pgcrypto/internal.c, contrib/pgcrypto/internal-sha2.c, contrib/pgcrypto/openssl.c, contrib/pgcrypto/pgcrypto.*, contrib/pgcrypto/px*, contrib/pgcrypto/random.c
+Files: contrib/pgcrypto/internal.c contrib/pgcrypto/internal-sha2.c contrib/pgcrypto/openssl.c contrib/pgcrypto/pgcrypto.* contrib/pgcrypto/px* contrib/pgcrypto/random.c
 Copyright: Copyright (c) 2001 Marko Kreen
 License: BSD-like
  Same license text as contrib/pgcrypto/crypt-des.c
@@ -161,6 +161,7 @@ License: BSD-like
 
 Files: src/bin/pg_dump/*
 Copyright: Portions Copyright (c) 2000, Philip Warner
+License:
   Rights are granted to use this software in any way so long as this notice is
   not removed.  The author is not responsible for loss or damages that may
   result from its use.
