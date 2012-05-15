@@ -117,7 +117,7 @@ Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
  postgresql-client-9.2,
- postgresql-common (>= 115~),
+ postgresql-common (>= 130~),
  tzdata,
  ssl-cert,
  locales
@@ -184,7 +184,7 @@ Section: libdevel
 Depends: ${misc:Depends},
  ${shlibs:Depends},
  libpq-dev (>= 9.2~),
- postgresql-common (>= 117~)
+ postgresql-common (>= 130~)
 Description: development files for PostgreSQL 9.2 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
@@ -210,7 +210,7 @@ Architecture: any
 Depends: postgresql-9.2 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends},
- postgresql-common (>= 115~)
+ postgresql-common (>= 130~)
 Suggests: libdbd-pg-perl
 Description: additional facilities for PostgreSQL
  The PostgreSQL contrib package provides several additional features
