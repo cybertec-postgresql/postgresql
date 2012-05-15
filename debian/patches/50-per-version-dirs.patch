@@ -10,16 +10,16 @@ Forwarded: No, Debian specific packaging with postgresql-common
 
 Bug-Debian: http://bugs.debian.org/462037
 
-Index: postgresql-9.1-9.1.0/src/Makefile.global.in
+Index: postgresql-9.2-9.2.0/src/Makefile.global.in
 ===================================================================
---- postgresql-9.1-9.1.0.orig/src/Makefile.global.in	2011-09-09 07:21:46.011745835 +0200
-+++ postgresql-9.1-9.1.0/src/Makefile.global.in	2011-09-09 07:21:51.041745870 +0200
+--- postgresql-9.2-9.2.0.orig/src/Makefile.global.in	2011-09-09 07:21:46.011745835 +0200
++++ postgresql-9.2-9.2.0/src/Makefile.global.in	2011-09-09 07:21:51.041745870 +0200
 @@ -96,7 +96,7 @@
  pkglibdir = $(libdir)
  ifeq "$(findstring pgsql, $(pkglibdir))" ""
  ifeq "$(findstring postgres, $(pkglibdir))" ""
 -override pkglibdir := $(pkglibdir)/postgresql
-+override pkglibdir := $(pkglibdir)/postgresql/9.1/lib
++override pkglibdir := $(pkglibdir)/postgresql/9.2/lib
  endif
  endif
  
@@ -28,14 +28,14 @@ Index: postgresql-9.1-9.1.0/src/Makefile.global.in
  # These derived path variables aren't separately configurable.
  
 -includedir_server = $(pkgincludedir)/server
-+includedir_server = $(pkgincludedir)/9.1/server
++includedir_server = $(pkgincludedir)/9.2/server
  includedir_internal = $(pkgincludedir)/internal
  pgxsdir = $(pkglibdir)/pgxs
  
-Index: postgresql-9.1-9.1.0/src/bin/pg_config/pg_config.c
+Index: postgresql-9.2-9.2.0/src/bin/pg_config/pg_config.c
 ===================================================================
---- postgresql-9.1-9.1.0.orig/src/bin/pg_config/pg_config.c	2011-09-09 07:21:46.031745835 +0200
-+++ postgresql-9.1-9.1.0/src/bin/pg_config/pg_config.c	2011-09-09 07:21:51.041745870 +0200
+--- postgresql-9.2-9.2.0.orig/src/bin/pg_config/pg_config.c	2011-09-09 07:21:46.031745835 +0200
++++ postgresql-9.2-9.2.0/src/bin/pg_config/pg_config.c	2011-09-09 07:21:51.041745870 +0200
 @@ -26,6 +26,8 @@
  
  #include "port.h"

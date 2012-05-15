@@ -4,9 +4,9 @@ set -e
 
 #DEBHELPER#
 
-VERSION=9.1
+VERSION=9.2
 
 if [ "$1" = remove ]; then
     . /usr/share/postgresql-common/maintscripts-functions
-    remove_contrib_version $VERSION
+    remove_client_version $VERSION
 fi

@@ -1,6 +1,6 @@
 #!/usr/bin/make	-f 
 TCL_VER := 8.5
-MAJOR_VER := 9.1
+MAJOR_VER := 9.2
 
 # support both hardening-wrapper (for backports) and dpkg-buildflags
 export DEB_BUILD_HARDENING = 1
@@ -122,7 +122,7 @@ override_dh_install:
 
 	# these get installed into the individual -/l* packages; -f because it
 	# does not exist for an -A build
-	rm -f debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/9.1/extension/pl*
+	rm -f debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/9.2/extension/pl*
 
 	if [ -d debian/postgresql-doc-$(MAJOR_VER) ]; then \
 		install src/tutorial/*.c src/tutorial/*.source src/tutorial/Makefile src/tutorial/README debian/postgresql-doc-$(MAJOR_VER)/usr/share/doc/postgresql-doc-$(MAJOR_VER)/tutorial; \

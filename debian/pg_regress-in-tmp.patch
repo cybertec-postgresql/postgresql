@@ -1,10 +1,10 @@
 As a consequence of 51-default-sockets-in-var.patch we now need to explicitly
 specify the pg_regress socket dir as /tmp, since it runs the server as the
 invoking user.
-Index: postgresql-9.1-9.1~beta1/src/test/regress/pg_regress.c
+Index: postgresql-9.2-9.2~beta1/src/test/regress/pg_regress.c
 ===================================================================
---- postgresql-9.1-9.1~beta1.orig/src/test/regress/pg_regress.c	2011-04-27 23:17:22.000000000 +0200
-+++ postgresql-9.1-9.1~beta1/src/test/regress/pg_regress.c	2011-05-10 11:24:47.331949788 +0200
+--- postgresql-9.2-9.2~beta1.orig/src/test/regress/pg_regress.c	2011-04-27 23:17:22.000000000 +0200
++++ postgresql-9.2-9.2~beta1/src/test/regress/pg_regress.c	2011-05-10 11:24:47.331949788 +0200
 @@ -906,7 +906,7 @@
  
  	/* And now we can build and execute the shell command */
@@ -32,10 +32,10 @@ Index: postgresql-9.1-9.1~beta1/src/test/regress/pg_regress.c
  				 bindir, temp_install,
  				 debug ? " -d 5" : "",
  				 hostname ? hostname : "",
-Index: postgresql-9.1-9.1~beta1/src/test/regress/pg_regress_main.c
+Index: postgresql-9.2-9.2~beta1/src/test/regress/pg_regress_main.c
 ===================================================================
---- postgresql-9.1-9.1~beta1.orig/src/test/regress/pg_regress_main.c	2011-04-27 23:17:22.000000000 +0200
-+++ postgresql-9.1-9.1~beta1/src/test/regress/pg_regress_main.c	2011-05-10 11:25:19.291949792 +0200
+--- postgresql-9.2-9.2~beta1.orig/src/test/regress/pg_regress_main.c	2011-04-27 23:17:22.000000000 +0200
++++ postgresql-9.2-9.2~beta1/src/test/regress/pg_regress_main.c	2011-05-10 11:25:19.291949792 +0200
 @@ -64,7 +64,7 @@
  						   "%s ", launcher);
  

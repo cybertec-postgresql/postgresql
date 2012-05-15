@@ -1,0 +1,2 @@
+usr/lib/postgresql/9.2/lib/plpython3.so
+usr/share/postgresql/9.2/extension/plpython3*

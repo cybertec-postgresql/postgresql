@@ -2,12 +2,12 @@
 
 set -e
 
-VERSION=9.1
+VERSION=9.2
 
 . /usr/share/postgresql-common/maintscripts-functions
 
 if [ "$1" = configure ]; then
-    configure_contrib_version $VERSION "$2"
+    configure_client_version $VERSION "$2"
 fi
 
 #DEBHELPER#

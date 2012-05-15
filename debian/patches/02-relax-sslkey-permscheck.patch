@@ -1,12 +1,12 @@
 Description: Relax security check on private SSL key file: The file is also considered safe if it has owner and/or group "root", and if it is group-readable (unless the group is something other than root or the database owner group).
 Author: Martin Pitt <mpitt@debian.org>
 Forwarded: Yes, but rejected upstream
-Bug-Debian: http://bugs.debian.org/327901
+Bug-Debian: http://bugs.debian.org/3279.2
 
-Index: postgresql-9.1-9.1.0/src/backend/libpq/be-secure.c
+Index: postgresql-9.2-9.2.0/src/backend/libpq/be-secure.c
 ===================================================================
---- postgresql-9.1-9.1.0.orig/src/backend/libpq/be-secure.c	2011-09-09 07:21:46.091745835 +0200
-+++ postgresql-9.1-9.1.0/src/backend/libpq/be-secure.c	2011-09-09 07:21:48.061745850 +0200
+--- postgresql-9.2-9.2.0.orig/src/backend/libpq/be-secure.c	2011-09-09 07:21:46.091745835 +0200
++++ postgresql-9.2-9.2.0/src/backend/libpq/be-secure.c	2011-09-09 07:21:48.061745850 +0200
 @@ -767,12 +767,15 @@
  		 * directory permission check in postmaster.c)
  		 */
