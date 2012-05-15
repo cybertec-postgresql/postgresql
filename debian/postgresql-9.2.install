@@ -1,8 +1,8 @@
 usr/lib/postgresql/9.2/bin/initdb
 usr/lib/postgresql/9.2/bin/pg_controldata
 usr/lib/postgresql/9.2/bin/pg_ctl
+usr/lib/postgresql/9.2/bin/pg_receivexlog
 usr/lib/postgresql/9.2/bin/pg_resetxlog
-usr/lib/postgresql/9.2/bin/pg_test_fsync
 usr/lib/postgresql/9.2/bin/pg_upgrade
 usr/lib/postgresql/9.2/bin/postgres
 usr/lib/postgresql/9.2/bin/postmaster
@@ -27,6 +27,8 @@ usr/share/postgresql/9.2/man/man1/pg_basebackup.1.gz
 usr/share/postgresql/9.2/man/man1/pg_controldata.1.gz
 usr/share/postgresql/9.2/man/man1/pg_ctl.1.gz
 usr/share/postgresql/9.2/man/man1/pg_resetxlog.1.gz
+usr/share/postgresql/9.2/man/man1/pg_upgrade.1.gz
+usr/share/postgresql/9.2/man/man1/pg_receivexlog.1.gz
 usr/share/postgresql/9.2/man/man1/postgres.1.gz
 usr/share/postgresql/9.2/man/man1/postmaster.1.gz
 usr/share/postgresql/9.2/timezonesets/*
