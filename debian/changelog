@@ -1,3 +1,9 @@
+postgresql-9.2 (9.2~beta1-2) UNRELEASED; urgency=low
+
+  * debian/copyright: Update, fix, and simplify.
+
+ -- Peter Eisentraut <petere@debian.org>  Mon, 28 May 2012 01:18:39 +0300
+
 postgresql-9.2 (9.2~beta1-1) experimental; urgency=low
 
   * First 9.2 beta release. Packaging based on 9.1 branch.
