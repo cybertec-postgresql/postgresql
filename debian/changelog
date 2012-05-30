@@ -1,6 +1,8 @@
 postgresql-9.2 (9.2~beta1-2) UNRELEASED; urgency=low
 
   * debian/copyright: Update, fix, and simplify.
+  * Add debian/source/options: Ignore test suite .sql files, to fix building
+    twice in a row.
 
  -- Peter Eisentraut <petere@debian.org>  Mon, 28 May 2012 01:18:39 +0300
 
