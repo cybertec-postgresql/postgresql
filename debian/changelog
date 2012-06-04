@@ -1,4 +1,4 @@
-postgresql-9.2 (9.2~beta1-2) UNRELEASED; urgency=low
+postgresql-9.2 (9.2~beta2-1) UNRELEASED; urgency=low
 
   [ Peter Eisentraut ]
   * debian/copyright: Update, fix, and simplify.
@@ -6,6 +6,7 @@ postgresql-9.2 (9.2~beta1-2) UNRELEASED; urgency=low
     twice in a row.
 
   [ Martin Pitt ]
+  * Second 9.2 beta release.
   * Move pg_basebackup *.mo files to -client-9.2. Thanks to Peter Eisentraut
     for spotting this.
   * Move pg_receivexlog into -client-9.2. It can be used without the server
