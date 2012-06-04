@@ -30,3 +30,4 @@ usr/share/postgresql/9.2/psqlrc.sample
 usr/share/locale/*/LC_MESSAGES/pg_dump-9.2.mo
 usr/share/locale/*/LC_MESSAGES/psql-9.2.mo
 usr/share/locale/*/LC_MESSAGES/pgscripts-9.2.mo
+usr/share/locale/*/LC_MESSAGES/pg_basebackup-9.2.mo

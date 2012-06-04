@@ -14,7 +14,6 @@ usr/lib/postgresql/9.2/lib/dict_snowball.so
 usr/lib/postgresql/9.2/lib/pg_upgrade_support.so
 usr/lib/postgresql/9.2/lib/tsearch2.so
 usr/share/locale/*/LC_MESSAGES/initdb-9.2.mo
-usr/share/locale/*/LC_MESSAGES/pg_basebackup-9.2.mo
 usr/share/locale/*/LC_MESSAGES/pg_controldata-9.2.mo
 usr/share/locale/*/LC_MESSAGES/pg_ctl-9.2.mo
 usr/share/locale/*/LC_MESSAGES/pg_resetxlog-9.2.mo

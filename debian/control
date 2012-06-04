@@ -164,7 +164,7 @@ Depends: ${misc:Depends},
 Suggests: postgresql-9.2, postgresql-doc-9.2
 Provides: postgresql-client
 Breaks: postgresql-9.2 (<< ${binary:Version})
-Replaces: postgresql-9.2 (<< ${binary:Version})
+Replaces: postgresql-9.2 (<< 9.2~beta1-2)
 Description: front-end programs for PostgreSQL 9.2
  This package contains client and administrative programs for
  PostgreSQL: these are the interactive terminal client psql and
