@@ -28,8 +28,8 @@ Build-Depends: debhelper (>= 8~),
  xsltproc,
  gettext
 Homepage: http://www.postgresql.org/
-Vcs-Browser: http://bazaar.launchpad.net/~pitti/postgresql/debian-9.2
-Vcs-Bzr: https://code.launchpad.net/~pitti/postgresql/debian-9.2
+Vcs-Browser: http://anonscm.debian.org/loggerhead/pkg-postgresql/postgresql-9.2/trunk
+Vcs-Bzr: http://bzr.debian.org/bzr/pkg-postgresql/postgresql-9.2/trunk/
 
 Package: libpq-dev
 Architecture: any

@@ -11,6 +11,8 @@ postgresql-9.2 (9.2~beta2-1) UNRELEASED; urgency=low
     for spotting this.
   * Move pg_receivexlog into -client-9.2. It can be used without the server
     being installed.
+  * debian/control: Move bzr branches to alioth, so that other members of
+    pkg-postgresql can commit. Update Vcs-* tags.
 
  -- Peter Eisentraut <petere@debian.org>  Mon, 28 May 2012 01:18:39 +0300
 
