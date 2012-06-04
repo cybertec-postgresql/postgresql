@@ -1,4 +1,4 @@
-postgresql-9.2 (9.2~beta2-1) UNRELEASED; urgency=low
+postgresql-9.2 (9.2~beta2-1) experimental; urgency=low
 
   [ Peter Eisentraut ]
   * debian/copyright: Update, fix, and simplify.
@@ -16,7 +16,7 @@ postgresql-9.2 (9.2~beta2-1) UNRELEASED; urgency=low
   * debian/control: Set Maintainer: to pkg-postgresql group, and move myself
     to Uploaders:.
 
- -- Peter Eisentraut <petere@debian.org>  Mon, 28 May 2012 01:18:39 +0300
+ -- Martin Pitt <mpitt@debian.org>  Mon, 04 Jun 2012 06:56:59 +0200
 
 postgresql-9.2 (9.2~beta1-1) experimental; urgency=low
 
