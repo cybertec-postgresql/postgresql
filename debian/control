@@ -1,8 +1,8 @@
 Source: postgresql-9.2
 Section: database
 Priority: optional
-Maintainer: Martin Pitt <mpitt@debian.org>
-Uploaders: Peter Eisentraut <petere@debian.org>
+Maintainer: Debian PostgreSQL Maintainers <pkg-postgresql-public@lists.alioth.debian.org>
+Uploaders: Martin Pitt <mpitt@debian.org>, Peter Eisentraut <petere@debian.org>
 Standards-Version: 3.9.3
 Build-Depends: debhelper (>= 8~),
  dpkg-dev (>= 1.16.1~) | hardening-wrapper,

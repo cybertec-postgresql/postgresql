@@ -13,6 +13,8 @@ postgresql-9.2 (9.2~beta2-1) UNRELEASED; urgency=low
     being installed.
   * debian/control: Move bzr branches to alioth, so that other members of
     pkg-postgresql can commit. Update Vcs-* tags.
+  * debian/control: Set Maintainer: to pkg-postgresql group, and move myself
+    to Uploaders:.
 
  -- Peter Eisentraut <petere@debian.org>  Mon, 28 May 2012 01:18:39 +0300
 
