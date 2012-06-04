@@ -2,6 +2,7 @@ usr/lib/postgresql/9.2/bin/clusterdb
 usr/lib/postgresql/9.2/bin/pg_dumpall
 usr/lib/postgresql/9.2/bin/pg_dump
 usr/lib/postgresql/9.2/bin/pg_basebackup
+usr/lib/postgresql/9.2/bin/pg_receivexlog
 usr/lib/postgresql/9.2/bin/createdb
 usr/lib/postgresql/9.2/bin/createlang
 usr/lib/postgresql/9.2/bin/createuser
@@ -12,6 +13,7 @@ usr/lib/postgresql/9.2/bin/reindexdb
 usr/lib/postgresql/9.2/bin/pg_restore
 usr/lib/postgresql/9.2/bin/psql
 usr/lib/postgresql/9.2/bin/vacuumdb
+usr/share/postgresql/9.2/man/man1/pg_receivexlog.1.gz
 usr/share/postgresql/9.2/man/man1/pg_restore.1.gz
 usr/share/postgresql/9.2/man/man1/psql.1.gz
 usr/share/postgresql/9.2/man/man1/vacuumdb.1.gz
