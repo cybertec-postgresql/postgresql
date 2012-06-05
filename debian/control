@@ -2,7 +2,7 @@ Source: postgresql-9.2
 Section: database
 Priority: optional
 Maintainer: Debian PostgreSQL Maintainers <pkg-postgresql-public@lists.alioth.debian.org>
-Uploaders: Martin Pitt <mpitt@debian.org>, Peter Eisentraut <petere@debian.org>
+Uploaders: Martin Pitt <mpitt@debian.org>, Peter Eisentraut <petere@debian.org>, Christoph Berg <myon@debian.org>
 Standards-Version: 3.9.3
 Build-Depends: debhelper (>= 8~),
  dpkg-dev (>= 1.16.1~) | hardening-wrapper,
@@ -10,10 +10,11 @@ Build-Depends: debhelper (>= 8~),
  libperl-dev,
  tcl8.5-dev,
  libedit-dev,
- libssl-dev, 
+ libssl-dev,
  zlib1g-dev | libz-dev,
  libpam0g-dev | libpam-dev,
- libxml2-dev, libkrb5-dev,
+ libxml2-dev,
+ libkrb5-dev,
  libldap2-dev,
  libxslt1-dev,
  libossp-uuid-dev,
@@ -175,7 +176,7 @@ Description: front-end programs for PostgreSQL 9.2
  postgresql-9.2, too. On a network, you can install this package on
  many client machines, while the server package may be installed on
  only one machine.
- .  
+ .
  PostgreSQL is an object-relational SQL database management system.
 
 Package: postgresql-server-dev-9.2
@@ -189,7 +190,7 @@ Description: development files for PostgreSQL 9.2 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
  .
- This package also contains the Makefiles necessary for building add-on 
+ This package also contains the Makefiles necessary for building add-on
  modules of PostgreSQL, which would otherwise have to be built in the
  PostgreSQL source-code tree.
  .
@@ -266,7 +267,7 @@ Description: additional facilities for PostgreSQL
 
 Package: postgresql-plperl-9.2
 Architecture: any
-Depends: ${misc:Depends}, 
+Depends: ${misc:Depends},
  ${shlibs:Depends},
  postgresql-9.2 (= ${binary:Version}),
  perl
