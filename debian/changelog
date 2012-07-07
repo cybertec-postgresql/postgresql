@@ -4,6 +4,8 @@ postgresql-9.2 (9.2~beta2-2) UNRELEASED; urgency=low
   * Remove the beta1 suffix from 9.2~beta1 in symbols files as this was the
     first version.
   * Add myself to Uploaders.
+  * debian/source/options: Ignore .bzr-builddeb/default.conf so bzr checkouts
+    can be built using dpkg-buildpackage.
 
  -- Christoph Berg <myon@debian.org>  Tue, 05 Jun 2012 22:41:04 +0200
 
