@@ -1,32 +1,6 @@
 #!/bin/sh
 set -e
 
-#DEBHELPER#
-
-rm_conffile() {
-    PKGNAME="postgresql-9.2"
-    CONFFILE="$1"
-
-    if [ -e "$CONFFILE" ]; then
-	md5sum="`md5sum \"$CONFFILE\" | sed -e \"s/ .*//\"`"
-	old_md5sum="`dpkg-query -W -f='${Conffiles}' $PKGNAME | sed -n -e \"\\\\' $CONFFILE'{s/ obsolete$//;s/.* //p}\"`"
-	if [ "$md5sum" != "$old_md5sum" ]; then
-	    echo "Obsolete conffile $CONFFILE has been modified by you."
-	    echo "Saving as $CONFFILE.dpkg-bak ..."
-	    mv -f "$CONFFILE" "$CONFFILE".dpkg-bak
-	else
-	    echo "Removing obsolete conffile $CONFFILE ..."
-	    rm -f "$CONFFILE"
-	fi
-    fi
-}
-
-# earlier releases used per-version init scripts, now replaced with common one 
-if [ "$1" = "upgrade" ] || [ "$1" = "install" ] && \
-	dpkg --compare-versions "$2" le-nl "9.2~beta3-2"; then
-    rm_conffile /etc/init.d/postgresql-9.2
-fi
-
 # DB format changed between beta 1 and 2
 if [ "$1" = "upgrade" ] || [ "$1" = "install" ] && \
 	dpkg --compare-versions "$2" lt-nl "9.2~beta2"; then
