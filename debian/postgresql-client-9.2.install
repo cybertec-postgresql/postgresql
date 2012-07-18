@@ -13,6 +13,7 @@ usr/lib/postgresql/9.2/bin/reindexdb
 usr/lib/postgresql/9.2/bin/pg_restore
 usr/lib/postgresql/9.2/bin/psql
 usr/lib/postgresql/9.2/bin/vacuumdb
+usr/share/postgresql/9.2/man/man1/pg_basebackup.1.gz
 usr/share/postgresql/9.2/man/man1/pg_receivexlog.1.gz
 usr/share/postgresql/9.2/man/man1/pg_restore.1.gz
 usr/share/postgresql/9.2/man/man1/psql.1.gz

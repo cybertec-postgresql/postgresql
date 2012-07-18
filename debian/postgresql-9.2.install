@@ -21,7 +21,6 @@ usr/share/locale/*/LC_MESSAGES/plpgsql-9.2.mo
 usr/share/locale/*/*/plpython-*.mo
 usr/share/postgresql/9.2/extension/plpgsql*
 usr/share/postgresql/9.2/man/man1/initdb.1.gz
-usr/share/postgresql/9.2/man/man1/pg_basebackup.1.gz
 usr/share/postgresql/9.2/man/man1/pg_controldata.1.gz
 usr/share/postgresql/9.2/man/man1/pg_ctl.1.gz
 usr/share/postgresql/9.2/man/man1/pg_resetxlog.1.gz
