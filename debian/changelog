@@ -1,9 +1,12 @@
-postgresql-9.2 (9.2~beta2-2) UNRELEASED; urgency=low
+postgresql-9.2 (9.2~beta3-1) experimental; urgency=low
 
   [ Christoph Berg ]
+  * Third 9.2 beta release.
   * Some cosmetic changes to control and rules file.
   * Remove the beta1 suffix from 9.2~beta1 in symbols files as this was the
     first version.
+  * Remove beta2 symbols from libpq5: PQgetRowProcessor@Base,
+    PQsetRowProcessor@Base, PQskipResult@Base.
   * Add myself to Uploaders.
   * debian/source/options: Ignore .bzr-builddeb/default.conf so bzr checkouts
     can be built using dpkg-buildpackage.
@@ -14,7 +17,7 @@ postgresql-9.2 (9.2~beta2-2) UNRELEASED; urgency=low
   [ Peter Eisentraut ]
   * Move pg_basebackup man page to -client-9.2, where the program is.
 
- -- Peter Eisentraut <petere@debian.org>  Thu, 19 Jul 2012 01:08:23 +0300
+ -- Christoph Berg <myon@debian.org>  Tue, 07 Aug 2012 14:25:41 +0200
 
 postgresql-9.2 (9.2~beta2-1) experimental; urgency=low
 

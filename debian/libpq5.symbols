@@ -54,7 +54,6 @@ libpq.so.5 libpq5 #MINVER#
  PQgetCancel@Base 0
  PQgetCopyData@Base 0
  PQgetResult@Base 0
- PQgetRowProcessor@Base 9.2~
  PQgetisnull@Base 0
  PQgetlength@Base 0
  PQgetline@Base 0
@@ -118,11 +117,10 @@ libpq.so.5 libpq5 #MINVER#
  PQsetNoticeProcessor@Base 0
  PQsetNoticeReceiver@Base 0
  PQsetResultAttrs@Base 8.4~
- PQsetRowProcessor@Base 9.2~
+ PQsetSingleRowMode@Base 9.2~beta3
  PQsetdbLogin@Base 0
  PQsetnonblocking@Base 0
  PQsetvalue@Base 8.4~
- PQskipResult@Base 9.2~
  PQsocket@Base 0
  PQstatus@Base 0
  PQtrace@Base 0
