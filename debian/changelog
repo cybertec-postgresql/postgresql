@@ -1,3 +1,9 @@
+postgresql-9.2 (9.2~beta4-1) UNRELEASED; urgency=low
+
+  * Fourth 9.2 beta release.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 17 Aug 2012 14:43:54 +0200
+
 postgresql-9.2 (9.2~beta3-1) experimental; urgency=low
 
   [ Christoph Berg ]
