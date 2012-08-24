@@ -1,6 +1,10 @@
-postgresql-9.2 (9.2~beta4-2) UNRELEASED; urgency=low
+postgresql-9.2 (9.2~rc1-1) UNRELEASED; urgency=low
 
+  [ Christoph Berg ]
   * Update watch file to actually look for 9.2.
+
+  [ Martin Pitt ]
+  * First 9.2 release candidate.
 
  -- Christoph Berg <myon@debian.org>  Fri, 17 Aug 2012 17:07:47 +0200
 
