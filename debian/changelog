@@ -1,5 +1,6 @@
-postgresql-9.2 (9.2~rc1-2) UNRELEASED; urgency=low
+postgresql-9.2 (9.2.0-1) UNRELEASED; urgency=low
 
+  * New upstream version: Official 9.2 release.
   * debian/rules: Re-enable hardening functions when hardening-wrapper is not
     installed. Use "hardening=all", but disable "pie" (as that's not
     compatible with -fPIC) and add -pie to CFLAGS explicitly. Also drop the
