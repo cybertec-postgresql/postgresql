@@ -1,4 +1,4 @@
-postgresql-9.2 (9.2.0-1) UNRELEASED; urgency=low
+postgresql-9.2 (9.2.0-1) experimental; urgency=low
 
   * New upstream version: Official 9.2 release.
   * debian/rules: Re-enable hardening functions when hardening-wrapper is not
@@ -7,7 +7,7 @@ postgresql-9.2 (9.2.0-1) UNRELEASED; urgency=low
     explicit "-Wl,-z,now" linker option, as this is now implied with "all".
     (see LP #1039618)
 
- -- Martin Pitt <mpitt@debian.org>  Tue, 28 Aug 2012 07:04:41 +0200
+ -- Martin Pitt <mpitt@debian.org>  Fri, 07 Sep 2012 07:07:07 +0200
 
 postgresql-9.2 (9.2~rc1-1) experimental; urgency=low
 
