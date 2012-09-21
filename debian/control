@@ -118,7 +118,7 @@ Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
  postgresql-client-9.2,
- postgresql-common (>= 130~),
+ postgresql-common (>= 135~),
  tzdata,
  ssl-cert,
  locales
@@ -210,8 +210,7 @@ Package: postgresql-contrib-9.2
 Architecture: any
 Depends: postgresql-9.2 (= ${binary:Version}),
  ${misc:Depends},
- ${shlibs:Depends},
- postgresql-common (>= 130~)
+ ${shlibs:Depends}
 Suggests: libdbd-pg-perl
 Description: additional facilities for PostgreSQL
  The PostgreSQL contrib package provides several additional features
