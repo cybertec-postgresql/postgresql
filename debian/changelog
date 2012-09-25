@@ -23,6 +23,8 @@ postgresql-9.2 (9.2.1-1) UNRELEASED; urgency=low
       reduce the performance impact of vacuuming, while causing it to
       take longer to finish.
     - See HISTORY/changelog.gz for other bug fixes.
+  * debian/rules: Compress all binaries with xz. Thanks Cyril Brulebois!
+    (Closes: #688721)
 
   [ Christoph Berg ]
   * Bump postgresql-common dependency to >= 135~, we need the fixed manpages

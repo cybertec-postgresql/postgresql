@@ -184,3 +184,6 @@ contrib-installcheck:
 	/usr/lib/postgresql/$(MAJOR_VER)/bin/pg_ctl -D tmp_data stop
 	# find and print the regression diffs
 	find build/contrib/ -name regression.diffs -exec cat '{}' \;
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz
