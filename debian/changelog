@@ -1,5 +1,30 @@
-postgresql-9.2 (9.2.0-2) UNRELEASED; urgency=low
+postgresql-9.2 (9.2.1-1) UNRELEASED; urgency=low
 
+  [ Martin Pitt ]
+  * New upstream bug fix release:
+    - Fix persistence marking of shared buffers during WAL replay.
+      This mistake can result in buffers not being written out during
+      checkpoints, resulting in data corruption if the server later
+      crashes without ever having written those buffers. Corruption can
+      occur on any server following crash recovery, but it is
+      significantly more likely to occur on standby slave servers since
+      those perform much more WAL replay. There is a low probability of
+      corruption of btree and GIN indexes. There is a much higher
+      probability of corruption of table "visibility maps", which might
+      lead to wrong answers from index-only scans. Table data proper
+      cannot be corrupted by this bug.
+      While no index corruption due to this bug is known to have occurred
+      in the field, as a precautionary measure it is recommended that
+      production installations "REINDEX" all btree and GIN indexes at a
+      convenient time after upgrading to 9.2.1.
+      Also, it is recommended to perform a "VACUUM" of all tables while
+      having vacuum_freeze_table_age set to zero. This will fix any
+      incorrect visibility map data. vacuum_cost_delay can be adjusted to
+      reduce the performance impact of vacuuming, while causing it to
+      take longer to finish.
+    - See HISTORY/changelog.gz for other bug fixes.
+
+  [ Christoph Berg ]
   * Bump postgresql-common dependency to >= 135~, we need the fixed manpages
     alternatives handling. Remove the redundant dependency of the -contrib
     package on postgresql-common.
