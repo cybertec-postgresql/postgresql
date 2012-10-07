@@ -1,3 +1,10 @@
+postgresql-9.2 (9.2.1-2) UNRELEASED; urgency=low
+
+  * debian/control, debian/rules: Build against krb5-multidev, to allow use
+    while heimdal-dev is installed. Thanks Jelmer Vernooij! (Closes: #664881)
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 07 Oct 2012 13:43:51 +0200
+
 postgresql-9.2 (9.2.1-1) experimental; urgency=low
 
   [ Martin Pitt ]
