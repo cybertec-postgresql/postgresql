@@ -161,6 +161,7 @@ Package: postgresql-client-9.2
 Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
+ libpq5 (>= ${source:Upstream-Version}),
  postgresql-client-common (>= 115~)
 Suggests: postgresql-9.2, postgresql-doc-9.2
 Provides: postgresql-client
