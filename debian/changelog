@@ -1,12 +1,11 @@
-postgresql-9.2 (9.2.1-2) UNRELEASED; urgency=low
+postgresql-9.2 (9.2.2-1) UNRELEASED; urgency=low
 
+  * New upstream bug fix release. See HISTORY/changelog.gz details.
   * debian/control, debian/rules: Build against krb5-multidev, to allow use
     while heimdal-dev is installed. Thanks Jelmer Vernooij! (Closes: #664881)
   * debian/control: Force p-client to use libpq5 from at least our upstream
     version, as -client tends to use private ABI and behaviour that is not
     covered by symbols files.
-  * Add 03-python-includedirs.patch: Detect both python3.3 include locations.
-    Thanks Dmitrijs Ledkovs!
 
  -- Martin Pitt <mpitt@debian.org>  Sun, 07 Oct 2012 13:43:51 +0200
 
