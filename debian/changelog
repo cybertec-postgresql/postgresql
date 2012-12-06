@@ -1,4 +1,4 @@
-postgresql-9.2 (9.2.2-1) UNRELEASED; urgency=low
+postgresql-9.2 (9.2.2-1) experimental; urgency=low
 
   * New upstream bug fix release. See HISTORY/changelog.gz details.
   * debian/control, debian/rules: Build against krb5-multidev, to allow use
@@ -7,7 +7,7 @@ postgresql-9.2 (9.2.2-1) UNRELEASED; urgency=low
     version, as -client tends to use private ABI and behaviour that is not
     covered by symbols files.
 
- -- Martin Pitt <mpitt@debian.org>  Sun, 07 Oct 2012 13:43:51 +0200
+ -- Martin Pitt <mpitt@debian.org>  Mon, 03 Dec 2012 22:38:48 +0000
 
 postgresql-9.2 (9.2.1-1) experimental; urgency=low
 
