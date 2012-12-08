@@ -1,3 +1,10 @@
+postgresql-9.2 (9.2.2-2) UNRELEASED; urgency=low
+
+  * Add 03-python-includedirs.patch: Detect both python3.3 include locations.
+    Thanks Dmitrijs Ledkovs!
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 08 Dec 2012 15:40:46 +0100
+
 postgresql-9.2 (9.2.2-1) experimental; urgency=low
 
   * New upstream bug fix release. See HISTORY/changelog.gz details.
