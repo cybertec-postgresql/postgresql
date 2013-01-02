@@ -4,25 +4,25 @@ usr/include/postgresql/libpq-events.h
 usr/include/postgresql/libpq/libpq-fs.h
 usr/include/postgresql/pg_config*.h
 usr/include/postgresql/postgres_ext.h
-usr/include/postgresql/9.3/server/catalog/pg_type.h /usr/include/postgresql/catalog
-usr/include/postgresql/9.3/server/catalog/genbki.h /usr/include/postgresql/catalog
-usr/include/postgresql/9.3/server/nodes/nodes.h /usr/include/postgresql/nodes
-usr/include/postgresql/9.3/server/utils/elog.h /usr/include/postgresql/utils
-usr/include/postgresql/9.3/server/utils/errcodes.h /usr/include/postgresql/utils
-usr/include/postgresql/9.3/server/utils/palloc.h /usr/include/postgresql/utils
-usr/include/postgresql/9.3/server/c.h /usr/include/postgresql/
-usr/include/postgresql/9.3/server/pg_config.h /usr/include/postgresql/
-usr/include/postgresql/9.3/server/pg_config_manual.h /usr/include/postgresql/
-usr/include/postgresql/9.3/server/pg_config_os.h /usr/include/postgresql/
-usr/include/postgresql/9.3/server/port.h /usr/include/postgresql/
-usr/include/postgresql/9.3/server/pg_trace.h /usr/include/postgresql/
-usr/include/postgresql/9.3/server/postgres.h /usr/include/postgresql/
-usr/include/postgresql/9.3/server/postgres_fe.h /usr/include/postgresql/
-usr/include/postgresql/9.3/server/postgres_ext.h /usr/include/postgresql/
-usr/include/postgresql/9.3/server/mb/pg_wchar.h /usr/include/postgresql/mb
-usr/lib/libpgport.a
-usr/lib/libpq.a
-usr/lib/libpq.so
+usr/include/postgresql/server/catalog/pg_type.h /usr/include/postgresql/catalog
+usr/include/postgresql/server/catalog/genbki.h /usr/include/postgresql/catalog
+usr/include/postgresql/server/nodes/nodes.h /usr/include/postgresql/nodes
+usr/include/postgresql/server/utils/elog.h /usr/include/postgresql/utils
+usr/include/postgresql/server/utils/errcodes.h /usr/include/postgresql/utils
+usr/include/postgresql/server/utils/palloc.h /usr/include/postgresql/utils
+usr/include/postgresql/server/c.h /usr/include/postgresql/
+usr/include/postgresql/server/pg_config.h /usr/include/postgresql/
+usr/include/postgresql/server/pg_config_manual.h /usr/include/postgresql/
+usr/include/postgresql/server/pg_config_os.h /usr/include/postgresql/
+usr/include/postgresql/server/port.h /usr/include/postgresql/
+usr/include/postgresql/server/pg_trace.h /usr/include/postgresql/
+usr/include/postgresql/server/postgres.h /usr/include/postgresql/
+usr/include/postgresql/server/postgres_fe.h /usr/include/postgresql/
+usr/include/postgresql/server/postgres_ext.h /usr/include/postgresql/
+usr/include/postgresql/server/mb/pg_wchar.h /usr/include/postgresql/mb
+usr/lib/postgresql/9.3/lib/libpgport.a usr/lib
+usr/lib/postgresql/9.3/lib/libpq.a usr/lib
+usr/lib/postgresql/9.3/lib/libpq.so usr/lib
 usr/lib/postgresql/9.3/bin/pg_config usr/bin
 usr/share/locale/*/LC_MESSAGES/pg_config-9.3.mo
 usr/share/postgresql/9.3/man/man1/pg_config.1.gz /usr/share/man/man1

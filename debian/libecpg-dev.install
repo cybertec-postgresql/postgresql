@@ -5,10 +5,10 @@ usr/include/postgresql/sql3types.h
 usr/include/postgresql/sqlca.h
 usr/include/postgresql/sqlda*.h
 usr/lib/postgresql/9.3/bin/ecpg usr/bin
-usr/lib/libecpg.so
-usr/lib/libecpg_compat.so
-usr/lib/libpgtypes.so
-usr/lib/libecpg.a
-usr/lib/libecpg_compat.a
-usr/lib/libpgtypes.a
+usr/lib/postgresql/9.3/lib/libecpg.so usr/lib
+usr/lib/postgresql/9.3/lib/libecpg_compat.so usr/lib
+usr/lib/postgresql/9.3/lib/libpgtypes.so usr/lib
+usr/lib/postgresql/9.3/lib/libecpg.a usr/lib
+usr/lib/postgresql/9.3/lib/libecpg_compat.a usr/lib
+usr/lib/postgresql/9.3/lib/libpgtypes.a usr/lib
 usr/share/postgresql/9.3/man/man1/ecpg.1.gz /usr/share/man/man1

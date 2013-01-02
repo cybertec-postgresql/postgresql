@@ -1,2 +1,2 @@
-usr/lib/libpq.so.5*
+usr/lib/postgresql/9.3/lib/libpq.so.5* usr/lib
 usr/share/locale/*/LC_MESSAGES/libpq*.mo

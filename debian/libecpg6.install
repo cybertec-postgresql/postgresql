@@ -1,2 +1,2 @@
-usr/lib/libecpg.so.6*
+usr/lib/postgresql/9.3/lib/libecpg.so.6* usr/lib
 /usr/share/locale/*/*/ecpg*.mo
