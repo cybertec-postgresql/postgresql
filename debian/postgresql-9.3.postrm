@@ -4,7 +4,7 @@ set -e
 
 #DEBHELPER#
 
-VERSION=9.2
+VERSION=9.3
 
 clean_dir() {
     if [ -d "$1" ] && [ ! -L "$1" ]; then

@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=9.2
+VERSION=9.3
 
 #DEBHELPER#
 

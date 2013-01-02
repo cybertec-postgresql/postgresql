@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 TCL_VER := 8.5
-MAJOR_VER := 9.2
+MAJOR_VER := 9.3
 
 # this must also work for old releases with multiarch, so don't fail if the
 # variable doesn't exist
