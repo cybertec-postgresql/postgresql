@@ -1,6 +1,7 @@
 postgresql-9.3 (9.3~devel) UNRELEASED; urgency=low
 
   * Update for 9.3devel.
+  * Remove 03-python-includedirs.patch, implemented upstream.
 
  -- Christoph Berg <myon@debian.org>  Wed, 02 Jan 2013 12:30:23 +0100
 
