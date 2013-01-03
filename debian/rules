@@ -2,6 +2,11 @@
 TCL_VER := 8.5
 MAJOR_VER := 9.3
 
+# temporarily use quilt for the 9.3devel build (native because we do not have an orig file)
+include /usr/share/quilt/quilt.make
+build build-arch build-indep: patch
+clean: unpatch
+
 # this must also work for old releases with multiarch, so don't fail if the
 # variable doesn't exist
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH || true)
