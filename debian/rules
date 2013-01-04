@@ -40,7 +40,7 @@ COMMON_CONFIGURE_FLAGS= \
   --datarootdir=/usr/share/ \
   --datadir=/usr/share/postgresql/$(MAJOR_VER) \
   --bindir=/usr/lib/postgresql/$(MAJOR_VER)/bin \
-  --libdir=/usr/lib/postgresql/$(MAJOR_VER)/lib \
+  --libdir=/usr/lib/ \
   --libexecdir=/usr/lib/postgresql/ \
   --includedir=/usr/include/postgresql/ \
   --enable-nls \
