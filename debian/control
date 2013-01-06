@@ -31,6 +31,7 @@ Build-Depends: debhelper (>= 8~), quilt,
 Homepage: http://www.postgresql.org/
 Vcs-Browser: http://anonscm.debian.org/loggerhead/pkg-postgresql/postgresql-9.3/trunk
 Vcs-Bzr: http://bzr.debian.org/bzr/pkg-postgresql/postgresql-9.3/trunk/
+XS-Testsuite: autopkgtest
 
 Package: libpq-dev
 Architecture: any
