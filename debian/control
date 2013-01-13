@@ -25,6 +25,7 @@ Build-Depends: debhelper (>= 8~),
  openjade,
  docbook-dsssl,
  docbook-xsl,
+ docbook,
  opensp,
  xsltproc,
  gettext
