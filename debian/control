@@ -245,6 +245,7 @@ Description: additional facilities for PostgreSQL
   pgrowlocks     - A function to return row locking information
   pgstattuple    - Returns the percentage of dead tuples in a table; this
                    indicates whether a vacuum is required.
+  postgresql_fwd - foreign data wrapper for PostgreSQL
   seg            - Confidence-interval datatype (GiST indexing example)
   spi            - PostgreSQL Server Programming Interface; 4 examples of
                    its use:

@@ -50,6 +50,7 @@ usr/lib/postgresql/9.3/lib/citext.so
 usr/lib/postgresql/9.3/lib/btree_gin.so
 usr/lib/postgresql/9.3/lib/unaccent.so
 usr/lib/postgresql/9.3/lib/worker_spi.so
+usr/lib/postgresql/9.3/lib/postgres_fdw.so
 usr/share/postgresql/9.3/man/man1/oid2name.1.gz
 usr/share/postgresql/9.3/man/man1/pg_test_fsync.1.gz
 usr/share/postgresql/9.3/man/man1/pg_archivecleanup.1.gz
