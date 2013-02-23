@@ -3,6 +3,7 @@ usr/lib/postgresql/9.3/bin/pg_controldata
 usr/lib/postgresql/9.3/bin/pg_ctl
 usr/lib/postgresql/9.3/bin/pg_resetxlog
 usr/lib/postgresql/9.3/bin/pg_upgrade
+usr/lib/postgresql/9.3/bin/pg_xlogdump
 usr/lib/postgresql/9.3/bin/postgres
 usr/lib/postgresql/9.3/bin/postmaster
 usr/lib/postgresql/9.3/lib/*_and_*.so
@@ -25,6 +26,7 @@ usr/share/postgresql/9.3/man/man1/pg_controldata.1.gz
 usr/share/postgresql/9.3/man/man1/pg_ctl.1.gz
 usr/share/postgresql/9.3/man/man1/pg_resetxlog.1.gz
 usr/share/postgresql/9.3/man/man1/pg_upgrade.1.gz
+usr/share/postgresql/9.3/man/man1/pg_xlogdump.1.gz
 usr/share/postgresql/9.3/man/man1/postgres.1.gz
 usr/share/postgresql/9.3/man/man1/postmaster.1.gz
 usr/share/postgresql/9.3/timezonesets/*
