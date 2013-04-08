@@ -1,0 +1,50 @@
+diff --git a/src/test/regress/pg_regress.c b/src/test/regress/pg_regress.c
+index 1980fd6..683d4c6 100644
+--- a/src/test/regress/pg_regress.c
++++ b/src/test/regress/pg_regress.c
+@@ -835,6 +835,7 @@ initialize_environment(void)
+ 	{
+ 		const char *pghost;
+ 		const char *pgport;
++		char       pgportstr[32];
+ 
+ 		/*
+ 		 * When testing an existing install, we honor existing environment
+@@ -865,14 +866,18 @@ initialize_environment(void)
+ 			pghost = "localhost";
+ #endif
+ 
+-		if (pghost && pgport)
+-			printf(_("(using postmaster on %s, port %s)\n"), pghost, pgport);
+-		if (pghost && !pgport)
+-			printf(_("(using postmaster on %s, default port)\n"), pghost);
+-		if (!pghost && pgport)
+-			printf(_("(using postmaster on Unix socket, port %s)\n"), pgport);
+-		if (!pghost && !pgport)
+-			printf(_("(using postmaster on Unix socket, default port)\n"));
++		/* Precompute the "port xxx" part so we don't have 6 printf()s below */
++		if (pgport)
++			snprintf(pgportstr, sizeof(pgportstr), _("port %s"), pgport);
++		else
++			snprintf(pgportstr, sizeof(pgportstr), _("default port"));
++
++		if (pghost && *pghost != '/')
++			printf(_("(using postmaster on %s, %s)\n"), pghost, pgportstr);
++		else if (pghost)
++			printf(_("(using postmaster on Unix socket %s, %s)\n"), pghost, pgportstr);
++		else
++			printf(_("(using postmaster on Unix socket, %s)\n"), pgportstr);
+ 	}
+ 
+ 	convert_sourcefiles();
+@@ -2246,7 +2251,9 @@ regression_main(int argc, char *argv[], init_function ifunc, test_function tfunc
+ 		 */
+ 		header(_("starting postmaster"));
+ 		snprintf(buf, sizeof(buf),
+-				 SYSTEMQUOTE "\"%s/postgres\" -D \"%s/data\" -F%s -c \"listen_addresses=%s\" > \"%s/log/postmaster.log\" 2>&1" SYSTEMQUOTE,
++				 hostname && *hostname == '/'
++					 ? SYSTEMQUOTE "\"%s/postgres\" -D \"%s/data\" -F%s -k \"%s\" > \"%s/log/postmaster.log\" 2>&1" SYSTEMQUOTE
++					 : SYSTEMQUOTE "\"%s/postgres\" -D \"%s/data\" -F%s -c \"listen_addresses=%s\" > \"%s/log/postmaster.log\" 2>&1" SYSTEMQUOTE,
+ 				 bindir, temp_install,
+ 				 debug ? " -d 5" : "",
+ 				 hostname ? hostname : "",

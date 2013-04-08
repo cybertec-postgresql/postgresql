@@ -4,3 +4,4 @@
 52-tutorial-README.patch
 53-pg_service.conf_directory_doc.patch
 54-debian-alternatives-for-external-tools.patch
+60-pg_regress_socketdir.patch

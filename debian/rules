@@ -141,15 +141,8 @@ override_dh_install:
 
 override_dh_auto_test:
 ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
-	# patch away the "don't execute as root" check for the test
-	# suite; doing it here will ensure that the actual debs have
-	# the check.
 	set -e; \
-	patch --no-backup-if-mismatch -p1 < debian/disable-root-check.patch; \
-	patch --no-backup-if-mismatch -p1 < debian/pg_regress-in-tmp.patch; \
-	make -C build/src/test/regress bigcheck || fail=1; \
-	patch --no-backup-if-mismatch -Rp1 < debian/pg_regress-in-tmp.patch; \
-	patch --no-backup-if-mismatch -Rp1 < debian/disable-root-check.patch; \
+	make -C build/src/test/regress bigcheck EXTRA_REGRESS_OPTS='--host=/tmp' || fail=1; \
 	if [ -n "$$fail" ]; then \
 	    for l in regression.diffs log/initdb.log log/postmaster.log; do \
 	    	if [ -e build/src/test/regress/$$l ]; then \
