@@ -20,6 +20,7 @@ usr/include/postgresql/9.3/server/postgres.h /usr/include/postgresql/
 usr/include/postgresql/9.3/server/postgres_fe.h /usr/include/postgresql/
 usr/include/postgresql/9.3/server/postgres_ext.h /usr/include/postgresql/
 usr/include/postgresql/9.3/server/mb/pg_wchar.h /usr/include/postgresql/mb
+usr/lib/pkgconfig/libpq.pc
 usr/lib/libpgcommon.a
 usr/lib/libpgport.a
 usr/lib/libpq.a

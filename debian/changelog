@@ -12,6 +12,7 @@ postgresql-9.3 (9.3~devel) UNRELEASED; urgency=low
   * postgresql-9.3.install: Add pg_xlogdump.
   * postgresql-client-9.3.install: Add pg_isready.
   * libpq-dev.install: Add usr/lib/libpgcommon.a.
+  * libpq-dev.install, libecpg-dev.install: Add pkgconfig files.
   * postgresql-contrib-9.3.install: Add
     usr/lib/postgresql/9.3/lib/postgres_fdw.so.
 
