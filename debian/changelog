@@ -1,4 +1,4 @@
-postgresql-9.3 (9.3~~devel) UNRELEASED; urgency=low
+postgresql-9.3 (9.3~0devel) UNRELEASED; urgency=low
 
   * Update for 9.3devel. Packaging based on 9.2 branch.
   * Remove 03-python-includedirs.patch, implemented upstream.
