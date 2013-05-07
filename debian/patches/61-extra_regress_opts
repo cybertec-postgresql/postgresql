@@ -1,0 +1,48 @@
+--- a/src/Makefile.global.in
++++ b/src/Makefile.global.in
+@@ -448,8 +448,8 @@ endif
+ 
+ pg_regress_locale_flags = $(if $(ENCODING),--encoding=$(ENCODING)) $(NOLOCALE)
+ 
+-pg_regress_check = $(top_builddir)/src/test/regress/pg_regress --inputdir=$(srcdir) --temp-install=./tmp_check --top-builddir=$(top_builddir) $(pg_regress_locale_flags)
+-pg_regress_installcheck = $(top_builddir)/src/test/regress/pg_regress --inputdir=$(srcdir) --psqldir='$(PSQLDIR)' $(pg_regress_locale_flags)
++pg_regress_check = $(top_builddir)/src/test/regress/pg_regress --inputdir=$(srcdir) --temp-install=./tmp_check --top-builddir=$(top_builddir) $(pg_regress_locale_flags) $(EXTRA_REGRESS_OPTS)
++pg_regress_installcheck = $(top_builddir)/src/test/regress/pg_regress --inputdir=$(srcdir) --psqldir='$(PSQLDIR)' $(pg_regress_locale_flags) $(EXTRA_REGRESS_OPTS)
+ 
+ pg_regress_clean_files = results/ regression.diffs regression.out tmp_check/ log/
+ 
+--- a/src/test/isolation/Makefile
++++ b/src/test/isolation/Makefile
+@@ -52,17 +52,17 @@ maintainer-clean: distclean
+ 	rm -f specparse.c specscanner.c
+ 
+ installcheck: all
+-	./pg_isolation_regress --psqldir='$(PSQLDIR)' --inputdir=$(srcdir) --schedule=$(srcdir)/isolation_schedule
++	./pg_isolation_regress --psqldir='$(PSQLDIR)' $(EXTRA_REGRESS_OPTS) --inputdir=$(srcdir) --schedule=$(srcdir)/isolation_schedule
+ 
+ check: all
+-	./pg_isolation_regress --temp-install=./tmp_check --inputdir=$(srcdir) --top-builddir=$(top_builddir) --schedule=$(srcdir)/isolation_schedule
++	./pg_isolation_regress --temp-install=./tmp_check --inputdir=$(srcdir) --top-builddir=$(top_builddir) $(EXTRA_REGRESS_OPTS) --schedule=$(srcdir)/isolation_schedule
+ 
+ # Versions of the check tests that include the prepared_transactions test
+ # It only makes sense to run these if set up to use prepared transactions,
+ # via TEMP_CONFIG for the check case, or via the postgresql.conf for the
+ # installcheck case.
+ installcheck-prepared-txns: all
+-	./pg_isolation_regress --psqldir='$(PSQLDIR)' --inputdir=$(srcdir) --schedule=$(srcdir)/isolation_schedule prepared-transactions
++	./pg_isolation_regress --psqldir='$(PSQLDIR)' $(EXTRA_REGRESS_OPTS) --inputdir=$(srcdir) --schedule=$(srcdir)/isolation_schedule prepared-transactions
+ 
+ check-prepared-txns: all
+-	./pg_isolation_regress --temp-install=./tmp_check --inputdir=$(srcdir) --top-builddir=$(top_builddir) --schedule=$(srcdir)/isolation_schedule prepared-transactions
++	./pg_isolation_regress --temp-install=./tmp_check $(EXTRA_REGRESS_OPTS) --inputdir=$(srcdir) --top-builddir=$(top_builddir) --schedule=$(srcdir)/isolation_schedule prepared-transactions
+--- a/contrib/pg_upgrade/Makefile
++++ b/contrib/pg_upgrade/Makefile
+@@ -25,7 +25,7 @@ include $(top_srcdir)/contrib/contrib-gl
+ endif
+ 
+ check: test.sh all
+-	MAKE=$(MAKE) bindir=$(bindir) libdir=$(libdir) $(SHELL) $< --install
++	MAKE=$(MAKE) bindir=$(bindir) libdir=$(libdir) EXTRA_REGRESS_OPTS="$(EXTRA_REGRESS_OPTS)" $(SHELL) $< --install
+ 
+ # disabled because it upsets the build farm
+ #installcheck: test.sh

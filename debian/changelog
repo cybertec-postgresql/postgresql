@@ -9,6 +9,8 @@ postgresql-9.3 (9.3~beta1-1) UNRELEASED; urgency=low
   * debian/rules: Use "make check-world" to run the regression tests. Thanks
     to Peter Eisentraut for the suggestion.
   * 50-per-version-dirs.patch: Use @MAJORVERSION@ instead of a fixed version.
+  * 61-extra_regress_opts: Add EXTRA_REGRESS_OPTS in Makefile.global(.in).
+  * 62-pg_upgrade-test-in-tmp: Hardcode /tmp in pg_upgrade's test.sh.
   * postgresql-9.3.install: Add pg_xlogdump.
   * postgresql-client-9.3.install: Add pg_isready.
   * libpq-dev.install: Add usr/lib/libpgcommon.a.
