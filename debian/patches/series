@@ -7,3 +7,4 @@
 60-pg_regress_socketdir.patch
 61-extra_regress_opts
 62-pg_upgrade-test-in-tmp
+63-pg_upgrade-test-bindir
