@@ -135,14 +135,10 @@ override_dh_install:
 
 override_dh_auto_test:
 ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
-	set -e; \
-	make -C build/src/test/regress bigcheck EXTRA_REGRESS_OPTS='--host=/tmp' || fail=1; \
-	if [ -n "$$fail" ]; then \
-	    for l in regression.diffs log/initdb.log log/postmaster.log; do \
-	    	if [ -e build/src/test/regress/$$l ]; then \
-		    echo "********* $$l *******"; \
-		    cat build/src/test/regress/$$l; \
-		fi; \
+	if ! make -C build -k check-world EXTRA_REGRESS_OPTS='--host=/tmp'; then \
+	    for l in `find build -name regression.diffs -o -name initdb.log -o -name postmaster.log`; do \
+		echo "******** $$l ********"; \
+		tail -n100 $$l; \
 	    done; \
 	    $(TESTSUITE_FAIL_CMD); \
 	fi
@@ -150,37 +146,6 @@ endif
 
 override_dh_strip:
 	dh_strip --dbg-package=postgresql-$(MAJOR_VER)-dbg
-
-# run tests in contrib in temporary test installations, using programs
-# from local tree
-contrib-check:
-	set -e; cd build/contrib; \
-	for d in *; do \
-	    [ -d $$d/sql ] || continue; \
-	    echo "==============  Running tests in $$d"; \
-	    (cd $$d; \
-	    if ! ../../src/test/regress/pg_regress --top-builddir=../.. --temp-install=tmp_check --dbname=contrib_regression `cd sql; ls *.sql | sed 's/.sql$$//'`; then \
-		 cat regression.diffs; \
-	    fi); \
-	done
-
-# run tests in contrib in temporary test installation, using programs
-# from system installation
-contrib-installcheck:
-	# set up temporary db
-	rm -rf tmp_data
-	mkdir tmp_data
-	/usr/lib/postgresql/$(MAJOR_VER)/bin/initdb -D tmp_data
-	/usr/lib/postgresql/$(MAJOR_VER)/bin/pg_ctl -D tmp_data -l tmp_data/postgres.log -o '-k /tmp' start
-	# wait until it started up
-	while !/usr/lib/postgresql/$(MAJOR_VER)/bin/psql -h /tmp -l >/dev/null 2>&1; do sleep 1; done
-	sleep 1
-	while !/usr/lib/postgresql/$(MAJOR_VER)/bin/psql -h /tmp -l >/dev/null 2>&1; do sleep 1; done
-	# run the tests
-	-cd build/contrib; make installcheck
-	/usr/lib/postgresql/$(MAJOR_VER)/bin/pg_ctl -D tmp_data stop
-	# find and print the regression diffs
-	find build/contrib/ -name regression.diffs -exec cat '{}' \;
 
 override_dh_builddeb:
 	dh_builddeb -- -Zxz

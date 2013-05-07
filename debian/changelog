@@ -6,6 +6,8 @@ postgresql-9.3 (9.3~beta1-1) UNRELEASED; urgency=low
     lo_truncate64.
   * debian/rules: Remove the temporary patches from pg_regress, and teach
     pg_regress to support unix socket dirs in --host.
+  * debian/rules: Use "make check-world" to run the regression tests. Thanks
+    to Peter Eisentraut for the suggestion.
   * 50-per-version-dirs.patch: Use @MAJORVERSION@ instead of a fixed version.
   * postgresql-9.3.install: Add pg_xlogdump.
   * postgresql-client-9.3.install: Add pg_isready.
