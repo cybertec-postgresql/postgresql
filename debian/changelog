@@ -1,13 +1,9 @@
-postgresql-9.3 (9.3~0devel) UNRELEASED; urgency=low
+postgresql-9.3 (9.3~beta1-1) UNRELEASED; urgency=low
 
-  * Update for 9.3devel. Packaging based on 9.2 branch.
+  * Update for 9.3. Packaging based on 9.2 branch.
   * Remove 03-python-includedirs.patch, implemented upstream.
   * libpq5.symbols: Add new symbols: PQconninfo, lo_lseek64, lo_tell64,
     lo_truncate64.
-  * debian/rules: Use quilt again. (For the devel build, we are a native
-    package because we do not have an orig file.)
-  * debian/rules: Skip override_dh_installchangelogs because git doesn't ship
-    a HISTORY file.
   * debian/rules: Remove the temporary patches from pg_regress, and teach
     pg_regress to support unix socket dirs in --host.
   * 50-per-version-dirs.patch: Use @MAJORVERSION@ instead of a fixed version.
