@@ -1,5 +1,6 @@
 postgresql-9.3 (9.3~beta1-1) UNRELEASED; urgency=low
 
+  [ Christoph Berg ]
   * Update for 9.3. Packaging based on 9.2 branch.
   * Remove 03-python-includedirs.patch, implemented upstream.
   * libpq5.symbols: Add new symbols: PQconninfo, lo_lseek64, lo_tell64,
@@ -18,5 +19,9 @@ postgresql-9.3 (9.3~beta1-1) UNRELEASED; urgency=low
   * libpq-dev.install, libecpg-dev.install: Add pkgconfig files.
   * postgresql-contrib-9.3.install: Add
     usr/lib/postgresql/9.3/lib/postgres_fdw.so.
+
+  [ Martin Pitt ]
+  * Bump p-common dependency to >= 142, to ensure compatibility with 9.3,
+    particularly for upgrades.
 
  -- Christoph Berg <myon@debian.org>  Fri, 15 Feb 2013 10:40:57 +0100

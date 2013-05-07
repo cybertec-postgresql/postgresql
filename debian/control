@@ -120,7 +120,7 @@ Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
  postgresql-client-9.3,
- postgresql-common (>= 135~),
+ postgresql-common (>= 142~),
  tzdata,
  ssl-cert,
  locales
@@ -163,7 +163,7 @@ Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
  libpq5 (>= ${source:Upstream-Version}),
- postgresql-client-common (>= 115~)
+ postgresql-client-common (>= 142~)
 Suggests: postgresql-9.3, postgresql-doc-9.3
 Provides: postgresql-client
 Description: front-end programs for PostgreSQL 9.3
@@ -185,7 +185,7 @@ Section: libdevel
 Depends: ${misc:Depends},
  ${shlibs:Depends},
  libpq-dev (>= 9.3~),
- postgresql-common (>= 130~)
+ postgresql-common (>= 142~)
 Description: development files for PostgreSQL 9.3 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
