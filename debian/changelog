@@ -1,4 +1,4 @@
-postgresql-9.3 (9.3~beta1-1) UNRELEASED; urgency=low
+postgresql-9.3 (9.3~beta1-1) experimental; urgency=low
 
   [ Christoph Berg ]
   * Update for 9.3. Packaging based on 9.2 branch.
@@ -24,4 +24,4 @@ postgresql-9.3 (9.3~beta1-1) UNRELEASED; urgency=low
   * Bump p-common dependency to >= 142, to ensure compatibility with 9.3,
     particularly for upgrades.
 
- -- Christoph Berg <myon@debian.org>  Fri, 15 Feb 2013 10:40:57 +0100
+ -- Martin Pitt <mpitt@debian.org>  Wed, 08 May 2013 05:39:52 +0200
