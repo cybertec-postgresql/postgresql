@@ -1,3 +1,9 @@
+postgresql-9.3 (9.3~beta1-2) UNRELEASED; urgency=low
+
+  * Update watch file for 9.3.
+
+ -- Christoph Berg <myon@debian.org>  Mon, 13 May 2013 18:10:43 -0700
+
 postgresql-9.3 (9.3~beta1-1) experimental; urgency=low
 
   [ Christoph Berg ]
