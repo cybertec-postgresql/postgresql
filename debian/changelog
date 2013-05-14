@@ -1,8 +1,11 @@
-postgresql-9.3 (9.3~beta1-2) UNRELEASED; urgency=low
+postgresql-9.3 (9.3~beta1-2) experimental; urgency=low
 
   * Update watch file for 9.3.
+  * 64-pg_upgrade-sockdir: If cwd is too long to use as socketdir in
+    pg_upgrade, fall back to /tmp. (A Unix socket path must not be longer than
+    107 chars.)
 
- -- Christoph Berg <myon@debian.org>  Mon, 13 May 2013 18:10:43 -0700
+ -- Christoph Berg <myon@debian.org>  Mon, 13 May 2013 23:09:44 -0700
 
 postgresql-9.3 (9.3~beta1-1) experimental; urgency=low
 
