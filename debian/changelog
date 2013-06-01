@@ -1,3 +1,10 @@
+postgresql-9.3 (9.3~beta1-4) UNRELEASED; urgency=low
+
+  * hurd-i386: Ignore testsuite failures so we have a working libpq5 (they
+    don't implement semaphores so the server won't even start).
+
+ -- Christoph Berg <myon@debian.org>  Fri, 31 May 2013 22:53:46 -0700
+
 postgresql-9.3 (9.3~beta1-3) experimental; urgency=low
 
   * sparc, alpha: Remove -O1 - we have been using this since 2007, but now it

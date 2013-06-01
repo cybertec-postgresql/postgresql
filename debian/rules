@@ -54,8 +54,9 @@ COMMON_CONFIGURE_FLAGS= \
 
 # build should fail on test suite failures on all arches
 TESTSUITE_FAIL_CMD=exit 1
+# hurd doesn't implement semaphores; succeed anyway so they at least have libpq5
 # plperl currently fails on kfreebsd-*
-ifneq ($(filter $(DEB_BUILD_ARCH), kfreebsd-amd64 kfreebsd-i386),)
+ifneq ($(filter $(DEB_BUILD_ARCH), hurd-i386 kfreebsd-amd64 kfreebsd-i386),)
 TESTSUITE_FAIL_CMD=exit 0
 endif
 
