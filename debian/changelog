@@ -1,3 +1,13 @@
+postgresql-9.3 (9.3~beta1-3) experimental; urgency=low
+
+  * sparc, alpha: Remove -O1 - we have been using this since 2007, but now it
+    looks the other way round, "make check" fails on sparc with -O1, but works
+    with -O2.
+  * kfreebsd-*: Ignore testsuite failures until we resolve the plperl
+    failures, see #704802.
+
+ -- Christoph Berg <myon@debian.org>  Fri, 31 May 2013 16:34:34 -0700
+
 postgresql-9.3 (9.3~beta1-2) experimental; urgency=low
 
   * Update watch file for 9.3.

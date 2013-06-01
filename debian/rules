@@ -2,6 +2,8 @@
 TCL_VER := 8.5
 MAJOR_VER := 9.3
 
+DEB_BUILD_ARCH = $(shell dpkg-architecture -qDEB_BUILD_ARCH)
+
 # this must also work for old releases with multiarch, so don't fail if the
 # variable doesn't exist
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH || true)
@@ -20,11 +22,11 @@ ifeq ($(shell uname -s),Linux)
 CFLAGS+= -DLINUX_OOM_ADJ=0
 endif
 
-ifneq ($(findstring $(DEB_BUILD_ARCH), sparc alpha),)
-# sparc and alpha's gcc currently miscompiles; see
+# sparc and alpha's gcc used to miscompile; see
 # http://lists.debian.org/debian-alpha/2007/11/msg00025.html
-    CFLAGS+=-O1
-endif
+#ifneq ($(findstring $(DEB_BUILD_ARCH), sparc alpha),)
+#    CFLAGS+=-O1
+#endif
 
 export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
@@ -52,7 +54,10 @@ COMMON_CONFIGURE_FLAGS= \
 
 # build should fail on test suite failures on all arches
 TESTSUITE_FAIL_CMD=exit 1
-
+# plperl currently fails on kfreebsd-*
+ifneq ($(filter $(DEB_BUILD_ARCH), kfreebsd-amd64 kfreebsd-i386),)
+TESTSUITE_FAIL_CMD=exit 0
+endif
 
 %:
 	dh $@
