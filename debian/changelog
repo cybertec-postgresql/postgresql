@@ -2,8 +2,10 @@ postgresql-9.3 (9.3~beta1-4) UNRELEASED; urgency=low
 
   * hurd-i386: Ignore testsuite failures so we have a working libpq5 (they
     don't implement semaphores so the server won't even start).
+  * Mark postgresql-9.3 as beta in the description, suggested by Joshua D.
+    Drake.
 
- -- Christoph Berg <myon@debian.org>  Fri, 31 May 2013 22:53:46 -0700
+ -- Christoph Berg <myon@debian.org>  Fri, 14 Jun 2013 09:44:31 +0200
 
 postgresql-9.3 (9.3~beta1-3) experimental; urgency=low
 
