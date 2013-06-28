@@ -1,3 +1,11 @@
+postgresql-9.3 (9.3~beta2-2) UNRELEASED; urgency=low
+
+  * debian/postgresql-9.3.preinst: Abort upgrade if there are still clusters
+    with the 9.3beta1 format, these need to be dumped/dropped first.
+    (Closes: #714328)
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 28 Jun 2013 14:33:32 +0200
+
 postgresql-9.3 (9.3~beta2-1) experimental; urgency=low
 
   [ Christoph Berg ]
