@@ -1,3 +1,9 @@
+postgresql-9.3 (9.3~beta2-3) UNRELEASED; urgency=low
+
+  * debian/rules: Support multi-arch locations of {tcl,tk}-config.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 05 Jul 2013 12:57:43 +0200
+
 postgresql-9.3 (9.3~beta2-2) experimental; urgency=low
 
   * debian/postgresql-9.3.preinst: Abort upgrade if there are still clusters
