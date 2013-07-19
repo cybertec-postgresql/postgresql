@@ -59,6 +59,13 @@ COMMON_CONFIGURE_FLAGS= \
   CFLAGS='$(CFLAGS)' \
   LDFLAGS='$(LDFLAGS)'
 
+# allow missing krb5 and ldap during bootstrapping
+ifeq ($(DEB_STAGE),stage1)
+BOOTSTRAP_FLAGS=
+else
+BOOTSTRAP_FLAGS= --with-krb5 --with-gssapi --with-ldap
+endif
+
 # build should fail on test suite failures on all arches
 TESTSUITE_FAIL_CMD=exit 1
 # hurd doesn't implement semaphores; succeed anyway so they at least have libpq5
@@ -79,17 +86,15 @@ stamp/configure-build:
            --with-perl \
            --with-python \
            --with-pam \
-           --with-krb5 \
-           --with-gssapi \
            --with-openssl \
            --with-libxml \
            --with-libxslt \
-           --with-ldap \
            --with-tclconfig=$(TCL_CONFIG_DIR)/tcl$(TCL_VER) \
            --with-tkconfig=$(TCL_CONFIG_DIR)/tk$(TCL_VER) \
            --with-includes=/usr/include/tcl$(TCL_VER) \
            PYTHON=/usr/bin/python \
-           $(COMMON_CONFIGURE_FLAGS)
+           $(COMMON_CONFIGURE_FLAGS) \
+           $(BOOTSTRAP_FLAGS)
 	touch "$@"
 	
 stamp/configure-build-py3:
