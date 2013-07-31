@@ -9,7 +9,8 @@ postgresql-9.3 (9.3~beta2-3) UNRELEASED; urgency=low
   [ Christoph Berg ]
   * Pull 6697aa2bc25c83b88d6165340348a31328c35de6 from upstream head to
     better support VPATH builds of PGXS modules.
-  * debian/rules: Call make check-world without -k.
+  * debian/rules: Call make check-world without -k and use a random port
+    number for pg_regress.
 
  -- Martin Pitt <mpitt@debian.org>  Fri, 05 Jul 2013 12:57:43 +0200
 
