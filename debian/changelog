@@ -1,9 +1,14 @@
 postgresql-9.3 (9.3~beta2-3) UNRELEASED; urgency=low
 
+  [ Martin Pitt ]
   * debian/rules: Support multi-arch locations of {tcl,tk}-config.
   * debian/rules: Don't build with kerberos and LDAP support for
     DEB_STAGE=stage1 to aid with bootstrapping.
   * debian/tests/control: Add missing net-tools dependency (for ifconfig).
+
+  [ Christoph Berg ]
+  * Pull 6697aa2bc25c83b88d6165340348a31328c35de6 from upstream head to
+    better support VPATH builds of PGXS modules.
 
  -- Martin Pitt <mpitt@debian.org>  Fri, 05 Jul 2013 12:57:43 +0200
 
