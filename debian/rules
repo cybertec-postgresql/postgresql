@@ -153,7 +153,7 @@ override_dh_install:
 
 override_dh_auto_test:
 ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
-	if ! make -C build -k check-world EXTRA_REGRESS_OPTS='--host=/tmp'; then \
+	if ! make -C build check-world EXTRA_REGRESS_OPTS='--host=/tmp'; then \
 	    for l in `find build -name regression.diffs -o -name initdb.log -o -name postmaster.log`; do \
 		echo "******** $$l ********"; \
 		tail -n100 $$l; \
