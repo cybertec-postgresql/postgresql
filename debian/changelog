@@ -13,8 +13,9 @@ postgresql-9.3 (9.3~rc1-1) UNRELEASED; urgency=low
     did not yet have a "Provides: postgresql-dbg". (Closes: #717982)
 
   [ Christoph Berg ]
-  * Pull 6697aa2bc25c83b88d6165340348a31328c35de6 from upstream head to
-    better support VPATH builds of PGXS modules.
+  * Pull 6697aa2bc25c83b88d6165340348a31328c35de6 and
+    82b0102650cf85268145a46f0ab488bacf6599a1 from upstream head to better
+    support VPATH builds of PGXS modules.
   * debian/rules: Call make check-world without -k and use a random port
     number for pg_regress.
 
