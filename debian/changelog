@@ -1,6 +1,7 @@
-postgresql-9.3 (9.3~beta2-3) UNRELEASED; urgency=low
+postgresql-9.3 (9.3~rc1-1) UNRELEASED; urgency=low
 
   [ Martin Pitt ]
+  * New upstream release: first 9.3 release candidate.
   * debian/rules: Support multi-arch locations of {tcl,tk}-config.
   * debian/rules: Don't build with kerberos and LDAP support for
     DEB_STAGE=stage1 to aid with bootstrapping.
