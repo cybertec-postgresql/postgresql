@@ -2,6 +2,8 @@ postgresql-9.3 (9.3~rc1-1) UNRELEASED; urgency=low
 
   [ Martin Pitt ]
   * New upstream release: first 9.3 release candidate.
+    - Add locking around SSL_context usage in libpq, to make it thread safe.
+      (Closes: #718460)
   * debian/rules: Support multi-arch locations of {tcl,tk}-config.
   * debian/rules: Don't build with kerberos and LDAP support for
     DEB_STAGE=stage1 to aid with bootstrapping.
