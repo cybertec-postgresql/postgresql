@@ -9,6 +9,8 @@ postgresql-9.3 (9.3~rc1-1) UNRELEASED; urgency=low
     DEB_STAGE=stage1 to aid with bootstrapping.
   * debian/tests/control: Add missing net-tools dependency (for ifconfig).
   * debian/rules: Call dh with --parallel.
+  * debian/control: Explicitly Conflicts/Replaces postgresql-9.1-dbg, as that
+    did not yet have a "Provides: postgresql-dbg". (Closes: #717982)
 
   [ Christoph Berg ]
   * Pull 6697aa2bc25c83b88d6165340348a31328c35de6 from upstream head to
