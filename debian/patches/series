@@ -1,3 +1,5 @@
+00git-vpath.patch
+00git-vpath2.patch
 02-relax-sslkey-permscheck.patch
 50-per-version-dirs.patch
 51-default-sockets-in-var.patch
@@ -9,5 +11,3 @@
 62-pg_upgrade-test-in-tmp
 63-pg_upgrade-test-bindir
 64-pg_upgrade-sockdir
-vpath
-vpath2
