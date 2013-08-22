@@ -1,9 +1,11 @@
-postgresql-9.3 (9.3~rc1-1) UNRELEASED; urgency=low
+postgresql-9.3 (9.3~rc1-1) unstable; urgency=low
 
   [ Martin Pitt ]
   * New upstream release: first 9.3 release candidate.
     - Add locking around SSL_context usage in libpq, to make it thread safe.
       (Closes: #718460)
+  * First upload to unstable, 9.3 final will be released soon and now is the
+    time for testing and porting extensions.
   * debian/rules: Support multi-arch locations of {tcl,tk}-config.
   * debian/rules: Don't build with kerberos and LDAP support for
     DEB_STAGE=stage1 to aid with bootstrapping.
@@ -19,7 +21,7 @@ postgresql-9.3 (9.3~rc1-1) UNRELEASED; urgency=low
   * debian/rules: Call make check-world without -k and use a random port
     number for pg_regress.
 
- -- Martin Pitt <mpitt@debian.org>  Fri, 05 Jul 2013 12:57:43 +0200
+ -- Martin Pitt <mpitt@debian.org>  Thu, 22 Aug 2013 10:19:13 +0200
 
 postgresql-9.3 (9.3~beta2-2) experimental; urgency=low
 
