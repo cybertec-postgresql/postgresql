@@ -1,3 +1,9 @@
+postgresql-9.3 (9.3~rc1-2) UNRELEASED; urgency=low
+
+  * Rebuild against Perl 5.18.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 27 Aug 2013 11:26:52 +0200
+
 postgresql-9.3 (9.3~rc1-1) unstable; urgency=low
 
   [ Martin Pitt ]
