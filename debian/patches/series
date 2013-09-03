@@ -1,5 +1,6 @@
 00git-vpath.patch
 00git-vpath2.patch
+01-vpath3.patch
 02-relax-sslkey-permscheck.patch
 50-per-version-dirs.patch
 51-default-sockets-in-var.patch
