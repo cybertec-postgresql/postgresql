@@ -125,7 +125,7 @@ Depends: ${misc:Depends},
  ssl-cert,
  locales
 Suggests: oidentd | ident-server, locales-all
-Description: object-relational SQL database, version 9.3 (BETA) server
+Description: object-relational SQL database, version 9.3 server
  PostgreSQL is a fully featured object-relational database management
  system.  It supports a large part of the SQL standard and is designed
  to be extensible by users in many aspects.  Some of the features are:
@@ -139,8 +139,6 @@ Description: object-relational SQL database, version 9.3 (BETA) server
  are coordinated by the postgresql-common package. A package providing
  ident-server is needed if you want to authenticate remote connections
  with identd.
- .
- This is a beta version, not yet intended for production use.
 
 Package: postgresql-9.3-dbg
 Section: debug
