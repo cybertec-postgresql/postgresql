@@ -1,3 +1,14 @@
+postgresql-9.3 (9.3.1-1) UNRELEASED; urgency=low
+
+  * New upstream release.
+    - Update hstore extension with JSON functionality
+      Users who installed hstore prior to 9.3.1 must execute:
+         ALTER EXTENSION hstore UPDATE;
+      to add two new JSON functions and a cast.
+    - Some bug fixes, see HISTORY for details.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 08 Oct 2013 10:46:55 +0200
+
 postgresql-9.3 (9.3.0-2) unstable; urgency=low
 
   [ Martin Pitt ]
