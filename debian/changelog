@@ -1,3 +1,10 @@
+postgresql-9.3 (9.3.1-2) UNRELEASED; urgency=low
+
+  * Add 03-config-update.patch: Refresh config.{guess,sub} to latest version
+    for enabling ports, in particular the upcoming ppc64el.
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 09 Oct 2013 06:59:38 +0200
+
 postgresql-9.3 (9.3.1-1) unstable; urgency=low
 
   * New upstream release.
