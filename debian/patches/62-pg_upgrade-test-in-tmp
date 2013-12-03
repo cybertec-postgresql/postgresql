@@ -1,8 +1,6 @@
-Index: postgresql-9.3-9.3~beta2/contrib/pg_upgrade/test.sh
-===================================================================
---- postgresql-9.3-9.3~beta2.orig/contrib/pg_upgrade/test.sh	2013-06-26 15:12:56.317548346 +0200
-+++ postgresql-9.3-9.3~beta2/contrib/pg_upgrade/test.sh	2013-06-26 15:12:56.313548346 +0200
-@@ -25,7 +25,7 @@
+--- a/contrib/pg_upgrade/test.sh
++++ b/contrib/pg_upgrade/test.sh
+@@ -25,7 +25,7 @@ case $testhost in
  	*)		LISTEN_ADDRESSES="" ;;
  esac
  
@@ -11,12 +9,12 @@ Index: postgresql-9.3-9.3~beta2/contrib/pg_upgrade/test.sh
  
  temp_root=$PWD/tmp_check
  
-@@ -82,7 +82,7 @@
- unset PGSSLMODE
- unset PGREQUIRESSL
- unset PGCONNECT_TIMEOUT
--unset PGHOST
+@@ -86,7 +86,7 @@ PGSERVICE="";         unset PGSERVICE
+ PGSSLMODE=""          unset PGSSLMODE
+ PGREQUIRESSL="";      unset PGREQUIRESSL
+ PGCONNECT_TIMEOUT=""; unset PGCONNECT_TIMEOUT
+-PGHOST=""             unset PGHOST
 +export PGHOST="/tmp"
- unset PGHOSTADDR
+ PGHOSTADDR="";        unset PGHOSTADDR
  
  # Select a non-conflicting port number, similarly to pg_regress.c
