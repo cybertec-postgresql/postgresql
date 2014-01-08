@@ -1,3 +1,12 @@
+postgresql-9.3 (9.3.2-2) UNRELEASED; urgency=medium
+
+  * Build with LINUX_OOM_SCORE_ADJ=0 instead of the older LINUX_OOM_ADJ=0. All
+    relevant distro releases (>= squeeze/lucid) use kernels which support
+    /proc/pid/oom_score_adj, so avoid the dmesg warnings. (Closes: #646245,
+    LP: #991725)
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 08 Jan 2014 15:56:39 +0100
+
 postgresql-9.3 (9.3.2-1) unstable; urgency=low
 
   [ Martin Pitt ]

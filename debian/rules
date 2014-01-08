@@ -26,7 +26,7 @@ CFLAGS+= -fPIC -pie -I/usr/include/mit-krb5
 # When protecting the postmaster with oom_adj=-17, allow the OOM killer to slay
 # the backends (http://archives.postgresql.org/pgsql-hackers/2010-01/msg00170.php)
 ifeq ($(shell uname -s),Linux)
-CFLAGS+= -DLINUX_OOM_ADJ=0
+CFLAGS+= -DLINUX_OOM_SCORE_ADJ=0
 endif
 
 # sparc and alpha's gcc used to miscompile; see
