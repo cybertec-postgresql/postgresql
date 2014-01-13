@@ -5,6 +5,7 @@ postgresql-9.3 (9.3.2-2) UNRELEASED; urgency=medium
     /proc/pid/oom_score_adj, so avoid the dmesg warnings. (Closes: #646245,
     LP: #991725)
   * Bump Standards-Version to 3.9.5 (no changes necessary).
+  * Build with tcl8.6 where available (>= Jessie, >= trusty).
 
  -- Martin Pitt <mpitt@debian.org>  Wed, 08 Jan 2014 15:56:39 +0100
 
