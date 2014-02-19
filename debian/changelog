@@ -98,6 +98,7 @@ postgresql-9.3 (9.3.3-1) unstable; urgency=medium
   * The upstream tarballs no longer contain a plain HISTORY file, but point to
     the html documentation. Note the location of these files in our
     changelog.gz file.
+  * Teach configure to find tclsh8.6 where tclsh is not available.
 
   [ Martin Pitt ]
   * Build with LINUX_OOM_SCORE_ADJ=0 instead of the older LINUX_OOM_ADJ=0. All
