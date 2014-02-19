@@ -13,3 +13,4 @@
 62-pg_upgrade-test-in-tmp
 63-pg_upgrade-test-bindir
 64-pg_upgrade-sockdir
+70-history
