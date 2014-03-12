@@ -136,7 +136,7 @@ override_dh_makeshlibs:
 	dh_makeshlibs -Xusr/lib/postgresql/$(MAJOR_VER)
 
 override_dh_auto_clean:
-	rm -rf build* stamp
+	rm -rf build* stamp contrib/file_fdw/sql/file_fdw.sql
 
 override_dh_installchangelogs:
 	dh_installchangelogs HISTORY
