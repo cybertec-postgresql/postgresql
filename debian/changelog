@@ -1,3 +1,22 @@
+postgresql-9.3 (9.3.4-1) UNRELEASED; urgency=medium
+
+  * New upstream bugfix release. Most notable change:
+
+    Fix WAL replay of locking an already-updated tuple (Andres Freund,
+    Álvaro Herrera)
+
+    This error caused updated rows to not be found by index scans, resulting
+    in inconsistent query results depending on whether an index scan was used.
+    Subsequent processing could result in constraint violations, since the
+    previously updated row would not be found by later index searches, thus
+    possibly allowing conflicting rows to be inserted. Since this error is in
+    WAL replay, it would only manifest during crash recovery or on standby
+    servers. The improperly-replayed case most commonly arises when a table
+    row that is referenced by a foreign-key constraint is updated concurrently
+    with creation of a referencing row.
+
+ -- Christoph Berg <myon@debian.org>  Mon, 17 Mar 2014 21:50:37 +0100
+
 postgresql-9.3 (9.3.3-2) unstable; urgency=medium
 
   [ Martin Pitt ]
