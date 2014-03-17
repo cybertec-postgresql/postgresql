@@ -99,7 +99,6 @@ stamp/configure-build:
            --with-libxml \
            --with-libxslt \
            --with-tclconfig=$(TCL_CONFIG_DIR)/tcl$(TCL_VER) \
-           --with-tkconfig=$(TCL_CONFIG_DIR)/tk$(TCL_VER) \
            --with-includes=/usr/include/tcl$(TCL_VER) \
            PYTHON=/usr/bin/python \
            $(COMMON_CONFIGURE_FLAGS) \

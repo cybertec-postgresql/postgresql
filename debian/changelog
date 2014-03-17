@@ -17,6 +17,7 @@ postgresql-9.3 (9.3.4-1) UNRELEASED; urgency=medium
 
   * Compile with -fno-omit-frame-pointer on amd64 to facilitate hierarchical
     profile generation. (Closes: #730134)
+  * Remove obsolete configure option --with-tkconfig.
 
  -- Christoph Berg <myon@debian.org>  Mon, 17 Mar 2014 21:50:37 +0100
 
