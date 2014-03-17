@@ -10,10 +10,10 @@
  temp_root=$PWD/tmp_check
  
 @@ -86,7 +86,7 @@ PGSERVICE="";         unset PGSERVICE
- PGSSLMODE=""          unset PGSSLMODE
+ PGSSLMODE="";         unset PGSSLMODE
  PGREQUIRESSL="";      unset PGREQUIRESSL
  PGCONNECT_TIMEOUT=""; unset PGCONNECT_TIMEOUT
--PGHOST=""             unset PGHOST
+-PGHOST="";            unset PGHOST
 +export PGHOST="/tmp"
  PGHOSTADDR="";        unset PGHOSTADDR
  
