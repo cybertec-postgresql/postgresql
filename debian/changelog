@@ -15,6 +15,9 @@ postgresql-9.3 (9.3.4-1) UNRELEASED; urgency=medium
     row that is referenced by a foreign-key constraint is updated concurrently
     with creation of a referencing row.
 
+  * Compile with -fno-omit-frame-pointer on amd64 to facilitate hierarchical
+    profile generation. (Closes: #730134)
+
  -- Christoph Berg <myon@debian.org>  Mon, 17 Mar 2014 21:50:37 +0100
 
 postgresql-9.3 (9.3.3-2) unstable; urgency=medium

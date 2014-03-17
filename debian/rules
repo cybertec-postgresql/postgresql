@@ -39,6 +39,11 @@ endif
 #    CFLAGS+=-O1
 #endif
 
+# Facilitate hierarchical profile generation on amd64 (#730134)
+ifeq ($(shell dpkg-architecture -qDEB_BUILD_ARCH),amd64)
+CFLAGS+= -fno-omit-frame-pointer
+endif
+
 export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
 COMMON_CONFIGURE_FLAGS= \
