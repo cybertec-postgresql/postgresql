@@ -1,4 +1,4 @@
-postgresql-9.4 (9.4~~devel-1) experimental; urgency=low
+postgresql-9.4 (9.4~~devel-1) UNRELEASED; urgency=low
 
   * Update for 9.4. Packaging based on 9.3 branch.
 
