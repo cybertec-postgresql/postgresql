@@ -1,6 +1,3 @@
-00git-vpath.patch
-00git-vpath2.patch
-01-vpath3.patch
 02-relax-sslkey-permscheck.patch
 03-config-update.patch
 04-configure-tcl8.6
