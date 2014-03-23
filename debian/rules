@@ -4,7 +4,7 @@ TCL_VER := 8.6
 else
 TCL_VER := 8.5
 endif
-MAJOR_VER := 9.3
+MAJOR_VER := 9.4
 
 DEB_BUILD_ARCH = $(shell dpkg-architecture -qDEB_BUILD_ARCH)
 
