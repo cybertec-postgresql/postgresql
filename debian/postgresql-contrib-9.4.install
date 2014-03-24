@@ -26,11 +26,14 @@ usr/lib/postgresql/9.4/lib/pageinspect.so
 usr/lib/postgresql/9.4/lib/passwordcheck.so
 usr/lib/postgresql/9.4/lib/pg_trgm.so
 usr/lib/postgresql/9.4/lib/pgcrypto.so
+usr/lib/postgresql/9.4/lib/pg_prewarm.so
 usr/lib/postgresql/9.4/lib/pgstattuple.so
 usr/lib/postgresql/9.4/lib/refint.so
 usr/lib/postgresql/9.4/lib/seg.so
 usr/lib/postgresql/9.4/lib/tablefunc.so
 usr/lib/postgresql/9.4/lib/tcn.so
+usr/lib/postgresql/9.4/lib/test_decoding.so
+usr/lib/postgresql/9.4/lib/test_shm_mq.so
 usr/lib/postgresql/9.4/lib/timetravel.so
 usr/lib/postgresql/9.4/lib/pgxml.so
 usr/lib/postgresql/9.4/lib/pg_buffercache.so
