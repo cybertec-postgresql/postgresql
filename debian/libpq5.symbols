@@ -62,7 +62,7 @@ libpq.so.5 libpq5 #MINVER#
  PQgetssl@Base 0
  PQgetvalue@Base 0
  PQhost@Base 0
- PQhostaddr@Base 9.4~~
+ PQhostaddr@Base 9.4~
  PQinitOpenSSL@Base 8.4~
  PQinitSSL@Base 0
  PQinstanceData@Base 8.4~
