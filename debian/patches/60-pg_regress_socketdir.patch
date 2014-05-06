@@ -1,8 +1,6 @@
-diff --git a/src/test/regress/pg_regress.c b/src/test/regress/pg_regress.c
-index 1980fd6..683d4c6 100644
 --- a/src/test/regress/pg_regress.c
 +++ b/src/test/regress/pg_regress.c
-@@ -835,6 +835,7 @@ initialize_environment(void)
+@@ -828,6 +828,7 @@ initialize_environment(void)
  	{
  		const char *pghost;
  		const char *pgport;
@@ -10,7 +8,7 @@ index 1980fd6..683d4c6 100644
  
  		/*
  		 * When testing an existing install, we honor existing environment
-@@ -865,14 +866,18 @@ initialize_environment(void)
+@@ -858,14 +859,18 @@ initialize_environment(void)
  			pghost = "localhost";
  #endif
  
@@ -37,14 +35,14 @@ index 1980fd6..683d4c6 100644
  	}
  
  	convert_sourcefiles();
-@@ -2246,7 +2251,9 @@ regression_main(int argc, char *argv[], init_function ifunc, test_function tfunc
+@@ -2238,7 +2243,9 @@ regression_main(int argc, char *argv[],
  		 */
  		header(_("starting postmaster"));
  		snprintf(buf, sizeof(buf),
--				 SYSTEMQUOTE "\"%s/postgres\" -D \"%s/data\" -F%s -c \"listen_addresses=%s\" > \"%s/log/postmaster.log\" 2>&1" SYSTEMQUOTE,
+-				 "\"%s/postgres\" -D \"%s/data\" -F%s -c \"listen_addresses=%s\" > \"%s/log/postmaster.log\" 2>&1",
 +				 hostname && *hostname == '/'
-+					 ? SYSTEMQUOTE "\"%s/postgres\" -D \"%s/data\" -F%s -k \"%s\" > \"%s/log/postmaster.log\" 2>&1" SYSTEMQUOTE
-+					 : SYSTEMQUOTE "\"%s/postgres\" -D \"%s/data\" -F%s -c \"listen_addresses=%s\" > \"%s/log/postmaster.log\" 2>&1" SYSTEMQUOTE,
++					 ? "\"%s/postgres\" -D \"%s/data\" -F%s -k \"%s\" > \"%s/log/postmaster.log\" 2>&1"
++					 : "\"%s/postgres\" -D \"%s/data\" -F%s -c \"listen_addresses=%s\" > \"%s/log/postmaster.log\" 2>&1",
  				 bindir, temp_install,
  				 debug ? " -d 5" : "",
  				 hostname ? hostname : "",
