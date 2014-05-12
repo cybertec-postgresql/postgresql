@@ -1,6 +1,6 @@
-postgresql-9.4 (9.4~~devel-1) UNRELEASED; urgency=low
+postgresql-9.4 (9.4~beta1-1) experimental; urgency=low
 
   * Update for 9.4. Packaging based on 9.3 branch.
   * Bump to debhelper 9 to get debug symbol files based on build-ids.
 
- -- Christoph Berg <myon@debian.org>  Sun, 23 Mar 2014 17:02:48 +0100
+ -- Christoph Berg <myon@debian.org>  Mon, 12 May 2014 22:08:37 +0200
