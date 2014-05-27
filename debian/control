@@ -44,6 +44,8 @@ Depends: ${misc:Depends},
  krb5-multidev,
  comerr-dev
 Suggests: postgresql-doc-9.4
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: ${misc:Multi-Arch}
 Description: header files for libpq5 (PostgreSQL library)
  Header files and static library for compiling C programs to link
  with the libpq library in order to communicate with a PostgreSQL
@@ -89,6 +91,8 @@ Depends: ${misc:Depends},
  libecpg6 (= ${binary:Version}),
  libecpg-compat3 (= ${binary:Version}),
  libpgtypes3 (= ${binary:Version})
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: ${misc:Multi-Arch}
 Description: development files for ECPG (Embedded PostgreSQL for C)
  This package contains the necessary files to build ECPG (Embedded
  PostgreSQL for C) programs.  It includes the development libraries
