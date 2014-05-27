@@ -4,6 +4,9 @@ postgresql-9.4 (9.4~beta1-2) UNRELEASED; urgency=medium
   * Enable multiarch support in libpq and friends. (Closes: #706849)
     Support is automatically disabled when the distribution does not support
     it.
+  * Stop providing postgresql-dbg in postgresql-9.4-dbg. Its only purpose was
+    to conflict with other postgresql-*-dbg packages, and that's no longer
+    needed with build-id debug symbols.
 
  -- Christoph Berg <myon@debian.org>  Tue, 27 May 2014 15:01:55 +0200
 

@@ -153,7 +153,6 @@ Section: debug
 Priority: extra
 Architecture: any
 Depends: ${misc:Depends}, postgresql-9.4 (= ${binary:Version})
-Provides: postgresql-dbg
 Description: debug symbols for postgresql-9.4
  PostgreSQL is a fully featured object-relational database management
  system.  It supports a large part of the SQL standard and is designed
