@@ -53,7 +53,7 @@ COMMON_CONFIGURE_FLAGS= \
   --datarootdir=/usr/share/ \
   --datadir=/usr/share/postgresql/$(MAJOR_VER) \
   --bindir=/usr/lib/postgresql/$(MAJOR_VER)/bin \
-  --libdir=/usr/lib/ \
+  --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)/ \
   --libexecdir=/usr/lib/postgresql/ \
   --includedir=/usr/include/postgresql/ \
   --enable-nls \
@@ -149,10 +149,16 @@ override_dh_compress:
 	dh_compress -X.source -X.c
 
 override_dh_install:
+ifneq ($(DEB_HOST_MULTIARCH),)
+	# enabling multiarch support in debian/lib*.install
+	sed -i -e 's!usr/lib/\(lib\|pkgconfig\)!usr/lib/*/\1!' debian/lib*.install
+else
+	# disabling multiarch support in debian/lib*.install
+	sed -i -e 's!usr/lib/\*/\(lib\|pkgconfig\)!usr/lib/\1!' debian/lib*.install
+endif
 	dh_install --fail-missing
 
-	# these get installed into the individual -/l* packages; -f because it
-	# does not exist for an -A build
+	# these go into the -pl* packages; -f because they don't exist for an -A build
 	rm -f debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/pl*
 
 	if [ -d debian/postgresql-doc-$(MAJOR_VER) ]; then \
@@ -173,6 +179,11 @@ endif
 
 override_dh_strip:
 	dh_strip --dbg-package=postgresql-$(MAJOR_VER)-dbg
+
+ifneq ($(DEB_HOST_MULTIARCH),)
+override_dh_gencontrol:
+	dh_gencontrol -- -Vmisc:Multi-Arch=same
+endif
 
 override_dh_builddeb:
 	dh_builddeb -- -Zxz
