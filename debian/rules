@@ -66,7 +66,7 @@ COMMON_CONFIGURE_FLAGS= \
   --enable-thread-safety \
   --enable-debug \
   --disable-rpath \
-  --with-ossp-uuid \
+  --with-uuid=e2fs \
   --with-gnu-ld \
   --with-pgport=5432 \
   --with-system-tzdata=/usr/share/zoneinfo \

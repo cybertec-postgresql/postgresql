@@ -1,3 +1,10 @@
+postgresql-9.4 (9.4~beta1-3) UNRELEASED; urgency=medium
+
+  * Use util-linux' uuid lib as backend for the uuid-ossp extension
+    (--with-uuid=e2fs).
+
+ -- Christoph Berg <myon@debian.org>  Sun, 01 Jun 2014 16:04:56 +0200
+
 postgresql-9.4 (9.4~beta1-2) experimental; urgency=medium
 
   * Update watch file for 9.4.
