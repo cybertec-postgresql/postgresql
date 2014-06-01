@@ -2,6 +2,8 @@ postgresql-9.4 (9.4~beta2~20140601-1) UNRELEASED; urgency=medium
 
   * Use util-linux' uuid lib as backend for the uuid-ossp extension
     (--with-uuid=e2fs).
+  * Enable sepgsql (--with-selinux). On systems with libselinux1-dev < 2.1.10,
+    this is automatically disabled.
 
  -- Christoph Berg <myon@debian.org>  Sun, 01 Jun 2014 16:04:56 +0200
 
