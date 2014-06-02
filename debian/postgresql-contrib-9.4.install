@@ -30,6 +30,7 @@ usr/lib/postgresql/9.4/lib/pg_prewarm.so
 usr/lib/postgresql/9.4/lib/pgstattuple.so
 usr/lib/postgresql/9.4/lib/refint.so
 usr/lib/postgresql/9.4/lib/seg.so
+usr/lib/postgresql/9.4/lib/sepgsql.so
 usr/lib/postgresql/9.4/lib/tablefunc.so
 usr/lib/postgresql/9.4/lib/tcn.so
 usr/lib/postgresql/9.4/lib/test_decoding.so
@@ -54,6 +55,7 @@ usr/lib/postgresql/9.4/lib/btree_gin.so
 usr/lib/postgresql/9.4/lib/unaccent.so
 usr/lib/postgresql/9.4/lib/worker_spi.so
 usr/lib/postgresql/9.4/lib/postgres_fdw.so
+usr/share/postgresql/9.4/contrib/sepgsql.sql
 usr/share/postgresql/9.4/man/man1/oid2name.1.gz
 usr/share/postgresql/9.4/man/man1/pg_test_fsync.1.gz
 usr/share/postgresql/9.4/man/man1/pg_archivecleanup.1.gz

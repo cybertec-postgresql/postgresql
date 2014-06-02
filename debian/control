@@ -16,7 +16,7 @@ Build-Depends: debhelper (>= 9~),
  libxml2-dev,
  krb5-multidev,
  libldap2-dev,
- libselinux1-dev,
+ libselinux1-dev [linux-any],
  libxslt1-dev,
  uuid-dev,
  python-dev,
@@ -258,6 +258,7 @@ Description: additional facilities for PostgreSQL
                    indicates whether a vacuum is required.
   postgresql_fwd - foreign data wrapper for PostgreSQL
   seg            - Confidence-interval datatype (GiST indexing example)
+  sepgsql        - mandatory access control (MAC) based on SELinux
   spi            - PostgreSQL Server Programming Interface; 4 examples of
                    its use:
                    autoinc    - A function for implementing AUTOINCREMENT/
