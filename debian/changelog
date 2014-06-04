@@ -4,6 +4,7 @@ postgresql-9.4 (9.4~beta2~20140601-1) UNRELEASED; urgency=medium
     (--with-uuid=e2fs).
   * Enable sepgsql (--with-selinux). On systems with libselinux1-dev < 2.1.10,
     this is automatically disabled.
+  * Revert multiarch for libpq-dev and libecpg-dev. (Closes: #750111, #750112)
 
  -- Christoph Berg <myon@debian.org>  Sun, 01 Jun 2014 16:04:56 +0200
 
