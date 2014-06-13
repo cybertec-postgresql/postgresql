@@ -1,0 +1,3 @@
+usr/include/postgresql/*/server
+usr/lib/postgresql/*/lib/pgxs/*
+usr/lib/postgresql/*/bin/pg_config

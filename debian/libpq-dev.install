@@ -9,6 +9,6 @@ usr/lib/*/libpgcommon.a
 usr/lib/*/libpgport.a
 usr/lib/*/libpq.a
 usr/lib/*/libpq.so
-usr/lib/postgresql/9.4/bin/pg_config usr/bin
-usr/share/locale/*/LC_MESSAGES/pg_config-9.4.mo
-usr/share/postgresql/9.4/man/man1/pg_config.1.gz /usr/share/man/man1
+usr/lib/postgresql/*/bin/pg_config usr/bin
+usr/share/locale/*/LC_MESSAGES/pg_config-*.mo
+usr/share/postgresql/*/man/man1/pg_config.1.gz /usr/share/man/man1

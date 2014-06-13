@@ -1,33 +1,5 @@
-postgresql-9.4 (9.4~beta2-1) UNRELEASED; urgency=medium
+postgresql-9.5 (9.5~~devel-1) UNRELEASED; urgency=low
 
-  * Use util-linux' uuid lib as backend for the uuid-ossp extension
-    (--with-uuid=e2fs).
-  * Enable sepgsql (--with-selinux). On systems with libselinux1-dev < 2.1.10,
-    this is automatically disabled.
-  * Revert multiarch for libpq-dev and libecpg-dev. (Closes: #750111, #750112)
+  * New major upstream version 9.5.
 
- -- Christoph Berg <myon@debian.org>  Sun, 01 Jun 2014 16:04:56 +0200
-
-postgresql-9.4 (9.4~beta1-2) experimental; urgency=medium
-
-  * Update watch file for 9.4.
-  * Enable multiarch support in libpq and friends. (Closes: #706849)
-    Support is automatically disabled when the distribution does not support
-    it.
-  * Stop providing postgresql-dbg in postgresql-9.4-dbg. Its only purpose was
-    to conflict with other postgresql-*-dbg packages, and that's no longer
-    needed with build-id debug symbols.
-  * Skip -pie on 32bit archs for performance and stability reasons.
-    Closes: #749686; details at
-    http://www.postgresql.org/message-id/20140519115318.GB7296@msgid.df7cb.de
-  * Update contrib copyright statements, and move them to a separate file.
-    Thanks to Thorsten Alteholz for reviewing the package.
-
- -- Christoph Berg <myon@debian.org>  Fri, 30 May 2014 20:09:50 +0200
-
-postgresql-9.4 (9.4~beta1-1) experimental; urgency=low
-
-  * Update for 9.4. Packaging based on 9.3 branch.
-  * Bump to debhelper 9 to get debug symbol files based on build-ids.
-
- -- Christoph Berg <myon@debian.org>  Mon, 12 May 2014 22:08:37 +0200
+ -- Christoph Berg <myon@debian.org>  Fri, 13 Jun 2014 14:59:18 +0200

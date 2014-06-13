@@ -1,0 +1,3 @@
+usr/lib/postgresql/*/lib/plpython2.so
+usr/share/postgresql/*/extension/plpythonu*
+usr/share/postgresql/*/extension/plpython2u*
