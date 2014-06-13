@@ -174,8 +174,8 @@ endif
 	# these go into the -pl* packages; -f because they don't exist for an -A build
 	rm -f debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/pl*
 
-	if [ -d debian/postgresql-doc-$(MAJOR_VER) ]; then \
-		install -d debian/postgresql-doc-$(MAJOR_VER)/usr/share/doc/postgresql-doc-$(MAJOR_VER)/tutorial
+	if [ -d debian/postgresql-doc-$(MAJOR_VER) ]; then set -e; \
+		install -d debian/postgresql-doc-$(MAJOR_VER)/usr/share/doc/postgresql-doc-$(MAJOR_VER)/tutorial; \
 		install src/tutorial/*.c src/tutorial/*.source src/tutorial/Makefile src/tutorial/README debian/postgresql-doc-$(MAJOR_VER)/usr/share/doc/postgresql-doc-$(MAJOR_VER)/tutorial; \
 	fi
 
