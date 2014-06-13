@@ -1,4 +1,4 @@
-postgresql-9.4 (9.4~beta2~20140601-1) UNRELEASED; urgency=medium
+postgresql-9.4 (9.4~beta2-1) UNRELEASED; urgency=medium
 
   * Use util-linux' uuid lib as backend for the uuid-ossp extension
     (--with-uuid=e2fs).
