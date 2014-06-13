@@ -207,6 +207,7 @@ Package: postgresql-doc-9.5
 Architecture: all
 Section: doc
 Depends: ${misc:Depends}
+Breaks: postgresql-common (<< 158~)
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
  PostgreSQL 9.5. The manual is in HTML format.
