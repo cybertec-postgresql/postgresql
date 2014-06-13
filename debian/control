@@ -287,7 +287,7 @@ Description: PL/Perl procedural language for PostgreSQL 9.5
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plpython-9.4
+Package: postgresql-plpython-9.5
 Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
