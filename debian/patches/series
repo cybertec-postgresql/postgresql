@@ -4,8 +4,5 @@
 52-tutorial-README.patch
 53-pg_service.conf_directory_doc.patch
 54-debian-alternatives-for-external-tools.patch
-60-pg_regress_socketdir.patch
-62-pg_upgrade-test-in-tmp
-63-pg_upgrade-test-bindir
 64-pg_upgrade-sockdir
 70-history
