@@ -171,6 +171,7 @@ else
 endif
 	dh_install --fail-missing
 
+	mkdir -p debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)
 	ln -s ../postgresql-common/README.Debian.gz debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)/README.Debian.gz
 
 	# these go into the -pl* packages; -f because they don't exist for an -A build
