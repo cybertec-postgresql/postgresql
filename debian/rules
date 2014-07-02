@@ -32,12 +32,6 @@ ifneq ($(shell dpkg-architecture -qDEB_HOST_ARCH_BITS || :),32)
 CFLAGS+= -fPIC -pie
 endif
 
-# When protecting the postmaster with oom_adj=-17, allow the OOM killer to slay
-# the backends (http://archives.postgresql.org/pgsql-hackers/2010-01/msg00170.php)
-ifeq ($(shell uname -s),Linux)
-CFLAGS+= -DLINUX_OOM_SCORE_ADJ=0
-endif
-
 # sparc and alpha's gcc used to miscompile; see
 # http://lists.debian.org/debian-alpha/2007/11/msg00025.html
 #ifneq ($(findstring $(DEB_BUILD_ARCH), sparc alpha),)
