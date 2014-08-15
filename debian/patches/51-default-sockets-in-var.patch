@@ -7,11 +7,9 @@ Using /tmp for sockets allows everyone to spoof a PostgreSQL server. Thus use
 clusters will still use /tmp). Since system cluster are by far the common case,
 set it as default.
 
-Index: postgresql-9.2/src/include/pg_config_manual.h
-===================================================================
---- postgresql-9.2.orig/src/include/pg_config_manual.h	2012-05-11 00:35:09.000000000 +0200
-+++ postgresql-9.2/src/include/pg_config_manual.h	2012-05-15 07:40:07.853599455 +0200
-@@ -144,7 +144,7 @@
+--- a/src/include/pg_config_manual.h
++++ b/src/include/pg_config_manual.h
+@@ -161,7 +161,7 @@
   * here's where to twiddle it.  You can also override this at runtime
   * with the postmaster's -k switch.
   */
@@ -19,4 +17,4 @@ Index: postgresql-9.2/src/include/pg_config_manual.h
 +#define DEFAULT_PGSOCKET_DIR  "/var/run/postgresql"
  
  /*
-  * The random() function is expected to yield values between 0 and
+  * This is the default event source for Windows event log.
