@@ -14,7 +14,6 @@ usr/lib/postgresql/*/lib/btree_gist.so
 usr/lib/postgresql/*/lib/chkpass.so
 usr/lib/postgresql/*/lib/cube.so
 usr/lib/postgresql/*/lib/dblink.so
-usr/lib/postgresql/*/lib/dummy_seclabel.so
 usr/lib/postgresql/*/lib/earthdistance.so
 usr/lib/postgresql/*/lib/file_fdw.so
 usr/lib/postgresql/*/lib/fuzzystrmatch.so
@@ -34,7 +33,6 @@ usr/lib/postgresql/*/lib/sepgsql.so
 usr/lib/postgresql/*/lib/tablefunc.so
 usr/lib/postgresql/*/lib/tcn.so
 usr/lib/postgresql/*/lib/test_decoding.so
-usr/lib/postgresql/*/lib/test_shm_mq.so
 usr/lib/postgresql/*/lib/timetravel.so
 usr/lib/postgresql/*/lib/pgxml.so
 usr/lib/postgresql/*/lib/pg_buffercache.so
@@ -45,7 +43,6 @@ usr/lib/postgresql/*/lib/hstore.so
 usr/lib/postgresql/*/lib/pgrowlocks.so
 usr/lib/postgresql/*/lib/pg_freespacemap.so
 usr/lib/postgresql/*/lib/uuid-ossp.so
-usr/lib/postgresql/*/lib/test_parser.so
 usr/lib/postgresql/*/lib/dict_int.so
 usr/lib/postgresql/*/lib/dict_xsyn.so
 usr/lib/postgresql/*/lib/auto_explain.so
@@ -53,7 +50,6 @@ usr/lib/postgresql/*/lib/pg_stat_statements.so
 usr/lib/postgresql/*/lib/citext.so
 usr/lib/postgresql/*/lib/btree_gin.so
 usr/lib/postgresql/*/lib/unaccent.so
-usr/lib/postgresql/*/lib/worker_spi.so
 usr/lib/postgresql/*/lib/postgres_fdw.so
 usr/share/postgresql/*/contrib/sepgsql.sql
 usr/share/postgresql/*/man/man1/oid2name.1.gz
