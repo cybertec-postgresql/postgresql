@@ -12,7 +12,6 @@ usr/lib/postgresql/*/lib/euc2004_sjis2004.so
 usr/lib/postgresql/*/lib/libpqwalreceiver.so
 usr/lib/postgresql/*/lib/plpgsql.so
 usr/lib/postgresql/*/lib/dict_snowball.so
-usr/lib/postgresql/*/lib/pg_upgrade_support.so
 usr/lib/postgresql/*/lib/tsearch2.so
 usr/share/locale/*/LC_MESSAGES/initdb-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_controldata-*.mo
