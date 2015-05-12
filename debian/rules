@@ -195,6 +195,3 @@ ifneq ($(DEB_HOST_MULTIARCH),)
 override_dh_gencontrol:
 	dh_gencontrol -- -Vmisc:Multi-Arch=same
 endif
-
-override_dh_builddeb:
-	dh_builddeb -- -Zxz
