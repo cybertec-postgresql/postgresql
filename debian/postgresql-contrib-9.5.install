@@ -19,7 +19,7 @@ usr/lib/postgresql/*/lib/file_fdw.so
 usr/lib/postgresql/*/lib/fuzzystrmatch.so
 usr/lib/postgresql/*/lib/insert_username.so
 usr/lib/postgresql/*/lib/lo.so
-usr/lib/postgresql/*/lib/ltree.so
+usr/lib/postgresql/*/lib/ltree*.so
 usr/lib/postgresql/*/lib/moddatetime.so
 usr/lib/postgresql/*/lib/pageinspect.so
 usr/lib/postgresql/*/lib/passwordcheck.so
@@ -39,7 +39,7 @@ usr/lib/postgresql/*/lib/pg_buffercache.so
 usr/lib/postgresql/*/lib/adminpack.so
 usr/lib/postgresql/*/lib/sslinfo.so
 usr/lib/postgresql/*/lib/isn.so
-usr/lib/postgresql/*/lib/hstore.so
+usr/lib/postgresql/*/lib/hstore*.so
 usr/lib/postgresql/*/lib/pgrowlocks.so
 usr/lib/postgresql/*/lib/pg_freespacemap.so
 usr/lib/postgresql/*/lib/uuid-ossp.so
