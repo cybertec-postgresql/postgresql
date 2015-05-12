@@ -179,7 +179,8 @@ endif
 override_dh_auto_test:
 ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	# when tests fail, print all regression.diffs files, as well as the newest log files
-	if ! $(MAKE) -C build check-world EXTRA_REGRESS_OPTS='--port=$(shell perl -le 'print 1024 + int(rand(64000))')'; then \
+	# temp-install wants to be invoked from a top-level make, unset MAKELEVEL here
+	unset MAKELEVEL; if ! make -C build check-world EXTRA_REGRESS_OPTS='--port=$(shell perl -le 'print 1024 + int(rand(64000))')'; then \
 	    for l in `find build -name regression.diffs -o -mmin 0 \( -name initdb.log -o -name postmaster.log \)`; do \
 		echo "******** $$l ********"; \
 		tail -n100 $$l; \
