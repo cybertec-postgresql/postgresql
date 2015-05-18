@@ -25,6 +25,7 @@ usr/lib/postgresql/*/lib/pageinspect.so
 usr/lib/postgresql/*/lib/passwordcheck.so
 usr/lib/postgresql/*/lib/pg_trgm.so
 usr/lib/postgresql/*/lib/pgcrypto.so
+usr/lib/postgresql/*/lib/pg_audit.so
 usr/lib/postgresql/*/lib/pg_prewarm.so
 usr/lib/postgresql/*/lib/pgstattuple.so
 usr/lib/postgresql/*/lib/refint.so
@@ -51,6 +52,7 @@ usr/lib/postgresql/*/lib/citext.so
 usr/lib/postgresql/*/lib/btree_gin.so
 usr/lib/postgresql/*/lib/unaccent.so
 usr/lib/postgresql/*/lib/postgres_fdw.so
+usr/lib/postgresql/*/lib/tsm_system_*.so
 usr/share/postgresql/*/contrib/sepgsql.sql
 usr/share/postgresql/*/man/man1/oid2name.1.gz
 usr/share/postgresql/*/man/man1/pg_test_fsync.1.gz
