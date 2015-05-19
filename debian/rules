@@ -58,6 +58,7 @@ COMMON_CONFIGURE_FLAGS= \
   --enable-nls \
   --enable-integer-datetimes \
   --enable-thread-safety \
+  --enable-tap-tests \
   --enable-debug \
   --disable-rpath \
   --with-selinux \
