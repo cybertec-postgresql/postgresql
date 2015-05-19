@@ -135,6 +135,7 @@ Depends: ${misc:Depends},
  tzdata,
  ssl-cert,
  locales
+Recommends: postgresql-contrib-9.5
 Suggests: oidentd | ident-server, locales-all
 Description: object-relational SQL database, version 9.5 server
  PostgreSQL is a fully featured object-relational database management
