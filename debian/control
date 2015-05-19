@@ -169,6 +169,7 @@ Description: debug symbols for postgresql-9.5
 
 Package: postgresql-client-9.5
 Architecture: any
+Multi-Arch: foreign
 Depends: ${misc:Depends},
  ${shlibs:Depends},
  libpq5 (>= ${source:Upstream-Version}),
@@ -207,6 +208,7 @@ Description: development files for PostgreSQL 9.5 server-side programming
 
 Package: postgresql-doc-9.5
 Architecture: all
+Multi-Arch: foreign
 Section: doc
 Depends: ${misc:Depends}
 Breaks: postgresql-common (<< 158~)
