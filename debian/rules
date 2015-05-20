@@ -130,17 +130,25 @@ stamp/build: stamp/configure-build
 	find -name nls.mk -exec sh -c "make -C \$$(dirname {}) init-po" \;
 
 	# build tutorial stuff
-	make -C build/src/tutorial NO_PGXS=1
+	$(MAKE) -C build/src/tutorial NO_PGXS=1
 
 	touch "$@"
 
 stamp/build-py3: stamp/configure-build-py3
-	cd build-py3 && $(MAKE) -C src/backend/ submake-errcodes && $(MAKE) -C src/pl/plpython
+	$(MAKE) -C build-py3/src/backend/ submake-errcodes
+	$(MAKE) -C build-py3/src/pl/plpython
+	$(MAKE) -C build-py3/contrib/hstore_plpython
 	touch "$@"
 
 override_dh_auto_install:
-	make -C build-py3/src/pl/plpython install DESTDIR=$(CURDIR)/debian/tmp
-	make -C build install-world DESTDIR=$(CURDIR)/debian/tmp
+	$(MAKE) -C build install-world DESTDIR=$(CURDIR)/debian/tmp
+	$(MAKE) -C build-py3/src/pl/plpython install DESTDIR=$(CURDIR)/debian/postgresql-plpython3-$(MAJOR_VER)
+	$(MAKE) -C build-py3/contrib/hstore_plpython install DESTDIR=$(CURDIR)/debian/postgresql-plpython3-$(MAJOR_VER)
+	# remove files duplicated from postgresql and -server-dev
+	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/include
+	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/share/locale
+	# remove files from the "wrong" python package
+	rm -fv debian/postgresql-plpython3-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/*plpython[2u]*
 	# compress manpages
 	gzip -9n $(CURDIR)/debian/tmp/usr/share/postgresql/*/man/man*/*.[137]
 
@@ -171,6 +179,7 @@ endif
 
 	# these go into the -pl* packages; -f because they don't exist for an -A build
 	rm -f debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/pl*
+	rm -f debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/*_pl*
 
 	if [ -d debian/postgresql-doc-$(MAJOR_VER) ]; then set -e; \
 		install -d debian/postgresql-doc-$(MAJOR_VER)/usr/share/doc/postgresql-doc-$(MAJOR_VER)/tutorial; \
