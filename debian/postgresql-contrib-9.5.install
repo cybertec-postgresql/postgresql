@@ -25,7 +25,7 @@ usr/lib/postgresql/*/lib/pageinspect.so
 usr/lib/postgresql/*/lib/passwordcheck.so
 usr/lib/postgresql/*/lib/pg_trgm.so
 usr/lib/postgresql/*/lib/pgcrypto.so
-usr/lib/postgresql/*/lib/pg_audit.so
+#usr/lib/postgresql/*/lib/pg_audit.so
 usr/lib/postgresql/*/lib/pg_prewarm.so
 usr/lib/postgresql/*/lib/pgstattuple.so
 usr/lib/postgresql/*/lib/refint.so
