@@ -17,6 +17,7 @@ usr/share/locale/*/LC_MESSAGES/initdb-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_controldata-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_ctl-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_resetxlog-*.mo
+usr/share/locale/*/LC_MESSAGES/pg_rewind-*.mo
 usr/share/locale/*/LC_MESSAGES/postgres-*.mo
 usr/share/locale/*/LC_MESSAGES/plpgsql-*.mo
 usr/share/locale/*/*/plpython-*.mo
