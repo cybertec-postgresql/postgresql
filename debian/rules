@@ -75,15 +75,6 @@ else
 BOOTSTRAP_FLAGS= --with-krb5 --with-gssapi --with-ldap
 endif
 
-# --with-selinux needs libselinux 2.1.10
-# (we don't put that in debian/control so we can use the same source also on older dists)
-SEVERSION = $(shell dpkg-query -f '$${Version}' --show libselinux1-dev)
-ifeq ($(shell dpkg --compare-versions "$(SEVERSION)" ge 2.1.10 && echo yes),yes)
-SELINUX_FLAGS= --with-selinux
-else
-SELINUX_EXCLUDE= -Xsepgsql
-endif
-
 # build should fail on test suite failures on all arches
 TESTSUITE_FAIL_CMD=exit 1
 # hurd doesn't implement semaphores; succeed anyway so they at least have libpq5
@@ -105,14 +96,14 @@ stamp/configure-build:
            --with-python \
            --with-pam \
            --with-openssl \
+           --with-selinux \
            --with-libxml \
            --with-libxslt \
            --with-tclconfig=$(TCL_CONFIG_DIR)/tcl$(TCL_VER) \
            --with-includes=/usr/include/tcl$(TCL_VER) \
            PYTHON=/usr/bin/python \
            $(COMMON_CONFIGURE_FLAGS) \
-           $(BOOTSTRAP_FLAGS) \
-           $(SELINUX_FLAGS)
+           $(BOOTSTRAP_FLAGS)
 	touch "$@"
 	
 stamp/configure-build-py3:
@@ -174,7 +165,7 @@ else
 	# disabling multiarch support in debian/lib*.install
 	sed -i -e 's!usr/lib/\*/\(lib\|pkgconfig\)!usr/lib/\1!' debian/lib*.install
 endif
-	dh_install --fail-missing $(SELINUX_EXCLUDE)
+	dh_install --fail-missing
 
 	mkdir -p debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)
 	ln -s ../postgresql-common/README.Debian.gz debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)/README.Debian.gz
