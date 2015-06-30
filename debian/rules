@@ -61,7 +61,6 @@ COMMON_CONFIGURE_FLAGS= \
   --enable-tap-tests \
   --enable-debug \
   --disable-rpath \
-  --with-selinux \
   --with-uuid=e2fs \
   --with-gnu-ld \
   --with-pgport=5432 \
@@ -77,6 +76,7 @@ BOOTSTRAP_FLAGS= --with-krb5 --with-gssapi --with-ldap
 endif
 
 # --with-selinux needs libselinux 2.1.10
+# (we don't put that in debian/control so we can use the same source also on older dists)
 SEVERSION = $(shell dpkg-query -f '$${Version}' --show libselinux1-dev)
 ifeq ($(shell dpkg --compare-versions "$(SEVERSION)" ge 2.1.10 && echo yes),yes)
 SELINUX_FLAGS= --with-selinux
