@@ -1,13 +1,13 @@
-Document: postgresql-9.5
-Title: PostgreSQL 9.5 Documentation
+Document: postgresql-9.6
+Title: PostgreSQL 9.6 Documentation
 Author: The PostgreSQL Global Development Group
 Abstract: The documentation for the PostgreSQL database management system,
- version 9.5. PostgreSQL is a sophisticated Object-Relational DBMS, supporting
+ version 9.6. PostgreSQL is a sophisticated Object-Relational DBMS, supporting
  almost all SQL constructs, including subselects, transactions, and
  user-defined types and functions.
 Section: Data Management
 
 Format: HTML
-Index: /usr/share/doc/postgresql-doc-9.5/html/index.html
-Files: /usr/share/doc/postgresql-doc-9.5/html/*
+Index: /usr/share/doc/postgresql-doc-9.6/html/index.html
+Files: /usr/share/doc/postgresql-doc-9.6/html/*
 

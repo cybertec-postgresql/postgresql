@@ -1,11 +1,5 @@
-postgresql-9.5 (9.5~alpha1-1) experimental; urgency=medium
+postgresql-9.6 (9.6~~devel-1) UNRELEASED; urgency=low
 
-  * First 9.5 alpha release.
+  * New major upstream version 9.6.
 
- -- Christoph Berg <christoph.berg@credativ.de>  Tue, 30 Jun 2015 17:50:22 +0200
-
-postgresql-9.5 (9.5~~devel-1) UNRELEASED; urgency=low
-
-  * New major upstream version 9.5.
-
- -- Christoph Berg <myon@debian.org>  Fri, 13 Jun 2014 14:59:18 +0200
+ -- Christoph Berg <christoph.berg@credativ.de>  Thu, 09 Jul 2015 15:33:18 +0200
