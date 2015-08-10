@@ -119,9 +119,6 @@ override_dh_auto_build: stamp/build stamp/build-py3
 stamp/build: stamp/configure-build
 	cd build && $(MAKE) world
 
-	# generate POT files for translators
-	find -name nls.mk -exec sh -c "make -C \$$(dirname {}) init-po" \;
-
 	# build tutorial stuff
 	$(MAKE) -C build/src/tutorial NO_PGXS=1
 
