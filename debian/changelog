@@ -1,5 +1,7 @@
 postgresql-9.6 (9.6~~devel-1) UNRELEASED; urgency=low
 
   * New major upstream version 9.6.
+  * postgresql postrm: Don't clean {/etc,/var/lib,/var/log}/postgresql on 
+    purge.  (Closes: #793861)
 
- -- Christoph Berg <christoph.berg@credativ.de>  Thu, 09 Jul 2015 15:33:18 +0200
+ -- Christoph Berg <christoph.berg@credativ.de>  Fri, 28 Aug 2015 16:04:47 +0200
