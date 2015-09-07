@@ -113,6 +113,7 @@ libpq.so.5 libpq5 #MINVER#
  PQsendQueryPrepared@Base 0
  PQserverVersion@Base 0
  PQsetClientEncoding@Base 0
+ PQsetErrorContextVisibility@Base 9.6~~
  PQsetErrorVerbosity@Base 0
  PQsetInstanceData@Base 8.4~
  PQsetNoticeProcessor@Base 0
