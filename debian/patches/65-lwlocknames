@@ -1,0 +1,12 @@
+--- a/src/backend/Makefile
++++ b/src/backend/Makefile
+@@ -115,6 +115,9 @@ submake-schemapg:
+ # src/port needs a convenient way to force errcodes.h to get built
+ submake-errcodes: $(top_builddir)/src/include/utils/errcodes.h
+ 
++# src/pl/plpython needs a convenient way to force lwlocknames.h to get built when called standalone
++submake-lwlocknames: $(top_builddir)/src/include/storage/lwlocknames.h
++
+ .PHONY: submake-schemapg submake-errcodes
+ 
+ catalog/schemapg.h: | submake-schemapg
