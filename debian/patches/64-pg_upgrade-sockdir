@@ -11,7 +11,7 @@ See also: http://lists.debian.org/debian-wb-team/2013/05/msg00015.html
 +#ifndef UNIX_PATH_MAX
 +#define UNIX_PATH_MAX 108
 +#endif
-+			if (strlen(cluster->sockdir) > UNIX_PATH_MAX - sizeof(".s.PGSQL.50432"))
++			if (strlen(cluster->sockdir) >= UNIX_PATH_MAX - sizeof(".s.PGSQL.50432"))
 +				strcpy(cluster->sockdir, "/tmp"); /* fall back to tmp */
  		}
  		else
