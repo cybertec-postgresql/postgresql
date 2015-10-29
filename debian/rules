@@ -84,7 +84,7 @@ TESTSUITE_FAIL_CMD=exit 0
 endif
 
 %:
-	dh $@ --parallel
+	dh $@
 
 override_dh_auto_configure: stamp/configure-build stamp/configure-build-py3
 
