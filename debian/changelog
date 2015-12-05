@@ -3,5 +3,7 @@ postgresql-9.6 (9.6~~devel-1) UNRELEASED; urgency=low
   * New major upstream version 9.6.
   * postgresql postrm: Don't clean {/etc,/var/lib,/var/log}/postgresql on 
     purge.  (Closes: #793861)
+  * Record PostgreSQL catalog version number in .deb control file and a file
+    inside the .deb.
 
  -- Christoph Berg <christoph.berg@credativ.de>  Fri, 28 Aug 2015 16:04:47 +0200

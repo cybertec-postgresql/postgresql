@@ -152,6 +152,7 @@ Description: object-relational SQL database, version 9.6 server
  are coordinated by the postgresql-common package. A package providing
  ident-server is needed if you want to authenticate remote connections
  with identd.
+XB-Postgresql-Catversion: ${postgresql:Catversion}
 
 Package: postgresql-9.6-dbg
 Section: debug
