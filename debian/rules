@@ -201,6 +201,11 @@ endif
 override_dh_strip:
 	dh_strip --dbg-package=postgresql-$(MAJOR_VER)-dbg
 
+override_dh_installdeb:
+	dh_installdeb
+	# record catversion in preinst
+	sed -i -e 's/@CATVERSION@/$(CATVERSION)/' debian/postgresql-$(MAJOR_VER)/DEBIAN/preinst
+
 ifneq ($(DEB_HOST_MULTIARCH),)
 GENCONTROL_MA = -Vmisc:Multi-Arch=same
 endif
