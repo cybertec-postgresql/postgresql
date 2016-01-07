@@ -106,7 +106,6 @@ stamp/configure-build:
            --with-python \
            --with-pam \
            --with-openssl \
-           --with-selinux \
            --with-libxml \
            --with-libxslt \
            --with-tclconfig=$(TCL_CONFIG_DIR)/tcl$(TCL_VER) \
