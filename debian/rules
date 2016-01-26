@@ -41,6 +41,11 @@ endif
 
 export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
+# PostgreSQL 9.5+ does not have native spinlock support on this platform
+ifneq ($(findstring $(DEB_BUILD_ARCH), alpha),)
+SPINLOCK_FLAGS = --disable-spinlocks
+endif
+
 COMMON_CONFIGURE_FLAGS= \
   --mandir=/usr/share/postgresql/$(MAJOR_VER)/man \
   --docdir=/usr/share/doc/postgresql-doc-$(MAJOR_VER) \
@@ -61,6 +66,7 @@ COMMON_CONFIGURE_FLAGS= \
   --with-gnu-ld \
   --with-pgport=5432 \
   --with-system-tzdata=/usr/share/zoneinfo \
+  $(SPINLOCK_FLAGS) \
   CFLAGS='$(CFLAGS)' \
   LDFLAGS='$(LDFLAGS)'
 
@@ -69,11 +75,6 @@ ifeq ($(DEB_STAGE),stage1)
 BOOTSTRAP_FLAGS=
 else
 BOOTSTRAP_FLAGS= --with-krb5 --with-gssapi --with-ldap
-endif
-
-# PostgreSQL 9.5+ does not have native spinlock support on this platform
-ifneq ($(findstring $(DEB_BUILD_ARCH), alpha),)
-SPINLOCK_FLAGS = --disable-spinlocks
 endif
 
 # --with-selinux needs libselinux 2.1.10
@@ -113,7 +114,6 @@ stamp/configure-build:
            PYTHON=/usr/bin/python \
            $(COMMON_CONFIGURE_FLAGS) \
            $(BOOTSTRAP_FLAGS) \
-           $(SPINLOCK_FLAGS) \
            $(SELINUX_FLAGS)
 	touch "$@"
 	
