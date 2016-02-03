@@ -66,6 +66,7 @@ COMMON_CONFIGURE_FLAGS= \
   --with-gnu-ld \
   --with-pgport=5432 \
   --with-system-tzdata=/usr/share/zoneinfo \
+  --with-systemd \
   $(SPINLOCK_FLAGS) \
   CFLAGS='$(CFLAGS)' \
   LDFLAGS='$(LDFLAGS)'

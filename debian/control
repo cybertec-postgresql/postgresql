@@ -25,6 +25,7 @@ Build-Depends:
  libperl-dev,
  libselinux1-dev [linux-any],
  libssl-dev,
+ libsystemd-dev | libsystemd-daemon-dev,
  libxml2-dev,
  libxml2-utils,
  libxslt1-dev,
