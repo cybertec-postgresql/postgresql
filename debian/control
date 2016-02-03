@@ -2,37 +2,41 @@ Source: postgresql-9.6
 Section: database
 Priority: optional
 Maintainer: Debian PostgreSQL Maintainers <pkg-postgresql-public@lists.alioth.debian.org>
-Uploaders: Martin Pitt <mpitt@debian.org>, Peter Eisentraut <petere@debian.org>, Christoph Berg <myon@debian.org>
+Uploaders:
+ Martin Pitt <mpitt@debian.org>,
+ Peter Eisentraut <petere@debian.org>,
+ Christoph Berg <myon@debian.org>
 Standards-Version: 3.9.6
-Build-Depends: debhelper (>= 9~),
- dpkg-dev (>= 1.16.1~) | hardening-wrapper,
- perl (>= 5.8),
- libperl-dev,
- libipc-run-perl,
- tcl8.6-dev | tcl8.5-dev,
- libedit-dev,
- libssl-dev,
- zlib1g-dev | libz-dev,
- libpam0g-dev | libpam-dev,
- libxml2-dev,
- krb5-multidev,
- libldap2-dev,
- libselinux1-dev [linux-any],
- libxslt1-dev,
- uuid-dev,
- python-dev,
- python3-dev,
+Build-Depends:
  bison,
- flex,
- libxml2-utils,
- openjade,
+ debhelper (>= 9~),
+ docbook,
  docbook-dsssl,
  docbook-xml,
  docbook-xsl,
- docbook,
+ dpkg-dev (>= 1.16.1~) | hardening-wrapper,
+ flex,
+ gettext,
+ krb5-multidev,
+ libedit-dev,
+ libipc-run-perl,
+ libldap2-dev,
+ libpam0g-dev | libpam-dev,
+ libperl-dev,
+ libselinux1-dev [linux-any],
+ libssl-dev,
+ libxml2-dev,
+ libxml2-utils,
+ libxslt1-dev,
+ openjade,
  opensp,
+ perl (>= 5.8),
+ python-dev,
+ python3-dev,
+ tcl8.6-dev | tcl8.5-dev,
+ uuid-dev,
  xsltproc,
- gettext
+ zlib1g-dev | libz-dev
 Homepage: http://www.postgresql.org/
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-postgresql/postgresql.git/
 Vcs-Git: https://anonscm.debian.org/git/pkg-postgresql/postgresql.git -b 9.6
@@ -41,12 +45,13 @@ XS-Testsuite: autopkgtest
 Package: libpq-dev
 Architecture: any
 Section: libdevel
-Depends: ${misc:Depends},
- ${shlibs:Depends},
+Depends:
+ comerr-dev,
+ krb5-multidev,
  libpq5 (= ${binary:Version}),
  libssl-dev,
- krb5-multidev,
- comerr-dev
+ ${misc:Depends},
+ ${shlibs:Depends}
 Suggests: postgresql-doc-9.6
 Description: header files for libpq5 (PostgreSQL library)
  Header files and static library for compiling C programs to link
@@ -87,12 +92,13 @@ Description: run-time library for ECPG programs
 Package: libecpg-dev
 Architecture: any
 Section: libdevel
-Depends: ${misc:Depends},
- ${shlibs:Depends},
- libpq-dev,
- libecpg6 (= ${binary:Version}),
+Depends:
  libecpg-compat3 (= ${binary:Version}),
- libpgtypes3 (= ${binary:Version})
+ libecpg6 (= ${binary:Version}),
+ libpgtypes3 (= ${binary:Version}),
+ libpq-dev,
+ ${misc:Depends},
+ ${shlibs:Depends}
 Description: development files for ECPG (Embedded PostgreSQL for C)
  This package contains the necessary files to build ECPG (Embedded
  PostgreSQL for C) programs.  It includes the development libraries
@@ -129,15 +135,16 @@ Description: shared library libpgtypes for PostgreSQL 9.6
 
 Package: postgresql-9.6
 Architecture: any
-Depends: ${misc:Depends},
- ${shlibs:Depends},
+Depends:
+ locales,
  postgresql-client-9.6,
  postgresql-common (>= 171~),
- tzdata,
  ssl-cert,
- locales
+ tzdata,
+ ${misc:Depends},
+ ${shlibs:Depends}
 Recommends: postgresql-contrib-9.6
-Suggests: oidentd | ident-server, locales-all
+Suggests: locales-all, oidentd | ident-server
 Description: object-relational SQL database, version 9.6 server
  PostgreSQL is a fully featured object-relational database management
  system.  It supports a large part of the SQL standard and is designed
@@ -158,7 +165,7 @@ Package: postgresql-9.6-dbg
 Section: debug
 Priority: extra
 Architecture: any
-Depends: ${misc:Depends}, postgresql-9.6 (= ${binary:Version})
+Depends: postgresql-9.6 (= ${binary:Version}), ${misc:Depends}
 Description: debug symbols for postgresql-9.6
  PostgreSQL is a fully featured object-relational database management
  system.  It supports a large part of the SQL standard and is designed
@@ -173,10 +180,11 @@ Description: debug symbols for postgresql-9.6
 Package: postgresql-client-9.6
 Architecture: any
 Multi-Arch: foreign
-Depends: ${misc:Depends},
- ${shlibs:Depends},
+Depends:
  libpq5 (>= ${source:Upstream-Version}),
- postgresql-client-common (>= 142~)
+ postgresql-client-common (>= 142~),
+ ${misc:Depends},
+ ${shlibs:Depends}
 Suggests: postgresql-9.6, postgresql-doc-9.6
 Provides: postgresql-client
 Description: front-end programs for PostgreSQL 9.6
@@ -195,10 +203,11 @@ Description: front-end programs for PostgreSQL 9.6
 Package: postgresql-server-dev-9.6
 Architecture: any
 Section: libdevel
-Depends: ${misc:Depends},
- ${shlibs:Depends},
+Depends:
  libpq-dev (>= 9.6~~),
- postgresql-common (>= 142~)
+ postgresql-common (>= 142~),
+ ${misc:Depends},
+ ${shlibs:Depends}
 Description: development files for PostgreSQL 9.6 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
@@ -223,7 +232,8 @@ Description: documentation for the PostgreSQL database management system
 
 Package: postgresql-contrib-9.6
 Architecture: any
-Depends: postgresql-9.6 (= ${binary:Version}),
+Depends:
+ postgresql-9.6 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Suggests: libdbd-pg-perl
@@ -283,10 +293,11 @@ Description: additional facilities for PostgreSQL
 
 Package: postgresql-plperl-9.6
 Architecture: any
-Depends: ${misc:Depends},
- ${shlibs:Depends},
+Depends:
+ perl,
  postgresql-9.6 (= ${binary:Version}),
- perl
+ ${misc:Depends},
+ ${shlibs:Depends}
 Provides: postgresql-plperl
 Description: PL/Perl procedural language for PostgreSQL 9.6
  PL/Perl enables an SQL developer to write procedural language functions
@@ -297,9 +308,10 @@ Description: PL/Perl procedural language for PostgreSQL 9.6
 
 Package: postgresql-plpython-9.6
 Architecture: any
-Depends: ${misc:Depends},
- ${shlibs:Depends},
- postgresql-9.6 (= ${binary:Version})
+Depends:
+ postgresql-9.6 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
 Provides: postgresql-plpython
 Description: PL/Python procedural language for PostgreSQL 9.6
  PL/Python enables an SQL developer to write procedural language functions
@@ -310,9 +322,10 @@ Description: PL/Python procedural language for PostgreSQL 9.6
 
 Package: postgresql-plpython3-9.6
 Architecture: any
-Depends: ${misc:Depends},
- ${shlibs:Depends},
- postgresql-9.6 (= ${binary:Version})
+Depends:
+ postgresql-9.6 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
 Provides: postgresql-plpython3
 Description: PL/Python 3 procedural language for PostgreSQL 9.6
  PL/Python 3 enables an SQL developer to write procedural language functions
@@ -323,9 +336,10 @@ Description: PL/Python 3 procedural language for PostgreSQL 9.6
 
 Package: postgresql-pltcl-9.6
 Architecture: any
-Depends: ${misc:Depends},
- ${shlibs:Depends},
- postgresql-9.6 (= ${binary:Version})
+Depends:
+ postgresql-9.6 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends}
 Provides: postgresql-pltcl
 Description: PL/Tcl procedural language for PostgreSQL 9.6
  PL/Tcl enables an SQL developer to write procedural language functions
