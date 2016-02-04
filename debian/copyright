@@ -5,7 +5,7 @@ Source: ftp://ftp.postgresql.org/pub/source/
 Files: *
 Copyright: Portions Copyright (c) 1996-2014, PostgreSQL Global Development Group
            Portions Copyright (c) 1994, The Regents of the University of California
-License:
+License: PostgreSQL
  Permission to use, copy, modify, and distribute this software and its
  documentation for any purpose, without fee, and without a written agreement
  is hereby granted, provided that the above copyright notice and this
@@ -25,7 +25,7 @@ License:
 
 Files: src/backend/regex/*
 Copyright: Copyright (c) 1998, 1999 Henry Spencer.  All rights reserved.
-License:
+License: Custom-regex
  Development of this software was funded, in part, by Cray Research Inc.,
  UUNET Communications Services Inc., Sun Microsystems Inc., and Scriptics
  Corporation, none of whom are responsible for the results.  The author
@@ -61,7 +61,7 @@ License: Tcl
 
 Files: src/bin/pg_dump/*
 Copyright: Portions Copyright (c) 2000, Philip Warner
-License:
+License: Custom-pg_dump
   Rights are granted to use this software in any way so long as this notice is
   not removed.  The author is not responsible for loss or damages that may
   result from its use.
@@ -70,13 +70,14 @@ Files: src/backend/utils/mb/Unicode/*.txt
 Copyright: Copyright (C) 2001 earthian@tama.or.jp, All Rights Reserved.
            Copyright (C) 2001 I'O, All Rights Reserved.
            Copyright (C) 2006 Project X0213, All Rights Reserved.
-License:
+License: Custom-Unicode
  You can use, modify, distribute this table freely.
 
 Files: contrib/*
-License: almost exclusively BSD
+Copyright:
  Copyright details for contrib modules are detailed in a separate copyright
  file in the postgresql-contrib package.
+License: almost exclusively BSD
 
 License: Tcl
  This software is copyrighted by the Regents of the University of
