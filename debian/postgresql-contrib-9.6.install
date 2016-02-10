@@ -1,4 +1,3 @@
-usr/share/doc/postgresql-doc-*/extension/* usr/share/doc/postgresql-contrib-*
 usr/share/postgresql/*/extension/*
 usr/lib/postgresql/*/lib/auth_delay.so
 usr/lib/postgresql/*/bin/pg_archivecleanup
