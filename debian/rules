@@ -119,7 +119,7 @@ stamp/configure-build:
 	touch "$@"
 	
 stamp/configure-build-py3:
-	mkdir build-py3
+	mkdir -p stamp build-py3
 	cd build-py3 && ../configure \
            --with-python \
            PYTHON=/usr/bin/python3 \
@@ -137,7 +137,8 @@ stamp/build: stamp/configure-build
 	touch "$@"
 
 stamp/build-py3: stamp/configure-build-py3
-	$(MAKE) -C build-py3/src/backend/ submake-errcodes submake-lwlocknames
+	$(MAKE) -C build-py3/src/backend/ submake-errcodes
+	$(MAKE) -C build-py3/src/backend/ ../../src/include/storage/lwlocknames.h
 	$(MAKE) -C build-py3/src/pl/plpython
 	$(MAKE) -C build-py3/contrib/hstore_plpython
 	touch "$@"
@@ -158,7 +159,7 @@ override_dh_makeshlibs:
 	dh_makeshlibs -Xusr/lib/postgresql/$(MAJOR_VER)
 
 override_dh_auto_clean:
-	rm -rf build* stamp contrib/file_fdw/sql/file_fdw.sql
+	rm -rf build* stamp
 
 override_dh_installchangelogs:
 	dh_installchangelogs HISTORY
