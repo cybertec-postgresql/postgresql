@@ -144,7 +144,7 @@ Depends:
  tzdata,
  ${misc:Depends},
  ${shlibs:Depends}
-Recommends: postgresql-contrib-9.6
+Recommends: postgresql-contrib-9.6, sysstat
 Suggests: locales-all
 Description: object-relational SQL database, version 9.6 server
  PostgreSQL is a powerful, open source object-relational database
