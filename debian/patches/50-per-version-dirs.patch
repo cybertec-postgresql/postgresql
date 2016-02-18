@@ -12,7 +12,7 @@ Bug-Debian: http://bugs.debian.org/462037
 
 --- a/src/Makefile.global.in
 +++ b/src/Makefile.global.in
-@@ -100,7 +100,7 @@ libdir := @libdir@
+@@ -120,7 +120,7 @@ libdir := @libdir@
  pkglibdir = $(libdir)
  ifeq "$(findstring pgsql, $(pkglibdir))" ""
  ifeq "$(findstring postgres, $(pkglibdir))" ""
@@ -21,7 +21,7 @@ Bug-Debian: http://bugs.debian.org/462037
  endif
  endif
  
-@@ -148,7 +148,7 @@ endif # PGXS
+@@ -168,7 +168,7 @@ endif # PGXS
  
  # These derived path variables aren't separately configurable.
  
@@ -32,35 +32,25 @@ Bug-Debian: http://bugs.debian.org/462037
  
 --- a/src/bin/pg_config/pg_config.c
 +++ b/src/bin/pg_config/pg_config.c
-@@ -26,6 +26,8 @@
- 
+@@ -27,6 +27,8 @@
  #include "port.h"
+ #include "common/config_info.h"
  
 +#include "../port/pg_config_paths.h"
 +
  static const char *progname;
- static char mypath[MAXPGPATH];
  
-@@ -481,7 +483,6 @@ main(int argc, char **argv)
- {
- 	int			i;
- 	int			j;
--	int			ret;
- 
- 	set_pglocale_pgservice(argv[0], PG_TEXTDOMAIN("pg_config"));
- 
-@@ -497,13 +498,7 @@ main(int argc, char **argv)
+ /*
+@@ -148,11 +150,7 @@ main(int argc, char **argv)
  		}
  	}
  
--	ret = find_my_exec(argv[0], mypath);
--
--	if (ret)
+-	if (find_my_exec(argv[0], my_exec_path) < 0)
 -	{
 -		fprintf(stderr, _("%s: could not find own program executable\n"), progname);
 -		exit(1);
 -	}
-+	snprintf(mypath, sizeof(mypath), "%s/%s", PGBINDIR, progname);
++	snprintf(my_exec_path, sizeof(my_exec_path), "%s/%s", PGBINDIR, progname);
  
+ 	configdata = get_configdata(my_exec_path, &configdata_len);
  	/* no arguments -> print everything */
- 	if (argc < 2)
