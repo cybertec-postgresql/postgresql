@@ -1,25 +1,38 @@
 Description: Relax security check on private SSL key file: The file is also considered safe if it has owner and/or group "root", and if it is group-readable (unless the group is something other than root or the database owner group).
 Author: Martin Pitt <mpitt@debian.org>
 Forwarded: Yes, but rejected upstream
-Bug-Debian: http://bugs.debian.org/3279.2
+Bug-Debian: http://bugs.debian.org/327901
 
 --- a/src/backend/libpq/be-secure-openssl.c
 +++ b/src/backend/libpq/be-secure-openssl.c
-@@ -215,12 +215,15 @@ be_tls_init(void)
+@@ -207,7 +207,11 @@ be_tls_init(void)
+ 							ssl_key_file)));
+ 
+ 		/*
+-		 * Require no public access to key file.
++		 * Require no public access to key file. If the file is owned by us,
++		 * require mode 0600 or less. If owned by root, require 0640 or less
++		 * to allow read access through our gid, or a supplementary gid that
++		 * allows to read system-wide certificates. Refuse to load files owned
++		 * by other users.
+ 		 *
+ 		 * XXX temporarily suppress check when on Windows, because there may
+ 		 * not be proper support for Unix-y file permissions.  Need to think
+@@ -215,12 +219,15 @@ be_tls_init(void)
  		 * directory permission check in postmaster.c)
  		 */
  #if !defined(WIN32) && !defined(__CYGWIN__)
 -		if (!S_ISREG(buf.st_mode) || buf.st_mode & (S_IRWXG | S_IRWXO))
-+		if (!S_ISREG(buf.st_mode) || (buf.st_mode & (S_IWGRP | S_IRWXO)) ||
-+			((buf.st_uid != geteuid()) && buf.st_uid != 0))
++		if (!S_ISREG(buf.st_mode) ||
++				(buf.st_uid == geteuid() && buf.st_mode & (S_IRWXGRP | S_IRWXO)) ||
++				(buf.st_uid == 0 && buf.st_mode & (S_IWXGRP | S_IRWXO)) ||
++				(buf.st_uid != geteuid() && buf.st_uid != 0))
  			ereport(FATAL,
  					(errcode(ERRCODE_CONFIG_FILE_ERROR),
  				  errmsg("private key file \"%s\" has group or world access",
  						 ssl_key_file),
 -				   errdetail("Permissions should be u=rw (0600) or less.")));
-+				   errdetail("File must be owned by the \
-+database user or root, must have no write permission for \"group\", and must \
-+have no permissions for \"other\".")));
++				   errdetail("File must be owned by the database user and have permissions u=rw (0600) or less, or owned by root and have permissions u=rw,g=w (0640) or less.")));
  #endif
  
  		if (SSL_CTX_use_PrivateKey_file(SSL_context,
