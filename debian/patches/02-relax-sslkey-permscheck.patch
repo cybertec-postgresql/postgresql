@@ -24,8 +24,8 @@ Bug-Debian: http://bugs.debian.org/327901
  #if !defined(WIN32) && !defined(__CYGWIN__)
 -		if (!S_ISREG(buf.st_mode) || buf.st_mode & (S_IRWXG | S_IRWXO))
 +		if (!S_ISREG(buf.st_mode) ||
-+				(buf.st_uid == geteuid() && buf.st_mode & (S_IRWXGRP | S_IRWXO)) ||
-+				(buf.st_uid == 0 && buf.st_mode & (S_IWXGRP | S_IRWXO)) ||
++				(buf.st_uid == geteuid() && buf.st_mode & (S_IRWXG | S_IRWXO)) ||
++				(buf.st_uid == 0 && buf.st_mode & (S_IWGRP | S_IXGRP | S_IRWXO)) ||
 +				(buf.st_uid != geteuid() && buf.st_uid != 0))
  			ereport(FATAL,
  					(errcode(ERRCODE_CONFIG_FILE_ERROR),
