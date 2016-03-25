@@ -2,17 +2,6 @@ Author: Martin Pitt <mpitt@debian.org>
 Description: Use Debian alternatives for external tools instead of hardcoded programs
 Forwarded: No, Debian specific
 
---- a/src/bin/psql/print.h
-+++ b/src/bin/psql/print.h
-@@ -193,7 +193,7 @@ extern const printTextFormat *get_line_s
- extern void refresh_utf8format(const printTableOpt *opt);
- 
- #ifndef __CYGWIN__
--#define DEFAULT_PAGER "more"
-+#define DEFAULT_PAGER "/usr/bin/pager"
- #else
- #define DEFAULT_PAGER "less"
- #endif
 --- a/src/bin/psql/settings.h
 +++ b/src/bin/psql/settings.h
 @@ -19,8 +19,8 @@
@@ -26,3 +15,14 @@ Forwarded: No, Debian specific
  #endif
  
  #define DEFAULT_PROMPT1 "%/%R%# "
+--- a/src/include/fe_utils/print.h
++++ b/src/include/fe_utils/print.h
+@@ -18,7 +18,7 @@
+ 
+ /* This is not a particularly great place for this ... */
+ #ifndef __CYGWIN__
+-#define DEFAULT_PAGER "more"
++#define DEFAULT_PAGER "pager"
+ #else
+ #define DEFAULT_PAGER "less"
+ #endif

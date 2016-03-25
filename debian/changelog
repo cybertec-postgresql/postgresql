@@ -7,5 +7,6 @@ postgresql-9.6 (9.6~~devel-1) UNRELEASED; urgency=low
     inside the .deb. Hook into preinst/postinst logic in postgresql-common 171
     to handle catalog version bumps.
   * Move /usr/share/doc/postgresql-contrib-*/extension/ to doc package.
+  * src/include/fe_utils/print.h: Use "pager" without path.
 
  -- Christoph Berg <christoph.berg@credativ.de>  Fri, 28 Aug 2015 16:04:47 +0200
