@@ -9,6 +9,7 @@ usr/lib/postgresql/*/bin/pg_test_fsync
 usr/lib/postgresql/*/bin/pg_test_timing
 usr/lib/postgresql/*/lib/_int.so
 usr/lib/postgresql/*/lib/autoinc.so
+usr/lib/postgresql/*/lib/bloom.so
 usr/lib/postgresql/*/lib/btree_gist.so
 usr/lib/postgresql/*/lib/chkpass.so
 usr/lib/postgresql/*/lib/cube.so
