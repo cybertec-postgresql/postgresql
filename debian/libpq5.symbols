@@ -105,6 +105,7 @@ libpq.so.5 libpq5 #MINVER#
  PQresultInstanceData@Base 8.4~
  PQresultSetInstanceData@Base 8.4~
  PQresultStatus@Base 0
+ PQresultVerboseErrorMessage@Base 9.6~~
  PQsendDescribePortal@Base 0
  PQsendDescribePrepared@Base 0
  PQsendPrepare@Base 0
