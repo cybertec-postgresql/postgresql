@@ -1,4 +1,7 @@
-hurd needs sysv semaphores, and -pthread to find sem_init
+hurd doesn't support sysv semaphores (semget), and needs -pthread to find
+sem_init. POSIX semaphores shared between processes (sem_init(pshared = 1))
+aren't supported yet either, but have the best chance to get implemented, so be
+prepared.
 
 FATAL:  could not create semaphores: Function not implemented
 DETAIL:  Failed system call was semget(1, 17, 03600).
