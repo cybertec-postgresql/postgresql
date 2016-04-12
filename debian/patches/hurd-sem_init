@@ -1,0 +1,33 @@
+hurd needs sysv semaphores, and -pthread to find sem_init
+
+FATAL:  could not create semaphores: Function not implemented
+DETAIL:  Failed system call was semget(1, 17, 03600).
+
+undefined reference to symbol 'sem_init@@GLIBC_2.12'
+
+--- a/src/backend/Makefile
++++ b/src/backend/Makefile
+@@ -109,6 +109,10 @@ endif
+ 
+ endif # aix
+ 
++ifeq ($(shell dpkg-architecture -qDEB_HOST_ARCH_OS), hurd)
++LIBS += -pthread
++endif # hurd
++
+ # Update the commonly used headers before building the subdirectories
+ $(SUBDIRS:%=%-recursive): $(top_builddir)/src/include/parser/gram.h $(top_builddir)/src/include/catalog/schemapg.h $(top_builddir)/src/include/storage/lwlocknames.h $(top_builddir)/src/include/utils/fmgroids.h $(top_builddir)/src/include/utils/errcodes.h $(top_builddir)/src/include/utils/probes.h
+ 
+--- a/src/template/linux
++++ b/src/template/linux
+@@ -28,3 +28,10 @@ if test "$SUN_STUDIO_CC" = "yes" ; then
+     ;;
+   esac
+ fi
++
++# force use of POSIX instead of SysV semaphores on hurd-i386
++case $(dpkg-architecture -qDEB_HOST_ARCH) in
++	hurd*)
++		USE_UNNAMED_POSIX_SEMAPHORES=1
++		;;
++esac
