@@ -8,7 +8,7 @@ MAJOR_VER := 9.6
 
 CATVERSION = $(shell awk '/CATALOG_VERSION_NO/ { print $$3 }' src/include/catalog/catversion.h)
 
-DEB_BUILD_ARCH = $(shell dpkg-architecture -qDEB_BUILD_ARCH)
+DEB_HOST_ARCH = $(shell dpkg-architecture -qDEB_HOST_ARCH)
 
 # this must also work for old releases with multiarch, so don't fail if the
 # variable doesn't exist
@@ -35,14 +35,14 @@ CFLAGS+= -fPIC -pie
 endif
 
 # Facilitate hierarchical profile generation on amd64 (#730134)
-ifeq ($(shell dpkg-architecture -qDEB_BUILD_ARCH),amd64)
+ifeq ($(shell dpkg-architecture -qDEB_HOST_ARCH),amd64)
 CFLAGS+= -fno-omit-frame-pointer
 endif
 
 export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
 # PostgreSQL 9.5+ does not have native spinlock support on this platform
-ifneq ($(findstring $(DEB_BUILD_ARCH), alpha),)
+ifneq ($(findstring $(DEB_HOST_ARCH), alpha),)
 SPINLOCK_FLAGS = --disable-spinlocks
 endif
 
@@ -91,7 +91,7 @@ endif
 TESTSUITE_FAIL_CMD=exit 1
 # hurd doesn't implement semaphores; succeed anyway so they at least have libpq5
 # plperl currently fails on kfreebsd-*
-ifneq ($(filter $(DEB_BUILD_ARCH), hurd-i386 kfreebsd-amd64 kfreebsd-i386),)
+ifneq ($(filter $(DEB_HOST_ARCH), hurd-i386 kfreebsd-amd64 kfreebsd-i386),)
 TESTSUITE_FAIL_CMD=exit 0
 endif
 
