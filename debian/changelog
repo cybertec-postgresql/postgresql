@@ -1,12 +1,19 @@
-postgresql-9.6 (9.6~~devel-1) UNRELEASED; urgency=low
+postgresql-9.6 (9.6~beta1-1) experimental; urgency=low
 
-  * New major upstream version 9.6.
-  * postgresql postrm: Don't clean {/etc,/var/lib,/var/log}/postgresql on 
-    purge.  (Closes: #793861)
+  * New major upstream version 9.6; packaging based on postgresql-9.5.
+
+    Major enhancements in PostgreSQL 9.6 include:
+    + Parallel sequential scans, joins and aggregates
+    + Elimination of repetitive scanning of old data by autovacuum
+    + Synchronous replication now allows multiple standby servers for
+      increased reliability
+    + Full-text search for phrases
+    + Support for remote joins, sorts, and updates in postgres_fdw
+    + Substantial performance improvements, especially in the area of
+      improving scalability on many-CPU servers
+
   * Record PostgreSQL catalog version number in .deb control file and a file
     inside the .deb. Hook into preinst/postinst logic in postgresql-common 171
     to handle catalog version bumps.
-  * Move /usr/share/doc/postgresql-contrib-*/extension/ to doc package.
-  * src/include/fe_utils/print.h: Use "pager" without path.
 
- -- Christoph Berg <christoph.berg@credativ.de>  Fri, 28 Aug 2015 16:04:47 +0200
+ -- Christoph Berg <christoph.berg@credativ.de>  Tue, 10 May 2016 10:20:52 +0200
