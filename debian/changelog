@@ -1,3 +1,9 @@
+postgresql-9.6 (9.6~beta1-2) experimental; urgency=medium
+
+  * Merge back separate contrib copyright file into debian/copyright.
+
+ -- Christoph Berg <myon@debian.org>  Fri, 13 May 2016 16:35:11 +0200
+
 postgresql-9.6 (9.6~beta1-1) experimental; urgency=low
 
   * New major upstream version 9.6; packaging based on postgresql-9.5.
