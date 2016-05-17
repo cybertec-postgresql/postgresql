@@ -46,6 +46,15 @@ ifneq ($(findstring $(DEB_HOST_ARCH), alpha),)
 SPINLOCK_FLAGS = --disable-spinlocks
 endif
 
+ifeq ($(shell dpkg-architecture -qDEB_HOST_ARCH_OS),linux)
+# --with-selinux needs libselinux 2.1.10
+# (we don't put that in debian/control so we can use the same source also on older dists)
+SEVERSION = $(shell dpkg-query -f '$${Version}' --show libselinux1-dev)
+ifeq ($(shell dpkg --compare-versions "$(SEVERSION)" ge 2.1.10 && echo yes),yes)
+SELINUX_FLAGS= --with-selinux
+endif
+endif
+
 COMMON_CONFIGURE_FLAGS= \
   --mandir=/usr/share/postgresql/$(MAJOR_VER)/man \
   --docdir=/usr/share/doc/postgresql-doc-$(MAJOR_VER) \
@@ -76,15 +85,6 @@ ifeq ($(DEB_STAGE),stage1)
 BOOTSTRAP_FLAGS=
 else
 BOOTSTRAP_FLAGS= --with-krb5 --with-gssapi --with-ldap
-endif
-
-# --with-selinux needs libselinux 2.1.10
-# (we don't put that in debian/control so we can use the same source also on older dists)
-SEVERSION = $(shell dpkg-query -f '$${Version}' --show libselinux1-dev)
-ifeq ($(shell dpkg --compare-versions "$(SEVERSION)" ge 2.1.10 && echo yes),yes)
-SELINUX_FLAGS= --with-selinux
-else
-SELINUX_EXCLUDE= -Xsepgsql
 endif
 
 # build should fail on test suite failures on all arches
@@ -175,11 +175,7 @@ else
 	# disabling multiarch support in debian/lib*.install
 	sed -i -e 's!usr/lib/\*/\(lib\|pkgconfig\)!usr/lib/\1!' debian/lib*.install
 endif
-ifneq ($(SELINUX_EXCLUDE),)
-	# work around dh_install -X not working on globs (see also #350570)
-	sed -i -e '/sepgsql/d' debian/postgresql-contrib-*.install
-endif
-	dh_install --fail-missing $(SELINUX_EXCLUDE)
+	dh_install --fail-missing
 
 	mkdir -p debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)
 	ln -s ../postgresql-common/README.Debian.gz debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)/README.Debian.gz
