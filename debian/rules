@@ -47,6 +47,7 @@ SPINLOCK_FLAGS = --disable-spinlocks
 endif
 
 ifeq ($(shell dpkg-architecture -qDEB_HOST_ARCH_OS),linux)
+SYSTEMD_FLAGS = --with-systemd
 # --with-selinux needs libselinux 2.1.10
 # (we don't put that in debian/control so we can use the same source also on older dists)
 SEVERSION = $(shell dpkg-query -f '$${Version}' --show libselinux1-dev)
@@ -75,7 +76,7 @@ COMMON_CONFIGURE_FLAGS= \
   --with-gnu-ld \
   --with-pgport=5432 \
   --with-system-tzdata=/usr/share/zoneinfo \
-  --with-systemd \
+  $(SYSTEMD_FLAGS) \
   $(SPINLOCK_FLAGS) \
   CFLAGS='$(CFLAGS)' \
   LDFLAGS='$(LDFLAGS)'

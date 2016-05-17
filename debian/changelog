@@ -1,6 +1,7 @@
 postgresql-9.6 (9.6~beta1-3) UNRELEASED; urgency=medium
 
   * Use dh-exec to not install the sepgsql files on non-linux.
+  * B-D on libsystemd-dev on linux only.
 
  -- Christoph Berg <christoph.berg@credativ.de>  Tue, 17 May 2016 17:15:19 +0200
 
