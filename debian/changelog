@@ -1,3 +1,9 @@
+postgresql-9.6 (9.6~beta1-4) UNRELEASED; urgency=medium
+
+  * Fix arch-all-only build.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Wed, 18 May 2016 14:01:39 +0200
+
 postgresql-9.6 (9.6~beta1-3) experimental; urgency=medium
 
   * Use dh-exec to not install the sepgsql files on non-linux.

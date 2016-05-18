@@ -168,7 +168,7 @@ override_dh_installchangelogs:
 override_dh_compress:
 	dh_compress -X.source -X.c
 
-override_dh_install:
+override_dh_install-arch:
 ifneq ($(DEB_HOST_MULTIARCH),)
 	# enabling multiarch support in debian/lib*.install
 	sed -i -e 's!usr/lib/\(lib\|pkgconfig\)!usr/lib/*/\1!' debian/lib*.install
@@ -178,20 +178,21 @@ else
 endif
 	dh_install --fail-missing
 
+	rm debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/pl*
+	rm debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/*_pl*
+
+	# record catversion in a file
+	echo $(CATVERSION) > debian/postgresql-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/catalog_version
+
+override_dh_install-indep:
+	dh_install --fail-missing
 	mkdir -p debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)
 	ln -s ../postgresql-common/README.Debian.gz debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)/README.Debian.gz
-
-	# these go into the -pl* packages; -f because they don't exist for an -A build
-	rm -f debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/pl*
-	rm -f debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/*_pl*
 
 	if [ -d debian/postgresql-doc-$(MAJOR_VER) ]; then set -e; \
 		install -d debian/postgresql-doc-$(MAJOR_VER)/usr/share/doc/postgresql-doc-$(MAJOR_VER)/tutorial; \
 		install src/tutorial/*.c src/tutorial/*.source src/tutorial/Makefile src/tutorial/README debian/postgresql-doc-$(MAJOR_VER)/usr/share/doc/postgresql-doc-$(MAJOR_VER)/tutorial; \
 	fi
-
-	# record catversion in a file
-	echo $(CATVERSION) > debian/postgresql-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/catalog_version
 
 override_dh_auto_test:
 ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
@@ -209,7 +210,7 @@ endif
 override_dh_strip:
 	dh_strip --dbg-package=postgresql-$(MAJOR_VER)-dbg
 
-override_dh_installdeb:
+override_dh_installdeb-arch:
 	dh_installdeb
 	# record catversion in preinst
 	sed -i -e 's/@CATVERSION@/$(CATVERSION)/' debian/postgresql-$(MAJOR_VER)/DEBIAN/preinst
