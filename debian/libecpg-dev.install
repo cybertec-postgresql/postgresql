@@ -14,4 +14,4 @@ usr/lib/*/libpgtypes.so
 usr/lib/*/libecpg.a
 usr/lib/*/libecpg_compat.a
 usr/lib/*/libpgtypes.a
-usr/share/postgresql/*/man/man1/ecpg.1.gz /usr/share/man/man1
+usr/share/postgresql/*/man/man1/ecpg.1* /usr/share/man/man1

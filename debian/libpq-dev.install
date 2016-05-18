@@ -12,4 +12,4 @@ usr/lib/*/libpq.a
 usr/lib/*/libpq.so
 usr/lib/postgresql/*/bin/pg_config usr/bin
 usr/share/locale/*/LC_MESSAGES/pg_config-*.mo
-usr/share/postgresql/*/man/man1/pg_config.1.gz /usr/share/man/man1
+usr/share/postgresql/*/man/man1/pg_config.1* /usr/share/man/man1

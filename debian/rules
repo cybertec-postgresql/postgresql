@@ -153,8 +153,6 @@ stamp/build-py3: stamp/configure-build-py3
 
 override_dh_auto_install-arch:
 	$(MAKE) -C build/doc/src/sgml install-man DESTDIR=$(CURDIR)/debian/tmp
-	# compress manpages
-	gzip -9n $(CURDIR)/debian/tmp/usr/share/postgresql/*/man/man*/*.[137]
 	$(MAKE) -C build/src install DESTDIR=$(CURDIR)/debian/tmp
 	$(MAKE) -C build/config install DESTDIR=$(CURDIR)/debian/tmp
 	$(MAKE) -C build/contrib install DESTDIR=$(CURDIR)/debian/tmp
@@ -171,8 +169,6 @@ override_dh_auto_install-arch:
 
 override_dh_auto_install-indep:
 	$(MAKE) -C build/doc install DESTDIR=$(CURDIR)/debian/tmp
-	# compress manpages
-	gzip -9n $(CURDIR)/debian/tmp/usr/share/postgresql/*/man/man*/*.[137]
 
 override_dh_makeshlibs:
 	dh_makeshlibs -Xusr/lib/postgresql/$(MAJOR_VER)
@@ -185,6 +181,8 @@ override_dh_installchangelogs:
 
 override_dh_compress:
 	dh_compress -X.source -X.c
+	# compress manpages
+	gzip -9n $(CURDIR)/debian/*/usr/share/postgresql/*/man/man*/*.[137]
 
 override_dh_install-arch:
 ifneq ($(DEB_HOST_MULTIARCH),)
