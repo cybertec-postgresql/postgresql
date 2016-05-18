@@ -99,7 +99,8 @@ endif
 %:
 	dh $@
 
-override_dh_auto_configure: stamp/configure-build stamp/configure-build-py3
+override_dh_auto_configure-indep: stamp/configure-build
+override_dh_auto_configure-arch: stamp/configure-build stamp/configure-build-py3
 
 stamp/configure-build:
 	mkdir -p stamp build
@@ -117,8 +118,10 @@ stamp/configure-build:
            $(COMMON_CONFIGURE_FLAGS) \
            $(BOOTSTRAP_FLAGS) \
            $(SELINUX_FLAGS)
+	# remove pre-built documentation
+	rm -fv doc/src/sgml/*-stamp
 	touch "$@"
-	
+
 stamp/configure-build-py3:
 	mkdir -p stamp build-py3
 	cd build-py3 && ../configure \
@@ -127,14 +130,18 @@ stamp/configure-build-py3:
            $(COMMON_CONFIGURE_FLAGS)
 	touch "$@"
 
-override_dh_auto_build: stamp/build stamp/build-py3
+override_dh_auto_build-indep:
+	$(MAKE) -C build/doc all # build man + html
+
+override_dh_auto_build-arch: stamp/build stamp/build-py3
 
 stamp/build: stamp/configure-build
-	cd build && $(MAKE) world
-
+	$(MAKE) -C build/doc man # build man only
+	$(MAKE) -C build/src all
+	$(MAKE) -C build/config all
+	$(MAKE) -C build/contrib all
 	# build tutorial stuff
 	$(MAKE) -C build/src/tutorial NO_PGXS=1
-
 	touch "$@"
 
 stamp/build-py3: stamp/configure-build-py3
@@ -144,15 +151,26 @@ stamp/build-py3: stamp/configure-build-py3
 	$(MAKE) -C build-py3/contrib/hstore_plpython
 	touch "$@"
 
-override_dh_auto_install:
-	$(MAKE) -C build install-world DESTDIR=$(CURDIR)/debian/tmp
+override_dh_auto_install-arch:
+	$(MAKE) -C build/doc/src/sgml install-man DESTDIR=$(CURDIR)/debian/tmp
+	# compress manpages
+	gzip -9n $(CURDIR)/debian/tmp/usr/share/postgresql/*/man/man*/*.[137]
+	$(MAKE) -C build/src install DESTDIR=$(CURDIR)/debian/tmp
+	$(MAKE) -C build/config install DESTDIR=$(CURDIR)/debian/tmp
+	$(MAKE) -C build/contrib install DESTDIR=$(CURDIR)/debian/tmp
 	$(MAKE) -C build-py3/src/pl/plpython install DESTDIR=$(CURDIR)/debian/postgresql-plpython3-$(MAJOR_VER)
 	$(MAKE) -C build-py3/contrib/hstore_plpython install DESTDIR=$(CURDIR)/debian/postgresql-plpython3-$(MAJOR_VER)
 	# remove files duplicated from postgresql and -server-dev
 	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/include
 	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/share/locale
 	# remove files from the "wrong" python package
-	rm -fv debian/postgresql-plpython3-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/*plpython[2u]*
+	rm -v debian/postgresql-plpython3-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/*plpython[2u]*
+	# move SPI examples into contrib package (they wouldn't be in the doc package in an -A build)
+	mkdir -p debian/postgresql-contrib-$(MAJOR_VER)/usr/share/doc/postgresql-contrib-$(MAJOR_VER)
+	mv debian/tmp/usr/share/doc/postgresql-doc-$(MAJOR_VER)/extension debian/postgresql-contrib-$(MAJOR_VER)/usr/share/doc/postgresql-contrib-$(MAJOR_VER)/examples
+
+override_dh_auto_install-indep:
+	$(MAKE) -C build/doc install DESTDIR=$(CURDIR)/debian/tmp
 	# compress manpages
 	gzip -9n $(CURDIR)/debian/tmp/usr/share/postgresql/*/man/man*/*.[137]
 
@@ -176,8 +194,14 @@ else
 	# disabling multiarch support in debian/lib*.install
 	sed -i -e 's!usr/lib/\*/\(lib\|pkgconfig\)!usr/lib/\1!' debian/lib*.install
 endif
+
 	dh_install --fail-missing
 
+	# link README.Debian.gz to postgresql-common
+	mkdir -p debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)
+	ln -s ../postgresql-common/README.Debian.gz debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)/README.Debian.gz
+
+	# these are shipped in the pl packages
 	rm debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/pl*
 	rm debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/*_pl*
 
@@ -186,8 +210,6 @@ endif
 
 override_dh_install-indep:
 	dh_install --fail-missing
-	mkdir -p debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)
-	ln -s ../postgresql-common/README.Debian.gz debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)/README.Debian.gz
 
 	if [ -d debian/postgresql-doc-$(MAJOR_VER) ]; then set -e; \
 		install -d debian/postgresql-doc-$(MAJOR_VER)/usr/share/doc/postgresql-doc-$(MAJOR_VER)/tutorial; \

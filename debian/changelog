@@ -1,6 +1,8 @@
-postgresql-9.6 (9.6~beta1-4) UNRELEASED; urgency=medium
+postgresql-9.6 (9.6~beta1-4) experimental; urgency=medium
 
-  * Fix arch-all-only build.
+  * Split the build process into indep and arch parts. (The manpages are still
+    built in both because they are distributed over the server and doc
+    packages.)
 
  -- Christoph Berg <christoph.berg@credativ.de>  Wed, 18 May 2016 14:01:39 +0200
 
