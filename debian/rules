@@ -214,7 +214,10 @@ override_dh_install-indep:
 		install src/tutorial/*.c src/tutorial/*.source src/tutorial/Makefile src/tutorial/README debian/postgresql-doc-$(MAJOR_VER)/usr/share/doc/postgresql-doc-$(MAJOR_VER)/tutorial; \
 	fi
 
-override_dh_auto_test:
+override_dh_auto_test-indep:
+	# nothing to do
+
+override_dh_auto_test-arch:
 ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	# when tests fail, print all regression.diffs files, as well as the newest log files
 	# temp-install wants to be invoked from a top-level make, unset MAKELEVEL here

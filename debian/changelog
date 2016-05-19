@@ -1,3 +1,9 @@
+postgresql-9.6 (9.6~beta1-5) UNRELEASED; urgency=medium
+
+  * Run regression tests in architecture-dependant builds only.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Thu, 19 May 2016 15:08:36 +0200
+
 postgresql-9.6 (9.6~beta1-4) experimental; urgency=medium
 
   * Split the build process into indep and arch parts. (The manpages are still
