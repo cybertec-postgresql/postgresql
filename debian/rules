@@ -224,3 +224,6 @@ override_dh_installdeb-arch:
 override_dh_gencontrol:
 	# record catversion in .deb control file
 	dh_gencontrol -- -Vpostgresql:Catversion=$(CATVERSION)
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz # explicit xz compression for wheezy and precise
