@@ -67,7 +67,7 @@ Architecture: any
 Section: libs
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: ${misc:Pre-Depends}
-Multi-Arch: ${misc:Multi-Arch}
+Multi-Arch: same
 Description: PostgreSQL C client library
  libpq is a C library that enables user programs to communicate with
  the PostgreSQL database server.  The server can be on another machine
@@ -84,7 +84,7 @@ Architecture: any
 Section: libs
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: ${misc:Pre-Depends}
-Multi-Arch: ${misc:Multi-Arch}
+Multi-Arch: same
 Description: run-time library for ECPG programs
  The libecpg shared library is used by programs built with ECPG
  (Embedded PostgreSQL for C).
@@ -116,7 +116,7 @@ Architecture: any
 Section: libs
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: ${misc:Pre-Depends}
-Multi-Arch: ${misc:Multi-Arch}
+Multi-Arch: same
 Description: older version of run-time library for ECPG programs
  The libecpg_compat shared library is used by programs built with ecpg.
  (Embedded PostgreSQL for C).
@@ -128,7 +128,7 @@ Architecture: any
 Section: libs
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: ${misc:Pre-Depends}
-Multi-Arch: ${misc:Multi-Arch}
+Multi-Arch: same
 Description: shared library libpgtypes for PostgreSQL 9.6
  The libpgtypes shared library is used by programs built with ecpg.
  (Embedded PostgreSQL for C).

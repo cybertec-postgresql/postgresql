@@ -9,17 +9,8 @@ MAJOR_VER := 9.6
 CATVERSION = $(shell awk '/CATALOG_VERSION_NO/ { print $$3 }' src/include/catalog/catversion.h)
 
 DEB_HOST_ARCH = $(shell dpkg-architecture -qDEB_HOST_ARCH)
-
-# this must also work for old releases with multiarch, so don't fail if the
-# variable doesn't exist
-DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH || true)
-
-# support multi-arch location
-ifneq ($(wildcard /usr/lib/$(DEB_HOST_MULTIARCH)/tcl$(TCL_VER)),)
+DEB_HOST_MULTIARCH = $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 TCL_CONFIG_DIR := /usr/lib/$(DEB_HOST_MULTIARCH)
-else
-TCL_CONFIG_DIR := /usr/lib
-endif
 
 # support both hardening-wrapper (for backports) and dpkg-buildflags
 export DEB_BUILD_HARDENING = 1
@@ -185,14 +176,6 @@ override_dh_compress:
 	gzip -9n $(CURDIR)/debian/*/usr/share/postgresql/*/man/man*/*.[137]
 
 override_dh_install-arch:
-ifneq ($(DEB_HOST_MULTIARCH),)
-	# enabling multiarch support in debian/lib*.install
-	sed -i -e 's!usr/lib/\(lib\|pkgconfig\)!usr/lib/*/\1!' debian/lib*.install
-else
-	# disabling multiarch support in debian/lib*.install
-	sed -i -e 's!usr/lib/\*/\(lib\|pkgconfig\)!usr/lib/\1!' debian/lib*.install
-endif
-
 	dh_install --fail-missing
 
 	# link README.Debian.gz to postgresql-common
@@ -238,9 +221,6 @@ override_dh_installdeb-arch:
 	# record catversion in preinst
 	sed -i -e 's/@CATVERSION@/$(CATVERSION)/' debian/postgresql-$(MAJOR_VER)/DEBIAN/preinst
 
-ifneq ($(DEB_HOST_MULTIARCH),)
-GENCONTROL_MA = -Vmisc:Multi-Arch=same
-endif
 override_dh_gencontrol:
 	# record catversion in .deb control file
-	dh_gencontrol -- $(GENCONTROL_MA) -Vpostgresql:Catversion=$(CATVERSION)
+	dh_gencontrol -- -Vpostgresql:Catversion=$(CATVERSION)
