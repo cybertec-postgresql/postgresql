@@ -1,11 +1,12 @@
-postgresql-9.6 (9.6~beta1-5) UNRELEASED; urgency=medium
+postgresql-9.6 (9.6~beta2-1) experimental; urgency=medium
 
+  * New upstream beta version.
   * Run regression tests in architecture-dependant builds only.
   * Remove conditional multi-arch compilation, all supported dists are
     multi-arched now.
   * Use explicit xz compression for wheezy and precise
 
- -- Christoph Berg <christoph.berg@credativ.de>  Thu, 19 May 2016 15:08:36 +0200
+ -- Christoph Berg <myon@debian.org>  Mon, 20 Jun 2016 23:01:04 +0200
 
 postgresql-9.6 (9.6~beta1-4) experimental; urgency=medium
 
