@@ -9,8 +9,14 @@ MAJOR_VER := 9.6
 CATVERSION = $(shell awk '/CATALOG_VERSION_NO/ { print $$3 }' src/include/catalog/catversion.h)
 
 DEB_HOST_ARCH = $(shell dpkg-architecture -qDEB_HOST_ARCH)
+
+# find tclconfig in multi-arch location (still in /usr/lib in wheezy and precise)
 DEB_HOST_MULTIARCH = $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+ifneq ($(wildcard /usr/lib/$(DEB_HOST_MULTIARCH)/tcl$(TCL_VER)),)
 TCL_CONFIG_DIR := /usr/lib/$(DEB_HOST_MULTIARCH)
+else
+TCL_CONFIG_DIR := /usr/lib
+endif
 
 # support both hardening-wrapper (for backports) and dpkg-buildflags
 export DEB_BUILD_HARDENING = 1
