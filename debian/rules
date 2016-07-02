@@ -142,8 +142,6 @@ stamp/build: stamp/configure-build
 	touch "$@"
 
 stamp/build-py3: stamp/configure-build-py3
-	$(MAKE) -C build-py3/src/backend/ submake-errcodes
-	$(MAKE) -C build-py3/src/backend/ ../../src/include/storage/lwlocknames.h
 	$(MAKE) -C build-py3/src/pl/plpython
 	$(MAKE) -C build-py3/contrib/hstore_plpython
 	touch "$@"

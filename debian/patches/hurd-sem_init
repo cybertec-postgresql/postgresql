@@ -19,7 +19,7 @@ undefined reference to symbol 'sem_init@@GLIBC_2.12'
 +endif # hurd
 +
  # Update the commonly used headers before building the subdirectories
- $(SUBDIRS:%=%-recursive): $(top_builddir)/src/include/parser/gram.h $(top_builddir)/src/include/catalog/schemapg.h $(top_builddir)/src/include/storage/lwlocknames.h $(top_builddir)/src/include/utils/fmgroids.h $(top_builddir)/src/include/utils/errcodes.h $(top_builddir)/src/include/utils/probes.h
+ $(SUBDIRS:%=%-recursive): | generated-headers
  
 --- a/src/template/linux
 +++ b/src/template/linux
