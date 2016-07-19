@@ -1,3 +1,10 @@
+postgresql-9.6 (9.6~beta3-1) experimental; urgency=medium
+
+  * New upstream beta version.
+  * Simplify python3 rules, upstream implemented the necessary dependencies.
+
+ -- Christoph Berg <myon@debian.org>  Tue, 19 Jul 2016 12:42:24 +0200
+
 postgresql-9.6 (9.6~beta2-1) experimental; urgency=medium
 
   * New upstream beta version.
