@@ -1,3 +1,9 @@
+postgresql-9.6 (9.6~beta4-1) experimental; urgency=medium
+
+  * New upstream beta version.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Tue, 09 Aug 2016 10:01:06 +0200
+
 postgresql-9.6 (9.6~beta3-1) experimental; urgency=medium
 
   * New upstream beta version.
