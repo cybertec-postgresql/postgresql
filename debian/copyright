@@ -1,11 +1,11 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: PostgreSQL
-Source: http://www.postgresql.org/ftp/source/
+Source: https://www.postgresql.org/ftp/source/
 
 ### PostgreSQL copyrights ###
 
 Files: *
-Copyright: Portions Copyright (c) 1996-2014, PostgreSQL Global Development Group
+Copyright: Portions Copyright (c) 1996-2016, PostgreSQL Global Development Group
            Portions Copyright (c) 1994, The Regents of the University of California
 License: PostgreSQL
  Permission to use, copy, modify, and distribute this software and its
@@ -178,7 +178,7 @@ Files:
  contrib/pgcrypto/sha2.*
 Copyright: Copyright (c) 1994 David Burren
            Copyright (C) 1995, 1996, 1997, and 1998 WIDE Project.
-           #Copyright (c) 2000-2001, Aaron D. Gifford
+           Copyright (c) 2000-2001, Aaron D. Gifford
 License: BSD-3-clause
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
