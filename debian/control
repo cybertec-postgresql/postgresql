@@ -1,4 +1,4 @@
-Source: postgresql-9.6
+Source: postgresql-10
 Section: database
 Priority: optional
 Maintainer: Debian PostgreSQL Maintainers <pkg-postgresql-public@lists.alioth.debian.org>
@@ -41,7 +41,7 @@ Build-Depends:
  zlib1g-dev | libz-dev
 Homepage: http://www.postgresql.org/
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-postgresql/postgresql.git/
-Vcs-Git: https://anonscm.debian.org/git/pkg-postgresql/postgresql.git -b 9.6
+Vcs-Git: https://anonscm.debian.org/git/pkg-postgresql/postgresql.git -b 10
 XS-Testsuite: autopkgtest
 
 Package: libpq-dev
@@ -54,7 +54,7 @@ Depends:
  libssl-dev,
  ${misc:Depends},
  ${shlibs:Depends}
-Suggests: postgresql-doc-9.6
+Suggests: postgresql-doc-10
 Description: header files for libpq5 (PostgreSQL library)
  Header files and static library for compiling C programs to link
  with the libpq library in order to communicate with a PostgreSQL
@@ -129,25 +129,25 @@ Section: libs
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: ${misc:Pre-Depends}
 Multi-Arch: same
-Description: shared library libpgtypes for PostgreSQL 9.6
+Description: shared library libpgtypes for PostgreSQL 10
  The libpgtypes shared library is used by programs built with ecpg.
  (Embedded PostgreSQL for C).
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-9.6
+Package: postgresql-10
 Architecture: any
 Depends:
  locales,
- postgresql-client-9.6,
+ postgresql-client-10,
  postgresql-common (>= 171~),
  ssl-cert,
  tzdata,
  ${misc:Depends},
  ${shlibs:Depends}
-Recommends: postgresql-contrib-9.6, sysstat
+Recommends: postgresql-contrib-10, sysstat
 Suggests: locales-all
-Description: object-relational SQL database, version 9.6 server
+Description: object-relational SQL database, version 10 server
  PostgreSQL is a powerful, open source object-relational database
  system. It is fully ACID compliant, has full support for foreign
  keys, joins, views, triggers, and stored procedures (in multiple
@@ -158,20 +158,20 @@ Description: object-relational SQL database, version 9.6 server
  Java, .Net, Perl, Python, Ruby, Tcl, ODBC, among others, and
  exceptional documentation.
  .
- This package provides the database server for PostgreSQL 9.6.
+ This package provides the database server for PostgreSQL 10.
 XB-Postgresql-Catversion: ${postgresql:Catversion}
 
-Package: postgresql-9.6-dbg
+Package: postgresql-10-dbg
 Section: debug
 Priority: extra
 Architecture: any
-Depends: postgresql-9.6 (= ${binary:Version}), ${misc:Depends}
-Description: debug symbols for postgresql-9.6
- This package provides detached debugging symbols for PostgreSQL 9.6.
+Depends: postgresql-10 (= ${binary:Version}), ${misc:Depends}
+Description: debug symbols for postgresql-10
+ This package provides detached debugging symbols for PostgreSQL 10.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-client-9.6
+Package: postgresql-client-10
 Architecture: any
 Multi-Arch: foreign
 Depends:
@@ -179,30 +179,30 @@ Depends:
  postgresql-client-common (>= 142~),
  ${misc:Depends},
  ${shlibs:Depends}
-Suggests: postgresql-9.6, postgresql-doc-9.6
+Suggests: postgresql-10, postgresql-doc-10
 Provides: postgresql-client
-Description: front-end programs for PostgreSQL 9.6
+Description: front-end programs for PostgreSQL 10
  This package contains client and administrative programs for
  PostgreSQL: these are the interactive terminal client psql and
  programs for creating and removing users and databases.
  .
- This is the client package for PostgreSQL 9.6. If you install
- PostgreSQL 9.6 on a standalone machine, you need the server package
- postgresql-9.6, too. On a network, you can install this package on
+ This is the client package for PostgreSQL 10. If you install
+ PostgreSQL 10 on a standalone machine, you need the server package
+ postgresql-10, too. On a network, you can install this package on
  many client machines, while the server package may be installed on
  only one machine.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-server-dev-9.6
+Package: postgresql-server-dev-10
 Architecture: any
 Section: libdevel
 Depends:
- libpq-dev (>= 9.6~~),
+ libpq-dev (>= 10~~),
  postgresql-common (>= 142~),
  ${misc:Depends},
  ${shlibs:Depends}
-Description: development files for PostgreSQL 9.6 server-side programming
+Description: development files for PostgreSQL 10 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
  .
@@ -212,7 +212,7 @@ Description: development files for PostgreSQL 9.6 server-side programming
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-doc-9.6
+Package: postgresql-doc-10
 Architecture: all
 Multi-Arch: foreign
 Section: doc
@@ -220,21 +220,21 @@ Depends: ${misc:Depends}
 Breaks: postgresql-common (<< 158~)
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
- PostgreSQL 9.6. The manual is in HTML format.
+ PostgreSQL 10. The manual is in HTML format.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-contrib-9.6
+Package: postgresql-contrib-10
 Architecture: any
 Depends:
- postgresql-9.6 (= ${binary:Version}),
+ postgresql-10 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Suggests: libdbd-pg-perl
 Description: additional facilities for PostgreSQL
  The PostgreSQL contrib package provides several additional features
  for the PostgreSQL database. This version is built to work with the
- server package postgresql-9.6.  contrib often serves as a testbed for
+ server package postgresql-10.  contrib often serves as a testbed for
  features before they are adopted into PostgreSQL proper:
  .
   adminpack      - File and log manipulation routines, used by pgAdmin
@@ -285,59 +285,59 @@ Description: additional facilities for PostgreSQL
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plperl-9.6
+Package: postgresql-plperl-10
 Architecture: any
 Depends:
  perl,
- postgresql-9.6 (= ${binary:Version}),
+ postgresql-10 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-plperl
-Description: PL/Perl procedural language for PostgreSQL 9.6
+Description: PL/Perl procedural language for PostgreSQL 10
  PL/Perl enables an SQL developer to write procedural language functions
- for PostgreSQL 9.6 in Perl.  You need this package if you have any
- PostgreSQL 9.6 functions that use the languages plperl or plperlu.
+ for PostgreSQL 10 in Perl.  You need this package if you have any
+ PostgreSQL 10 functions that use the languages plperl or plperlu.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plpython-9.6
+Package: postgresql-plpython-10
 Architecture: any
 Depends:
- postgresql-9.6 (= ${binary:Version}),
+ postgresql-10 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-plpython
-Description: PL/Python procedural language for PostgreSQL 9.6
+Description: PL/Python procedural language for PostgreSQL 10
  PL/Python enables an SQL developer to write procedural language functions
- for PostgreSQL 9.6 in Python.  You need this package if you have any
- PostgreSQL 9.6 functions that use the languages plpython or plpythonu.
+ for PostgreSQL 10 in Python.  You need this package if you have any
+ PostgreSQL 10 functions that use the languages plpython or plpythonu.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plpython3-9.6
+Package: postgresql-plpython3-10
 Architecture: any
 Depends:
- postgresql-9.6 (= ${binary:Version}),
+ postgresql-10 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-plpython3
-Description: PL/Python 3 procedural language for PostgreSQL 9.6
+Description: PL/Python 3 procedural language for PostgreSQL 10
  PL/Python 3 enables an SQL developer to write procedural language functions
- for PostgreSQL 9.6 in Python 3.  You need this package if you have any
- PostgreSQL 9.6 functions that use the languages plpython3 or plpython3u.
+ for PostgreSQL 10 in Python 3.  You need this package if you have any
+ PostgreSQL 10 functions that use the languages plpython3 or plpython3u.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-pltcl-9.6
+Package: postgresql-pltcl-10
 Architecture: any
 Depends:
- postgresql-9.6 (= ${binary:Version}),
+ postgresql-10 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-pltcl
-Description: PL/Tcl procedural language for PostgreSQL 9.6
+Description: PL/Tcl procedural language for PostgreSQL 10
  PL/Tcl enables an SQL developer to write procedural language functions
- for PostgreSQL 9.6 in Tcl.  You need this package if you have any
- PostgreSQL 9.6 functions that use the languages pltcl or pltclu.
+ for PostgreSQL 10 in Tcl.  You need this package if you have any
+ PostgreSQL 10 functions that use the languages pltcl or pltclu.
  .
  PostgreSQL is an object-relational SQL database management system.
