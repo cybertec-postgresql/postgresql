@@ -15,7 +15,7 @@ Build-Depends:
  docbook-dsssl,
  docbook-xml,
  docbook-xsl,
- dpkg-dev (>= 1.16.1~) | hardening-wrapper,
+ dpkg-dev (>= 1.16.1~),
  flex,
  gettext,
  krb5-multidev,
