@@ -5,4 +5,3 @@
 54-debian-alternatives-for-external-tools.patch
 64-pg_upgrade-sockdir
 70-history
-hurd-sem_init
