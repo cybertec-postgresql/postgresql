@@ -18,15 +18,18 @@ else
 TCL_CONFIG_DIR := /usr/lib
 endif
 
+# "-pie" because it would break linking our .so files
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all,-pie
 DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/buildflags.mk
 LDFLAGS+= -Wl,--as-needed -L/usr/lib/mit-krb5 -L/usr/lib/$(DEB_HOST_MULTIARCH)/mit-krb5
 CFLAGS+= -I/usr/include/mit-krb5
 # skip -pie on 32bit archs for performance and stability reasons
-# (http://www.postgresql.org/message-id/20140519115318.GB7296@msgid.df7cb.de)
+# (http://www.postgresql.org/message-id/20140519115318.GB7296@msgid.df7cb.de, #797530)
 ifneq ($(shell dpkg-architecture -qDEB_HOST_ARCH_BITS || :),32)
 CFLAGS+= -fPIC -pie
+else
+CFLAGS+= -no-pie
 endif
 
 # Facilitate hierarchical profile generation on amd64 (#730134)
