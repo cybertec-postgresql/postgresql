@@ -29,7 +29,8 @@ CFLAGS+= -I/usr/include/mit-krb5
 ifneq ($(shell dpkg-architecture -qDEB_HOST_ARCH_BITS || :),32)
 CFLAGS+= -fPIC -pie
 else
-CFLAGS+= -no-pie
+# if gcc recognizes -no-pie, add it to CFLAGS (exit is 4 for unknown options)
+CFLAGS+= $(shell gcc -no-pie 2> /dev/null; [ $$? = 1 ] && echo "-no-pie")
 endif
 
 # Facilitate hierarchical profile generation on amd64 (#730134)
