@@ -48,10 +48,7 @@ Package: libpq-dev
 Architecture: any
 Section: libdevel
 Depends:
- comerr-dev,
- krb5-multidev,
  libpq5 (= ${binary:Version}),
- libssl-dev,
  ${misc:Depends},
  ${shlibs:Depends}
 Suggests: postgresql-doc-10
