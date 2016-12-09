@@ -1,4 +1,4 @@
 version=3
 opts=uversionmangle=s/alpha/~alpha/;s/beta/~beta/;s/rc/~rc/ \
-ftp://ftp.postgresql.org/pub/source/v(10.*)/postgresql-(10.*).tar.bz2
+https://ftp.postgresql.org/pub/source/v(10.*)/postgresql-(10.*).tar.bz2
 
