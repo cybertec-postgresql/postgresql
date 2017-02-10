@@ -142,7 +142,10 @@ Depends:
  tzdata,
  ${misc:Depends},
  ${shlibs:Depends}
-Recommends: postgresql-contrib-10, sysstat
+Provides: postgresql-contrib-10
+Conflicts: postgresql-contrib-10
+Replaces: postgresql-contrib-10
+Recommends: sysstat
 Suggests: locales-all
 Description: object-relational SQL database, version 10 server
  PostgreSQL is a powerful, open source object-relational database
@@ -218,67 +221,6 @@ Breaks: postgresql-common (<< 158~)
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
  PostgreSQL 10. The manual is in HTML format.
- .
- PostgreSQL is an object-relational SQL database management system.
-
-Package: postgresql-contrib-10
-Architecture: any
-Depends:
- postgresql-10 (= ${binary:Version}),
- ${misc:Depends},
- ${shlibs:Depends}
-Suggests: libdbd-pg-perl
-Description: additional facilities for PostgreSQL
- The PostgreSQL contrib package provides several additional features
- for the PostgreSQL database. This version is built to work with the
- server package postgresql-10.  contrib often serves as a testbed for
- features before they are adopted into PostgreSQL proper:
- .
-  adminpack      - File and log manipulation routines, used by pgAdmin
-  btree_gist     - B-Tree indexing using GiST (Generalised Search Tree)
-  chkpass        - An auto-encrypted password datatype
-  cube           - Multidimensional-cube datatype (GiST indexing example)
-  dblink         - Functions to return results from a remote database
-  earthdistance  - Operator for computing the distance (in miles) between
-                   two points on the earth's surface
-  fuzzystrmatch  - Levenshtein, metaphone, and soundex fuzzy string matching
-  hstore         - Store (key, value) pairs
-  intagg         - Integer aggregator/enumerator
-  _int           - Index support for arrays of int4, using GiST (benchmark
-                   needs the libdbd-pg-perl package)
-  isn            - type extensions for ISBN, ISSN, ISMN, EAN13 product numbers
-  lo             - Large Object maintenance
-  ltree          - Tree-like data structures
-  oid2name       - Maps OIDs to table names
-  pageinspect    - Inspection of database pages
-  passwordcheck  - Simple password strength checker
-  pg_buffercache - Real time queries on the shared buffer cache
-  pg_freespacemap- Displays the contents of the free space map (FSM)
-  pg_trgm        - Determine the similarity of text based on trigram matching
-  pg_standby     - Create a warm stand-by server
-  pgbench        - TPC-B like benchmark
-  pgcrypto       - Cryptographic functions
-  pgrowlocks     - A function to return row locking information
-  pgstattuple    - Returns the percentage of dead tuples in a table; this
-                   indicates whether a vacuum is required.
-  postgresql_fdw - foreign data wrapper for PostgreSQL
-  seg            - Confidence-interval datatype (GiST indexing example)
-  sepgsql        - mandatory access control (MAC) based on SELinux
-  spi            - PostgreSQL Server Programming Interface; 4 examples of
-                   its use:
-                   autoinc    - A function for implementing AUTOINCREMENT/
-                                IDENTITY
-                   insert_username - function for inserting user names
-                   moddatetime - Update modification timestamps
-                   refint     - Functions for implementing referential
-                                integrity (foreign keys).  Note that this is
-                                now superseded by built-in referential
-                                integrity.
-                   timetravel - Re-implements in user code the time travel
-                                feature that was removed in 6.3.
-  tablefunc      - examples of functions returning tables
-  uuid-ossp      - UUID generation functions
-  vacuumlo       - Remove orphaned large objects
  .
  PostgreSQL is an object-relational SQL database management system.
 

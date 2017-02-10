@@ -1,5 +1,9 @@
 postgresql-10 (10~~devel-1) UNRELEASED; urgency=medium
 
   * New major upstream version 10; packaging based on postgresql-9.6.
+  * Merge postgresql-contrib-10 package into postgresql-10. The added
+    packaging complexity doesn't seem worth the split anymore given the extra
+    dependencies are typically very small on average systems, or already
+    installed anyway (libuuid, libxslt).
 
  -- Christoph Berg <christoph.berg@credativ.de>  Tue, 09 Aug 2016 10:01:06 +0200

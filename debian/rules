@@ -160,9 +160,9 @@ override_dh_auto_install-arch:
 	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/share/locale
 	# remove files from the "wrong" python package
 	rm -v debian/postgresql-plpython3-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/*plpython[2u]*
-	# move SPI examples into contrib package (they wouldn't be in the doc package in an -A build)
-	mkdir -p debian/postgresql-contrib-$(MAJOR_VER)/usr/share/doc/postgresql-contrib-$(MAJOR_VER)
-	mv debian/tmp/usr/share/doc/postgresql-doc-$(MAJOR_VER)/extension debian/postgresql-contrib-$(MAJOR_VER)/usr/share/doc/postgresql-contrib-$(MAJOR_VER)/examples
+	# move SPI examples into server package (they wouldn't be in the doc package in an -A build)
+	mkdir -p debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)
+	mv debian/tmp/usr/share/doc/postgresql-doc-$(MAJOR_VER)/extension debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)/examples
 
 override_dh_auto_install-indep:
 	$(MAKE) -C build/doc install DESTDIR=$(CURDIR)/debian/tmp
@@ -189,8 +189,8 @@ override_dh_install-arch:
 	ln -s ../postgresql-common/README.Debian.gz debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)/README.Debian.gz
 
 	# these are shipped in the pl packages
-	rm debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/pl*
-	rm debian/postgresql-contrib-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/*_pl*
+	bash -c "rm debian/postgresql-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/{plperl,plpython,pltcl,*_pl}*"
+	bash -c "rm debian/postgresql-$(MAJOR_VER)/usr/lib/postgresql/$(MAJOR_VER)/lib/{plperl,plpython,pltcl,*_pl}*"
 
 	# record catversion in a file
 	echo $(CATVERSION) > debian/postgresql-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/catalog_version
