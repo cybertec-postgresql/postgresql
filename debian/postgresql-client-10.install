@@ -4,7 +4,7 @@ usr/lib/postgresql/*/bin/pg_dump
 usr/lib/postgresql/*/bin/pg_basebackup
 usr/lib/postgresql/*/bin/pg_isready
 usr/lib/postgresql/*/bin/pg_recvlogical
-usr/lib/postgresql/*/bin/pg_receivexlog
+usr/lib/postgresql/*/bin/pg_receivewal
 usr/lib/postgresql/*/bin/createdb
 usr/lib/postgresql/*/bin/createlang
 usr/lib/postgresql/*/bin/createuser
@@ -18,7 +18,7 @@ usr/lib/postgresql/*/bin/vacuumdb
 usr/share/postgresql/*/man/man1/pg_basebackup.1*
 usr/share/postgresql/*/man/man1/pg_isready.1*
 usr/share/postgresql/*/man/man1/pg_recvlogical.1*
-usr/share/postgresql/*/man/man1/pg_receivexlog.1*
+usr/share/postgresql/*/man/man1/pg_receivewal.1*
 usr/share/postgresql/*/man/man1/pg_restore.1*
 usr/share/postgresql/*/man/man1/psql.1*
 usr/share/postgresql/*/man/man1/vacuumdb.1*
