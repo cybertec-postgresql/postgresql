@@ -5,6 +5,7 @@ else
 TCL_VER := 8.5
 endif
 MAJOR_VER := 10
+#CASSERT_FLAGS := --enable-cassert
 
 CATVERSION = $(shell awk '/CATALOG_VERSION_NO/ { print $$3 }' src/include/catalog/catversion.h)
 
@@ -70,6 +71,7 @@ COMMON_CONFIGURE_FLAGS= \
   --enable-thread-safety \
   --enable-tap-tests \
   --enable-debug \
+  $(CASSERT_FLAGS) \
   --disable-rpath \
   --with-uuid=e2fs \
   --with-gnu-ld \
