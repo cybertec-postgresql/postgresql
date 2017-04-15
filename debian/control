@@ -145,8 +145,6 @@ Depends:
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-contrib-10
-Conflicts: postgresql-contrib-10
-Replaces: postgresql-contrib-10
 Recommends: sysstat
 Suggests: locales-all
 Description: object-relational SQL database, version 10 server
