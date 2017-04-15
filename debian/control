@@ -139,7 +139,7 @@ Architecture: any
 Depends:
  locales,
  postgresql-client-10,
- postgresql-common (>= 171~),
+ postgresql-common (>= 182~),
  ssl-cert,
  tzdata,
  ${misc:Depends},
@@ -176,7 +176,7 @@ Architecture: any
 Multi-Arch: foreign
 Depends:
  libpq5 (>= ${source:Upstream-Version}),
- postgresql-client-common (>= 142~),
+ postgresql-client-common (>= 182~),
  ${misc:Depends},
  ${shlibs:Depends}
 Suggests: postgresql-10, postgresql-doc-10
@@ -202,6 +202,8 @@ Depends:
  postgresql-common (>= 142~),
  ${misc:Depends},
  ${shlibs:Depends}
+Breaks:
+ postgresql-server-dev-all (<< 181~)
 Description: development files for PostgreSQL 10 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
