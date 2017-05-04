@@ -25,6 +25,7 @@ libpq.so.5 libpq5 #MINVER#
  PQdisplayTuples@Base 0
  PQdsplen@Base 0
  PQencryptPassword@Base 0
+ PQencryptPasswordConn@Base 10~~
  PQendcopy@Base 0
  PQenv2encoding@Base 0
  PQerrorMessage@Base 0
