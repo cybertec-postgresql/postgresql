@@ -1,3 +1,10 @@
+postgresql-10 (10~beta1-1) experimental; urgency=medium
+
+  * Team upload.
+  * First PostgreSQL 10 Beta release.
+
+ -- Christoph Berg <christoph.berg@credativ.de>  Tue, 09 Aug 2016 10:01:06 +0200
+
 postgresql-10 (10~~devel-1) UNRELEASED; urgency=medium
 
   * New major upstream version 10; packaging based on postgresql-9.6.
