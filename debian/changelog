@@ -1,6 +1,7 @@
 postgresql-10 (10~beta2-1) UNRELEASED; urgency=medium
 
   * Second PostgreSQL 10 Beta release.
+  * pg_config: Set CFLAGS_SL=-fPIC on s390x. (Closes: #862948)
 
  -- Christoph Berg <myon@debian.org>  Tue, 23 May 2017 21:34:19 +0200
 
