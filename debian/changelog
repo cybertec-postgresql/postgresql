@@ -1,6 +1,8 @@
 postgresql-10 (10~beta2-1) UNRELEASED; urgency=medium
 
   * Second PostgreSQL 10 Beta release.
+  * On regression test failure, show newest three log files instead of relying
+    on file age = 0 min.
 
  -- Christoph Berg <myon@debian.org>  Tue, 23 May 2017 21:34:19 +0200
 
