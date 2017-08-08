@@ -1,8 +1,9 @@
-postgresql-10 (10~beta3-1) UNRELEASED; urgency=medium
+postgresql-10 (10~beta3-1) experimental; urgency=medium
 
-  * 
+  * Team upload.
+  * Third PostgreSQL 10 Beta release.
 
- -- Christoph Berg <christoph.berg@credativ.de>  Thu, 13 Jul 2017 15:48:36 +0200
+ -- Christoph Berg <christoph.berg@credativ.de>  Tue, 08 Aug 2017 09:49:12 +0200
 
 postgresql-10 (10~beta2-1) experimental; urgency=medium
 
