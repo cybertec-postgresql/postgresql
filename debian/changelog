@@ -1,3 +1,9 @@
+postgresql-10 (10~beta4-1) UNRELEASED; urgency=medium
+
+  * 
+
+ -- Christoph Berg <myon@debian.org>  Fri, 11 Aug 2017 20:37:42 +0200
+
 postgresql-10 (10~beta3-1) experimental; urgency=medium
 
   * Team upload.
