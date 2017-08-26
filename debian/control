@@ -1,4 +1,4 @@
-Source: postgresql-10
+Source: postgresql-11
 Section: database
 Priority: optional
 Maintainer: Debian PostgreSQL Maintainers <pkg-postgresql-public@lists.alioth.debian.org>
@@ -6,7 +6,7 @@ Uploaders:
  Martin Pitt <mpitt@debian.org>,
  Peter Eisentraut <petere@debian.org>,
  Christoph Berg <myon@debian.org>
-Standards-Version: 3.9.8
+Standards-Version: 4.1.0
 Build-Depends:
  bison,
  debhelper (>= 9~),
@@ -43,7 +43,7 @@ Build-Depends:
  zlib1g-dev | libz-dev
 Homepage: http://www.postgresql.org/
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-postgresql/postgresql.git/
-Vcs-Git: https://anonscm.debian.org/git/pkg-postgresql/postgresql.git -b 10
+Vcs-Git: https://anonscm.debian.org/git/pkg-postgresql/postgresql.git -b 11
 XS-Testsuite: autopkgtest
 
 Package: libpq-dev
@@ -53,7 +53,7 @@ Depends:
  libpq5 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
-Suggests: postgresql-doc-10
+Suggests: postgresql-doc-11
 Description: header files for libpq5 (PostgreSQL library)
  Header files and static library for compiling C programs to link
  with the libpq library in order to communicate with a PostgreSQL
@@ -128,26 +128,26 @@ Section: libs
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: ${misc:Pre-Depends}
 Multi-Arch: same
-Description: shared library libpgtypes for PostgreSQL 10
+Description: shared library libpgtypes for PostgreSQL 11
  The libpgtypes shared library is used by programs built with ecpg.
  (Embedded PostgreSQL for C).
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-10
+Package: postgresql-11
 Architecture: any
 Depends:
  locales,
- postgresql-client-10,
+ postgresql-client-11,
  postgresql-common (>= 182~),
  ssl-cert,
  tzdata,
  ${misc:Depends},
  ${shlibs:Depends}
-Provides: postgresql-contrib-10
+Provides: postgresql-contrib-11
 Recommends: sysstat
 Suggests: locales-all
-Description: object-relational SQL database, version 10 server
+Description: object-relational SQL database, version 11 server
  PostgreSQL is a powerful, open source object-relational database
  system. It is fully ACID compliant, has full support for foreign
  keys, joins, views, triggers, and stored procedures (in multiple
@@ -158,20 +158,20 @@ Description: object-relational SQL database, version 10 server
  Java, .Net, Perl, Python, Ruby, Tcl, ODBC, among others, and
  exceptional documentation.
  .
- This package provides the database server for PostgreSQL 10.
+ This package provides the database server for PostgreSQL 11.
 XB-Postgresql-Catversion: ${postgresql:Catversion}
 
-Package: postgresql-10-dbg
+Package: postgresql-11-dbg
 Section: debug
 Priority: extra
 Architecture: any
-Depends: postgresql-10 (= ${binary:Version}), ${misc:Depends}
-Description: debug symbols for postgresql-10
- This package provides detached debugging symbols for PostgreSQL 10.
+Depends: postgresql-11 (= ${binary:Version}), ${misc:Depends}
+Description: debug symbols for postgresql-11
+ This package provides detached debugging symbols for PostgreSQL 11.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-client-10
+Package: postgresql-client-11
 Architecture: any
 Multi-Arch: foreign
 Depends:
@@ -179,32 +179,32 @@ Depends:
  postgresql-client-common (>= 182~),
  ${misc:Depends},
  ${shlibs:Depends}
-Suggests: postgresql-10, postgresql-doc-10
+Suggests: postgresql-11, postgresql-doc-11
 Provides: postgresql-client
-Description: front-end programs for PostgreSQL 10
+Description: front-end programs for PostgreSQL 11
  This package contains client and administrative programs for
  PostgreSQL: these are the interactive terminal client psql and
  programs for creating and removing users and databases.
  .
- This is the client package for PostgreSQL 10. If you install
- PostgreSQL 10 on a standalone machine, you need the server package
- postgresql-10, too. On a network, you can install this package on
+ This is the client package for PostgreSQL 11. If you install
+ PostgreSQL 11 on a standalone machine, you need the server package
+ postgresql-11, too. On a network, you can install this package on
  many client machines, while the server package may be installed on
  only one machine.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-server-dev-10
+Package: postgresql-server-dev-11
 Architecture: any
 Section: libdevel
 Depends:
- libpq-dev (>= 10~~),
+ libpq-dev (>= 11~~),
  postgresql-common (>= 142~),
  ${misc:Depends},
  ${shlibs:Depends}
 Breaks:
  postgresql-server-dev-all (<< 181~)
-Description: development files for PostgreSQL 10 server-side programming
+Description: development files for PostgreSQL 11 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
  .
@@ -214,7 +214,7 @@ Description: development files for PostgreSQL 10 server-side programming
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-doc-10
+Package: postgresql-doc-11
 Architecture: all
 Multi-Arch: foreign
 Section: doc
@@ -222,63 +222,63 @@ Depends: ${misc:Depends}
 Breaks: postgresql-common (<< 158~)
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
- PostgreSQL 10. The manual is in HTML format.
+ PostgreSQL 11. The manual is in HTML format.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plperl-10
+Package: postgresql-plperl-11
 Architecture: any
 Depends:
  perl,
- postgresql-10 (= ${binary:Version}),
+ postgresql-11 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-plperl
-Description: PL/Perl procedural language for PostgreSQL 10
+Description: PL/Perl procedural language for PostgreSQL 11
  PL/Perl enables an SQL developer to write procedural language functions
- for PostgreSQL 10 in Perl.  You need this package if you have any
- PostgreSQL 10 functions that use the languages plperl or plperlu.
+ for PostgreSQL 11 in Perl.  You need this package if you have any
+ PostgreSQL 11 functions that use the languages plperl or plperlu.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plpython-10
+Package: postgresql-plpython-11
 Architecture: any
 Depends:
- postgresql-10 (= ${binary:Version}),
+ postgresql-11 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-plpython
-Description: PL/Python procedural language for PostgreSQL 10
+Description: PL/Python procedural language for PostgreSQL 11
  PL/Python enables an SQL developer to write procedural language functions
- for PostgreSQL 10 in Python.  You need this package if you have any
- PostgreSQL 10 functions that use the languages plpython or plpythonu.
+ for PostgreSQL 11 in Python.  You need this package if you have any
+ PostgreSQL 11 functions that use the languages plpython or plpythonu.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plpython3-10
+Package: postgresql-plpython3-11
 Architecture: any
 Depends:
- postgresql-10 (= ${binary:Version}),
+ postgresql-11 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-plpython3
-Description: PL/Python 3 procedural language for PostgreSQL 10
+Description: PL/Python 3 procedural language for PostgreSQL 11
  PL/Python 3 enables an SQL developer to write procedural language functions
- for PostgreSQL 10 in Python 3.  You need this package if you have any
- PostgreSQL 10 functions that use the languages plpython3 or plpython3u.
+ for PostgreSQL 11 in Python 3.  You need this package if you have any
+ PostgreSQL 11 functions that use the languages plpython3 or plpython3u.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-pltcl-10
+Package: postgresql-pltcl-11
 Architecture: any
 Depends:
- postgresql-10 (= ${binary:Version}),
+ postgresql-11 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-pltcl
-Description: PL/Tcl procedural language for PostgreSQL 10
+Description: PL/Tcl procedural language for PostgreSQL 11
  PL/Tcl enables an SQL developer to write procedural language functions
- for PostgreSQL 10 in Tcl.  You need this package if you have any
- PostgreSQL 10 functions that use the languages pltcl or pltclu.
+ for PostgreSQL 11 in Tcl.  You need this package if you have any
+ PostgreSQL 11 functions that use the languages pltcl or pltclu.
  .
  PostgreSQL is an object-relational SQL database management system.
