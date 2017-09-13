@@ -7,7 +7,7 @@ See also: http://lists.debian.org/debian-wb-team/2013/05/msg00015.html
 @@ -460,6 +460,11 @@ get_sock_dir(ClusterInfo *cluster, bool
  			cluster->sockdir = pg_malloc(MAXPGPATH);
  			if (!getcwd(cluster->sockdir, MAXPGPATH))
- 				pg_fatal("cannot find current directory\n");
+ 				pg_fatal("could not determine current directory\n");
 +#ifndef UNIX_PATH_MAX
 +#define UNIX_PATH_MAX 108
 +#endif
