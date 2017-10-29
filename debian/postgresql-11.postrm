@@ -39,6 +39,10 @@ drop_cluster() {
         for f in pg_hba.conf pg_ident.conf postgresql.conf start.conf environment pg_ctl.conf; do
             rm -f /etc/postgresql/$VERSION/"$1"/$f
         done
+        # remove empty conf.d directories
+        for d in /etc/postgresql/$VERSION/"$1"/*/; do
+            clean_dir "$d"
+        done
 
         clean_dir /etc/postgresql/$VERSION/"$1"
     fi
