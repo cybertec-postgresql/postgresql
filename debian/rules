@@ -225,8 +225,8 @@ ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	fi
 endif
 
-override_dh_strip:
-	dh_strip --dbg-package=postgresql-$(MAJOR_VER)-dbg
+#dbg#override_dh_strip:
+#dbg#	dh_strip --dbg-package=postgresql-$(MAJOR_VER)-dbg
 
 override_dh_installdeb-arch:
 	dh_installdeb

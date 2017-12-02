@@ -157,15 +157,15 @@ Description: object-relational SQL database, version 11 server
  This package provides the database server for PostgreSQL 11.
 XB-Postgresql-Catversion: ${postgresql:Catversion}
 
-Package: postgresql-11-dbg
-Section: debug
-Priority: extra
-Architecture: any
-Depends: postgresql-11 (= ${binary:Version}), ${misc:Depends}
-Description: debug symbols for postgresql-11
- This package provides detached debugging symbols for PostgreSQL 11.
- .
- PostgreSQL is an object-relational SQL database management system.
+#dbg#Package: postgresql-11-dbg
+#dbg#Section: debug
+#dbg#Priority: extra
+#dbg#Architecture: any
+#dbg#Depends: postgresql-11 (= ${binary:Version}), ${misc:Depends}
+#dbg#Description: debug symbols for postgresql-11
+#dbg# This package provides detached debugging symbols for PostgreSQL 11.
+#dbg# .
+#dbg# PostgreSQL is an object-relational SQL database management system.
 
 Package: postgresql-client-11
 Architecture: any
