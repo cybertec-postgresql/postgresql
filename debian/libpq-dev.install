@@ -10,6 +10,5 @@ usr/lib/*/libpgport.a
 usr/lib/*/libpq.a
 usr/lib/*/libpq.so
 usr/lib/*/pkgconfig/libpq.pc
-usr/lib/postgresql/*/bin/pg_config usr/bin
-usr/share/locale/*/LC_MESSAGES/pg_config-*.mo
+# pg_config manpage for both the perl and C versions
 usr/share/postgresql/*/man/man1/pg_config.1* /usr/share/man/man1
