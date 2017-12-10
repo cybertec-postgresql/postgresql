@@ -1,0 +1,22 @@
+--- a/configure
++++ b/configure
+@@ -16734,7 +16734,7 @@ fi
+ 
+ 
+ cat >>confdefs.h <<_ACEOF
+-#define PG_VERSION_STR "PostgreSQL $PG_VERSION on $host, compiled by $cc_string, `expr $ac_cv_sizeof_void_p \* 8`-bit"
++#define PG_VERSION_STR "PostgreSQL $PG_VERSION on $host ($DPKG_VENDOR $DPKG_VERSION), compiled by $cc_string, `expr $ac_cv_sizeof_void_p \* 8`-bit"
+ _ACEOF
+ 
+ 
+--- a/configure.in
++++ b/configure.in
+@@ -2181,7 +2181,7 @@ else
+ fi
+ 
+ AC_DEFINE_UNQUOTED(PG_VERSION_STR,
+-                   ["PostgreSQL $PG_VERSION on $host, compiled by $cc_string, `expr $ac_cv_sizeof_void_p \* 8`-bit"],
++                   ["PostgreSQL $PG_VERSION on $host ($DPKG_VENDOR $DPKG_VERSION), compiled by $cc_string, `expr $ac_cv_sizeof_void_p \* 8`-bit"],
+                    [A string containing the version number, platform, and C compiler])
+ 
+ # Supply a numeric version string for use by 3rd party add-ons

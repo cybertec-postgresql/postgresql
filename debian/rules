@@ -80,7 +80,9 @@ COMMON_CONFIGURE_FLAGS= \
   $(SYSTEMD_FLAGS) \
   $(SPINLOCK_FLAGS) \
   CFLAGS='$(CFLAGS)' \
-  LDFLAGS='$(LDFLAGS)'
+  LDFLAGS='$(LDFLAGS)' \
+  DPKG_VERSION=$(shell dpkg-parsechangelog | awk '/^Version:/ { print $$2 }') \
+  DPKG_VENDOR=$(shell dpkg-vendor --query vendor)
 
 # allow missing krb5 and ldap during bootstrapping
 ifeq ($(DEB_STAGE),stage1)
