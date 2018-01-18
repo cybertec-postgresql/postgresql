@@ -1,0 +1,2 @@
+# We test for /usr/bin/pg_dropcluster, but run it without path
+command-with-path-in-maintainer-script
