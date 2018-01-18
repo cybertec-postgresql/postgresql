@@ -1,4 +1,7 @@
 #!/usr/bin/make -f
+
+include /usr/share/dpkg/architecture.mk
+
 ifneq ($(shell which tclsh8.6),)
 TCL_VER := 8.6
 else
@@ -9,10 +12,7 @@ MAJOR_VER := 11
 
 CATVERSION = $(shell awk '/CATALOG_VERSION_NO/ { print $$3 }' src/include/catalog/catversion.h)
 
-DEB_HOST_ARCH = $(shell dpkg-architecture -qDEB_HOST_ARCH)
-
 # find tclconfig in multi-arch location (still in /usr/lib in wheezy and precise)
-DEB_HOST_MULTIARCH = $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 ifneq ($(wildcard /usr/lib/$(DEB_HOST_MULTIARCH)/tcl$(TCL_VER)),)
 TCL_CONFIG_DIR := /usr/lib/$(DEB_HOST_MULTIARCH)
 else
@@ -27,7 +27,7 @@ DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/buildflags.mk
 #PIE# # skip -pie on 32bit archs for performance and stability reasons
 #PIE# # (http://www.postgresql.org/message-id/20140519115318.GB7296@msgid.df7cb.de, #797530)
-#PIE# ifneq ($(shell dpkg-architecture -qDEB_HOST_ARCH_BITS || :),32)
+#PIE# ifneq ($(DEB_HOST_ARCH_BITS || :),32)
 #PIE# CFLAGS+= -fPIC -pie
 #PIE# else
 #PIE# # if gcc recognizes -no-pie, add it to CFLAGS (exit is 4 for unknown options)
@@ -35,7 +35,7 @@ include /usr/share/dpkg/buildflags.mk
 #PIE# endif
 
 # Facilitate hierarchical profile generation on amd64 (#730134)
-ifeq ($(shell dpkg-architecture -qDEB_HOST_ARCH),amd64)
+ifeq ($(DEB_HOST_ARCH),amd64)
 CFLAGS+= -fno-omit-frame-pointer
 endif
 
@@ -46,7 +46,7 @@ ifneq ($(findstring $(DEB_HOST_ARCH), alpha),)
 SPINLOCK_FLAGS = --disable-spinlocks
 endif
 
-ifeq ($(shell dpkg-architecture -qDEB_HOST_ARCH_OS),linux)
+ifeq ($(DEB_HOST_ARCH_OS),linux)
 SYSTEMD_FLAGS = --with-systemd
 # --with-selinux needs libselinux 2.1.10
 # (we don't put that in debian/control so we can use the same source also on older dists)
