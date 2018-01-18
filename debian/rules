@@ -66,6 +66,7 @@ COMMON_CONFIGURE_FLAGS= \
   --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)/ \
   --libexecdir=/usr/lib/postgresql/ \
   --includedir=/usr/include/postgresql/ \
+  --with-extra-version=" ($(shell dpkg-vendor --query vendor) $(shell dpkg-parsechangelog | awk '/^Version:/ { print $$2 }'))" \
   --enable-nls \
   --enable-integer-datetimes \
   --enable-thread-safety \
@@ -80,9 +81,7 @@ COMMON_CONFIGURE_FLAGS= \
   $(SYSTEMD_FLAGS) \
   $(SPINLOCK_FLAGS) \
   CFLAGS='$(CFLAGS)' \
-  LDFLAGS='$(LDFLAGS)' \
-  DPKG_VERSION=$(shell dpkg-parsechangelog | awk '/^Version:/ { print $$2 }') \
-  DPKG_VENDOR=$(shell dpkg-vendor --query vendor)
+  LDFLAGS='$(LDFLAGS)'
 
 # allow missing krb5 and ldap during bootstrapping
 ifeq ($(DEB_STAGE),stage1)
