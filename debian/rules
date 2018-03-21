@@ -41,8 +41,9 @@ endif
 
 export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
-# PostgreSQL 9.5+ does not have native spinlock support on this platform
-ifneq ($(findstring $(DEB_HOST_ARCH), alpha),)
+# PostgreSQL 9.5+ does not have native spinlock support on alpha
+# No spinlock support for RISC-V yet
+ifneq ($(findstring $(DEB_HOST_ARCH), alpha riscv64),)
 SPINLOCK_FLAGS = --disable-spinlocks
 endif
 
