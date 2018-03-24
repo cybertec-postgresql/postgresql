@@ -9,6 +9,7 @@ Uploaders:
 Standards-Version: 4.1.3
 Build-Depends:
  bison,
+ clang,
  debhelper (>= 9~),
  dh-exec (>= 0.13~),
  docbook-xml,
@@ -29,6 +30,7 @@ Build-Depends:
  libxml2-dev,
  libxml2-utils,
  libxslt1-dev,
+ llvm-dev,
  perl (>= 5.8),
  pkg-config,
  python-dev,

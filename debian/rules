@@ -75,6 +75,7 @@ COMMON_CONFIGURE_FLAGS= \
   --enable-debug \
   $(CASSERT_FLAGS) \
   --disable-rpath \
+  --with-llvm \
   --with-uuid=e2fs \
   --with-gnu-ld \
   --with-pgport=5432 \
