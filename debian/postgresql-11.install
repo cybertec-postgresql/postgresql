@@ -16,6 +16,7 @@ usr/lib/postgresql/*/bin/pg_waldump
 usr/lib/postgresql/*/bin/postgres
 usr/lib/postgresql/*/bin/postmaster
 usr/lib/postgresql/*/bin/vacuumlo
+usr/lib/postgresql/*/lib/bitcode
 usr/lib/postgresql/*/lib/llvmjit_types.bc
 usr/lib/postgresql/*/lib/*.so
 usr/share/locale/*/LC_MESSAGES/initdb-*.mo
