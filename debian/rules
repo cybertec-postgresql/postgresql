@@ -155,6 +155,7 @@ stamp/build: stamp/configure-build
 stamp/build-py3: stamp/configure-build-py3
 	$(MAKE) -C build-py3/src/pl/plpython
 	$(MAKE) -C build-py3/contrib/hstore_plpython
+	$(MAKE) -C build-py3/contrib/jsonb_plpython
 	touch "$@"
 
 override_dh_auto_install-arch:
@@ -164,6 +165,7 @@ override_dh_auto_install-arch:
 	$(MAKE) -C build/contrib install DESTDIR=$(CURDIR)/debian/tmp
 	$(MAKE) -C build-py3/src/pl/plpython install DESTDIR=$(CURDIR)/debian/postgresql-plpython3-$(MAJOR_VER)
 	$(MAKE) -C build-py3/contrib/hstore_plpython install DESTDIR=$(CURDIR)/debian/postgresql-plpython3-$(MAJOR_VER)
+	$(MAKE) -C build-py3/contrib/jsonb_plpython install DESTDIR=$(CURDIR)/debian/postgresql-plpython3-$(MAJOR_VER)
 	# remove files duplicated from postgresql and -server-dev
 	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/include
 	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/share/locale
