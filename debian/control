@@ -195,7 +195,9 @@ Package: postgresql-server-dev-11
 Architecture: any
 Section: libdevel
 Depends:
+ clang,
  libpq-dev (>= 11~~),
+ llvm-dev,
  postgresql-common (>= 142~),
  ${misc:Depends},
  ${shlibs:Depends}
