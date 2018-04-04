@@ -29,7 +29,7 @@ Bug-Debian: http://bugs.debian.org/462037
 +includedir_server = $(pkgincludedir)/@PG_MAJORVERSION@/server
  includedir_internal = $(pkgincludedir)/internal
  pgxsdir = $(pkglibdir)/pgxs
- 
+ bitcodedir = $(pkglibdir)/bitcode
 --- a/src/bin/pg_config/pg_config.c
 +++ b/src/bin/pg_config/pg_config.c
 @@ -27,6 +27,8 @@

@@ -9,7 +9,7 @@ set it as default.
 
 --- a/src/include/pg_config_manual.h
 +++ b/src/include/pg_config_manual.h
-@@ -161,7 +161,7 @@
+@@ -177,7 +177,7 @@
   * here's where to twiddle it.  You can also override this at runtime
   * with the postmaster's -k switch.
   */
