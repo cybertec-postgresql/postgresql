@@ -33,6 +33,7 @@ usr/share/locale/*/LC_MESSAGES/postgres-*.mo
 usr/share/locale/*/LC_MESSAGES/plpgsql-*.mo
 usr/share/locale/*/*/plpython-*.mo
 [linux-any] usr/share/postgresql/*/contrib/sepgsql.sql
+usr/share/postgresql/*/errcodes.txt
 usr/share/postgresql/*/extension/*
 usr/share/postgresql/*/man/man1/initdb.1*
 usr/share/postgresql/*/man/man1/oid2name.1*
