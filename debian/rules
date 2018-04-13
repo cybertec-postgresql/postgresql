@@ -153,9 +153,11 @@ stamp/build: stamp/configure-build
 	touch "$@"
 
 stamp/build-py3: stamp/configure-build-py3
+	$(MAKE) -C build-py3/src/backend generated-headers
 	$(MAKE) -C build-py3/src/pl/plpython
 	$(MAKE) -C build-py3/contrib/hstore_plpython
 	$(MAKE) -C build-py3/contrib/jsonb_plpython
+	$(MAKE) -C build-py3/contrib/ltree_plpython
 	touch "$@"
 
 override_dh_auto_install-arch:
