@@ -144,8 +144,9 @@ override_dh_auto_build-indep:
 override_dh_auto_build-arch: stamp/build stamp/build-py3
 
 stamp/build: stamp/configure-build
+	# set MAKELEVEL to 0 to force building submake-generated-headers in src/Makefile.global(.in)
+	MAKELEVEL=0 $(MAKE) -C build/src all
 	$(MAKE) -C build/doc man # build man only
-	$(MAKE) -C build/src all
 	$(MAKE) -C build/config all
 	$(MAKE) -C build/contrib all
 	# build tutorial stuff
@@ -153,8 +154,7 @@ stamp/build: stamp/configure-build
 	touch "$@"
 
 stamp/build-py3: stamp/configure-build-py3
-	$(MAKE) -C build-py3/src/backend generated-headers
-	$(MAKE) -C build-py3/src/pl/plpython
+	MAKELEVEL=0 $(MAKE) -C build-py3/src/pl/plpython
 	$(MAKE) -C build-py3/contrib/hstore_plpython
 	$(MAKE) -C build-py3/contrib/jsonb_plpython
 	$(MAKE) -C build-py3/contrib/ltree_plpython
