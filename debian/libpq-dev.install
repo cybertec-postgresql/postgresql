@@ -4,9 +4,6 @@ usr/include/postgresql/libpq-fe.h
 usr/include/postgresql/libpq/libpq-fs.h
 usr/include/postgresql/pg_config*.h
 usr/include/postgresql/postgres_ext.h
-usr/lib/*/libpgcommon.a
-usr/lib/*/libpgfeutils.a
-usr/lib/*/libpgport.a
 usr/lib/*/libpq.a
 usr/lib/*/libpq.so
 usr/lib/*/pkgconfig/libpq.pc

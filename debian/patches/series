@@ -6,3 +6,4 @@
 64-pg_upgrade-sockdir
 70-history
 filter-debug-prefix-map
+libpgport-pkglibdir
