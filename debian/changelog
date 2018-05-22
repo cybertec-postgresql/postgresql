@@ -1,3 +1,9 @@
+postgresql-11 (11~beta1-1) experimental; urgency=medium
+
+  * First PostgreSQL 11 beta release.
+
+ -- Christoph Berg <myon@debian.org>  Tue, 22 May 2018 14:19:08 +0200
+
 postgresql-11 (11~~devel-1) UNRELEASED; urgency=medium
 
   * New major upstream version 11; packaging based on postgresql-10.
