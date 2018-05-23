@@ -3,6 +3,7 @@ postgresql-11 (11~beta1-2) experimental; urgency=medium
   * Disable llvm jit everywhere except on amd64 and i386. Other platforms need
     r328687 merged into llvm first.
     http://llvm.org/viewvc/llvm-project?view=revision&revision=328687
+  * Remove version checking for libselinux1-dev, 2.1.10 is old enough now.
 
  -- Christoph Berg <christoph.berg@credativ.de>  Wed, 23 May 2018 13:09:47 +0200
 
