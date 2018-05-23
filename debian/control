@@ -9,7 +9,7 @@ Uploaders:
 Standards-Version: 4.1.4
 Build-Depends:
  bison,
- clang,
+ clang [amd64 i386],
  debhelper (>= 9~),
  dh-exec (>= 0.13~),
  docbook-xml,
@@ -30,7 +30,7 @@ Build-Depends:
  libxml2-dev,
  libxml2-utils,
  libxslt1-dev,
- llvm-dev,
+ llvm-dev [amd64 i386],
  perl (>= 5.8),
  pkg-config,
  python-dev,
@@ -195,9 +195,9 @@ Package: postgresql-server-dev-11
 Architecture: any
 Section: libdevel
 Depends:
- clang,
+ clang [amd64 i386],
  libpq-dev (>= 11~~),
- llvm-dev,
+ llvm-dev [amd64 i386],
  postgresql-common (>= 142~),
  ${misc:Depends},
  ${shlibs:Depends}

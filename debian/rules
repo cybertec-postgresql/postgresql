@@ -41,6 +41,11 @@ endif
 
 export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
+# llvm <= 6.0.1 supports x32 only (missing r328687)
+ifneq ($(findstring $(DEB_HOST_ARCH), amd64 i386),)
+LLVM_FLAGS = --with-llvm
+endif
+
 # PostgreSQL 9.5+ does not have native spinlock support on alpha
 # No spinlock support for RISC-V yet
 ifneq ($(findstring $(DEB_HOST_ARCH), alpha riscv64),)
@@ -75,11 +80,11 @@ COMMON_CONFIGURE_FLAGS= \
   --enable-debug \
   $(CASSERT_FLAGS) \
   --disable-rpath \
-  --with-llvm \
   --with-uuid=e2fs \
   --with-gnu-ld \
   --with-pgport=5432 \
   --with-system-tzdata=/usr/share/zoneinfo \
+  $(LLVM_FLAGS) \
   $(SYSTEMD_FLAGS) \
   $(SPINLOCK_FLAGS) \
   CFLAGS='$(CFLAGS)' \
