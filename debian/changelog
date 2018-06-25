@@ -1,3 +1,9 @@
+postgresql-11 (11~beta2-1) experimental; urgency=medium
+
+  * Second PostgreSQL 11 beta release.
+
+ -- Christoph Berg <myon@debian.org>  Mon, 25 Jun 2018 21:18:58 +0200
+
 postgresql-11 (11~beta1-2) experimental; urgency=medium
 
   * Disable llvm jit everywhere except on amd64 and i386. Other platforms need
