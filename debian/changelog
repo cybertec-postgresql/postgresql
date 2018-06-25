@@ -1,6 +1,7 @@
 postgresql-11 (11~beta2-1) experimental; urgency=medium
 
   * Second PostgreSQL 11 beta release.
+  * Add new pgtypes header and symbol.
 
  -- Christoph Berg <myon@debian.org>  Mon, 25 Jun 2018 21:18:58 +0200
 

@@ -1,4 +1,5 @@
 libpgtypes.so.3 libpgtypes3 #MINVER#
+ PGTYPESchar_free@Base 11~beta2
  PGTYPESdate_dayofweek@Base 0
  PGTYPESdate_defmt_asc@Base 0
  PGTYPESdate_fmt_asc@Base 0
