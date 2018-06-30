@@ -7,7 +7,7 @@ TCL_VER := 8.6
 else
 TCL_VER := 8.5
 endif
-MAJOR_VER := 11
+MAJOR_VER := 12
 #CASSERT_FLAGS := --enable-cassert
 
 CATVERSION = $(shell awk '/CATALOG_VERSION_NO/ { print $$3 }' src/include/catalog/catversion.h)
