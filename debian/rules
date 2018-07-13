@@ -2,22 +2,11 @@
 
 include /usr/share/dpkg/architecture.mk
 
-ifneq ($(shell which tclsh8.6),)
-TCL_VER := 8.6
-else
-TCL_VER := 8.5
-endif
 MAJOR_VER := 12
+TCL_VER := 8.6
 #CASSERT_FLAGS := --enable-cassert
 
 CATVERSION = $(shell awk '/CATALOG_VERSION_NO/ { print $$3 }' src/include/catalog/catversion.h)
-
-# find tclconfig in multi-arch location (still in /usr/lib in wheezy and precise)
-ifneq ($(wildcard /usr/lib/$(DEB_HOST_MULTIARCH)/tcl$(TCL_VER)),)
-TCL_CONFIG_DIR := /usr/lib/$(DEB_HOST_MULTIARCH)
-else
-TCL_CONFIG_DIR := /usr/lib
-endif
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 #PIE# # On jessie/zesty and older, uncomment the #PIE# lines
@@ -121,7 +110,7 @@ stamp/configure-build:
            --with-openssl \
            --with-libxml \
            --with-libxslt \
-           --with-tclconfig=$(TCL_CONFIG_DIR)/tcl$(TCL_VER) \
+           --with-tclconfig=/usr/lib/$(DEB_HOST_MULTIARCH)/tcl$(TCL_VER) \
            --with-includes=/usr/include/tcl$(TCL_VER) \
            PYTHON=/usr/bin/python \
            $(COMMON_CONFIGURE_FLAGS) \
