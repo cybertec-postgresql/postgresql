@@ -92,8 +92,8 @@ override_dh_auto_configure-indep: stamp/configure-build
 override_dh_auto_configure-arch: stamp/configure-build stamp/configure-build-py3
 
 stamp/configure-build:
-	mkdir -p stamp build
-	cd build && ../configure \
+	mkdir -p stamp
+	dh_auto_configure --builddirectory=build -- \
            --with-icu \
            --with-tcl \
            --with-perl \
@@ -112,8 +112,8 @@ stamp/configure-build:
 	touch "$@"
 
 stamp/configure-build-py3:
-	mkdir -p stamp build-py3
-	cd build-py3 && ../configure \
+	mkdir -p stamp
+	dh_auto_configure --builddirectory=build-py3 -- \
            --with-python \
            PYTHON=/usr/bin/python3 \
            $(COMMON_CONFIGURE_FLAGS)
