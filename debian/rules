@@ -85,14 +85,6 @@ BOOTSTRAP_FLAGS= --with-gssapi --with-ldap \
 		 --with-libs=/usr/lib/$(DEB_HOST_MULTIARCH)/mit-krb5
 endif
 
-# build should fail on test suite failures on all arches
-TESTSUITE_FAIL_CMD=exit 1
-# hurd doesn't implement semaphores shared between processes yet; succeed anyway so they at least have libpq5
-# plperl currently fails on kfreebsd-*
-ifneq ($(filter $(DEB_HOST_ARCH), hurd-i386 kfreebsd-amd64 kfreebsd-i386),)
-TESTSUITE_FAIL_CMD=exit 0
-endif
-
 %:
 	dh $@
 
@@ -224,12 +216,17 @@ override_dh_auto_test-arch:
 ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	# when tests fail, print newest 3 log files
 	# temp-install wants to be invoked from a top-level make, unset MAKELEVEL here
+	# hurd doesn't implement semaphores shared between processes yet; succeed anyway so they at least have libpq5
+	# plperl currently fails on kfreebsd-*
 	unset MAKELEVEL; if ! make -C build check-world EXTRA_REGRESS_OPTS='--port=$(shell perl -le 'print 1024 + int(rand(64000))')'; then \
 	    for l in `find build \( -name regression.diffs -o -name initdb.log -o -name postmaster.log \) | perl -we 'print map { "$$_\n"; } sort { (stat $$a)[9] <=> (stat $$b)[9] } map { chomp; $$_; } <>' | tail -3`; do \
 		echo "******** $$l ********"; \
 		cat $$l; \
 	    done; \
-	    $(TESTSUITE_FAIL_CMD); \
+	    case $(DEB_HOST_ARCH) in \
+	        hurd-*|kfreebsd-*) exit 0 ;; \
+	        *) exit 1 ;; \
+	    esac; \
 	fi
 endif
 
