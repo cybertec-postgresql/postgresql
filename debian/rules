@@ -190,8 +190,10 @@ override_dh_install-arch:
 	chmod 755 debian/libpq-dev/usr/bin/pg_config
 
 	# remove actual build path from Makefile.global for reproducibility
+	# set -f{debug,file}-prefix-map to module_srcdir (which is set in pgxs.mk)
 	sed -i -e "s!^abs_top_builddir.*!abs_top_builddir = /build/postgresql-$(MAJOR_VER)/build!" \
 	       -e "s!^abs_top_srcdir.*!abs_top_srcdir = /build/postgresql-$(MAJOR_VER)/build/..!" \
+	       -e 's!prefix-map=[^ ]*!prefix-map=$$(module_srcdir)=.!g' \
 	       debian/postgresql-server-dev-$(MAJOR_VER)/usr/lib/postgresql/$(MAJOR_VER)/lib/pgxs/src/Makefile.global
 
 	# these are shipped in the pl packages

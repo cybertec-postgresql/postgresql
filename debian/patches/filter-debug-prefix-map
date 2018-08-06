@@ -1,15 +1,45 @@
+To make the PostgreSQL server packages build reproducibly, we need to remove
+the build path from -fdebug-prefix-map and -ffile-prefix-map in CFLAGS.
+
+* The actual server build still uses the original CFLAGS so the build path is
+  correctly mapped in the object files.
+* The information printed by the pg_config binary and the system view is
+  filtered in src/common/Makefile.
+* The build paths stored in Makefile.global are filtered in debian/rules.
+* The build paths in prefix maps in CFLAGS/CXXFLAGS in Makefile.global are
+  filtered in debian/rules, and replaced by $(module_srcdir).
+* To make PGXS module builds reproducible, pgxs.mk sets module_srcdir so they
+  have a proper prefix maps in their CFLAGS. (pgxs.mk does not query pg_config
+  for the flags.)
+
 --- a/src/common/Makefile
 +++ b/src/common/Makefile
-@@ -27,10 +27,10 @@ include $(top_builddir)/src/Makefile.glo
+@@ -27,10 +27,11 @@ include $(top_builddir)/src/Makefile.glo
  # don't include subdirectory-path-dependent -I and -L switches
  STD_CPPFLAGS := $(filter-out -I$(top_srcdir)/src/include -I$(top_builddir)/src/include,$(CPPFLAGS))
  STD_LDFLAGS := $(filter-out -L$(top_builddir)/src/common -L$(top_builddir)/src/port,$(LDFLAGS))
 -override CPPFLAGS += -DVAL_CONFIGURE="\"$(configure_args)\""
-+override CPPFLAGS += -DVAL_CONFIGURE="\"$(filter-out -fdebug-prefix-map%,$(configure_args))\""
++# filter build path variation from -fdebug-prefix-map and -ffile-prefix-map
++override CPPFLAGS += -DVAL_CONFIGURE="\"$(patsubst -ffile-prefix-map=%,-ffile-prefix-map=/BUILDDIR=.,$(patsubst -fdebug-prefix-map=%,-fdebug-prefix-map=/BUILDDIR=.,$(configure_args)))\""
  override CPPFLAGS += -DVAL_CC="\"$(CC)\""
  override CPPFLAGS += -DVAL_CPPFLAGS="\"$(STD_CPPFLAGS)\""
 -override CPPFLAGS += -DVAL_CFLAGS="\"$(CFLAGS)\""
-+override CPPFLAGS += -DVAL_CFLAGS="\"$(filter-out -fdebug-prefix-map%,$(CFLAGS))\""
++override CPPFLAGS += -DVAL_CFLAGS="\"$(patsubst -ffile-prefix-map=%,-ffile-prefix-map=/BUILDDIR=.,$(patsubst -fdebug-prefix-map=%,-fdebug-prefix-map=/BUILDDIR=.,$(CFLAGS)))\""
  override CPPFLAGS += -DVAL_CFLAGS_SL="\"$(CFLAGS_SL)\""
  override CPPFLAGS += -DVAL_LDFLAGS="\"$(STD_LDFLAGS)\""
  override CPPFLAGS += -DVAL_LDFLAGS_EX="\"$(LDFLAGS_EX)\""
+--- a/src/makefiles/pgxs.mk
++++ b/src/makefiles/pgxs.mk
+@@ -76,6 +76,12 @@ NO_TEMP_INSTALL=yes
+ top_builddir := $(dir $(PGXS))../..
+ include $(top_builddir)/src/Makefile.global
+ 
++# When compiling PGXS modules, we need to provide a debug/file-prefix-map with
++# the module source directory to make the build reproducible. module_srcdir is
++# used for that purpose in CFLAGS/CXXFLAGS in the Makefile.global installed by
++# Debian.
++module_srcdir := $(patsubst %/,%,$(dir $(firstword $(MAKEFILE_LIST))))
++
+ # These might be set in Makefile.global, but if they were not found
+ # during the build of PostgreSQL, supply default values so that users
+ # of pgxs can use the variables.
