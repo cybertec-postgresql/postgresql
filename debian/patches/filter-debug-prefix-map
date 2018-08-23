@@ -6,6 +6,7 @@ the build path from -fdebug-prefix-map and -ffile-prefix-map in CFLAGS.
 * The information printed by the pg_config binary and the system view is
   filtered in src/common/Makefile.
 * The build paths stored in Makefile.global are filtered in debian/rules.
+  (abs_top_builddir, abs_top_srcdir, configure_args, CFLAGS)
 * To make PGXS module builds reproducible, pg_buildext copies the environment
   CFLAGS to COPT where Makefile.global picks them up, using the prefix maps
   from dpkg-buildflags.

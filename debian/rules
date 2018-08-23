@@ -192,6 +192,7 @@ override_dh_install-arch:
 	# remove actual build path from Makefile.global for reproducibility
 	sed -i -e "s!^abs_top_builddir.*!abs_top_builddir = /build/postgresql-$(MAJOR_VER)/build!" \
 	       -e "s!^abs_top_srcdir.*!abs_top_srcdir = /build/postgresql-$(MAJOR_VER)/build/..!" \
+	       -e 's!-f\(debug\|file\)-prefix-map=[^ ]* !!g' \
 	       debian/postgresql-server-dev-$(MAJOR_VER)/usr/lib/postgresql/$(MAJOR_VER)/lib/pgxs/src/Makefile.global
 
 	# these are shipped in the pl packages
