@@ -175,6 +175,7 @@ Multi-Arch: foreign
 Depends:
  libpq5 (>= ${source:Upstream-Version}),
  postgresql-client-common (>= 182~),
+ sensible-utils,
  ${misc:Depends},
  ${shlibs:Depends}
 Suggests: postgresql-12, postgresql-doc-12
