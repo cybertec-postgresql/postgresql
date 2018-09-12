@@ -1,2 +1,4 @@
 # We test for /usr/bin/pg_dropcluster, but run it without path
 command-with-path-in-maintainer-script
+# These are PostgreSQL server plugins; some need no external libraries
+shared-lib-without-dependency-information usr/lib/postgresql/*

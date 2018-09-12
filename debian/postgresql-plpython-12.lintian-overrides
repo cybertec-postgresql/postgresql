@@ -1,0 +1,2 @@
+# The ltree*.so modules are only linked against libpython, not libc
+library-not-linked-against-libc usr/lib/postgresql/*
