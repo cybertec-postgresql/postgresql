@@ -104,6 +104,7 @@ libpq.so.5 libpq5 #MINVER#
  PQresultErrorField@Base 0
  PQresultErrorMessage@Base 0
  PQresultInstanceData@Base 8.4~
+ PQresultMemorySize@Base 12~~
  PQresultSetInstanceData@Base 8.4~
  PQresultStatus@Base 0
  PQresultVerboseErrorMessage@Base 9.6~~
