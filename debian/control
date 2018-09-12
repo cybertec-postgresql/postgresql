@@ -35,6 +35,7 @@ Build-Depends:
  pkg-config,
  python-dev,
  python3-dev,
+ systemtap-sdt-dev,
  tcl8.6-dev,
  uuid-dev,
  xsltproc,

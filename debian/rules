@@ -62,6 +62,7 @@ COMMON_CONFIGURE_FLAGS= \
   --enable-thread-safety \
   --enable-tap-tests \
   --enable-debug \
+  --enable-dtrace \
   $(CASSERT_FLAGS) \
   --disable-rpath \
   --with-uuid=e2fs \
