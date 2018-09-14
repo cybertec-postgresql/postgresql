@@ -17,8 +17,8 @@ usr/lib/postgresql/*/bin/pg_waldump
 usr/lib/postgresql/*/bin/postgres
 usr/lib/postgresql/*/bin/postmaster
 usr/lib/postgresql/*/bin/vacuumlo
-[amd64 i386] usr/lib/postgresql/*/lib/bitcode
-[amd64 i386] usr/lib/postgresql/*/lib/llvmjit_types.bc
+[amd64 arm64 armel armhf i386 mips mips64el mipsel ppc64el s390x powerpc powerpcspe ppc64 sparc64] usr/lib/postgresql/*/lib/bitcode
+[amd64 arm64 armel armhf i386 mips mips64el mipsel ppc64el s390x powerpc powerpcspe ppc64 sparc64] usr/lib/postgresql/*/lib/llvmjit_types.bc
 usr/lib/postgresql/*/lib/*.so
 usr/share/locale/*/LC_MESSAGES/initdb-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_archivecleanup-*.mo
