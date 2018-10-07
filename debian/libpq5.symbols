@@ -168,7 +168,6 @@ libpq.so.5 libpq5 #MINVER#
  pg_valid_server_encoding@Base 0
  pg_valid_server_encoding_id@Base 8.3~beta1-2~
  pgresStatus@Base 0
- pqsignal@Base 0
  printfPQExpBuffer@Base 0
  resetPQExpBuffer@Base 0
  termPQExpBuffer@Base 0
