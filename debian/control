@@ -135,7 +135,7 @@ Description: shared library libpgtypes for PostgreSQL 12
 Package: postgresql-12
 Architecture: any
 Depends:
- locales,
+ locales | locales-all,
  postgresql-client-12,
  postgresql-common (>= 182~),
  ssl-cert,
@@ -144,7 +144,6 @@ Depends:
  ${shlibs:Depends}
 Provides: postgresql-contrib-12
 Recommends: sysstat
-Suggests: locales-all
 Description: object-relational SQL database, version 12 server
  PostgreSQL is a powerful, open source object-relational database
  system. It is fully ACID compliant, has full support for foreign
