@@ -36,7 +36,7 @@ Build-Depends:
  python-dev,
  python3-dev,
  systemtap-sdt-dev,
- tcl8.6-dev,
+ tcl-dev,
  uuid-dev,
  xsltproc,
  zlib1g-dev | libz-dev

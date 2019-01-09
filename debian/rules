@@ -3,7 +3,6 @@
 include /usr/share/dpkg/architecture.mk
 
 MAJOR_VER := 12
-TCL_VER := 8.6
 #CASSERT_FLAGS := --enable-cassert
 
 CATVERSION = $(shell awk '/CATALOG_VERSION_NO/ { print $$3 }' src/include/catalog/catversion.h)
@@ -105,8 +104,6 @@ stamp/configure-build:
            --with-openssl \
            --with-libxml \
            --with-libxslt \
-           --with-tclconfig=/usr/lib/$(DEB_HOST_MULTIARCH)/tcl$(TCL_VER) \
-           --with-includes=/usr/include/tcl$(TCL_VER) \
            PYTHON=/usr/bin/python \
            $(COMMON_CONFIGURE_FLAGS) \
            $(BOOTSTRAP_FLAGS)
