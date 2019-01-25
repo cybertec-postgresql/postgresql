@@ -4,8 +4,6 @@ set -e
 
 VERSION=${DPKG_MAINTSCRIPT_PACKAGE##*-}
 
-#DEBHELPER#
-
 clean_dir() {
     if [ -d "$1" ] && [ ! -L "$1" ]; then
         rmdir "$1" >/dev/null 2>/dev/null || true
@@ -48,18 +46,35 @@ drop_cluster() {
     fi
 }
 
-if [ "$1" = purge ]; then
-    [ -d "/etc/postgresql/$VERSION" ] || exit 0
-    if [ "$(ls /etc/postgresql/$VERSION)" ]; then
-        for c in /etc/postgresql/$VERSION/*; do
-            [ -e "$c/postgresql.conf" ] || continue
-            cluster=$(basename "$c")
-            echo "Dropping cluster $cluster..."
-            drop_cluster "$cluster"
-        done
+purge_package () {
+    # ask the user if they want to remove clusters. If debconf is not
+    # available, just remove everything
+    if [ -e /usr/share/debconf/confmodule ]; then
+        db_set $DPKG_MAINTSCRIPT_PACKAGE/postrm_purge_data true
+        db_input high $DPKG_MAINTSCRIPT_PACKAGE/postrm_purge_data || :
+        db_go || :
+        db_get $DPKG_MAINTSCRIPT_PACKAGE/postrm_purge_data || :
+        [ "$RET" = "false" ] && return 0
     fi
+
+    for c in /etc/postgresql/$VERSION/*; do
+        [ -e "$c/postgresql.conf" ] || continue
+        cluster=$(basename "$c")
+        echo "Dropping cluster $cluster..."
+        drop_cluster "$cluster"
+    done
 
     clean_dir /etc/postgresql/$VERSION
     clean_dir /var/lib/postgresql/$VERSION
     clean_dir /var/log/postgresql/$VERSION
+}
+
+if [ "$1" = purge ] && [ -d "/etc/postgresql/$VERSION" ] && [ "$(ls /etc/postgresql/$VERSION)" ]; then
+    # can't load debconf from a function
+    if [ -e /usr/share/debconf/confmodule ]; then
+        . /usr/share/debconf/confmodule
+    fi
+    purge_package
 fi
+
+#DEBHELPER#
