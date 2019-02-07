@@ -1,12 +1,12 @@
 Source: postgresql-12
 Section: database
 Priority: optional
-Maintainer: Debian PostgreSQL Maintainers <pkg-postgresql-public@lists.alioth.debian.org>
+Maintainer: Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>
 Uploaders:
  Martin Pitt <mpitt@debian.org>,
  Peter Eisentraut <petere@debian.org>,
  Christoph Berg <myon@debian.org>
-Standards-Version: 4.1.4
+Standards-Version: 4.3.0
 Build-Depends:
  bison,
  clang-7 [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !sh4 !sparc64 !x32],
