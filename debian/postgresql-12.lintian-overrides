@@ -2,3 +2,5 @@
 command-with-path-in-maintainer-script
 # These are PostgreSQL server plugins; some need no external libraries
 shared-lib-without-dependency-information usr/lib/postgresql/*
+# We use debconf in postrm only
+no-debconf-config
