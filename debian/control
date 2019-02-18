@@ -76,7 +76,7 @@ Description: PostgreSQL C client library
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: libecpg6
+Package: libecpg7
 Architecture: any
 Section: libs
 Depends: ${misc:Depends}, ${shlibs:Depends}
@@ -93,7 +93,7 @@ Architecture: any
 Section: libdevel
 Depends:
  libecpg-compat3 (= ${binary:Version}),
- libecpg6 (= ${binary:Version}),
+ libecpg7 (= ${binary:Version}),
  libpgtypes3 (= ${binary:Version}),
  libpq-dev,
  ${misc:Depends},
