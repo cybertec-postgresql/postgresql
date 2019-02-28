@@ -1,0 +1,11 @@
+--- a/src/bin/initdb/initdb.c
++++ b/src/bin/initdb/initdb.c
+@@ -3411,7 +3411,7 @@ main(int argc, char *argv[])
+ 
+ 	printf(_("\nSuccess. You can now start the database server using:\n\n"
+ 			 "    %s\n\n"),
+-		   start_db_cmd->data);
++		   getenv("CLUSTER_START_COMMAND") ? getenv("CLUSTER_START_COMMAND") : start_db_cmd->data);
+ 
+ 	destroyPQExpBuffer(start_db_cmd);
+ 
