@@ -1,2 +1,2 @@
-/usr/share/locale/*/*/ecpg*.mo
+usr/share/locale/*/*/ecpglib*.mo
 usr/lib/*/libecpg.so.7*

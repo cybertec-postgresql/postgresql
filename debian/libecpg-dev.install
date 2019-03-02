@@ -14,4 +14,5 @@ usr/lib/*/pkgconfig/libecpg.pc
 usr/lib/*/pkgconfig/libecpg_compat.pc
 usr/lib/*/pkgconfig/libpgtypes.pc
 usr/lib/postgresql/*/bin/ecpg usr/bin
+usr/share/locale/*/*/ecpg-*.mo
 usr/share/postgresql/*/man/man1/ecpg.1* /usr/share/man/man1
