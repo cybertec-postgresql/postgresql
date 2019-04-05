@@ -56,12 +56,14 @@ libpq.so.5 libpq5 #MINVER#
  PQgetCancel@Base 0
  PQgetCopyData@Base 0
  PQgetResult@Base 0
+ PQgetgssctx@Base 12~~
  PQgetisnull@Base 0
  PQgetlength@Base 0
  PQgetline@Base 0
  PQgetlineAsync@Base 0
  PQgetssl@Base 0
  PQgetvalue@Base 0
+ PQgssEncInUse@Base 12~~
  PQhost@Base 0
  PQhostaddr@Base 12~~
  PQinitOpenSSL@Base 8.4~
