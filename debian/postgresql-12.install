@@ -22,6 +22,7 @@ usr/lib/postgresql/*/bin/vacuumlo
 usr/lib/postgresql/*/lib/*.so
 usr/share/locale/*/LC_MESSAGES/initdb-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_archivecleanup-*.mo
+usr/share/locale/*/LC_MESSAGES/pg_checksums-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_controldata-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_ctl-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_resetwal-*.mo
