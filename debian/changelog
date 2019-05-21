@@ -1,8 +1,8 @@
-postgresql-12 (12~~devel-1) UNRELEASED; urgency=medium
+postgresql-12 (12~beta1-1) experimental; urgency=medium
 
   * New major upstream version 12; packaging based on postgresql-11.
   * libpq5.symbols: Remove pqsignal.
   * Drop patch 64-pg_upgrade-sockdir, handled via pg_upgrade --socketdir now.
   * Bump to libecpg7.
 
- -- Christoph Berg <myon@debian.org>  Sat, 30 Jun 2018 22:35:19 +0200
+ -- Christoph Berg <myon@debian.org>  Tue, 21 May 2019 09:30:47 +0200
