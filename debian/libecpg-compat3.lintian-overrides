@@ -1,0 +1,2 @@
+# False positive, -D_FORTIFY_SOURCE=2 is present when compiling informix.c
+hardening-no-fortify-functions usr/lib/*/libecpg_compat.so.*
