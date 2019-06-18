@@ -1,6 +1,8 @@
 #!/usr/bin/make -f
 
 include /usr/share/dpkg/architecture.mk
+include /usr/share/dpkg/pkg-info.mk
+include /usr/share/dpkg/vendor.mk
 
 MAJOR_VER := 12
 #CASSERT_FLAGS := --enable-cassert
@@ -55,7 +57,7 @@ COMMON_CONFIGURE_FLAGS= \
   --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)/ \
   --libexecdir=/usr/lib/postgresql/ \
   --includedir=/usr/include/postgresql/ \
-  --with-extra-version=" ($(shell dpkg-vendor --query vendor) $(shell dpkg-parsechangelog | awk '/^Version:/ { print $$2 }'))" \
+  --with-extra-version=" ($(DEB_VENDOR) $(DEB_VERSION))" \
   --enable-nls \
   --enable-integer-datetimes \
   --enable-thread-safety \
