@@ -198,14 +198,12 @@ Copyright: Copyright (c) 1994 David Burren
 License: BSD-3-clause
 
 Files:
- contrib/pgcrypto/fortuna.*
  contrib/pgcrypto/internal*
  contrib/pgcrypto/mbuf.*
  contrib/pgcrypto/openssl.c
  contrib/pgcrypto/pgcrypto.*
  contrib/pgcrypto/pgp*
  contrib/pgcrypto/px*
- contrib/pgcrypto/random.c
 Copyright: Copyright (c) 2001, 2005 Marko Kreen
 License: BSD-2-clause
  Redistribution and use in source and binary forms, with or without

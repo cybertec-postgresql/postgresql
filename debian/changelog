@@ -5,7 +5,7 @@ postgresql-12 (12~beta2-1) experimental; urgency=medium
   * debian/patches: Add missing patch documentation.
   * debian/rules: Use /usr/share/dpkg/pkg-info.mk and vendor.mk for
     --with-extra-version.
-  * debian/copyright: sha2 moved to src/common.
+  * debian/copyright: sha2 moved to src/common, remove fortuna and random.
 
  -- Christoph Berg <myon@debian.org>  Tue, 18 Jun 2019 11:00:03 +0200
 
