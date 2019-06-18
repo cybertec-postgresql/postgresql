@@ -1,3 +1,7 @@
+Author: Christoph Berg <myon@debian.org>
+Description: Document Debian location of release notes files.
+Forwarded: No, Debian specific
+
 --- a/HISTORY
 +++ b/HISTORY
 @@ -3,3 +3,6 @@

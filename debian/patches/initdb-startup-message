@@ -1,3 +1,7 @@
+Author: Christoph Berg <myon@debian.org>
+Description: Debian-specific cluster startup message from initdb
+Forwarded: No, Debian specific
+
 --- a/src/bin/initdb/initdb.c
 +++ b/src/bin/initdb/initdb.c
 @@ -3411,7 +3411,7 @@ main(int argc, char *argv[])

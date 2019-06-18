@@ -1,3 +1,9 @@
+Author: Christoph Berg <myon@debian.org>
+Description: Move libpgport/libpgcommon/libpgfeutils from libdir to pkglibdir
+ This allows client applications to link to version-specific libraries.
+ Used by pg-checksums.
+Forwarded: No, (somewhat) Debian specific
+
 --- a/src/common/Makefile
 +++ b/src/common/Makefile
 @@ -68,15 +68,15 @@ all: libpgcommon.a libpgcommon_shlib.a l
