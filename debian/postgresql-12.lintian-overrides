@@ -8,3 +8,5 @@ library-not-linked-against-libc usr/lib/postgresql/*/lib/*
 shared-lib-without-dependency-information usr/lib/postgresql/*/lib/*
 # We use debconf in postrm only
 no-debconf-config
+# We store the PostgreSQL catalog version in a custom control field
+unknown-field-in-control postgresql-catversion
