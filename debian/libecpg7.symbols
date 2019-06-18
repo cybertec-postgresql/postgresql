@@ -1,4 +1,5 @@
 libecpg.so.7 libecpg7 #MINVER#
+* Build-Depends-Package: libecpg-dev
  ECPGallocate_desc@Base 0
  ECPGclose@Base 0
  ECPGconnect@Base 0

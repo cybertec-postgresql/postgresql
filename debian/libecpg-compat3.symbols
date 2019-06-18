@@ -1,4 +1,5 @@
 libecpg_compat.so.3 libecpg-compat3 #MINVER#
+* Build-Depends-Package: libecpg-dev
  ECPG_informix_get_var@Base 0
  ECPG_informix_reset_sqlca@Base 9.0~
  ECPG_informix_set_var@Base 0

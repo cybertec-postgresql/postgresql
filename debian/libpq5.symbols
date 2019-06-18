@@ -1,4 +1,5 @@
 libpq.so.5 libpq5 #MINVER#
+* Build-Depends-Package: libpq-dev
  PQbackendPID@Base 0
  PQbinaryTuples@Base 0
  PQcancel@Base 0
