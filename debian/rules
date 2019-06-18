@@ -155,7 +155,7 @@ override_dh_auto_install-arch:
 	# remove files duplicated from postgresql and -server-dev
 	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/include
 	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/share/locale
-	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/lib/postgresql/$(MAJOR_VER)/lib/pgxs/src/pl/plpython
+	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/lib/postgresql/$(MAJOR_VER)/lib/pgxs
 	# remove files from the "wrong" python package
 	rm -v debian/postgresql-plpython3-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/*plpython[2u]*
 	# move SPI examples into server package (they wouldn't be in the doc package in an -A build)
