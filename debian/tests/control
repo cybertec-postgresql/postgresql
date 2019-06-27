@@ -1,3 +1,7 @@
 Tests: run-testsuite
 Depends: @, build-essential, perl, hunspell-en-us, locales, netcat-openbsd, net-tools, logrotate
 Restrictions: needs-root
+
+Tests: installcheck
+Depends: @, build-essential
+Restrictions: allow-stderr

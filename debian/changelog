@@ -1,3 +1,9 @@
+postgresql-12 (12~beta2-2) UNRELEASED; urgency=medium
+
+  * debian/tests: Also run regression tests.
+
+ -- Christoph Berg <myon@debian.org>  Thu, 27 Jun 2019 13:20:18 +0200
+
 postgresql-12 (12~beta2-1) experimental; urgency=medium
 
   * New upstream beta version.

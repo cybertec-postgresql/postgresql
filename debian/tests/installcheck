@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -eux
+
+SOURCE=$(dpkg-parsechangelog -SSource)
+MAJOR=${SOURCE#*-}
+
+cd src/test/regress
+
+# compile regress.so
+make -f ../../../debian/tests/Makefile.regress
+
+# tell regression files that regress.so is not installed
+sed -i -e "s:@libdir@/regress:$PWD/regress:" input/*.source output/*.source
+
+# create tablespace and results directories
+rm -rf testtablespace results regression.*
+mkdir testtablespace results
+[ "$(id -u)" = "0" ] && chown postgres: testtablespace results
+
+# run the regression tests
+if ! pg_virtualenv -v $MAJOR \
+  /usr/lib/postgresql/$MAJOR/lib/pgxs/src/test/regress/pg_regress --schedule=parallel_schedule; then
+    cat regression.diffs
+    exit 1
+fi
