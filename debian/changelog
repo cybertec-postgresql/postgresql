@@ -1,28 +1,5 @@
-postgresql-12 (12~beta2-2) UNRELEASED; urgency=medium
+postgresql-13 (13~beta1-1) experimental; urgency=medium
 
-  * debian/tests: Also run regression tests.
+  * New major upstream version 13; packaging based on postgresql-12.
 
- -- Christoph Berg <myon@debian.org>  Thu, 27 Jun 2019 13:20:18 +0200
-
-postgresql-12 (12~beta2-1) experimental; urgency=medium
-
-  * New upstream beta version.
-  * debian/pycompat: Obsolete, remove.
-  * debian/patches: Add missing patch documentation.
-  * debian/rules: Use /usr/share/dpkg/pkg-info.mk and vendor.mk for
-    --with-extra-version.
-  * debian/copyright: sha2 moved to src/common, remove fortuna and random.
-  * debian/*.symbols: Add Build-Depends-Package information.
-  * postgresql-plpython3-12: Remove empty directory
-    /usr/lib/postgresql/12/lib/pgxs/src/pl/plpython.
-
- -- Christoph Berg <myon@debian.org>  Tue, 18 Jun 2019 11:00:03 +0200
-
-postgresql-12 (12~beta1-1) experimental; urgency=medium
-
-  * New major upstream version 12; packaging based on postgresql-11.
-  * libpq5.symbols: Remove pqsignal.
-  * Drop patch 64-pg_upgrade-sockdir, handled via pg_upgrade --socketdir now.
-  * Bump to libecpg7.
-
- -- Christoph Berg <myon@debian.org>  Tue, 21 May 2019 09:30:47 +0200
+ -- Christoph Berg <myon@debian.org>  Wed, 03 Jul 2019 11:08:47 +0200

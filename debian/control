@@ -1,4 +1,4 @@
-Source: postgresql-12
+Source: postgresql-13
 Section: database
 Priority: optional
 Maintainer: Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>
@@ -42,7 +42,7 @@ Build-Depends:
  zlib1g-dev | libz-dev
 Homepage: http://www.postgresql.org/
 Vcs-Browser: https://salsa.debian.org/postgresql/postgresql
-Vcs-Git: https://salsa.debian.org/postgresql/postgresql.git -b 12
+Vcs-Git: https://salsa.debian.org/postgresql/postgresql.git -b 13
 
 Package: libpq-dev
 Architecture: any
@@ -51,7 +51,7 @@ Depends:
  libpq5 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
-Suggests: postgresql-doc-12
+Suggests: postgresql-doc-13
 Description: header files for libpq5 (PostgreSQL library)
  Header files and static library for compiling C programs to link
  with the libpq library in order to communicate with a PostgreSQL
@@ -126,25 +126,25 @@ Section: libs
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: ${misc:Pre-Depends}
 Multi-Arch: same
-Description: shared library libpgtypes for PostgreSQL 12
+Description: shared library libpgtypes for PostgreSQL 13
  The libpgtypes shared library is used by programs built with ecpg.
  (Embedded PostgreSQL for C).
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-12
+Package: postgresql-13
 Architecture: any
 Depends:
  locales | locales-all,
- postgresql-client-12,
+ postgresql-client-13,
  postgresql-common (>= 182~),
  ssl-cert,
  tzdata,
  ${misc:Depends},
  ${shlibs:Depends}
-Provides: postgresql-contrib-12
+Provides: postgresql-contrib-13
 Recommends: sysstat
-Description: object-relational SQL database, version 12 server
+Description: object-relational SQL database, version 13 server
  PostgreSQL is a powerful, open source object-relational database
  system. It is fully ACID compliant, has full support for foreign
  keys, joins, views, triggers, and stored procedures (in multiple
@@ -155,20 +155,20 @@ Description: object-relational SQL database, version 12 server
  Java, .Net, Perl, Python, Ruby, Tcl, ODBC, among others, and
  exceptional documentation.
  .
- This package provides the database server for PostgreSQL 12.
+ This package provides the database server for PostgreSQL 13.
 XB-Postgresql-Catversion: ${postgresql:Catversion}
 
-#dbg#Package: postgresql-12-dbg
+#dbg#Package: postgresql-13-dbg
 #dbg#Section: debug
 #dbg#Priority: extra
 #dbg#Architecture: any
-#dbg#Depends: postgresql-12 (= ${binary:Version}), ${misc:Depends}
-#dbg#Description: debug symbols for postgresql-12
-#dbg# This package provides detached debugging symbols for PostgreSQL 12.
+#dbg#Depends: postgresql-13 (= ${binary:Version}), ${misc:Depends}
+#dbg#Description: debug symbols for postgresql-13
+#dbg# This package provides detached debugging symbols for PostgreSQL 13.
 #dbg# .
 #dbg# PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-client-12
+Package: postgresql-client-13
 Architecture: any
 Multi-Arch: foreign
 Depends:
@@ -177,34 +177,34 @@ Depends:
  sensible-utils,
  ${misc:Depends},
  ${shlibs:Depends}
-Suggests: postgresql-12, postgresql-doc-12
+Suggests: postgresql-13, postgresql-doc-13
 Provides: postgresql-client
-Description: front-end programs for PostgreSQL 12
+Description: front-end programs for PostgreSQL 13
  This package contains client and administrative programs for
  PostgreSQL: these are the interactive terminal client psql and
  programs for creating and removing users and databases.
  .
- This is the client package for PostgreSQL 12. If you install
- PostgreSQL 12 on a standalone machine, you need the server package
- postgresql-12, too. On a network, you can install this package on
+ This is the client package for PostgreSQL 13. If you install
+ PostgreSQL 13 on a standalone machine, you need the server package
+ postgresql-13, too. On a network, you can install this package on
  many client machines, while the server package may be installed on
  only one machine.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-server-dev-12
+Package: postgresql-server-dev-13
 Architecture: any
 Section: libdevel
 Depends:
  clang-7 [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !sh4 !sparc64 !x32],
- libpq-dev (>= 12~~),
+ libpq-dev (>= 13~~),
  llvm-7-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !sh4 !sparc64 !x32],
  postgresql-common (>= 142~),
  ${misc:Depends},
  ${shlibs:Depends}
 Breaks:
  postgresql-server-dev-all (<< 181~)
-Description: development files for PostgreSQL 12 server-side programming
+Description: development files for PostgreSQL 13 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
  .
@@ -214,7 +214,7 @@ Description: development files for PostgreSQL 12 server-side programming
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-doc-12
+Package: postgresql-doc-13
 Architecture: all
 Multi-Arch: foreign
 Section: doc
@@ -222,63 +222,63 @@ Depends: ${misc:Depends}
 Breaks: postgresql-common (<< 158~)
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
- PostgreSQL 12. The manual is in HTML format.
+ PostgreSQL 13. The manual is in HTML format.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plperl-12
+Package: postgresql-plperl-13
 Architecture: any
 Depends:
  perl,
- postgresql-12 (= ${binary:Version}),
+ postgresql-13 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-plperl
-Description: PL/Perl procedural language for PostgreSQL 12
+Description: PL/Perl procedural language for PostgreSQL 13
  PL/Perl enables an SQL developer to write procedural language functions
- for PostgreSQL 12 in Perl.  You need this package if you have any
- PostgreSQL 12 functions that use the languages plperl or plperlu.
+ for PostgreSQL 13 in Perl.  You need this package if you have any
+ PostgreSQL 13 functions that use the languages plperl or plperlu.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plpython-12
+Package: postgresql-plpython-13
 Architecture: any
 Depends:
- postgresql-12 (= ${binary:Version}),
+ postgresql-13 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-plpython
-Description: PL/Python procedural language for PostgreSQL 12
+Description: PL/Python procedural language for PostgreSQL 13
  PL/Python enables an SQL developer to write procedural language functions
- for PostgreSQL 12 in Python.  You need this package if you have any
- PostgreSQL 12 functions that use the languages plpython or plpythonu.
+ for PostgreSQL 13 in Python.  You need this package if you have any
+ PostgreSQL 13 functions that use the languages plpython or plpythonu.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plpython3-12
+Package: postgresql-plpython3-13
 Architecture: any
 Depends:
- postgresql-12 (= ${binary:Version}),
+ postgresql-13 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-plpython3
-Description: PL/Python 3 procedural language for PostgreSQL 12
+Description: PL/Python 3 procedural language for PostgreSQL 13
  PL/Python 3 enables an SQL developer to write procedural language functions
- for PostgreSQL 12 in Python 3.  You need this package if you have any
- PostgreSQL 12 functions that use the languages plpython3 or plpython3u.
+ for PostgreSQL 13 in Python 3.  You need this package if you have any
+ PostgreSQL 13 functions that use the languages plpython3 or plpython3u.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-pltcl-12
+Package: postgresql-pltcl-13
 Architecture: any
 Depends:
- postgresql-12 (= ${binary:Version}),
+ postgresql-13 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: postgresql-pltcl
-Description: PL/Tcl procedural language for PostgreSQL 12
+Description: PL/Tcl procedural language for PostgreSQL 13
  PL/Tcl enables an SQL developer to write procedural language functions
- for PostgreSQL 12 in Tcl.  You need this package if you have any
- PostgreSQL 12 functions that use the languages pltcl or pltclu.
+ for PostgreSQL 13 in Tcl.  You need this package if you have any
+ PostgreSQL 13 functions that use the languages pltcl or pltclu.
  .
  PostgreSQL is an object-relational SQL database management system.
