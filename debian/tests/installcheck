@@ -8,7 +8,7 @@ MAJOR=${SOURCE#*-}
 cd src/test/regress
 
 # compile regress.so
-make -f ../../../debian/tests/Makefile.regress
+make -f ../../../debian/tests/Makefile.regress PG_CONFIG=/usr/lib/postgresql/$MAJOR/bin/pg_config
 
 # tell regression files that regress.so is not installed
 sed -i -e "s:@libdir@/regress:$PWD/regress:" input/*.source output/*.source
