@@ -160,7 +160,7 @@ XB-Postgresql-Catversion: ${postgresql:Catversion}
 
 #dbg#Package: postgresql-12-dbg
 #dbg#Section: debug
-#dbg#Priority: extra
+#dbg#Priority: optional
 #dbg#Architecture: any
 #dbg#Depends: postgresql-12 (= ${binary:Version}), ${misc:Depends}
 #dbg#Description: debug symbols for postgresql-12
