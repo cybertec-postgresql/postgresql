@@ -1,1 +1,5 @@
 include: https://salsa.debian.org/postgresql/postgresql-common/raw/master/gitlab/gitlab-ci.yml
+
+# disable piuparts because it doesn't like testing (lib) packages in an environment where newer versions from unstable exist
+variables:
+  SALSA_CI_DISABLE_PIUPARTS: yes
