@@ -233,6 +233,8 @@ Depends:
  postgresql-12 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
+Breaks: postgresql-12 (<< 12~beta4)
+Replaces: postgresql-12 (<< 12~beta4)
 Provides: postgresql-plperl
 Description: PL/Perl procedural language for PostgreSQL 12
  PL/Perl enables an SQL developer to write procedural language functions
@@ -247,6 +249,8 @@ Depends:
  postgresql-12 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends}
+Breaks: postgresql-12 (<< 12~beta4)
+Replaces: postgresql-12 (<< 12~beta4)
 Provides: postgresql-plpython3
 Description: PL/Python 3 procedural language for PostgreSQL 12
  PL/Python 3 enables an SQL developer to write procedural language functions

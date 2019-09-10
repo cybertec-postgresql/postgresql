@@ -33,7 +33,6 @@ usr/share/locale/*/LC_MESSAGES/pg_upgrade-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_waldump-*.mo
 usr/share/locale/*/LC_MESSAGES/postgres-*.mo
 usr/share/locale/*/LC_MESSAGES/plpgsql-*.mo
-usr/share/locale/*/*/plpython-*.mo
 [linux-any] usr/share/postgresql/*/contrib/sepgsql.sql
 usr/share/postgresql/*/errcodes.txt
 usr/share/postgresql/*/extension/*
