@@ -92,11 +92,7 @@ endif
 %:
 	dh $@
 
-override_dh_auto_configure-indep: stamp/configure-build
-override_dh_auto_configure-arch: stamp/configure-build
-
-stamp/configure-build:
-	mkdir -p stamp
+override_dh_auto_configure:
 	dh_auto_configure --builddirectory=build -- \
            --with-icu \
            --with-tcl \
@@ -111,14 +107,11 @@ stamp/configure-build:
            $(BOOTSTRAP_FLAGS)
 	# remove pre-built documentation
 	rm -fv doc/src/sgml/*-stamp
-	touch "$@"
 
 override_dh_auto_build-indep:
 	$(MAKE) -C build/doc all # build man + html
 
-override_dh_auto_build-arch: stamp/build
-
-stamp/build: stamp/configure-build
+override_dh_auto_build-arch:
 	# set MAKELEVEL to 0 to force building submake-generated-headers in src/Makefile.global(.in)
 	MAKELEVEL=0 $(MAKE) -C build/src all
 	$(MAKE) -C build/doc man # build man only
@@ -126,7 +119,6 @@ stamp/build: stamp/configure-build
 	$(MAKE) -C build/contrib all
 	# build tutorial stuff
 	$(MAKE) -C build/src/tutorial NO_PGXS=1
-	touch "$@"
 
 override_dh_auto_install-arch:
 	$(MAKE) -C build/doc/src/sgml install-man DESTDIR=$(CURDIR)/debian/tmp
@@ -144,7 +136,7 @@ override_dh_makeshlibs:
 	dh_makeshlibs -Xusr/lib/postgresql/$(MAJOR_VER)
 
 override_dh_auto_clean:
-	rm -rf build* stamp
+	rm -rf build
 
 override_dh_installchangelogs:
 	dh_installchangelogs HISTORY
