@@ -1,3 +1,10 @@
+postgresql-12 (12~beta4-1) UNRELEASED; urgency=medium
+
+  * New upstream beta version.
+  * Drop plpython(2) package; python 2 is EOL.
+
+ -- Christoph Berg <myon@debian.org>  Tue, 10 Sep 2019 14:11:47 +0200
+
 postgresql-12 (12~beta3-1) experimental; urgency=medium
 
   * New upstream beta version.
