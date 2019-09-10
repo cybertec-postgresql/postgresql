@@ -241,20 +241,6 @@ Description: PL/Perl procedural language for PostgreSQL 13
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plpython-13
-Architecture: any
-Depends:
- postgresql-13 (= ${binary:Version}),
- ${misc:Depends},
- ${shlibs:Depends}
-Provides: postgresql-plpython
-Description: PL/Python procedural language for PostgreSQL 13
- PL/Python enables an SQL developer to write procedural language functions
- for PostgreSQL 13 in Python.  You need this package if you have any
- PostgreSQL 13 functions that use the languages plpython or plpythonu.
- .
- PostgreSQL is an object-relational SQL database management system.
-
 Package: postgresql-plpython3-13
 Architecture: any
 Depends:

@@ -93,7 +93,7 @@ endif
 	dh $@
 
 override_dh_auto_configure-indep: stamp/configure-build
-override_dh_auto_configure-arch: stamp/configure-build stamp/configure-build-py3
+override_dh_auto_configure-arch: stamp/configure-build
 
 stamp/configure-build:
 	mkdir -p stamp
@@ -106,25 +106,17 @@ stamp/configure-build:
            --with-openssl \
            --with-libxml \
            --with-libxslt \
-           PYTHON=/usr/bin/python \
+           PYTHON=/usr/bin/python3 \
            $(COMMON_CONFIGURE_FLAGS) \
            $(BOOTSTRAP_FLAGS)
 	# remove pre-built documentation
 	rm -fv doc/src/sgml/*-stamp
 	touch "$@"
 
-stamp/configure-build-py3:
-	mkdir -p stamp
-	dh_auto_configure --builddirectory=build-py3 -- \
-           --with-python \
-           PYTHON=/usr/bin/python3 \
-           $(COMMON_CONFIGURE_FLAGS)
-	touch "$@"
-
 override_dh_auto_build-indep:
 	$(MAKE) -C build/doc all # build man + html
 
-override_dh_auto_build-arch: stamp/build stamp/build-py3
+override_dh_auto_build-arch: stamp/build
 
 stamp/build: stamp/configure-build
 	# set MAKELEVEL to 0 to force building submake-generated-headers in src/Makefile.global(.in)
@@ -136,28 +128,11 @@ stamp/build: stamp/configure-build
 	$(MAKE) -C build/src/tutorial NO_PGXS=1
 	touch "$@"
 
-stamp/build-py3: stamp/configure-build-py3
-	MAKELEVEL=0 $(MAKE) -C build-py3/src/pl/plpython
-	$(MAKE) -C build-py3/contrib/hstore_plpython
-	$(MAKE) -C build-py3/contrib/jsonb_plpython
-	$(MAKE) -C build-py3/contrib/ltree_plpython
-	touch "$@"
-
 override_dh_auto_install-arch:
 	$(MAKE) -C build/doc/src/sgml install-man DESTDIR=$(CURDIR)/debian/tmp
 	$(MAKE) -C build/src install DESTDIR=$(CURDIR)/debian/tmp
 	$(MAKE) -C build/config install DESTDIR=$(CURDIR)/debian/tmp
 	$(MAKE) -C build/contrib install DESTDIR=$(CURDIR)/debian/tmp
-	$(MAKE) -C build-py3/src/pl/plpython install DESTDIR=$(CURDIR)/debian/postgresql-plpython3-$(MAJOR_VER)
-	$(MAKE) -C build-py3/contrib/hstore_plpython install DESTDIR=$(CURDIR)/debian/postgresql-plpython3-$(MAJOR_VER)
-	$(MAKE) -C build-py3/contrib/jsonb_plpython install DESTDIR=$(CURDIR)/debian/postgresql-plpython3-$(MAJOR_VER)
-	$(MAKE) -C build-py3/contrib/ltree_plpython install DESTDIR=$(CURDIR)/debian/postgresql-plpython3-$(MAJOR_VER)
-	# remove files duplicated from postgresql and -server-dev
-	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/include
-	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/share/locale
-	rm -rf debian/postgresql-plpython3-$(MAJOR_VER)/usr/lib/postgresql/$(MAJOR_VER)/lib/pgxs
-	# remove files from the "wrong" python package
-	rm -v debian/postgresql-plpython3-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/*plpython[2u]*
 	# move SPI examples into server package (they wouldn't be in the doc package in an -A build)
 	mkdir -p debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)
 	mv debian/tmp/usr/share/doc/postgresql-doc-$(MAJOR_VER)/extension debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)/examples
@@ -199,8 +174,9 @@ override_dh_install-arch:
 	       debian/postgresql-server-dev-$(MAJOR_VER)/usr/lib/postgresql/$(MAJOR_VER)/lib/pgxs/src/Makefile.global
 
 	# these are shipped in the pl packages
-	bash -c "rm debian/postgresql-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/{plperl,plpython,pltcl,*_pl}*"
-	bash -c "rm debian/postgresql-$(MAJOR_VER)/usr/lib/postgresql/$(MAJOR_VER)/lib/{plperl,plpython,pltcl,*_pl}*"
+	bash -c "rm -v debian/postgresql-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/extension/{plperl,plpython,pltcl,*_pl}*"
+	bash -c "rm -v debian/postgresql-$(MAJOR_VER)/usr/lib/postgresql/$(MAJOR_VER)/lib/{plperl,plpython,pltcl,*_pl}*"
+	bash -c "rm -rfv debian/postgresql-$(MAJOR_VER)/usr/lib/postgresql/$(MAJOR_VER)/lib/bitcode/*plpython*"
 
 	# record catversion in a file
 	echo $(CATVERSION) > debian/postgresql-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/catalog_version
