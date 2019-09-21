@@ -1,18 +1,15 @@
 libecpg.so.6 libecpg6 #MINVER#
 * Build-Depends-Package: libecpg-dev
  ECPGallocate_desc@Base 0
- ECPGclose@Base 12~
  ECPGconnect@Base 0
  ECPGdeallocate@Base 0
  ECPGdeallocate_all@Base 0
  ECPGdeallocate_desc@Base 0
  ECPGdebug@Base 0
- ECPGdeclare@Base 12~
  ECPGdescribe@Base 0
  ECPGdisconnect@Base 0
  ECPGdo@Base 0
  ECPGdo_descriptor@Base 0
- ECPGfetch@Base 12~
  ECPGfree_auto_mem@Base 0
  ECPGget_PGconn@Base 8.3.1-2~
  ECPGget_desc@Base 0
@@ -20,7 +17,6 @@ libecpg.so.6 libecpg6 #MINVER#
  ECPGget_sqlca@Base 0
  ECPGget_var@Base 9.0~
  ECPGis_noind_null@Base 0
- ECPGopen@Base 12~
  ECPGprepare@Base 0
  ECPGprepared_statement@Base 0
  ECPGset_desc@Base 0
