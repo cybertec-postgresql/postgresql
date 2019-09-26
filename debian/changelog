@@ -3,6 +3,7 @@ postgresql-12 (12~rc1-1) unstable; urgency=medium
   * New upstream rc version.
   * debian/tests/installcheck: Disable llvm bitcode compilation, not needed.
   * Revert back to libecpg6, the DECLARE STATEMENT feature was reverted.
+  * Use llvm 9; enable jit on powerpc.
 
  -- Christoph Berg <myon@debian.org>  Fri, 13 Sep 2019 10:35:58 +0200
 
