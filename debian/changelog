@@ -1,3 +1,10 @@
+postgresql-12 (12.0-2) unstable; urgency=medium
+
+  * Put back pqsignal() as an exported libpq symbol. Fixes regressions in
+    pg-repack and repmgr, and PostgreSQL server versions 9.2 and earlier.
+
+ -- Christoph Berg <myon@debian.org>  Fri, 11 Oct 2019 09:38:36 +0200
+
 postgresql-12 (12.0-1) unstable; urgency=medium
 
   * First PostgreSQL 12 release.
