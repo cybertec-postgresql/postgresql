@@ -1,5 +1,2 @@
 usr/include/postgresql/*/server
-usr/lib/postgresql/*/bin/pg_config
 usr/lib/postgresql/*/lib/libpg*.a
-usr/lib/postgresql/*/lib/pgxs/*
-usr/share/locale/*/LC_MESSAGES/pg_config-*.mo
