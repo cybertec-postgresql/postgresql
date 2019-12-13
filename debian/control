@@ -178,6 +178,8 @@ Depends:
  ${shlibs:Depends}
 Suggests: postgresql-12, postgresql-doc-12
 Provides: postgresql-client
+Conflicts: postgresql-server-dev-12 (<< 12.1-2~)
+Replaces: postgresql-server-dev-12 (<< 12.1-2~)
 Description: front-end programs for PostgreSQL 12
  This package contains client and administrative programs for
  PostgreSQL: these are the interactive terminal client psql and
@@ -198,6 +200,7 @@ Depends:
  clang-9 [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
  libpq-dev (>= 12~~),
  llvm-9-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
+ postgresql-client-12,
  postgresql-common (>= 142~),
  ${misc:Depends},
  ${shlibs:Depends}
