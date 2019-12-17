@@ -1,4 +1,4 @@
-postgresql-11 (12.1-2) UNRELEASED; urgency=medium
+postgresql-12 (12.1-2) UNRELEASED; urgency=medium
 
   * Move pg_config and pgxs to postgresql-client package to be able to test
     extension packages using only their native dependencies. (Closes: #944457)
