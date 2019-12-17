@@ -1,1 +1,2 @@
-include: https://salsa.debian.org/postgresql/postgresql-common/raw/master/gitlab/gitlab-ci.yml
+# disabled until the first release
+#include: https://salsa.debian.org/postgresql/postgresql-common/raw/master/gitlab/gitlab-ci.yml
