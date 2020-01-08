@@ -1,10 +1,10 @@
-postgresql-12 (12.1-2) UNRELEASED; urgency=medium
+postgresql-12 (12.1-2) unstable; urgency=medium
 
   * Move pg_config and pgxs to postgresql-client package to be able to test
     extension packages using only their native dependencies. (Closes: #944457)
   * Enable llvm on riscv64.
 
- -- Christoph Berg <myon@debian.org>  Fri, 13 Dec 2019 12:00:24 +0100
+ -- Christoph Berg <myon@debian.org>  Wed, 08 Jan 2020 16:14:44 +0100
 
 postgresql-12 (12.1-1) unstable; urgency=medium
 
