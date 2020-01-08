@@ -6,7 +6,7 @@ Uploaders:
  Martin Pitt <mpitt@debian.org>,
  Peter Eisentraut <petere@debian.org>,
  Christoph Berg <myon@debian.org>
-Standards-Version: 4.3.0
+Standards-Version: 4.4.1
 Build-Depends:
  bison,
  clang-9 [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !sh4 !sparc64 !x32],
@@ -34,7 +34,6 @@ Build-Depends:
  llvm-9-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !sh4 !sparc64 !x32],
  perl (>= 5.8),
  pkg-config,
- python-dev,
  python3-dev,
  systemtap-sdt-dev,
  tcl-dev,
