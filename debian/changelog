@@ -10,6 +10,7 @@ postgresql-12 (12.2-1) unstable; urgency=medium
       specified object (and hence have privilege to drop it). (CVE-2020-1720)
 
   * Disable llvm on riscv64 again, it's broken.
+  * Set PROVE_FLAGS="--verbose".
 
  -- Christoph Berg <myon@debian.org>  Thu, 09 Jan 2020 18:52:09 +0100
 
