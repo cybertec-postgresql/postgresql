@@ -7,6 +7,8 @@ include /usr/share/dpkg/vendor.mk
 MAJOR_VER := 13
 #CASSERT_FLAGS := --enable-cassert
 
+#xenial#export SKIP_READLINE_TESTS=yes
+
 CATVERSION = $(shell awk '/CATALOG_VERSION_NO/ { print $$3 }' src/include/catalog/catversion.h)
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
