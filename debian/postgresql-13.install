@@ -58,6 +58,4 @@ usr/share/postgresql/*/tsearch_data
 usr/share/postgresql/*/*.sql
 usr/share/postgresql/*/*.conf.sample
 usr/share/postgresql/*/postgres.bki
-usr/share/postgresql/*/postgres.description
-usr/share/postgresql/*/postgres.shdescription
 usr/share/postgresql/*/sql_features.txt
