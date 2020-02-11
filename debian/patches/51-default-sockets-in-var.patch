@@ -9,9 +9,9 @@ set it as default.
 
 --- a/src/include/pg_config_manual.h
 +++ b/src/include/pg_config_manual.h
-@@ -177,7 +177,7 @@
-  * here's where to twiddle it.  You can also override this at runtime
-  * with the postmaster's -k switch.
+@@ -197,7 +197,7 @@
+  * is changed, a client will connect via TCP/IP by default and will only use
+  * an AF_UNIX socket if one is explicitly specified.
   */
 -#define DEFAULT_PGSOCKET_DIR  "/tmp"
 +#define DEFAULT_PGSOCKET_DIR  "/var/run/postgresql"

@@ -12,7 +12,7 @@ Bug-Debian: http://bugs.debian.org/462037
 
 --- a/src/Makefile.global.in
 +++ b/src/Makefile.global.in
-@@ -120,7 +120,7 @@ libdir := @libdir@
+@@ -117,7 +117,7 @@ libdir := @libdir@
  pkglibdir = $(libdir)
  ifeq "$(findstring pgsql, $(pkglibdir))" ""
  ifeq "$(findstring postgres, $(pkglibdir))" ""
@@ -21,7 +21,7 @@ Bug-Debian: http://bugs.debian.org/462037
  endif
  endif
  
-@@ -168,7 +168,7 @@ endif # PGXS
+@@ -165,7 +165,7 @@ endif # PGXS
  
  # These derived path variables aren't separately configurable.
  
@@ -33,8 +33,8 @@ Bug-Debian: http://bugs.debian.org/462037
 --- a/src/bin/pg_config/pg_config.c
 +++ b/src/bin/pg_config/pg_config.c
 @@ -27,6 +27,8 @@
- #include "port.h"
  #include "common/config_info.h"
+ #include "port.h"
  
 +#include "../port/pg_config_paths.h"
 +
