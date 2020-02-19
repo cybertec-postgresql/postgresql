@@ -1,4 +1,4 @@
-postgresql-12 (12.2-2) UNRELEASED; urgency=medium
+postgresql-12 (12.2-2) unstable; urgency=medium
 
   * Add minimum version to server-dev -> client dependency where pg_config was
     moved. Spotted by Sandro Santilli, thanks!
