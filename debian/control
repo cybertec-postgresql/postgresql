@@ -200,7 +200,7 @@ Depends:
  clang-9 [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
  libpq-dev (>= 12~~),
  llvm-9-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
- postgresql-client-12,
+ postgresql-client-12 (>= 12.1-2~),
  postgresql-common (>= 142~),
  ${misc:Depends},
  ${shlibs:Depends}
