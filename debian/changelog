@@ -1,3 +1,9 @@
+postgresql-12 (12.2-3) unstable; urgency=medium
+
+  * Move to llvm 10.
+
+ -- Christoph Berg <myon@debian.org>  Wed, 25 Mar 2020 11:22:25 +0100
+
 postgresql-12 (12.2-2) unstable; urgency=medium
 
   * Add minimum version to server-dev -> client dependency where pg_config was
