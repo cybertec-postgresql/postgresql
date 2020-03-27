@@ -2,6 +2,7 @@ postgresql-12 (12.2-4) UNRELEASED; urgency=medium
 
   * Disable llvm on ppc64 and s390x, segfaulting with llvm 10.
     https://bugs.launchpad.net/ubuntu/+source/llvm-toolchain-10/+bug/1867173
+  * On error, show install.log as well.
 
  -- Christoph Berg <myon@debian.org>  Fri, 27 Mar 2020 10:12:46 +0100
 
