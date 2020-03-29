@@ -9,12 +9,12 @@ set it as default.
 
 --- a/src/include/pg_config_manual.h
 +++ b/src/include/pg_config_manual.h
-@@ -197,7 +197,7 @@
-  * is changed, a client will connect via TCP/IP by default and will only use
-  * an AF_UNIX socket if one is explicitly specified.
+@@ -201,7 +201,7 @@
+  * support them yet.
   */
+ #ifndef WIN32
 -#define DEFAULT_PGSOCKET_DIR  "/tmp"
 +#define DEFAULT_PGSOCKET_DIR  "/var/run/postgresql"
- 
- /*
-  * This is the default event source for Windows event log.
+ #else
+ #define DEFAULT_PGSOCKET_DIR ""
+ #endif

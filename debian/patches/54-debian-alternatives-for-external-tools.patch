@@ -14,10 +14,10 @@ Forwarded: No, Debian specific
 +/*#define DEFAULT_EDITOR_LINENUMBER_ARG "+"*/
  #endif
  
- #define DEFAULT_PROMPT1 "%/%R%# "
+ #define DEFAULT_PROMPT1 "%/%R%x%# "
 --- a/src/include/fe_utils/print.h
 +++ b/src/include/fe_utils/print.h
-@@ -18,7 +18,7 @@
+@@ -20,7 +20,7 @@
  
  /* This is not a particularly great place for this ... */
  #ifndef __CYGWIN__
