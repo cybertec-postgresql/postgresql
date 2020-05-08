@@ -81,14 +81,11 @@ COMMON_CONFIGURE_FLAGS= \
   CFLAGS='$(CFLAGS)' \
   LDFLAGS='$(LDFLAGS)'
 
-# allow missing krb5 and ldap during bootstrapping
+# allow missing gssapi and ldap during bootstrapping
 ifeq ($(DEB_STAGE),stage1)
 BOOTSTRAP_FLAGS=
 else
-BOOTSTRAP_FLAGS= --with-gssapi --with-ldap \
-		 --with-includes=/usr/include/mit-krb5 \
-		 --with-libs=/usr/lib/mit-krb5 \
-		 --with-libs=/usr/lib/$(DEB_HOST_MULTIARCH)/mit-krb5
+BOOTSTRAP_FLAGS= --with-gssapi --with-ldap
 endif
 
 %:
