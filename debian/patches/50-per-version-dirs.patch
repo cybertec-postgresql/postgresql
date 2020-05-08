@@ -12,7 +12,7 @@ Bug-Debian: http://bugs.debian.org/462037
 
 --- a/src/Makefile.global.in
 +++ b/src/Makefile.global.in
-@@ -117,7 +117,7 @@ libdir := @libdir@
+@@ -119,7 +119,7 @@ libdir := @libdir@
  pkglibdir = $(libdir)
  ifeq "$(findstring pgsql, $(pkglibdir))" ""
  ifeq "$(findstring postgres, $(pkglibdir))" ""
@@ -21,7 +21,7 @@ Bug-Debian: http://bugs.debian.org/462037
  endif
  endif
  
-@@ -165,7 +165,7 @@ endif # PGXS
+@@ -167,7 +167,7 @@ endif # PGXS
  
  # These derived path variables aren't separately configurable.
  
@@ -41,7 +41,7 @@ Bug-Debian: http://bugs.debian.org/462037
  static const char *progname;
  
  /*
-@@ -148,11 +150,7 @@ main(int argc, char **argv)
+@@ -149,11 +151,7 @@ main(int argc, char **argv)
  		}
  	}
  
@@ -54,3 +54,16 @@ Bug-Debian: http://bugs.debian.org/462037
  
  	configdata = get_configdata(my_exec_path, &configdata_len);
  	/* no arguments -> print everything */
+--- a/src/test/perl/TestLib.pm
++++ b/src/test/perl/TestLib.pm
+@@ -591,6 +591,10 @@ sub check_pg_config
+ 	  or die "could not execute pg_config";
+ 	chomp($stdout);
+ 	$stdout =~ s/\r$//;
++	# Debian's pg_config is not relocatable, manually check for correct location
++	if (-d "../../../build/tmp_install/usr/include/postgresql") {
++		$stdout = "../../../build/tmp_install/usr/include/postgresql";
++	}
+ 
+ 	open my $pg_config_h, '<', "$stdout/pg_config.h" or die "$!";
+ 	my $match = (grep { /^$regexp/ } <$pg_config_h>);
