@@ -1,3 +1,9 @@
+postgresql-12 (12.3-1) unstable; urgency=medium
+
+  * New upstream version.
+
+ -- Christoph Berg <myon@debian.org>  Wed, 13 May 2020 09:49:16 +0200
+
 postgresql-12 (12.2-4) unstable; urgency=medium
 
   * Disable llvm on ppc64 and s390x, segfaulting with llvm 10.
