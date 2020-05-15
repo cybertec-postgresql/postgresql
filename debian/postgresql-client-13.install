@@ -19,7 +19,7 @@ usr/lib/postgresql/*/lib/pgxs/*
 usr/share/locale/*/LC_MESSAGES/pg_basebackup-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_config-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_dump-*.mo
-#usr/share/locale/*/LC_MESSAGES/pg_verifybackup-*.mo
+usr/share/locale/*/LC_MESSAGES/pg_verifybackup-*.mo
 usr/share/locale/*/LC_MESSAGES/pgscripts-*.mo
 usr/share/locale/*/LC_MESSAGES/psql-*.mo
 usr/share/postgresql/*/man/man1/clusterdb.1*
