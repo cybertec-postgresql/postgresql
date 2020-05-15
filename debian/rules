@@ -146,7 +146,7 @@ override_dh_compress:
 	gzip -9n $(CURDIR)/debian/*/usr/share/postgresql/*/man/man*/*.[137]
 
 override_dh_install-arch:
-	dh_install --fail-missing
+	dh_install
 
 	# link README.Debian.gz to postgresql-common
 	mkdir -p debian/postgresql-$(MAJOR_VER)/usr/share/doc/postgresql-$(MAJOR_VER)
@@ -173,7 +173,7 @@ override_dh_install-arch:
 	echo $(CATVERSION) > debian/postgresql-$(MAJOR_VER)/usr/share/postgresql/$(MAJOR_VER)/catalog_version
 
 override_dh_install-indep:
-	dh_install --fail-missing
+	dh_install
 
 	if [ -d debian/postgresql-doc-$(MAJOR_VER) ]; then set -e; \
 		install -d debian/postgresql-doc-$(MAJOR_VER)/usr/share/doc/postgresql-doc-$(MAJOR_VER)/tutorial; \
