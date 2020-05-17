@@ -128,7 +128,7 @@ libpq.so.5 libpq5 #MINVER#
  PQsetNoticeProcessor@Base 0
  PQsetNoticeReceiver@Base 0
  PQsetResultAttrs@Base 8.4~
- PQsetSSLKeyPassHook@_OpenSSLBase 13~~
+ PQsetSSLKeyPassHook_OpenSSL@Base 13~~
  PQsetSingleRowMode@Base 9.2~beta3
  PQsetdbLogin@Base 0
  PQsetnonblocking@Base 0
