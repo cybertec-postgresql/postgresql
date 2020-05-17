@@ -21,7 +21,7 @@ libpq.so.5 libpq5 #MINVER#
  PQconsumeInput@Base 0
  PQcopyResult@Base 8.4~
  PQdb@Base 0
- PQdefaultSSLKeyPassHook@Base 13~~
+ PQdefaultSSLKeyPassHook_OpenSSL@Base 13~~
  PQdescribePortal@Base 0
  PQdescribePrepared@Base 0
  PQdisplayTuples@Base 0
@@ -58,7 +58,7 @@ libpq.so.5 libpq5 #MINVER#
  PQgetCancel@Base 0
  PQgetCopyData@Base 0
  PQgetResult@Base 0
- PQgetSSLKeyPassHook@Base 13~~
+ PQgetSSLKeyPassHook_OpenSSL@Base 13~~
  PQgetgssctx@Base 12~~
  PQgetisnull@Base 0
  PQgetlength@Base 0
@@ -128,7 +128,7 @@ libpq.so.5 libpq5 #MINVER#
  PQsetNoticeProcessor@Base 0
  PQsetNoticeReceiver@Base 0
  PQsetResultAttrs@Base 8.4~
- PQsetSSLKeyPassHook@Base 13~~
+ PQsetSSLKeyPassHook@_OpenSSLBase 13~~
  PQsetSingleRowMode@Base 9.2~beta3
  PQsetdbLogin@Base 0
  PQsetnonblocking@Base 0
