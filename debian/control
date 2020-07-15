@@ -16,6 +16,7 @@ Build-Depends:
  docbook-xsl (>= 1.77),
  dpkg-dev (>= 1.16.1~),
  flex,
+ gdb,
  gettext,
  krb5-admin-server,
  krb5-kdc,

@@ -190,7 +190,7 @@ ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	# temp-install wants to be invoked from a top-level make, unset MAKELEVEL here
 	# hurd doesn't implement semaphores shared between processes yet; succeed anyway so they at least have libpq5
 	# plperl currently fails on kfreebsd-*
-	unset LANG LC_CTYPE MAKELEVEL; \
+	unset LANG LC_CTYPE MAKELEVEL; ulimit -c unlimited; \
 	if ! make -C build check-world \
 	  EXTRA_REGRESS_OPTS='--port=$(shell perl -le 'print 1024 + int(rand(64000))')' \
 	  PG_TEST_EXTRA='kerberos ssl' \
@@ -199,6 +199,10 @@ ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	    for l in `find build -name 'regress*' -o -name '*.log' | perl -we 'print map { "$$_\n"; } sort { (stat $$a)[9] <=> (stat $$b)[9] } map { chomp; $$_; } <>' | tail -n 10`; do \
 		echo "******** $$l ********"; \
 		cat $$l; \
+	    done; \
+	    for c in `find build -name 'core*'`; do \
+	        echo "******** $$c ********"; \
+	        gdb -batch -ex 'bt full' build/tmp_install/usr/lib/postgresql/$(MAJOR_VER)/bin/postgres $$c || :; \
 	    done; \
 	    case $(DEB_HOST_ARCH) in \
 	        hurd-*|kfreebsd-*) exit 0 ;; \
