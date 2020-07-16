@@ -1,3 +1,9 @@
+postgresql-13 (13~beta2-3) UNRELEASED; urgency=medium
+
+  * Extend lintian overrides to client, plperl, and pltcl.
+
+ -- Christoph Berg <myon@debian.org>  Thu, 16 Jul 2020 13:23:46 +0200
+
 postgresql-13 (13~beta2-2) experimental; urgency=medium
 
   * Drop ldap-utils and slapd from build-dependencies while the "extra" ldap
