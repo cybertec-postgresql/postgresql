@@ -14,4 +14,4 @@ shared-library-lacks-prerequisites usr/lib/postgresql/*/lib/*
 no-debconf-config
 
 # We store the PostgreSQL catalog version in a custom control field
-unknown-field-in-control *postgresql-catversion
+unknown-field *Postgresql-Catversion
