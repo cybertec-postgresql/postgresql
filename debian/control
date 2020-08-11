@@ -10,7 +10,7 @@ Standards-Version: 4.5.0
 Build-Depends:
  bison,
  clang-10 [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !ppc64 !riscv64 !s390x !sh4 !sparc64 !x32],
- debhelper (>= 9~),
+ debhelper-compat (= 13),
  dh-exec (>= 0.13~),
  docbook-xml,
  docbook-xsl (>= 1.77),
