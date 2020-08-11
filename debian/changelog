@@ -1,6 +1,36 @@
 postgresql-12 (12.4-1) unstable; urgency=medium
 
   * New upstream version.
+    + Set a secure search_path in logical replication walsenders and apply
+      workers (Noah Misch)
+
+      A malicious user of either the publisher or subscriber database could
+      potentially cause execution of arbitrary SQL code by the role running
+      replication, which is often a superuser.  Some of the risks here are
+      equivalent to those described in CVE-2018-1058, and are mitigated in
+      this patch by ensuring that the replication sender and receiver execute
+      with empty search_path settings. (As with CVE-2018-1058, that change
+      might cause problems for under-qualified names used in replicated
+      tables' DDL.)  Other risks are inherent in replicating objects that
+      belong to untrusted roles; the most we can do is document that there is
+      a hazard to consider. (CVE-2020-14349)
+
+    + Make contrib modules' installation scripts more secure (Tom Lane)
+
+      Attacks similar to those described in CVE-2018-1058 could be carried out
+      against an extension installation script, if the attacker can create
+      objects in either the extension's target schema or the schema of some
+      prerequisite extension.  Since extensions often require superuser
+      privilege to install, this can open a path to obtaining superuser
+      privilege.  To mitigate this risk, be more careful about the search_path
+      used to run an installation script; disable check_function_bodies within
+      the script; and fix catalog-adjustment queries used in some contrib
+      modules to ensure they are secure.  Also provide documentation to help
+      third-party extension authors make their installation scripts secure.
+      This is not a complete solution; extensions that depend on other
+      extensions can still be at risk if installed carelessly.
+      (CVE-2020-14350)
+
   * DH 13.
 
  -- Christoph Berg <myon@debian.org>  Tue, 11 Aug 2020 12:07:26 +0200
