@@ -1,4 +1,4 @@
-postgresql-13 (13~beta3-2) experimental; urgency=medium
+postgresql-13 (13~beta3-1) experimental; urgency=medium
 
   * New beta release.
   * Extend lintian overrides to client, plperl, and pltcl.
