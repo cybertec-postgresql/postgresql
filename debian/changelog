@@ -1,34 +1,5 @@
-postgresql-13 (13~rc1-1) experimental; urgency=medium
+postgresql-14 (14~~devel-1) UNRELEASED; urgency=medium
 
-  * Release candidate.
-  * Make extension_share_directory configurable at postmaster start time so we
-    can test extensions before they are installed.
+  * New major upstream version 14; packaging based on postgresql-13.
 
- -- Christoph Berg <myon@debian.org>  Tue, 15 Sep 2020 22:56:40 +0200
-
-postgresql-13 (13~beta3-1) experimental; urgency=medium
-
-  * New beta release.
-  * Extend lintian overrides to client, plperl, and pltcl.
-
- -- Christoph Berg <myon@debian.org>  Thu, 16 Jul 2020 13:23:46 +0200
-
-postgresql-13 (13~beta2-2) experimental; urgency=medium
-
-  * Drop ldap-utils and slapd from build-dependencies while the "extra" ldap
-    test isn't run.
-  * Print backtrace from coredumps at build-time when tests crash.
-
- -- Christoph Berg <myon@debian.org>  Wed, 15 Jul 2020 17:14:45 +0200
-
-postgresql-13 (13~beta2-1) experimental; urgency=medium
-
-  * New beta release.
-
- -- Christoph Berg <myon@debian.org>  Wed, 24 Jun 2020 16:19:12 +0200
-
-postgresql-13 (13~beta1-1) experimental; urgency=medium
-
-  * New major upstream version 13; packaging based on postgresql-12.
-
- -- Christoph Berg <myon@debian.org>  Tue, 19 May 2020 15:22:03 +0200
+ -- Christoph Berg <myon@debian.org>  Wed, 16 Sep 2020 13:02:03 +0200
