@@ -1,8 +1,13 @@
 postgresql-13 (13~rc1-1) experimental; urgency=medium
 
   * Release candidate.
-  * Make extension_share_directory configurable at postmaster start time so we
-    can test extensions before they are installed.
+  * New GUC extension_destdir: Path to prepend for extension loading
+
+    This directory is prepended to paths when loading extensions (control
+    and SQL files), and to the '$libdir' directive when loading modules that
+    back functions. The location is made configurable to allow build-time
+    testing of extensions that do not have been installed to their proper
+    location yet.
 
  -- Christoph Berg <myon@debian.org>  Tue, 15 Sep 2020 22:56:40 +0200
 
