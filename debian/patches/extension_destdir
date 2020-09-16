@@ -1,0 +1,88 @@
+--- a/src/backend/utils/misc/guc.c
++++ b/src/backend/utils/misc/guc.c
+@@ -557,6 +557,7 @@ char	   *ConfigFileName;
+ char	   *HbaFileName;
+ char	   *IdentFileName;
+ char	   *external_pid_file;
++char	   *extension_destdir;
+ 
+ char	   *pgstat_temp_directory;
+ 
+@@ -4255,6 +4256,17 @@ static struct config_string ConfigureNam
+ 	},
+ 
+ 	{
++		{"extension_destdir", PGC_SUSET, FILE_LOCATIONS,
++			gettext_noop("Path to prepend for extension loading"),
++			gettext_noop("This directory is prepended to paths when loading extensions (control and SQL files), and to the '$libdir' directive when loading modules that back functions. The location is made configurable to allow build-time testing of extensions that do not have been installed to their proper location yet."),
++			GUC_SUPERUSER_ONLY
++		},
++		&extension_destdir,
++		"",
++		NULL, NULL, NULL
++	},
++
++	{
+ 		{"ssl_library", PGC_INTERNAL, PRESET_OPTIONS,
+ 			gettext_noop("Name of the SSL library."),
+ 			NULL,
+--- a/src/backend/commands/extension.c
++++ b/src/backend/commands/extension.c
+@@ -375,7 +375,7 @@ get_extension_control_directory(void)
+ 
+ 	get_share_path(my_exec_path, sharepath);
+ 	result = (char *) palloc(MAXPGPATH);
+-	snprintf(result, MAXPGPATH, "%s/extension", sharepath);
++	snprintf(result, MAXPGPATH, "%s%s/extension", extension_destdir, sharepath);
+ 
+ 	return result;
+ }
+@@ -388,8 +388,8 @@ get_extension_control_filename(const cha
+ 
+ 	get_share_path(my_exec_path, sharepath);
+ 	result = (char *) palloc(MAXPGPATH);
+-	snprintf(result, MAXPGPATH, "%s/extension/%s.control",
+-			 sharepath, extname);
++	snprintf(result, MAXPGPATH, "%s%s/extension/%s.control",
++			 extension_destdir, sharepath, extname);
+ 
+ 	return result;
+ }
+@@ -412,7 +412,7 @@ get_extension_script_directory(Extension
+ 
+ 	get_share_path(my_exec_path, sharepath);
+ 	result = (char *) palloc(MAXPGPATH);
+-	snprintf(result, MAXPGPATH, "%s/%s", sharepath, control->directory);
++	snprintf(result, MAXPGPATH, "%s%s/%s", extension_destdir, sharepath, control->directory);
+ 
+ 	return result;
+ }
+--- a/src/include/utils/guc.h
++++ b/src/include/utils/guc.h
+@@ -270,6 +270,7 @@ extern PGDLLIMPORT char *ConfigFileName;
+ extern char *HbaFileName;
+ extern char *IdentFileName;
+ extern char *external_pid_file;
++extern char *extension_destdir;
+ 
+ extern PGDLLIMPORT char *application_name;
+ 
+--- a/src/backend/utils/fmgr/dfmgr.c
++++ b/src/backend/utils/fmgr/dfmgr.c
+@@ -34,6 +34,7 @@
+ #include "lib/stringinfo.h"
+ #include "miscadmin.h"
+ #include "storage/shmem.h"
++#include "utils/guc.h"
+ #include "utils/hsearch.h"
+ 
+ 
+@@ -573,7 +574,7 @@ substitute_libpath_macro(const char *nam
+ 				 errmsg("invalid macro name in dynamic library path: %s",
+ 						name)));
+ 
+-	return psprintf("%s%s", pkglib_path, sep_ptr);
++	return psprintf("%s%s%s", extension_destdir, pkglib_path, sep_ptr);
+ }
+ 
+ 
