@@ -5,7 +5,7 @@ Maintainer: Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>
 Uploaders:
  Martin Pitt <mpitt@debian.org>,
  Peter Eisentraut <petere@debian.org>,
- Christoph Berg <myon@debian.org>
+ Christoph Berg <myon@debian.org>,
 Standards-Version: 4.5.0
 Build-Depends:
  bison,
@@ -43,7 +43,7 @@ Build-Depends:
  tcl-dev,
  uuid-dev,
  xsltproc,
- zlib1g-dev | libz-dev
+ zlib1g-dev | libz-dev,
 Homepage: http://www.postgresql.org/
 Vcs-Browser: https://salsa.debian.org/postgresql/postgresql
 Vcs-Git: https://salsa.debian.org/postgresql/postgresql.git -b 14
@@ -54,8 +54,9 @@ Section: libdevel
 Depends:
  libpq5 (= ${binary:Version}),
  ${misc:Depends},
- ${shlibs:Depends}
-Suggests: postgresql-doc-14
+ ${shlibs:Depends},
+Suggests:
+ postgresql-doc-14,
 Description: header files for libpq5 (PostgreSQL library)
  Header files and static library for compiling C programs to link
  with the libpq library in order to communicate with a PostgreSQL
@@ -66,8 +67,11 @@ Description: header files for libpq5 (PostgreSQL library)
 Package: libpq5
 Architecture: any
 Section: libs
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Pre-Depends: ${misc:Pre-Depends}
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Pre-Depends:
+ ${misc:Pre-Depends},
 Multi-Arch: same
 Description: PostgreSQL C client library
  libpq is a C library that enables user programs to communicate with
@@ -83,8 +87,11 @@ Description: PostgreSQL C client library
 Package: libecpg6
 Architecture: any
 Section: libs
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Pre-Depends: ${misc:Pre-Depends}
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Pre-Depends:
+ ${misc:Pre-Depends},
 Multi-Arch: same
 Description: run-time library for ECPG programs
  The libecpg shared library is used by programs built with ECPG
@@ -101,7 +108,7 @@ Depends:
  libpgtypes3 (= ${binary:Version}),
  libpq-dev,
  ${misc:Depends},
- ${shlibs:Depends}
+ ${shlibs:Depends},
 Description: development files for ECPG (Embedded PostgreSQL for C)
  This package contains the necessary files to build ECPG (Embedded
  PostgreSQL for C) programs.  It includes the development libraries
@@ -115,8 +122,11 @@ Description: development files for ECPG (Embedded PostgreSQL for C)
 Package: libecpg-compat3
 Architecture: any
 Section: libs
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Pre-Depends: ${misc:Pre-Depends}
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Pre-Depends:
+ ${misc:Pre-Depends},
 Multi-Arch: same
 Description: older version of run-time library for ECPG programs
  The libecpg_compat shared library is used by programs built with ecpg.
@@ -127,8 +137,11 @@ Description: older version of run-time library for ECPG programs
 Package: libpgtypes3
 Architecture: any
 Section: libs
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Pre-Depends: ${misc:Pre-Depends}
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Pre-Depends:
+ ${misc:Pre-Depends},
 Multi-Arch: same
 Description: shared library libpgtypes for PostgreSQL 14
  The libpgtypes shared library is used by programs built with ecpg.
@@ -145,9 +158,11 @@ Depends:
  ssl-cert,
  tzdata,
  ${misc:Depends},
- ${shlibs:Depends}
-Provides: postgresql-contrib-14
-Recommends: sysstat
+ ${shlibs:Depends},
+Provides:
+ postgresql-contrib-14,
+Recommends:
+ sysstat,
 Description: object-relational SQL database, version 14 server
  PostgreSQL is a powerful, open source object-relational database
  system. It is fully ACID compliant, has full support for foreign
@@ -170,9 +185,12 @@ Depends:
  postgresql-client-common (>= 182~),
  sensible-utils,
  ${misc:Depends},
- ${shlibs:Depends}
-Suggests: postgresql-14, postgresql-doc-14
-Provides: postgresql-client
+ ${shlibs:Depends},
+Suggests:
+ postgresql-14,
+ postgresql-doc-14,
+Provides:
+ postgresql-client,
 Description: front-end programs for PostgreSQL 14
  This package contains client and administrative programs for
  PostgreSQL: these are the interactive terminal client psql and
@@ -196,9 +214,9 @@ Depends:
  postgresql-client-14,
  postgresql-common (>= 142~),
  ${misc:Depends},
- ${shlibs:Depends}
+ ${shlibs:Depends},
 Breaks:
- postgresql-server-dev-all (<< 181~)
+ postgresql-server-dev-all (<< 181~),
 Description: development files for PostgreSQL 14 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
@@ -213,8 +231,10 @@ Package: postgresql-doc-14
 Architecture: all
 Multi-Arch: foreign
 Section: doc
-Depends: ${misc:Depends}
-Breaks: postgresql-common (<< 158~)
+Depends:
+ ${misc:Depends},
+Breaks:
+ postgresql-common (<< 158~),
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
  PostgreSQL 14. The manual is in HTML format.
@@ -227,8 +247,9 @@ Depends:
  perl,
  postgresql-14 (= ${binary:Version}),
  ${misc:Depends},
- ${shlibs:Depends}
-Provides: postgresql-plperl
+ ${shlibs:Depends},
+Provides:
+ postgresql-plperl,
 Description: PL/Perl procedural language for PostgreSQL 14
  PL/Perl enables an SQL developer to write procedural language functions
  for PostgreSQL 14 in Perl.  You need this package if you have any
@@ -241,8 +262,9 @@ Architecture: any
 Depends:
  postgresql-14 (= ${binary:Version}),
  ${misc:Depends},
- ${shlibs:Depends}
-Provides: postgresql-plpython3
+ ${shlibs:Depends},
+Provides:
+ postgresql-plpython3,
 Description: PL/Python 3 procedural language for PostgreSQL 14
  PL/Python 3 enables an SQL developer to write procedural language functions
  for PostgreSQL 14 in Python 3.  You need this package if you have any
@@ -255,8 +277,9 @@ Architecture: any
 Depends:
  postgresql-14 (= ${binary:Version}),
  ${misc:Depends},
- ${shlibs:Depends}
-Provides: postgresql-pltcl
+ ${shlibs:Depends},
+Provides:
+ postgresql-pltcl,
 Description: PL/Tcl procedural language for PostgreSQL 14
  PL/Tcl enables an SQL developer to write procedural language functions
  for PostgreSQL 14 in Tcl.  You need this package if you have any
