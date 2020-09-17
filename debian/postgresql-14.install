@@ -3,7 +3,6 @@
 usr/lib/postgresql/*/bin/initdb
 usr/lib/postgresql/*/bin/oid2name
 usr/lib/postgresql/*/bin/pg_archivecleanup
-usr/lib/postgresql/*/bin/pgbench
 usr/lib/postgresql/*/bin/pg_checksums
 usr/lib/postgresql/*/bin/pg_controldata
 usr/lib/postgresql/*/bin/pg_ctl
@@ -16,7 +15,6 @@ usr/lib/postgresql/*/bin/pg_upgrade
 usr/lib/postgresql/*/bin/pg_waldump
 usr/lib/postgresql/*/bin/postgres
 usr/lib/postgresql/*/bin/postmaster
-usr/lib/postgresql/*/bin/vacuumlo
 [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32] usr/lib/postgresql/*/lib/bitcode
 [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32] usr/lib/postgresql/*/lib/llvmjit_types.bc
 usr/lib/postgresql/*/lib/*.so
@@ -39,7 +37,6 @@ usr/share/postgresql/*/extension/*
 usr/share/postgresql/*/man/man1/initdb.1*
 usr/share/postgresql/*/man/man1/oid2name.1*
 usr/share/postgresql/*/man/man1/pg_archivecleanup.1*
-usr/share/postgresql/*/man/man1/pgbench.1*
 usr/share/postgresql/*/man/man1/pg_checksums.1*
 usr/share/postgresql/*/man/man1/pg_controldata.1*
 usr/share/postgresql/*/man/man1/pg_ctl.1*
@@ -52,7 +49,6 @@ usr/share/postgresql/*/man/man1/pg_upgrade.1*
 usr/share/postgresql/*/man/man1/pg_waldump.1*
 usr/share/postgresql/*/man/man1/postgres.1*
 usr/share/postgresql/*/man/man1/postmaster.1*
-usr/share/postgresql/*/man/man1/vacuumlo.1*
 usr/share/postgresql/*/timezonesets/*
 usr/share/postgresql/*/tsearch_data
 usr/share/postgresql/*/*.sql

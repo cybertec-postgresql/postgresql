@@ -12,9 +12,11 @@ usr/lib/postgresql/*/bin/pg_receivewal
 usr/lib/postgresql/*/bin/pg_recvlogical
 usr/lib/postgresql/*/bin/pg_restore
 usr/lib/postgresql/*/bin/pg_verifybackup
+usr/lib/postgresql/*/bin/pgbench
 usr/lib/postgresql/*/bin/psql
 usr/lib/postgresql/*/bin/reindexdb
 usr/lib/postgresql/*/bin/vacuumdb
+usr/lib/postgresql/*/bin/vacuumlo
 usr/lib/postgresql/*/lib/pgxs/*
 usr/share/locale/*/LC_MESSAGES/pg_basebackup-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_config-*.mo
@@ -35,8 +37,10 @@ usr/share/postgresql/*/man/man1/pg_receivewal.1*
 usr/share/postgresql/*/man/man1/pg_recvlogical.1*
 usr/share/postgresql/*/man/man1/pg_restore.1*
 usr/share/postgresql/*/man/man1/pg_verifybackup.1*
+usr/share/postgresql/*/man/man1/pgbench.1*
 usr/share/postgresql/*/man/man1/psql.1*
 usr/share/postgresql/*/man/man1/reindexdb.1*
 usr/share/postgresql/*/man/man1/vacuumdb.1*
+usr/share/postgresql/*/man/man1/vacuumlo.1*
 usr/share/postgresql/*/man/man7/
 usr/share/postgresql/*/psqlrc.sample
