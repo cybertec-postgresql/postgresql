@@ -180,7 +180,7 @@ ifeq (, $(findstring nocheck, $(DEB_BUILD_OPTIONS)))
 	unset LANG LC_CTYPE MAKELEVEL; ulimit -c unlimited; \
 	if ! make -C build check-world \
 	  EXTRA_REGRESS_OPTS='--port=$(shell perl -le 'print 1024 + int(rand(64000))')' \
-	  PG_TEST_EXTRA='kerberos ssl' \
+	  PG_TEST_EXTRA='ssl' \
 	  PROVE_FLAGS="--verbose"; \
 	then \
 	    for l in `find build -name 'regress*' -o -name '*.log' | perl -we 'print map { "$$_\n"; } sort { (stat $$a)[9] <=> (stat $$b)[9] } map { chomp; $$_; } <>' | tail -n 10`; do \
