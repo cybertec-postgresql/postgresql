@@ -7,3 +7,4 @@
 filter-debug-prefix-map
 libpgport-pkglibdir
 initdb-startup-message
+extension_destdir

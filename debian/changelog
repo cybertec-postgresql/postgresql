@@ -1,3 +1,15 @@
+postgresql-12 (12.4-2) UNRELEASED; urgency=medium
+
+  * New GUC extension_destdir: Path to prepend for extension loading
+
+    This directory is prepended to paths when loading extensions (control
+    and SQL files), and to the '$libdir' directive when loading modules that
+    back functions. The location is made configurable to allow build-time
+    testing of extensions that do not have been installed to their proper
+    location yet.
+
+ -- Christoph Berg <myon@debian.org>  Wed, 23 Sep 2020 16:33:24 +0200
+
 postgresql-12 (12.4-1) unstable; urgency=medium
 
   * New upstream version.

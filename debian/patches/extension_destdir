@@ -1,0 +1,215 @@
+--- a/src/backend/utils/misc/guc.c
++++ b/src/backend/utils/misc/guc.c
+@@ -557,6 +557,7 @@ char	   *ConfigFileName;
+ char	   *HbaFileName;
+ char	   *IdentFileName;
+ char	   *external_pid_file;
++char	   *extension_destdir;
+ 
+ char	   *pgstat_temp_directory;
+ 
+@@ -4255,6 +4256,17 @@ static struct config_string ConfigureNam
+ 	},
+ 
+ 	{
++		{"extension_destdir", PGC_SUSET, FILE_LOCATIONS,
++			gettext_noop("Path to prepend for extension loading"),
++			gettext_noop("This directory is prepended to paths when loading extensions (control and SQL files), and to the '$libdir' directive when loading modules that back functions. The location is made configurable to allow build-time testing of extensions that do not have been installed to their proper location yet."),
++			GUC_SUPERUSER_ONLY
++		},
++		&extension_destdir,
++		"",
++		NULL, NULL, NULL
++	},
++
++	{
+ 		{"ssl_library", PGC_INTERNAL, PRESET_OPTIONS,
+ 			gettext_noop("Name of the SSL library."),
+ 			NULL,
+--- a/src/backend/commands/extension.c
++++ b/src/backend/commands/extension.c
+@@ -128,6 +128,8 @@ static void ApplyExtensionUpdates(Oid ex
+ 								  bool cascade,
+ 								  bool is_create);
+ static char *read_whole_file(const char *filename, int *length);
++static bool file_exists(const char *name);
++static bool directory_exists(const char *dir);
+ 
+ 
+ /*
+@@ -388,6 +390,16 @@ get_extension_control_filename(const cha
+ 
+ 	get_share_path(my_exec_path, sharepath);
+ 	result = (char *) palloc(MAXPGPATH);
++	/*
++	 * If extension_destdir is set, try to find the file there first
++	 */
++	if (*extension_destdir != '\0')
++	{
++		snprintf(result, MAXPGPATH, "%s%s/extension/%s.control",
++				 extension_destdir, sharepath, extname);
++		if (file_exists(result))
++			return result;
++	}
+ 	snprintf(result, MAXPGPATH, "%s/extension/%s.control",
+ 			 sharepath, extname);
+ 
+@@ -412,6 +424,15 @@ get_extension_script_directory(Extension
+ 
+ 	get_share_path(my_exec_path, sharepath);
+ 	result = (char *) palloc(MAXPGPATH);
++	/*
++	 * If extension_destdir is set, try to find the file there first
++	 */
++	if (*extension_destdir != '\0')
++	{
++		snprintf(result, MAXPGPATH, "%s%s/%s", extension_destdir, sharepath, control->directory);
++		if (directory_exists(result))
++			return result;
++	}
+ 	snprintf(result, MAXPGPATH, "%s/%s", sharepath, control->directory);
+ 
+ 	return result;
+@@ -427,6 +448,16 @@ get_extension_aux_control_filename(Exten
+ 	scriptdir = get_extension_script_directory(control);
+ 
+ 	result = (char *) palloc(MAXPGPATH);
++	/*
++	 * If extension_destdir is set, try to find the file there first
++	 */
++	if (*extension_destdir != '\0')
++	{
++		snprintf(result, MAXPGPATH, "%s%s/%s--%s.control",
++				 extension_destdir, scriptdir, control->name, version);
++		if (file_exists(result))
++			return result;
++	}
+ 	snprintf(result, MAXPGPATH, "%s/%s--%s.control",
+ 			 scriptdir, control->name, version);
+ 
+@@ -445,6 +476,23 @@ get_extension_script_filename(ExtensionC
+ 	scriptdir = get_extension_script_directory(control);
+ 
+ 	result = (char *) palloc(MAXPGPATH);
++	/*
++	 * If extension_destdir is set, try to find the file there first
++	 */
++	if (*extension_destdir != '\0')
++	{
++		if (from_version)
++			snprintf(result, MAXPGPATH, "%s%s/%s--%s--%s.sql",
++					 extension_destdir, scriptdir, control->name, from_version, version);
++		else
++			snprintf(result, MAXPGPATH, "%s%s/%s--%s.sql",
++					 extension_destdir, scriptdir, control->name, version);
++		if (file_exists(result))
++		{
++			pfree(scriptdir);
++			return result;
++		}
++	}
+ 	if (from_version)
+ 		snprintf(result, MAXPGPATH, "%s/%s--%s--%s.sql",
+ 				 scriptdir, control->name, from_version, version);
+@@ -3469,3 +3517,32 @@ read_whole_file(const char *filename, in
+ 	buf[*length] = '\0';
+ 	return buf;
+ }
++
++static bool
++file_exists(const char *name)
++{
++	struct stat st;
++
++	AssertArg(name != NULL);
++
++	if (stat(name, &st) == 0)
++		return S_ISDIR(st.st_mode) ? false : true;
++	else if (!(errno == ENOENT || errno == ENOTDIR || errno == EACCES))
++		ereport(ERROR,
++				(errcode_for_file_access(),
++				 errmsg("could not access file \"%s\": %m", name)));
++
++	return false;
++}
++
++static bool
++directory_exists(const char *dir)
++{
++	struct stat st;
++
++	if (stat(dir, &st) != 0)
++		return false;
++	if (S_ISDIR(st.st_mode))
++		return true;
++	return false;
++}
+--- a/src/include/utils/guc.h
++++ b/src/include/utils/guc.h
+@@ -270,6 +270,7 @@ extern PGDLLIMPORT char *ConfigFileName;
+ extern char *HbaFileName;
+ extern char *IdentFileName;
+ extern char *external_pid_file;
++extern char *extension_destdir;
+ 
+ extern PGDLLIMPORT char *application_name;
+ 
+--- a/src/backend/utils/fmgr/dfmgr.c
++++ b/src/backend/utils/fmgr/dfmgr.c
+@@ -34,6 +34,7 @@
+ #include "lib/stringinfo.h"
+ #include "miscadmin.h"
+ #include "storage/shmem.h"
++#include "utils/guc.h"
+ #include "utils/hsearch.h"
+ 
+ 
+@@ -487,7 +488,7 @@ expand_dynamic_library_name(const char *
+ {
+ 	bool		have_slash;
+ 	char	   *new;
+-	char	   *full;
++	char	   *full, *full2;
+ 
+ 	AssertArg(name);
+ 
+@@ -502,6 +503,19 @@ expand_dynamic_library_name(const char *
+ 	else
+ 	{
+ 		full = substitute_libpath_macro(name);
++		/*
++		 * If extension_destdir is set, try to find the file there first
++		 */
++		if (*extension_destdir != '\0')
++		{
++			full2 = psprintf("%s%s", extension_destdir, full);
++			if (file_exists(full2))
++			{
++				pfree(full);
++				return full2;
++			}
++			pfree(full2);
++		}
+ 		if (file_exists(full))
+ 			return full;
+ 		pfree(full);
+@@ -520,6 +534,19 @@ expand_dynamic_library_name(const char *
+ 	{
+ 		full = substitute_libpath_macro(new);
+ 		pfree(new);
++		/*
++		 * If extension_destdir is set, try to find the file there first
++		 */
++		if (*extension_destdir != '\0')
++		{
++			full2 = psprintf("%s%s", extension_destdir, full);
++			if (file_exists(full2))
++			{
++				pfree(full);
++				return full2;
++			}
++			pfree(full2);
++		}
+ 		if (file_exists(full))
+ 			return full;
+ 		pfree(full);
