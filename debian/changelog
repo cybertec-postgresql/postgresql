@@ -1,3 +1,10 @@
+postgresql-13 (13.0-1) UNRELEASED; urgency=medium
+
+  * First PostgreSQL 13 stable release.
+  * Update extension_destdir to look both in destdir and original location.
+
+ -- Christoph Berg <myon@debian.org>  Wed, 23 Sep 2020 15:20:17 +0200
+
 postgresql-13 (13~rc1-1) experimental; urgency=medium
 
   * Release candidate.
