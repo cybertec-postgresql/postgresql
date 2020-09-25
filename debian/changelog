@@ -1,3 +1,9 @@
+postgresql-13 (13.0-2) unstable; urgency=medium
+
+  * Force JITing of all queries at test time.
+
+ -- Christoph Berg <myon@debian.org>  Fri, 25 Sep 2020 23:43:22 +0200
+
 postgresql-13 (13.0-1) unstable; urgency=medium
 
   * First PostgreSQL 13 stable release.
