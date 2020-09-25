@@ -4,11 +4,12 @@ set -eux
 
 SOURCE=$(dpkg-parsechangelog -SSource)
 MAJOR=${SOURCE#*-}
+top_srcdir=$PWD
 
 cd src/test/regress
 
 # compile regress.so
-make -f ../../../debian/tests/Makefile.regress PG_CONFIG=/usr/lib/postgresql/$MAJOR/bin/pg_config with_llvm=no
+make -f $top_srcdir/debian/tests/Makefile.regress PG_CONFIG=/usr/lib/postgresql/$MAJOR/bin/pg_config with_llvm=no
 
 # tell regression files that regress.so is not installed
 sed -i -e "s:@libdir@/regress:$PWD/regress:" input/*.source output/*.source
@@ -20,7 +21,10 @@ mkdir testtablespace results
 
 # run the regression tests
 if ! pg_virtualenv -v $MAJOR \
-  /usr/lib/postgresql/$MAJOR/lib/pgxs/src/test/regress/pg_regress --schedule=parallel_schedule; then
+  /usr/lib/postgresql/$MAJOR/lib/pgxs/src/test/regress/pg_regress \
+    --schedule=parallel_schedule \
+    --temp-config=$top_srcdir/debian/tests/postgresql.conf
+  then
     cat regression.diffs
     exit 1
 fi
