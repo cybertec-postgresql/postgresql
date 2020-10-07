@@ -1,3 +1,9 @@
+postgresql-12 (12.4-4) UNRELEASED; urgency=medium
+
+  * extension_destdir: Allow ALTER EXTENSION ... UPDATE;
+
+ -- Christoph Berg <myon@debian.org>  Wed, 07 Oct 2020 16:23:45 +0200
+
 postgresql-12 (12.4-2) unstable; urgency=medium
 
   * New GUC extension_destdir: Path to prepend for extension loading

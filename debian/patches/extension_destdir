@@ -1,6 +1,6 @@
 --- a/src/backend/utils/misc/guc.c
 +++ b/src/backend/utils/misc/guc.c
-@@ -557,6 +557,7 @@ char	   *ConfigFileName;
+@@ -523,6 +523,7 @@ char	   *ConfigFileName;
  char	   *HbaFileName;
  char	   *IdentFileName;
  char	   *external_pid_file;
@@ -8,7 +8,7 @@
  
  char	   *pgstat_temp_directory;
  
-@@ -4255,6 +4256,17 @@ static struct config_string ConfigureNam
+@@ -4018,6 +4019,17 @@ static struct config_string ConfigureNam
  	},
  
  	{
@@ -28,7 +28,7 @@
  			NULL,
 --- a/src/backend/commands/extension.c
 +++ b/src/backend/commands/extension.c
-@@ -128,6 +128,8 @@ static void ApplyExtensionUpdates(Oid ex
+@@ -126,6 +126,8 @@ static void ApplyExtensionUpdates(Oid ex
  								  bool cascade,
  								  bool is_create);
  static char *read_whole_file(const char *filename, int *length);
@@ -37,7 +37,7 @@
  
  
  /*
-@@ -388,6 +390,16 @@ get_extension_control_filename(const cha
+@@ -386,6 +388,16 @@ get_extension_control_filename(const cha
  
  	get_share_path(my_exec_path, sharepath);
  	result = (char *) palloc(MAXPGPATH);
@@ -54,23 +54,7 @@
  	snprintf(result, MAXPGPATH, "%s/extension/%s.control",
  			 sharepath, extname);
  
-@@ -412,6 +424,15 @@ get_extension_script_directory(Extension
- 
- 	get_share_path(my_exec_path, sharepath);
- 	result = (char *) palloc(MAXPGPATH);
-+	/*
-+	 * If extension_destdir is set, try to find the file there first
-+	 */
-+	if (*extension_destdir != '\0')
-+	{
-+		snprintf(result, MAXPGPATH, "%s%s/%s", extension_destdir, sharepath, control->directory);
-+		if (directory_exists(result))
-+			return result;
-+	}
- 	snprintf(result, MAXPGPATH, "%s/%s", sharepath, control->directory);
- 
- 	return result;
-@@ -427,6 +448,16 @@ get_extension_aux_control_filename(Exten
+@@ -425,6 +437,16 @@ get_extension_aux_control_filename(Exten
  	scriptdir = get_extension_script_directory(control);
  
  	result = (char *) palloc(MAXPGPATH);
@@ -87,7 +71,7 @@
  	snprintf(result, MAXPGPATH, "%s/%s--%s.control",
  			 scriptdir, control->name, version);
  
-@@ -445,6 +476,23 @@ get_extension_script_filename(ExtensionC
+@@ -443,6 +465,23 @@ get_extension_script_filename(ExtensionC
  	scriptdir = get_extension_script_directory(control);
  
  	result = (char *) palloc(MAXPGPATH);
@@ -111,7 +95,67 @@
  	if (from_version)
  		snprintf(result, MAXPGPATH, "%s/%s--%s--%s.sql",
  				 scriptdir, control->name, from_version, version);
-@@ -3469,3 +3517,32 @@ read_whole_file(const char *filename, in
+@@ -1034,6 +1073,59 @@ get_ext_ver_list(ExtensionControlFile *c
+ 	DIR		   *dir;
+ 	struct dirent *de;
+ 
++	/*
++	 * If extension_destdir is set, try to find the files there first
++	 */
++	if (*extension_destdir != '\0')
++	{
++		char		location[MAXPGPATH];
++
++		snprintf(location, MAXPGPATH, "%s%s", extension_destdir,
++				get_extension_script_directory(control));
++		dir = AllocateDir(location);
++		while ((de = ReadDir(dir, location)) != NULL)
++		{
++			char	   *vername;
++			char	   *vername2;
++			ExtensionVersionInfo *evi;
++			ExtensionVersionInfo *evi2;
++
++			/* must be a .sql file ... */
++			if (!is_extension_script_filename(de->d_name))
++				continue;
++
++			/* ... matching extension name followed by separator */
++			if (strncmp(de->d_name, control->name, extnamelen) != 0 ||
++				de->d_name[extnamelen] != '-' ||
++				de->d_name[extnamelen + 1] != '-')
++				continue;
++
++			/* extract version name(s) from 'extname--something.sql' filename */
++			vername = pstrdup(de->d_name + extnamelen + 2);
++			*strrchr(vername, '.') = '\0';
++			vername2 = strstr(vername, "--");
++			if (!vername2)
++			{
++				/* It's an install, not update, script; record its version name */
++				evi = get_ext_ver_info(vername, &evi_list);
++				evi->installable = true;
++				continue;
++			}
++			*vername2 = '\0';		/* terminate first version */
++			vername2 += 2;			/* and point to second */
++
++			/* if there's a third --, it's bogus, ignore it */
++			if (strstr(vername2, "--"))
++				continue;
++
++			/* Create ExtensionVersionInfos and link them together */
++			evi = get_ext_ver_info(vername, &evi_list);
++			evi2 = get_ext_ver_info(vername2, &evi_list);
++			evi->reachable = lappend(evi->reachable, evi2);
++		}
++		FreeDir(dir);
++	}
++
+ 	location = get_extension_script_directory(control);
+ 	dir = AllocateDir(location);
+ 	while ((de = ReadDir(dir, location)) != NULL)
+@@ -3368,3 +3460,32 @@ read_whole_file(const char *filename, in
  	buf[*length] = '\0';
  	return buf;
  }
@@ -146,7 +190,7 @@
 +}
 --- a/src/include/utils/guc.h
 +++ b/src/include/utils/guc.h
-@@ -270,6 +270,7 @@ extern PGDLLIMPORT char *ConfigFileName;
+@@ -264,6 +264,7 @@ extern PGDLLIMPORT char *ConfigFileName;
  extern char *HbaFileName;
  extern char *IdentFileName;
  extern char *external_pid_file;
@@ -164,7 +208,7 @@
  #include "utils/hsearch.h"
  
  
-@@ -487,7 +488,7 @@ expand_dynamic_library_name(const char *
+@@ -496,7 +497,7 @@ expand_dynamic_library_name(const char *
  {
  	bool		have_slash;
  	char	   *new;
@@ -173,7 +217,7 @@
  
  	AssertArg(name);
  
-@@ -502,6 +503,19 @@ expand_dynamic_library_name(const char *
+@@ -511,6 +512,19 @@ expand_dynamic_library_name(const char *
  	else
  	{
  		full = substitute_libpath_macro(name);
@@ -193,7 +237,7 @@
  		if (file_exists(full))
  			return full;
  		pfree(full);
-@@ -520,6 +534,19 @@ expand_dynamic_library_name(const char *
+@@ -529,6 +543,19 @@ expand_dynamic_library_name(const char *
  	{
  		full = substitute_libpath_macro(new);
  		pfree(new);
