@@ -1,3 +1,9 @@
+postgresql-13 (13.0-3) UNRELEASED; urgency=medium
+
+  * extension_destdir: Allow ALTER EXTENSION ... UPDATE;
+
+ -- Christoph Berg <myon@debian.org>  Wed, 07 Oct 2020 13:19:25 +0200
+
 postgresql-13 (13.0-2) unstable; urgency=medium
 
   * Force JITing of all queries at test time.
