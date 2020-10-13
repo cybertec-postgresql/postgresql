@@ -1,6 +1,6 @@
 --- a/src/backend/utils/misc/guc.c
 +++ b/src/backend/utils/misc/guc.c
-@@ -562,6 +562,7 @@ char	   *ConfigFileName;
+@@ -557,6 +557,7 @@ char	   *ConfigFileName;
  char	   *HbaFileName;
  char	   *IdentFileName;
  char	   *external_pid_file;
@@ -8,7 +8,7 @@
  
  char	   *pgstat_temp_directory;
  
-@@ -4237,6 +4238,17 @@ static struct config_string ConfigureNam
+@@ -4255,6 +4256,17 @@ static struct config_string ConfigureNam
  	},
  
  	{
@@ -155,7 +155,7 @@
  	location = get_extension_script_directory(control);
  	dir = AllocateDir(location);
  	while ((de = ReadDir(dir, location)) != NULL)
-@@ -3450,3 +3542,32 @@ read_whole_file(const char *filename, in
+@@ -3469,3 +3561,32 @@ read_whole_file(const char *filename, in
  	buf[*length] = '\0';
  	return buf;
  }
@@ -190,7 +190,7 @@
 +}
 --- a/src/include/utils/guc.h
 +++ b/src/include/utils/guc.h
-@@ -270,6 +270,7 @@ extern PGDLLIMPORT char *ConfigFileName;
+@@ -271,6 +271,7 @@ extern PGDLLIMPORT char *ConfigFileName;
  extern char *HbaFileName;
  extern char *IdentFileName;
  extern char *external_pid_file;
@@ -257,3 +257,14 @@
  		if (file_exists(full))
  			return full;
  		pfree(full);
+--- a/src/backend/utils/misc/postgresql.conf.sample
++++ b/src/backend/utils/misc/postgresql.conf.sample
+@@ -714,6 +714,8 @@
+ # - Other Defaults -
+ 
+ #dynamic_library_path = '$libdir'
++#extension_destdir = ''			# prepend path when loading extensions
++					# and shared objects (added by Debian)
+ 
+ 
+ #------------------------------------------------------------------------------
