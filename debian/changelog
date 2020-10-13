@@ -1,6 +1,7 @@
 postgresql-12 (12.4-4) UNRELEASED; urgency=medium
 
-  * extension_destdir: Allow ALTER EXTENSION ... UPDATE;
+  * extension_destdir: Allow ALTER EXTENSION ... UPDATE; and add GUC to
+    postgresql.conf.sample.
 
  -- Christoph Berg <myon@debian.org>  Wed, 07 Oct 2020 16:23:45 +0200
 
