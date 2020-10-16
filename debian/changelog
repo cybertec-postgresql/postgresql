@@ -1,3 +1,9 @@
+postgresql-13 (13.0-5) unstable; urgency=medium
+
+  * Bump LLVM version to 11.
+
+ -- Christoph Berg <myon@debian.org>  Fri, 16 Oct 2020 11:07:06 +0200
+
 postgresql-13 (13.0-4) unstable; urgency=medium
 
   * Add extension_destdir to postgresql.conf.sample file.
