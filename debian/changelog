@@ -2,6 +2,7 @@ postgresql-13 (13.0-5) unstable; urgency=medium
 
   * Bump LLVM version to 11.
   * Enable JIT on powerpc riscv64 s390x sparc64.
+  * Cherry-pick upstream llvmjit fixes, thanks Andres!
 
  -- Christoph Berg <myon@debian.org>  Fri, 16 Oct 2020 11:07:06 +0200
 

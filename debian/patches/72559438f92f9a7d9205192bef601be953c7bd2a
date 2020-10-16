@@ -1,0 +1,88 @@
+commit 72559438f92f9a7d9205192bef601be953c7bd2a
+Author: Andres Freund <andres@anarazel.de>
+Date:   Thu Oct 15 13:39:41 2020 -0700
+
+    llvmjit: Also copy parameter / return value attributes from template functions.
+    
+    Previously we only copied the function attributes. That caused problems at
+    least on s390x: Because we didn't copy the 'zeroext' attribute for
+    ExecAggTransReparent()'s *IsNull parameters, expressions invoking it didn't
+    ensure that the upper bytes of the registers were zeroed. In the - relatively
+    rare - cases where not, ExecAggTransReparent() wrongly ended up in the
+    newValueIsNull branch due to the register not being zero. Subsequently causing
+    a crash.
+    
+    It's quite possible that this would cause problems on other platforms, and in
+    other places than just ExecAggTransReparent() on s390x.
+    
+    Thanks to Christoph (and the Debian project) for providing me with access to a
+    s390x machine, allowing me to debug this.
+    
+    Reported-By: Christoph Berg
+    Author: Andres Freund
+    Discussion: https://postgr.es/m/20201015083246.kie5726xerdt3ael@alap3.anarazel.de
+    Backpatch: 11-, where JIT was added
+
+diff --git a/src/backend/jit/llvm/llvmjit.c b/src/backend/jit/llvm/llvmjit.c
+index 43bed78a52..7965b61165 100644
+--- a/src/backend/jit/llvm/llvmjit.c
++++ b/src/backend/jit/llvm/llvmjit.c
+@@ -324,26 +324,46 @@ llvm_pg_func(LLVMModuleRef mod, const char *funcname)
+ }
+ 
+ /*
+- * Copy attributes from one function to another.
++ * Copy attributes from one function to another, for a specific index (an
++ * index can reference return value, function and parameter attributes).
+  */
+-void
+-llvm_copy_attributes(LLVMValueRef v_from, LLVMValueRef v_to)
++static void
++llvm_copy_attributes_at_index(LLVMValueRef v_from, LLVMValueRef v_to, uint32 index)
+ {
+ 	int			num_attributes;
+-	int			attno;
+ 	LLVMAttributeRef *attrs;
+ 
+-	num_attributes =
+-		LLVMGetAttributeCountAtIndex(v_from, LLVMAttributeFunctionIndex);
++	num_attributes = LLVMGetAttributeCountAtIndex(v_from, index);
+ 
+ 	attrs = palloc(sizeof(LLVMAttributeRef) * num_attributes);
+-	LLVMGetAttributesAtIndex(v_from, LLVMAttributeFunctionIndex, attrs);
++	LLVMGetAttributesAtIndex(v_from, index, attrs);
+ 
+-	for (attno = 0; attno < num_attributes; attno++)
+-	{
+-		LLVMAddAttributeAtIndex(v_to, LLVMAttributeFunctionIndex,
+-								attrs[attno]);
+-	}
++	for (int attno = 0; attno < num_attributes; attno++)
++		LLVMAddAttributeAtIndex(v_to, index, attrs[attno]);
++
++	pfree(attrs);
++}
++
++/*
++ * Copy all attributes from one function to another. I.e. function, return and
++ * parameters will be copied.
++ */
++void
++llvm_copy_attributes(LLVMValueRef v_from, LLVMValueRef v_to)
++{
++	uint32		param_count;
++
++	/* copy function attributes */
++	llvm_copy_attributes_at_index(v_from, v_to, LLVMAttributeFunctionIndex);
++
++	/* and the return value attributes */
++	llvm_copy_attributes_at_index(v_from, v_to, LLVMAttributeReturnIndex);
++
++	/* and each function parameter's attribute */
++	param_count = LLVMCountParams(v_from);
++
++	for (int paramidx = 1; paramidx <= param_count; paramidx++)
++		llvm_copy_attributes_at_index(v_from, v_to, paramidx);
+ }
+ 
+ /*
