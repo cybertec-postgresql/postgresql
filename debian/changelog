@@ -1,3 +1,9 @@
+postgresql-13 (13.0-6) unstable; urgency=medium
+
+  * Disable JIT on powerpc riscv64 sparc64 again.
+
+ -- Christoph Berg <myon@debian.org>  Tue, 20 Oct 2020 10:51:32 +0200
+
 postgresql-13 (13.0-5) unstable; urgency=medium
 
   * Bump LLVM version to 11.
