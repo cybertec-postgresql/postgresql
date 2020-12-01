@@ -48,7 +48,6 @@ COMMON_CONFIGURE_FLAGS= \
   --includedir=/usr/include/postgresql/ \
   --with-extra-version=" ($(DEB_VENDOR) $(DEB_VERSION))" \
   --enable-nls \
-  --enable-integer-datetimes \
   --enable-thread-safety \
   --enable-tap-tests \
   --enable-debug \
