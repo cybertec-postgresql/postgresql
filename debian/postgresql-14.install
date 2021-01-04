@@ -2,7 +2,6 @@
 
 usr/lib/postgresql/*/bin/initdb
 usr/lib/postgresql/*/bin/oid2name
-usr/lib/postgresql/*/bin/pg_alterckey
 usr/lib/postgresql/*/bin/pg_archivecleanup
 usr/lib/postgresql/*/bin/pgbench
 usr/lib/postgresql/*/bin/pg_checksums
@@ -35,12 +34,10 @@ usr/share/locale/*/LC_MESSAGES/pg_waldump-*.mo
 usr/share/locale/*/LC_MESSAGES/postgres-*.mo
 usr/share/locale/*/LC_MESSAGES/plpgsql-*.mo
 [linux-any] usr/share/postgresql/*/contrib/sepgsql.sql
-usr/share/postgresql/*/auth_commands/*
 usr/share/postgresql/*/errcodes.txt
 usr/share/postgresql/*/extension/*
 usr/share/postgresql/*/man/man1/initdb.1*
 usr/share/postgresql/*/man/man1/oid2name.1*
-usr/share/postgresql/*/man/man1/pg_alterckey.1*
 usr/share/postgresql/*/man/man1/pg_archivecleanup.1*
 usr/share/postgresql/*/man/man1/pgbench.1*
 usr/share/postgresql/*/man/man1/pg_checksums.1*
