@@ -1,7 +1,13 @@
 postgresql-13 (13.1-2) UNRELEASED; urgency=medium
 
+  [ Christoph Berg ]
   * Remove obsolete --enable-integer-datetimes configure option.
     (Closes: #974988)
+
+  [ Helmut Grohne ]
+  * Reduce Build-Depends: (Closes: #979456)
+    + docbook-xml is unused as standalone-install.xml is not built.
+    + gdb is only used for testing.
 
  -- Christoph Berg <myon@debian.org>  Tue, 01 Dec 2020 15:03:55 +0100
 
