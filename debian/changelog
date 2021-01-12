@@ -1,3 +1,9 @@
+postgresql-12 (12.5-3) UNRELEASED; urgency=medium
+
+  * Modernize server package description.
+
+ -- Christoph Berg <myon@debian.org>  Tue, 12 Jan 2021 17:54:16 +0100
+
 postgresql-12 (12.5-2) unstable; urgency=medium
 
   * Remove obsolete --enable-integer-datetimes configure option.
