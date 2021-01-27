@@ -10,6 +10,9 @@ postgresql-13 (13.1-2) UNRELEASED; urgency=medium
     + docbook-xml is unused as standalone-install.xml is not built.
     + gdb is only used for testing.
 
+  [ Christoph Berg ]
+  * run-testsuite: Test only this version.
+
  -- Christoph Berg <myon@debian.org>  Tue, 01 Dec 2020 15:03:55 +0100
 
 postgresql-13 (13.1-1) unstable; urgency=medium
