@@ -1,6 +1,7 @@
 postgresql-12 (12.5-3) UNRELEASED; urgency=medium
 
   * Modernize server package description.
+  * run-testsuite: Test only this version.
 
  -- Christoph Berg <myon@debian.org>  Tue, 12 Jan 2021 17:54:16 +0100
 
