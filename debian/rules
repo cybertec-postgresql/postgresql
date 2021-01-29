@@ -77,6 +77,7 @@ COMMON_CONFIGURE_FLAGS= \
   $(SPINLOCK_FLAGS) \
   MKDIR_P='/bin/mkdir -p' \
   TAR='/bin/tar' \
+  XSLTPROC='xsltproc --nonet' \
   CFLAGS='$(CFLAGS)' \
   LDFLAGS='$(LDFLAGS)'
 
