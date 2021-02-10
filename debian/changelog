@@ -18,6 +18,19 @@ postgresql-12 (12.6-1) unstable; urgency=medium
       in the wrong pages.  It's recommended to reindex any GiST index that's
       been subject to concurrent insertions.
 
+    + Fix CREATE INDEX CONCURRENTLY to wait for concurrent prepared
+      transactions (Andrey Borodin)
+
+      At the point where CREATE INDEX CONCURRENTLY waits for all concurrent
+      transactions to complete so that it can see rows they inserted, it must
+      also wait for all prepared transactions to complete, for the same
+      reason.  Its failure to do so meant that rows inserted by prepared
+      transactions might be omitted from the new index, causing queries
+      relying on the index to miss such rows. In installations that have
+      enabled prepared transactions (max_prepared_transactions > 0), it's
+      recommended to reindex any concurrently-built indexes in case this
+      problem occurred when they were built.
+
   * Modernize server package description.
   * run-testsuite: Test only this version.
 
