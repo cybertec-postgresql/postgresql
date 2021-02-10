@@ -1,4 +1,22 @@
-postgresql-12 (12.5-3) UNRELEASED; urgency=medium
+postgresql-12 (12.6-1) unstable; urgency=medium
+
+  * New upstream version.
+
+    + Fix information leakage in constraint-violation error messages
+      (Heikki Linnakangas)
+
+      If an UPDATE command attempts to move a row to a different partition but
+      finds that it violates some constraint on the new partition, and the
+      columns in that partition are in different physical positions than in
+      the parent table, the error message could reveal the contents of columns
+      that the user does not have SELECT privilege on. (CVE-2021-3393)
+
+    + Fix incorrect detection of concurrent page splits while inserting into a
+      GiST index (Heikki Linnakangas)
+
+      Concurrent insertions could lead to a corrupt index with entries placed
+      in the wrong pages.  It's recommended to reindex any GiST index that's
+      been subject to concurrent insertions.
 
   * Modernize server package description.
   * run-testsuite: Test only this version.
