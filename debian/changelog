@@ -1,19 +1,54 @@
-postgresql-13 (13.1-2) UNRELEASED; urgency=medium
+postgresql-13 (13.2-1) unstable; urgency=medium
+
+  * New upstream version.
+
+    + Fix failure to check per-column SELECT privileges in some join queries
+      (Tom Lane)
+
+      In some cases involving joins, the parser failed to record all the
+      columns read by a query in the column-usage bitmaps that are used for
+      permissions checking.  Although the executor would still insist on some
+      sort of SELECT privilege to run the query, this meant that a user having
+      SELECT privilege on only one column of a table could nonetheless read
+      all its columns through a suitably crafted query.
+
+      A stored view that is subject to this problem will have incomplete
+      column-usage bitmaps, and thus permissions will still not be enforced
+      properly on the view after updating.  In installations that depend on
+      column-level permissions for security, it is recommended to CREATE OR
+      REPLACE all user-defined views to cause them to be re-parsed.
+
+      The PostgreSQL Project thanks Sven Klemm for reporting this problem.
+      (CVE-2021-20229)
+
+    + Fix information leakage in constraint-violation error messages
+      (Heikki Linnakangas)
+
+      If an UPDATE command attempts to move a row to a different partition but
+      finds that it violates some constraint on the new partition, and the
+      columns in that partition are in different physical positions than in
+      the parent table, the error message could reveal the contents of columns
+      that the user does not have SELECT privilege on. (CVE-2021-3393)
+
+    + Fix incorrect detection of concurrent page splits while inserting into a
+      GiST index (Heikki Linnakangas)
+
+      Concurrent insertions could lead to a corrupt index with entries placed
+      in the wrong pages.  It's recommended to reindex any GiST index that's
+      been subject to concurrent insertions.
 
   [ Christoph Berg ]
   * Remove obsolete --enable-integer-datetimes configure option.
     (Closes: #974988)
   * Modernize server package description.
   * Use xsltproc --nonet.
+  * run-testsuite: Test only this version.
 
   [ Helmut Grohne ]
   * Reduce Build-Depends: (Closes: #979456)
     + gdb is only used for testing.
 
-  [ Christoph Berg ]
-  * run-testsuite: Test only this version.
-
- -- Christoph Berg <myon@debian.org>  Tue, 01 Dec 2020 15:03:55 +0100
+ -- Christoph Berg <myon@debian.org>  Wed, 10 Feb 2021 17:33:55 +0100
 
 postgresql-13 (13.1-1) unstable; urgency=medium
 
