@@ -56,6 +56,7 @@ COMMON_CONFIGURE_FLAGS= \
   --disable-rpath \
   --with-uuid=e2fs \
   --with-gnu-ld \
+  --with-lz4 \
   --with-pgport=5432 \
   --with-system-tzdata=/usr/share/zoneinfo \
   $(LLVM_FLAGS) \
