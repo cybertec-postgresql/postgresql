@@ -14,17 +14,28 @@ make -f $top_srcdir/debian/tests/Makefile.regress PG_CONFIG=/usr/lib/postgresql/
 # tell regression files that regress.so is not installed
 sed -i -e "s:@libdir@/regress:$PWD/regress:" input/*.source output/*.source
 
+# when root, execute testsuite as user postgres since it insists on wiping the tablespace directory
+if [ $(id -u) = 0 ]; then
+  SU="su postgres"
+else
+  SU="sh"
+fi
+
+$SU <<EOF
+set -eux
+
 # create tablespace and results directories
-rm -rf testtablespace results regression.*
-mkdir testtablespace results
-[ "$(id -u)" = "0" ] && chown postgres: testtablespace results
+OUTPUT=\$(mktemp -d /tmp/regress.XXXXXX)
+trap "rm -rf \$OUTPUT" EXIT
 
 # run the regression tests
 if ! pg_virtualenv -v $MAJOR \
   /usr/lib/postgresql/$MAJOR/lib/pgxs/src/test/regress/pg_regress \
     --schedule=parallel_schedule \
+    --outputdir=\$OUTPUT \
     --temp-config=$top_srcdir/debian/tests/postgresql.conf
   then
-    cat regression.diffs
+    head -100 \$OUTPUT/regression.diffs
     exit 1
 fi
+EOF
