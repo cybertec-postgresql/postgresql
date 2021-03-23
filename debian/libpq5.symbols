@@ -29,6 +29,7 @@ libpq.so.5 libpq5 #MINVER#
  PQencryptPassword@Base 0
  PQencryptPasswordConn@Base 10~~
  PQendcopy@Base 0
+ PQenterPipelineMode@Base 14~~
  PQenv2encoding@Base 0
  PQerrorMessage@Base 0
  PQescapeBytea@Base 0
@@ -40,6 +41,7 @@ libpq.so.5 libpq5 #MINVER#
  PQexec@Base 0
  PQexecParams@Base 0
  PQexecPrepared@Base 0
+ PQexitPipelineMode@Base 14~~
  PQfformat@Base 0
  PQfinish@Base 0
  PQfireResultCreateEvents@Base 8.4~
@@ -90,6 +92,8 @@ libpq.so.5 libpq5 #MINVER#
  PQpass@Base 0
  PQping@Base 9.1~
  PQpingParams@Base 9.1~
+ PQpipelineStatus@Base 14~~
+ PQpipelineSync@Base 14~~
  PQport@Base 0
  PQprepare@Base 0
  PQprint@Base 0
