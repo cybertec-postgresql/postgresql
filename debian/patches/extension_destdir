@@ -1,6 +1,6 @@
 --- a/src/backend/utils/misc/guc.c
 +++ b/src/backend/utils/misc/guc.c
-@@ -557,6 +557,7 @@ char	   *ConfigFileName;
+@@ -584,6 +584,7 @@ char	   *ConfigFileName;
  char	   *HbaFileName;
  char	   *IdentFileName;
  char	   *external_pid_file;
@@ -8,7 +8,7 @@
  
  char	   *pgstat_temp_directory;
  
-@@ -4255,6 +4256,17 @@ static struct config_string ConfigureNam
+@@ -4412,6 +4413,17 @@ static struct config_string ConfigureNam
  	},
  
  	{
@@ -24,7 +24,7 @@
 +
 +	{
  		{"ssl_library", PGC_INTERNAL, PRESET_OPTIONS,
- 			gettext_noop("Name of the SSL library."),
+ 			gettext_noop("Shows the name of the SSL library."),
  			NULL,
 --- a/src/backend/commands/extension.c
 +++ b/src/backend/commands/extension.c
@@ -259,12 +259,12 @@
  		pfree(full);
 --- a/src/backend/utils/misc/postgresql.conf.sample
 +++ b/src/backend/utils/misc/postgresql.conf.sample
-@@ -714,6 +714,8 @@
+@@ -730,6 +730,8 @@
  # - Other Defaults -
  
  #dynamic_library_path = '$libdir'
 +#extension_destdir = ''			# prepend path when loading extensions
 +					# and shared objects (added by Debian)
- 
+ #gin_fuzzy_search_limit = 0
  
  #------------------------------------------------------------------------------
