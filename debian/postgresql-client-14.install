@@ -17,6 +17,7 @@ usr/lib/postgresql/*/bin/psql
 usr/lib/postgresql/*/bin/reindexdb
 usr/lib/postgresql/*/bin/vacuumdb
 usr/lib/postgresql/*/lib/pgxs/*
+usr/share/locale/*/LC_MESSAGES/pg_amcheck-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_basebackup-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_config-*.mo
 usr/share/locale/*/LC_MESSAGES/pg_dump-*.mo
