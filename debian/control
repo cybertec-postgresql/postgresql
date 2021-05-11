@@ -21,7 +21,7 @@ Build-Depends:
  krb5-multidev,
  libedit-dev,
  libicu-dev,
- libipc-run-perl,
+ libipc-run-perl <!nocheck>,
  libldap2-dev,
  libpam0g-dev | libpam-dev,
  libperl-dev,

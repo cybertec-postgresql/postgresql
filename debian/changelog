@@ -38,6 +38,8 @@ postgresql-12 (12.7-1) unstable; urgency=medium
       unless the UPDATE involves other tables being joined to the target
       table. (CVE-2021-32029)
 
+  * Mark libipc-run-perl as <!nocheck>. (Closes: #988121)
+
  -- Christoph Berg <myon@debian.org>  Wed, 12 May 2021 16:36:43 +0200
 
 postgresql-12 (12.6-1) unstable; urgency=medium
