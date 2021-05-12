@@ -1,3 +1,45 @@
+postgresql-12 (12.7-1) unstable; urgency=medium
+
+  * New upstream version.
+
+    + Prevent integer overflows in array subscripting calculations (Tom Lane)
+
+      The array code previously did not complain about cases where an array's
+      lower bound plus length overflows an integer.  This resulted in later
+      entries in the array becoming inaccessible (since their subscripts could
+      not be written as integers), but more importantly it confused subsequent
+      assignment operations.  This could lead to memory overwrites, with
+      ensuing crashes or unwanted data modifications. (CVE-2021-32027)
+
+    + Fix mishandling of junk columns in INSERT ... ON CONFLICT ... UPDATE
+      target lists (Tom Lane)
+
+      If the UPDATE list contains any multi-column sub-selects (which give
+      rise to junk columns in addition to the results proper), the UPDATE path
+      would end up storing tuples that include the values of the extra junk
+      columns. That's fairly harmless in the short run, but if new columns are
+      added to the table then the values would become accessible, possibly
+      leading to malfunctions if they don't match the datatypes of the added
+      columns.
+
+      In addition, in versions supporting cross-partition updates, a
+      cross-partition update triggered by such a case had the reverse problem:
+      the junk columns were removed from the target list, typically causing an
+      immediate crash due to malfunction of the multi-column sub-select
+      mechanism. (CVE-2021-32028)
+
+    + Fix possibly-incorrect computation of UPDATE ... RETURNING outputs for
+      joined cross-partition updates (Amit Langote, Etsuro Fujita)
+
+      If an UPDATE for a partitioned table caused a row to be moved to another
+      partition with a physically different row type (for example, one with a
+      different set of dropped columns), computation of RETURNING results for
+      that row could produce errors or wrong answers.  No error is observed
+      unless the UPDATE involves other tables being joined to the target
+      table. (CVE-2021-32029)
+
+ -- Christoph Berg <myon@debian.org>  Wed, 12 May 2021 16:36:43 +0200
+
 postgresql-12 (12.6-1) unstable; urgency=medium
 
   * New upstream version.
