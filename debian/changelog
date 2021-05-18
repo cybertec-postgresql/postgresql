@@ -1,6 +1,6 @@
 postgresql-13 (13.3-2) UNRELEASED; urgency=medium
 
-  * Remove obsolete #dbg# code.
+  * Remove obsolete #dbg# and #PIE# code.
 
  -- Christoph Berg <myon@debian.org>  Tue, 18 May 2021 13:56:18 +0200
 
