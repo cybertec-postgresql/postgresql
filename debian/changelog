@@ -2,6 +2,7 @@ postgresql-14 (14~beta2-1) experimental; urgency=medium
 
   * New beta version.
   * libpq5.symbols: Add PQmblenBounded, PQsetTraceFlags, remove PQtraceSetFlags.
+  * debian/tests/installcheck: Use --make-testtablespace-dir.
 
  -- Christoph Berg <myon@debian.org>  Wed, 23 Jun 2021 11:03:06 +0200
 
