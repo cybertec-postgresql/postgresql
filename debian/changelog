@@ -1,3 +1,9 @@
+postgresql-14 (14~beta2-1) experimental; urgency=medium
+
+  * New beta version.
+
+ -- Christoph Berg <myon@debian.org>  Wed, 23 Jun 2021 11:03:06 +0200
+
 postgresql-14 (14~beta1-1) experimental; urgency=medium
 
   * New major upstream version 14; packaging based on postgresql-13.
