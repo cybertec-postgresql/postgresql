@@ -1,6 +1,6 @@
 --- a/src/backend/utils/misc/guc.c
 +++ b/src/backend/utils/misc/guc.c
-@@ -584,6 +584,7 @@ char	   *ConfigFileName;
+@@ -599,6 +599,7 @@ char	   *ConfigFileName;
  char	   *HbaFileName;
  char	   *IdentFileName;
  char	   *external_pid_file;
@@ -8,7 +8,7 @@
  
  char	   *pgstat_temp_directory;
  
-@@ -4412,6 +4413,17 @@ static struct config_string ConfigureNam
+@@ -4384,6 +4385,17 @@ static struct config_string ConfigureNam
  	},
  
  	{
@@ -95,7 +95,7 @@
  	if (from_version)
  		snprintf(result, MAXPGPATH, "%s/%s--%s--%s.sql",
  				 scriptdir, control->name, from_version, version);
-@@ -1121,6 +1160,59 @@ get_ext_ver_list(ExtensionControlFile *c
+@@ -1122,6 +1161,59 @@ get_ext_ver_list(ExtensionControlFile *c
  	DIR		   *dir;
  	struct dirent *de;
  
@@ -155,7 +155,7 @@
  	location = get_extension_script_directory(control);
  	dir = AllocateDir(location);
  	while ((de = ReadDir(dir, location)) != NULL)
-@@ -3469,3 +3561,32 @@ read_whole_file(const char *filename, in
+@@ -3470,3 +3562,32 @@ read_whole_file(const char *filename, in
  	buf[*length] = '\0';
  	return buf;
  }
@@ -190,7 +190,7 @@
 +}
 --- a/src/include/utils/guc.h
 +++ b/src/include/utils/guc.h
-@@ -271,6 +271,7 @@ extern PGDLLIMPORT char *ConfigFileName;
+@@ -270,6 +270,7 @@ extern PGDLLIMPORT char *ConfigFileName;
  extern char *HbaFileName;
  extern char *IdentFileName;
  extern char *external_pid_file;
@@ -259,7 +259,7 @@
  		pfree(full);
 --- a/src/backend/utils/misc/postgresql.conf.sample
 +++ b/src/backend/utils/misc/postgresql.conf.sample
-@@ -730,6 +730,8 @@
+@@ -725,6 +725,8 @@
  # - Other Defaults -
  
  #dynamic_library_path = '$libdir'
@@ -267,4 +267,4 @@
 +					# and shared objects (added by Debian)
  #gin_fuzzy_search_limit = 0
  
- #------------------------------------------------------------------------------
+ 
