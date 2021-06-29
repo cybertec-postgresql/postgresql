@@ -4,7 +4,7 @@ include /usr/share/dpkg/architecture.mk
 include /usr/share/dpkg/pkg-info.mk
 include /usr/share/dpkg/vendor.mk
 
-MAJOR_VER := 14
+MAJOR_VER := 15
 #CASSERT_FLAGS := --enable-cassert
 
 CATVERSION = $(shell awk '/CATALOG_VERSION_NO/ { print $$3 }' src/include/catalog/catversion.h)

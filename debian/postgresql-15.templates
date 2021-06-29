@@ -1,4 +1,4 @@
-Template: postgresql-14/postrm_purge_data
+Template: postgresql-15/postrm_purge_data
 Type: boolean
 Default: true
 _Description: Remove PostgreSQL directories when package is purged?

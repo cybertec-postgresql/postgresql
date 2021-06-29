@@ -1,4 +1,4 @@
-Source: postgresql-14
+Source: postgresql-15
 Section: database
 Priority: optional
 Maintainer: Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>
@@ -45,7 +45,7 @@ Build-Depends:
  zlib1g-dev | libz-dev,
 Homepage: http://www.postgresql.org/
 Vcs-Browser: https://salsa.debian.org/postgresql/postgresql
-Vcs-Git: https://salsa.debian.org/postgresql/postgresql.git -b 14
+Vcs-Git: https://salsa.debian.org/postgresql/postgresql.git -b 15
 
 Package: libpq-dev
 Architecture: any
@@ -55,7 +55,7 @@ Depends:
  ${misc:Depends},
  ${shlibs:Depends},
 Suggests:
- postgresql-doc-14,
+ postgresql-doc-15,
 Description: header files for libpq5 (PostgreSQL library)
  Header files and static library for compiling C programs to link
  with the libpq library in order to communicate with a PostgreSQL
@@ -142,24 +142,24 @@ Depends:
 Pre-Depends:
  ${misc:Pre-Depends},
 Multi-Arch: same
-Description: shared library libpgtypes for PostgreSQL 14
+Description: shared library libpgtypes for PostgreSQL 15
  The libpgtypes shared library is used by programs built with ecpg.
  (Embedded PostgreSQL for C).
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-14
+Package: postgresql-15
 Architecture: any
 Depends:
  locales | locales-all,
- postgresql-client-14,
+ postgresql-client-15,
  postgresql-common (>= 182~),
  ssl-cert,
  tzdata,
  ${misc:Depends},
  ${shlibs:Depends},
 Provides:
- postgresql-contrib-14,
+ postgresql-contrib-15,
 Recommends:
  sysstat,
 Description: The World's Most Advanced Open Source Relational Database
@@ -171,10 +171,10 @@ Description: The World's Most Advanced Open Source Relational Database
  a range of workloads, from single machines to data warehouses or Web services
  with many concurrent users.
  .
- This package provides the database server for PostgreSQL 14.
+ This package provides the database server for PostgreSQL 15.
 XB-Postgresql-Catversion: ${postgresql:Catversion}
 
-Package: postgresql-client-14
+Package: postgresql-client-15
 Architecture: any
 Multi-Arch: foreign
 Depends:
@@ -184,37 +184,35 @@ Depends:
  ${misc:Depends},
  ${shlibs:Depends},
 Suggests:
- postgresql-14,
- postgresql-doc-14,
+ postgresql-15,
+ postgresql-doc-15,
 Provides:
  postgresql-client,
-Description: front-end programs for PostgreSQL 14
+Description: front-end programs for PostgreSQL 15
  This package contains client and administrative programs for
  PostgreSQL: these are the interactive terminal client psql and
  programs for creating and removing users and databases.
  .
- This is the client package for PostgreSQL 14. If you install
- PostgreSQL 14 on a standalone machine, you need the server package
- postgresql-14, too. On a network, you can install this package on
+ This is the client package for PostgreSQL 15. If you install
+ PostgreSQL 15 on a standalone machine, you need the server package
+ postgresql-15, too. On a network, you can install this package on
  many client machines, while the server package may be installed on
  only one machine.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-server-dev-14
+Package: postgresql-server-dev-15
 Architecture: any
 Section: libdevel
 Depends:
  clang-11 [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
- libpq-dev (>= 14~~),
+ libpq-dev (>= 15~~),
  llvm-11-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
- postgresql-client-14,
+ postgresql-client-15,
  postgresql-common (>= 142~),
  ${misc:Depends},
  ${shlibs:Depends},
-Breaks:
- postgresql-server-dev-all (<< 181~),
-Description: development files for PostgreSQL 14 server-side programming
+Description: development files for PostgreSQL 15 server-side programming
  Header files for compiling SSI code to link into PostgreSQL's backend; for
  example, for C functions to be called from SQL.
  .
@@ -224,7 +222,7 @@ Description: development files for PostgreSQL 14 server-side programming
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-doc-14
+Package: postgresql-doc-15
 Architecture: all
 Multi-Arch: foreign
 Section: doc
@@ -234,52 +232,52 @@ Breaks:
  postgresql-common (<< 158~),
 Description: documentation for the PostgreSQL database management system
  This package contains all README files, user manual, and examples for
- PostgreSQL 14. The manual is in HTML format.
+ PostgreSQL 15. The manual is in HTML format.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plperl-14
+Package: postgresql-plperl-15
 Architecture: any
 Depends:
  perl,
- postgresql-14 (= ${binary:Version}),
+ postgresql-15 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends},
 Provides:
  postgresql-plperl,
-Description: PL/Perl procedural language for PostgreSQL 14
+Description: PL/Perl procedural language for PostgreSQL 15
  PL/Perl enables an SQL developer to write procedural language functions
- for PostgreSQL 14 in Perl.  You need this package if you have any
- PostgreSQL 14 functions that use the languages plperl or plperlu.
+ for PostgreSQL 15 in Perl.  You need this package if you have any
+ PostgreSQL 15 functions that use the languages plperl or plperlu.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-plpython3-14
+Package: postgresql-plpython3-15
 Architecture: any
 Depends:
- postgresql-14 (= ${binary:Version}),
+ postgresql-15 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends},
 Provides:
  postgresql-plpython3,
-Description: PL/Python 3 procedural language for PostgreSQL 14
+Description: PL/Python 3 procedural language for PostgreSQL 15
  PL/Python 3 enables an SQL developer to write procedural language functions
- for PostgreSQL 14 in Python 3.  You need this package if you have any
- PostgreSQL 14 functions that use the languages plpython3 or plpython3u.
+ for PostgreSQL 15 in Python 3.  You need this package if you have any
+ PostgreSQL 15 functions that use the languages plpython3 or plpython3u.
  .
  PostgreSQL is an object-relational SQL database management system.
 
-Package: postgresql-pltcl-14
+Package: postgresql-pltcl-15
 Architecture: any
 Depends:
- postgresql-14 (= ${binary:Version}),
+ postgresql-15 (= ${binary:Version}),
  ${misc:Depends},
  ${shlibs:Depends},
 Provides:
  postgresql-pltcl,
-Description: PL/Tcl procedural language for PostgreSQL 14
+Description: PL/Tcl procedural language for PostgreSQL 15
  PL/Tcl enables an SQL developer to write procedural language functions
- for PostgreSQL 14 in Tcl.  You need this package if you have any
- PostgreSQL 14 functions that use the languages pltcl or pltclu.
+ for PostgreSQL 15 in Tcl.  You need this package if you have any
+ PostgreSQL 15 functions that use the languages pltcl or pltclu.
  .
  PostgreSQL is an object-relational SQL database management system.

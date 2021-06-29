@@ -2,4 +2,4 @@
 set -e
 
 cd /usr/share/postgresql-common
-./testsuite -v 14
+./testsuite -v 15

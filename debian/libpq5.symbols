@@ -121,6 +121,7 @@ libpq.so.5 libpq5 #MINVER#
  PQresultVerboseErrorMessage@Base 9.6~~
  PQsendDescribePortal@Base 0
  PQsendDescribePrepared@Base 0
+ PQsendFlushRequest@Base 15~~
  PQsendPrepare@Base 0
  PQsendQuery@Base 0
  PQsendQueryParams@Base 0
