@@ -24,6 +24,7 @@ libpq.so.5 libpq5 #MINVER#
  PQdefaultSSLKeyPassHook_OpenSSL@Base 13~~
  PQdescribePortal@Base 0
  PQdescribePrepared@Base 0
+ PQsendFlushRequest@Base 14~beta3
  PQdisplayTuples@Base 0
  PQdsplen@Base 0
  PQencryptPassword@Base 0
