@@ -26,8 +26,7 @@ LLVM_FLAGS = --with-llvm LLVM_CONFIG=/usr/bin/llvm-config-11 CLANG=/usr/bin/clan
 endif
 
 # PostgreSQL 9.5+ does not have native spinlock support on alpha
-# No spinlock support for RISC-V yet
-ifneq ($(findstring $(DEB_HOST_ARCH), alpha riscv64),)
+ifneq ($(findstring $(DEB_HOST_ARCH), alpha),)
 SPINLOCK_FLAGS = --disable-spinlocks
 endif
 
