@@ -61,6 +61,7 @@ COMMON_CONFIGURE_FLAGS= \
   $(SYSTEMD_FLAGS) \
   $(SELINUX_FLAGS) \
   $(SPINLOCK_FLAGS) \
+  AWK=mawk \
   MKDIR_P='/bin/mkdir -p' \
   PROVE='/usr/bin/prove' \
   TAR='/bin/tar' \
