@@ -1,6 +1,7 @@
 postgresql-14 (14~beta3-2) UNRELEASED; urgency=medium
 
   * Enable spinlocks on riscv64.
+  * Fix awk to be mawk, spotted by Yangfl. (Closes: #987786)
   * Spanish debconf translation by Jonathan Bustillos, thanks!
     (Closes: #986775)
 
