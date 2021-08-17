@@ -1,6 +1,8 @@
 postgresql-13 (13.4-2) UNRELEASED; urgency=medium
 
   * Enable spinlocks on riscv64.
+  * Spanish debconf translation by Jonathan Bustillos, thanks!
+    (Closes: #986775)
 
  -- Christoph Berg <myon@debian.org>  Fri, 13 Aug 2021 23:01:23 +0200
 
