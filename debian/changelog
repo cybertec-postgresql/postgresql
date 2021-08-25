@@ -2,6 +2,7 @@ postgresql-13 (13.4-2) UNRELEASED; urgency=medium
 
   * Enable spinlocks on riscv64.
   * Fix awk to be mawk, spotted by Yangfl. (Closes: #987786)
+  * B-D on autoconf2.69. (Closes: #978886)
   * Spanish debconf translation by Jonathan Bustillos, thanks!
     (Closes: #986775)
   * Flatten debian/*.lintian-overrides symlinks.

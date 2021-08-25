@@ -9,6 +9,7 @@ Uploaders:
 Standards-Version: 4.5.0
 Rules-Requires-Root: no
 Build-Depends:
+ autoconf2.69 | autoconf (<< 2.69+),
  bison,
  clang-11 [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
  debhelper-compat (= 13),
