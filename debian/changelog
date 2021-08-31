@@ -1,3 +1,9 @@
+postgresql-13 (13.4-3) unstable; urgency=medium
+
+  * Cherry-pick riscv spinlocks patch from upstream. (Closes: #993217)
+
+ -- Christoph Berg <myon@debian.org>  Tue, 31 Aug 2021 11:59:29 +0200
+
 postgresql-13 (13.4-2) unstable; urgency=medium
 
   * Enable spinlocks on riscv64.
