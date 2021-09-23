@@ -9,3 +9,4 @@ libpgport-pkglibdir
 initdb-startup-message
 extension_destdir
 risc-spinlock
+autoconf2.69
