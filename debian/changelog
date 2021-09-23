@@ -3,7 +3,7 @@ postgresql-14 (14~rc1-1) experimental; urgency=medium
   * First PG14 release candidate.
   * Enable spinlocks on riscv64.
   * Fix awk to be mawk, spotted by Yangfl. (Closes: #987786)
-  * B-D on autoconf2.69.
+  * configure.ac: Remove check for autoconf 2.69.
   * Spanish debconf translation by Jonathan Bustillos, thanks!
     (Closes: #986775)
   * Flatten debian/*.lintian-overrides symlinks.

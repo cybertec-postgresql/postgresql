@@ -7,3 +7,4 @@
 filter-debug-prefix-map
 libpgport-pkglibdir
 extension_destdir
+autoconf2.69
