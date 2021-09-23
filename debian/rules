@@ -80,12 +80,6 @@ endif
 %:
 	dh $@
 
-# use autoconf2.69 if available
-ifneq ($(wildcard /usr/bin/autoreconf2.69),)
-override_dh_autoreconf:
-	dh_autoreconf autoreconf2.69 -- -f -i
-endif
-
 override_dh_auto_configure:
 	dh_auto_configure --builddirectory=build -- \
            --with-icu \
