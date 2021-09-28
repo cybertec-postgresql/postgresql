@@ -155,7 +155,7 @@ Architecture: any
 Depends:
  locales | locales-all,
  postgresql-client-14,
- postgresql-common (>= 182~),
+ postgresql-common (>= 229~),
  ssl-cert,
  tzdata,
  ${misc:Depends},
