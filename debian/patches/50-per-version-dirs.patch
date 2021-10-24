@@ -54,9 +54,9 @@ Bug-Debian: http://bugs.debian.org/462037
  
  	configdata = get_configdata(my_exec_path, &configdata_len);
  	/* no arguments -> print everything */
---- a/src/test/perl/TestLib.pm
-+++ b/src/test/perl/TestLib.pm
-@@ -591,6 +591,10 @@ sub check_pg_config
+--- a/src/test/perl/PostgreSQL/Test/Utils.pm
++++ b/src/test/perl/PostgreSQL/Test/Utils.pm
+@@ -682,6 +682,10 @@ sub check_pg_config
  	  or die "could not execute pg_config";
  	chomp($stdout);
  	$stdout =~ s/\r$//;
