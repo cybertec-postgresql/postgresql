@@ -54,6 +54,7 @@ Architecture: any
 Section: libdevel
 Depends:
  libpq5 (= ${binary:Version}),
+ libssl-dev,
  ${misc:Depends},
  ${shlibs:Depends},
 Suggests:
