@@ -1,3 +1,9 @@
+postgresql-14 (14.0-2) UNRELEASED; urgency=medium
+
+  * libpq-dev: Depend on libssl-dev, `pkg-config --exists libpq` requires it.
+
+ -- Christoph Berg <myon@debian.org>  Fri, 05 Nov 2021 12:05:46 +0100
+
 postgresql-14 (14.0-1) unstable; urgency=medium
 
   * First PG14 release.
