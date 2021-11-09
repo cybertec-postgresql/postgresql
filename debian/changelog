@@ -1,4 +1,28 @@
-postgresql-12 (12.8-2) UNRELEASED; urgency=medium
+postgresql-12 (12.9-1) unstable; urgency=medium
+
+  * New upstream release.
+
+    + Make the server and libpq reject extraneous data after an SSL or GSS
+      encryption handshake (Tom Lane)
+
+      A man-in-the-middle with the ability to inject data into the TCP
+      connection could stuff some cleartext data into the start of a
+      supposedly encryption-protected database session.
+
+      This could be abused to send faked SQL commands to the server, although
+      that would only work if the server did not demand any authentication
+      data.  (However, a server relying on SSL certificate authentication
+      might well not do so.) (CVE-2021-23214)
+
+      This could probably be abused to inject faked responses to the client's
+      first few queries, although other details of libpq's behavior make that
+      harder than it sounds.  A different line of attack is to exfiltrate the
+      client's password, or other sensitive data that might be sent early in
+      the session.  That has been shown to be possible with a server
+      vulnerable to CVE-2021-23214. (CVE-2021-23222)
+
+      The PostgreSQL Project thanks Jacob Champion for reporting these
+      problems.
 
   * configure.in: Remove check for autoconf 2.69.
 
