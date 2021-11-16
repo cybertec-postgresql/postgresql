@@ -8,3 +8,4 @@ filter-debug-prefix-map
 libpgport-pkglibdir
 extension_destdir
 autoconf2.69
+focal-arm64-outline-atomics

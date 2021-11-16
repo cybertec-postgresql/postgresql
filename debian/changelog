@@ -1,3 +1,9 @@
+postgresql-14 (14.1-2) unstable; urgency=medium
+
+  * Enable outline-atomics on arm64 (affects Ubuntu focal only).
+
+ -- Christoph Berg <myon@debian.org>  Tue, 16 Nov 2021 11:56:37 +0100
+
 postgresql-14 (14.1-1) unstable; urgency=medium
 
   * New upstream release.
