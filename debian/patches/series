@@ -9,3 +9,4 @@ libpgport-pkglibdir
 initdb-startup-message
 extension_destdir
 autoconf2.69
+focal-arm64-outline-atomics
