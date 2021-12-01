@@ -2,4 +2,4 @@
 
 MAJOR_VER := 15
 
-include /home/cbe/postgresql/common/postgresql-common/server/postgresql.mk
+include /usr/share/postgresql-common/server/postgresql.mk
