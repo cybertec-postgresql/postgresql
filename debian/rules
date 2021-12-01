@@ -21,8 +21,10 @@ endif
 export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
 # if LLVM is installed, use it
-ifneq ($(wildcard /usr/bin/llvm-config*),)
-LLVM_FLAGS = --with-llvm LLVM_CONFIG=/usr/bin/llvm-config-11 CLANG=/usr/bin/clang-11
+ifneq ($(wildcard /usr/bin/llvm-config-*),)
+LLVM_CONFIG = $(lastword $(sort $(wildcard /usr/bin/llvm-config-*)))
+LLVM_VERSION = $(subst /usr/bin/llvm-config-,,$(LLVM_CONFIG))
+LLVM_FLAGS = --with-llvm LLVM_CONFIG=$(LLVM_CONFIG) CLANG=/usr/bin/clang-$(LLVM_VERSION)
 endif
 
 # PostgreSQL 9.5+ does not have native spinlock support on alpha
@@ -208,4 +210,4 @@ override_dh_installdeb-arch:
 
 override_dh_gencontrol:
 	# record catversion in .deb control file
-	dh_gencontrol -- -Vpostgresql:Catversion=$(CATVERSION)
+	dh_gencontrol -- -Vpostgresql:Catversion=$(CATVERSION) -Vllvm:Version=$(LLVM_VERSION)
