@@ -175,7 +175,7 @@ Description: The World's Most Advanced Open Source Relational Database
  a range of workloads, from single machines to data warehouses or Web services
  with many concurrent users.
  .
- This package provides the database server for PostgreSQL 15.
+ This package provides the database server for PostgreSQL 15.${cassert}
 XB-Postgresql-Catversion: ${postgresql:Catversion}
 
 Package: postgresql-client-15
