@@ -1,3 +1,10 @@
+postgresql-12 (12.9-3) UNRELEASED; urgency=medium
+
+  * Use system default clang/llvm version.
+  * Use centralized debian/rules logic in postgresql-common.
+
+ -- Christoph Berg <myon@debian.org>  Thu, 02 Dec 2021 12:14:43 +0100
+
 postgresql-12 (12.9-2) unstable; urgency=medium
 
   * Enable outline-atomics on arm64 (affects Ubuntu focal only).
