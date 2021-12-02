@@ -39,6 +39,7 @@ Build-Depends:
  mawk,
  perl (>= 5.8),
  pkg-config,
+ postgresql-common (>= 233~),
  python3-dev,
  systemtap-sdt-dev,
  tcl-dev,
@@ -174,7 +175,7 @@ Description: The World's Most Advanced Open Source Relational Database
  a range of workloads, from single machines to data warehouses or Web services
  with many concurrent users.
  .
- This package provides the database server for PostgreSQL 14.
+ This package provides the database server for PostgreSQL 14.${cassert}
 XB-Postgresql-Catversion: ${postgresql:Catversion}
 
 Package: postgresql-client-14
