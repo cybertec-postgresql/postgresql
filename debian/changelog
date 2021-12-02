@@ -1,3 +1,10 @@
+postgresql-13 (13.5-3) UNRELEASED; urgency=medium
+
+  * Use system default clang/llvm version.
+  * Use centralized debian/rules logic in postgresql-common.
+
+ -- Christoph Berg <myon@debian.org>  Thu, 02 Dec 2021 12:05:02 +0100
+
 postgresql-13 (13.5-2) unstable; urgency=medium
 
   * Enable outline-atomics on arm64 (affects Ubuntu focal only).
