@@ -23,7 +23,7 @@ mkdir testtablespace results
 if ! pg_virtualenv -v $MAJOR \
   /usr/lib/postgresql/$MAJOR/lib/pgxs/src/test/regress/pg_regress \
     --schedule=parallel_schedule \
-    --temp-config=$top_srcdir/debian/tests/postgresql.conf
+    --temp-config=/usr/share/postgresql-common/server/test-with-jit.conf
   then
     cat regression.diffs
     exit 1
