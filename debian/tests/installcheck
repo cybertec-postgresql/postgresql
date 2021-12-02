@@ -34,7 +34,7 @@ if ! pg_virtualenv -v $MAJOR \
     --schedule=parallel_schedule \
     --make-testtablespace-dir \
     --outputdir=\$OUTPUT \
-    --temp-config=$top_srcdir/debian/tests/postgresql.conf
+    --temp-config=/usr/share/postgresql-common/server/test-with-jit.conf
   then
     head -100 \$OUTPUT/regression.diffs
     exit 1
