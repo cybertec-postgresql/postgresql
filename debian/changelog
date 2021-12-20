@@ -1,3 +1,14 @@
+postgresql-14 (14.1-4) unstable; urgency=medium
+
+  [ Christoph Berg ]
+  * Disable LLVM JIT on s390x for now. (See #1002029)
+
+  [ Christian Ehrhardt ]
+  * postgresql-common/server/postgresql.mk: avoid gcc 11 ICE on armhf and
+    armel.
+
+ -- Christoph Berg <myon@debian.org>  Mon, 20 Dec 2021 18:21:21 +0100
+
 postgresql-14 (14.1-3) unstable; urgency=medium
 
   * Use system default clang/llvm version. (Closes: #1000915)
