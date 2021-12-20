@@ -11,7 +11,7 @@ Rules-Requires-Root: no
 Build-Depends:
  autoconf,
  bison,
- clang [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
+ clang [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !s390x !sh4 !sparc64 !x32],
  debhelper-compat (= 13),
  dh-exec (>= 0.13~),
  docbook-xml,
@@ -36,7 +36,7 @@ Build-Depends:
  libxml2-utils,
  libxslt1-dev,
  libzstd-dev (>= 1.4.0) <!pkg.postgresql.nozstd>,
- llvm-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
+ llvm-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !s390x !sh4 !sparc64 !x32],
  lz4 | liblz4-tool,
  mawk,
  perl (>= 5.8),
@@ -167,7 +167,7 @@ Depends:
  ${shlibs:Depends},
 Provides:
  postgresql-contrib-15,
- postgresql-15-jit-llvm (= ${llvm:Version}) [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
+ postgresql-15-jit-llvm (= ${llvm:Version}) [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !s390x !sh4 !sparc64 !x32],
 Recommends:
  sysstat,
 Description: The World's Most Advanced Open Source Relational Database
@@ -213,9 +213,9 @@ Package: postgresql-server-dev-15
 Architecture: any
 Section: libdevel
 Depends:
- clang-${llvm:Version} [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
+ clang-${llvm:Version} [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !s390x !sh4 !sparc64 !x32],
  libpq-dev (>= 15~~),
- llvm-${llvm:Version}-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
+ llvm-${llvm:Version}-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !s390x !sh4 !sparc64 !x32],
  postgresql-client-15,
  postgresql-common (>= 142~),
  ${misc:Depends},
