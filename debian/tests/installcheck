@@ -12,7 +12,7 @@ cd src/test/regress
 make -f $top_srcdir/debian/tests/Makefile.regress PG_CONFIG=/usr/lib/postgresql/$MAJOR/bin/pg_config with_llvm=no
 
 # tell regression files that regress.so is not installed
-sed -i -e "s:@libdir@/regress:$PWD/regress:" input/*.source output/*.source
+sed -i -e "s;regresslib :libdir;regresslib '$PWD';" sql/create_function_* expected/create_function_*
 
 # when root, execute testsuite as user postgres since it insists on wiping the tablespace directory
 if [ $(id -u) = 0 ]; then
