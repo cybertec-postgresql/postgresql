@@ -1,9 +1,9 @@
-postgresql-14 (14.1-5) UNRELEASED; urgency=medium
+postgresql-14 (14.1-5) unstable; urgency=medium
 
   * Provide postgresql-14-jit-llvm (= ${llvm:Version}) so extensions can
     depend on a matching llvm version.
 
- -- Christoph Berg <myon@debian.org>  Mon, 03 Jan 2022 12:43:24 +0100
+ -- Christoph Berg <myon@debian.org>  Mon, 03 Jan 2022 16:08:18 +0100
 
 postgresql-14 (14.1-4) unstable; urgency=medium
 
