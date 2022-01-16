@@ -32,7 +32,6 @@ trap "rm -rf \$OUTPUT" EXIT
 if ! pg_virtualenv -v $MAJOR \
   /usr/lib/postgresql/$MAJOR/lib/pgxs/src/test/regress/pg_regress \
     --schedule=parallel_schedule \
-    --make-testtablespace-dir \
     --outputdir=\$OUTPUT \
     --temp-config=/usr/share/postgresql-common/server/test-with-jit.conf
   then
