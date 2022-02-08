@@ -10,7 +10,7 @@ Standards-Version: 4.5.0
 Rules-Requires-Root: no
 Build-Depends:
  bison,
- clang [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32]
+ clang [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
  debhelper-compat (= 13),
  dh-exec (>= 0.13~),
  docbook-xml,
@@ -31,7 +31,7 @@ Build-Depends:
  libxml2-dev,
  libxml2-utils,
  libxslt1-dev,
- llvm-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32]
+ llvm-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
  perl (>= 5.8),
  pkg-config,
  postgresql-common (>= 233~),
@@ -187,9 +187,9 @@ Package: postgresql-server-dev-12
 Architecture: any
 Section: libdevel
 Depends:
- clang-${llvm:Version} [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32]
+ clang-${llvm:Version} [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
  libpq-dev (>= 12~~),
- llvm-${llvm:Version}-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32]
+ llvm-${llvm:Version}-dev [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
  postgresql-client-12 (>= 12.1-2~),
  postgresql-common (>= 142~),
  ${misc:Depends},
