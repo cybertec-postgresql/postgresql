@@ -3,6 +3,7 @@ postgresql-12 (12.10-1) unstable; urgency=medium
   * New upstream release.
   * Use system default clang/llvm version.
   * Use centralized debian/rules logic in postgresql-common.
+  * B-D on libkrb5-dev instead of krb5-multidev.
 
  -- Christoph Berg <myon@debian.org>  Thu, 02 Dec 2021 12:14:43 +0100
 
