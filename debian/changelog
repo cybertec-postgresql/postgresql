@@ -1,5 +1,6 @@
-postgresql-12 (12.9-3) UNRELEASED; urgency=medium
+postgresql-12 (12.10-1) unstable; urgency=medium
 
+  * New upstream release.
   * Use system default clang/llvm version.
   * Use centralized debian/rules logic in postgresql-common.
 
