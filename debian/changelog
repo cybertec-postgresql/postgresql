@@ -1,5 +1,6 @@
-postgresql-13 (13.5-3) UNRELEASED; urgency=medium
+postgresql-13 (13.6-1) unstable; urgency=medium
 
+  * New upstream release.
   * Use system default clang/llvm version.
   * Use centralized debian/rules logic in postgresql-common.
 
