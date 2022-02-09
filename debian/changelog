@@ -1,3 +1,9 @@
+postgresql-14 (14.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Christoph Berg <myon@debian.org>  Wed, 09 Feb 2022 10:39:43 +0100
+
 postgresql-14 (14.1-5) unstable; urgency=medium
 
   * Provide postgresql-14-jit-llvm (= ${llvm:Version}) so extensions can
