@@ -143,7 +143,9 @@ Depends:
  tzdata,
  ${misc:Depends},
  ${shlibs:Depends}
-Provides: postgresql-contrib-12
+Provides:
+ postgresql-contrib-12,
+ postgresql-12-jit-llvm (= ${llvm:Version}) [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !sh4 !sparc64 !x32],
 Recommends: sysstat
 Description: The World's Most Advanced Open Source Relational Database
  PostgreSQL, also known as Postgres, is a free and open-source relational
