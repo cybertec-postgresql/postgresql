@@ -4,9 +4,6 @@ Forwarded: No, Debian specific packaging with postgresql-common
 
  * Install lib files into /usr/lib/postgresql/<version>/lib/
  * Install server related header files into /usr/include/postgresql/<version>/server/
- * Disable PostgreSQL's automagic path mangling and fix libdir for pg_config,
-   so that pg_config in /usr/bin and /usr/lib/postgresql/<version>/bin behave
-   identically.
 
 Bug-Debian: http://bugs.debian.org/462037
 
@@ -30,40 +27,3 @@ Bug-Debian: http://bugs.debian.org/462037
  includedir_internal = $(pkgincludedir)/internal
  pgxsdir = $(pkglibdir)/pgxs
  bitcodedir = $(pkglibdir)/bitcode
---- a/src/bin/pg_config/pg_config.c
-+++ b/src/bin/pg_config/pg_config.c
-@@ -27,6 +27,8 @@
- #include "common/config_info.h"
- #include "port.h"
- 
-+#include "../port/pg_config_paths.h"
-+
- static const char *progname;
- 
- /*
-@@ -149,11 +151,7 @@ main(int argc, char **argv)
- 		}
- 	}
- 
--	if (find_my_exec(argv[0], my_exec_path) < 0)
--	{
--		fprintf(stderr, _("%s: could not find own program executable\n"), progname);
--		exit(1);
--	}
-+	snprintf(my_exec_path, sizeof(my_exec_path), "%s/%s", PGBINDIR, progname);
- 
- 	configdata = get_configdata(my_exec_path, &configdata_len);
- 	/* no arguments -> print everything */
---- a/src/test/perl/PostgreSQL/Test/Utils.pm
-+++ b/src/test/perl/PostgreSQL/Test/Utils.pm
-@@ -682,6 +682,10 @@ sub check_pg_config
- 	  or die "could not execute pg_config";
- 	chomp($stdout);
- 	$stdout =~ s/\r$//;
-+	# Debian's pg_config is not relocatable, manually check for correct location
-+	if (-d "../../../build/tmp_install/usr/include/postgresql") {
-+		$stdout = "../../../build/tmp_install/usr/include/postgresql";
-+	}
- 
- 	open my $pg_config_h, '<', "$stdout/pg_config.h" or die "$!";
- 	my $match = (grep { /^$regexp/ } <$pg_config_h>);
