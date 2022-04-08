@@ -1,6 +1,6 @@
 --- a/src/backend/utils/misc/guc.c
 +++ b/src/backend/utils/misc/guc.c
-@@ -599,6 +599,7 @@ char	   *ConfigFileName;
+@@ -655,6 +655,7 @@ char	   *ConfigFileName;
  char	   *HbaFileName;
  char	   *IdentFileName;
  char	   *external_pid_file;
@@ -8,7 +8,7 @@
  
  char	   *pgstat_temp_directory;
  
-@@ -4384,6 +4385,17 @@ static struct config_string ConfigureNam
+@@ -4529,6 +4530,17 @@ static struct config_string ConfigureNam
  	},
  
  	{
@@ -95,7 +95,7 @@
  	if (from_version)
  		snprintf(result, MAXPGPATH, "%s/%s--%s--%s.sql",
  				 scriptdir, control->name, from_version, version);
-@@ -1122,6 +1161,59 @@ get_ext_ver_list(ExtensionControlFile *c
+@@ -1133,6 +1172,59 @@ get_ext_ver_list(ExtensionControlFile *c
  	DIR		   *dir;
  	struct dirent *de;
  
@@ -155,7 +155,7 @@
  	location = get_extension_script_directory(control);
  	dir = AllocateDir(location);
  	while ((de = ReadDir(dir, location)) != NULL)
-@@ -3470,3 +3562,32 @@ read_whole_file(const char *filename, in
+@@ -3393,3 +3485,32 @@ read_whole_file(const char *filename, in
  	buf[*length] = '\0';
  	return buf;
  }
@@ -190,11 +190,11 @@
 +}
 --- a/src/include/utils/guc.h
 +++ b/src/include/utils/guc.h
-@@ -270,6 +270,7 @@ extern PGDLLIMPORT char *ConfigFileName;
- extern char *HbaFileName;
- extern char *IdentFileName;
- extern char *external_pid_file;
-+extern char *extension_destdir;
+@@ -276,6 +276,7 @@ extern PGDLLIMPORT char *ConfigFileName;
+ extern PGDLLIMPORT char *HbaFileName;
+ extern PGDLLIMPORT char *IdentFileName;
+ extern PGDLLIMPORT char *external_pid_file;
++extern PGDLLIMPORT char *extension_destdir;
  
  extern PGDLLIMPORT char *application_name;
  
@@ -208,7 +208,7 @@
  #include "utils/hsearch.h"
  
  
-@@ -487,7 +488,7 @@ expand_dynamic_library_name(const char *
+@@ -497,7 +498,7 @@ expand_dynamic_library_name(const char *
  {
  	bool		have_slash;
  	char	   *new;
@@ -217,7 +217,7 @@
  
  	AssertArg(name);
  
-@@ -502,6 +503,19 @@ expand_dynamic_library_name(const char *
+@@ -512,6 +513,19 @@ expand_dynamic_library_name(const char *
  	else
  	{
  		full = substitute_libpath_macro(name);
@@ -237,7 +237,7 @@
  		if (file_exists(full))
  			return full;
  		pfree(full);
-@@ -520,6 +534,19 @@ expand_dynamic_library_name(const char *
+@@ -530,6 +544,19 @@ expand_dynamic_library_name(const char *
  	{
  		full = substitute_libpath_macro(new);
  		pfree(new);
@@ -259,7 +259,7 @@
  		pfree(full);
 --- a/src/backend/utils/misc/postgresql.conf.sample
 +++ b/src/backend/utils/misc/postgresql.conf.sample
-@@ -725,6 +725,8 @@
+@@ -744,6 +744,8 @@
  # - Other Defaults -
  
  #dynamic_library_path = '$libdir'
