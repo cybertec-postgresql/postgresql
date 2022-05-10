@@ -1,3 +1,36 @@
+postgresql-14 (14.3-1) unstable; urgency=medium
+
+  * New upstream release.
+
+    * Confine additional operations within security restricted operation
+      sandboxes (Sergey Shinderuk, Noah Misch)
+
+      Autovacuum, CLUSTER, CREATE INDEX, REINDEX, REFRESH MATERIALIZED VIEW,
+      and pg_amcheck activated the security restricted operation protection
+      mechanism too late, or even not at all in some code paths. A user having
+      permission to create non-temporary objects within a database could
+      define an object that would execute arbitrary SQL code with superuser
+      permissions the next time that autovacuum processed the object, or that
+      some superuser ran one of the affected commands against it.
+
+      The PostgreSQL Project thanks Alexander Lakhin for reporting this
+      problem. (CVE-2022-1552)
+
+    * Fix default signature length for gist_ltree_ops indexes
+      (Tomas Vondra, Alexander Korotkov)
+
+      The default signature length (hash size) for GiST indexes on ltree
+      columns was accidentally changed while upgrading that operator class to
+      support operator class parameters. If any operations had been done on
+      such an index without first upgrading the ltree extension to version
+      1.2, they were done assuming that the signature length was 28 bytes
+      rather than the intended 8.  This means it is very likely that such
+      indexes are now corrupt.  For safety we recommend re-indexing all GiST
+      indexes on ltree columns after installing this update.  (Note that GiST
+      indexes on ltree[] columns, that is arrays of ltree, are not affected.)
+
+ -- Christoph Berg <myon@debian.org>  Tue, 10 May 2022 10:34:28 +0200
+
 postgresql-14 (14.2-1) unstable; urgency=medium
 
   * New upstream release.
