@@ -16,6 +16,7 @@ postgresql-12 (12.11-1) unstable; urgency=medium
       The PostgreSQL Project thanks Alexander Lakhin for reporting this
       problem. (CVE-2022-1552)
 
+  * Cherry-pick upstream f0d2c65f1 to fix test regression with OpenSSL 3.
   * Add Provides: postgresql-12-jit-llvm (= llvm version).
 
  -- Christoph Berg <myon@debian.org>  Tue, 10 May 2022 11:02:15 +0200
