@@ -1,4 +1,4 @@
-postgresql-15 (15~beta1-1) unstable; urgency=medium
+postgresql-15 (15~beta1-1) experimental; urgency=medium
 
   * New major upstream version 15; packaging based on postgresql-14.
   * configure.ac: Remove check for autoconf 2.69.
