@@ -1,6 +1,6 @@
-postgresql-15 (15~~devel-1) UNRELEASED; urgency=medium
+postgresql-15 (15~beta1-1) unstable; urgency=medium
 
   * New major upstream version 15; packaging based on postgresql-14.
   * configure.ac: Remove check for autoconf 2.69.
 
- -- Christoph Berg <myon@debian.org>  Tue, 29 Jun 2021 22:36:37 +0200
+ -- Christoph Berg <myon@debian.org>  Wed, 18 May 2022 16:26:02 +0200
