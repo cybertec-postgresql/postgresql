@@ -1,5 +1,6 @@
 postgresql-15 (15~beta1-2) UNRELEASED; urgency=medium
 
+  * Depend on postgresql-common >= 241.
   * Disable LLVM JIT on s390x for now. (See #1002029)
 
  -- Christoph Berg <myon@debian.org>  Mon, 20 Dec 2021 18:21:21 +0100
