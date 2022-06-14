@@ -1,0 +1,7 @@
+postgresql-14 (14.4-1) unstable; urgency=medium
+
+  If [RE]INDEX with the CONCURRENTLY option was used on any PostgreSQL 14
+  database, it is recommended to rebuild the indexes. See the changelog for
+  more details.
+
+ -- Christoph Berg <myon@debian.org>  Tue, 14 Jun 2022 09:49:41 +0200

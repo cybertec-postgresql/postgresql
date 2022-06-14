@@ -1,3 +1,19 @@
+postgresql-14 (14.4-1) unstable; urgency=medium
+
+  * New upstream release.
+
+    + Prevent possible corruption of indexes created or rebuilt with the
+      CONCURRENTLY option (Álvaro Herrera)
+
+      An optimization added in v14 caused CREATE INDEX ... CONCURRENTLY and
+      REINDEX ... CONCURRENTLY to sometimes miss indexing rows that were
+      updated during the index build.  Revert that optimization. It is
+      recommended that any indexes made with the CONCURRENTLY option be
+      rebuilt after installing this update.  (Alternatively, rebuild them
+      without CONCURRENTLY.)
+
+ -- Christoph Berg <myon@debian.org>  Tue, 14 Jun 2022 09:49:41 +0200
+
 postgresql-14 (14.3-1) unstable; urgency=medium
 
   * New upstream release.
