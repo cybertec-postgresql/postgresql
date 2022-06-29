@@ -8,58 +8,14 @@ Files: *
 Copyright: Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
            Portions Copyright (c) 1994, The Regents of the University of California
 License: PostgreSQL
- Permission to use, copy, modify, and distribute this software and its
- documentation for any purpose, without fee, and without a written agreement
- is hereby granted, provided that the above copyright notice and this
- paragraph and the following two paragraphs appear in all copies.
- .
- IN NO EVENT SHALL THE UNIVERSITY OF CALIFORNIA BE LIABLE TO ANY PARTY FOR
- DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING
- LOST PROFITS, ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS
- DOCUMENTATION, EVEN IF THE UNIVERSITY OF CALIFORNIA HAS BEEN ADVISED OF THE
- POSSIBILITY OF SUCH DAMAGE.
- .
- THE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY WARRANTIES,
- INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
- AND FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- ON AN "AS IS" BASIS, AND THE UNIVERSITY OF CALIFORNIA HAS NO OBLIGATIONS TO
- PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 
 Files: src/backend/regex/*
-Copyright: Copyright (c) 1998, 1999 Henry Spencer.  All rights reserved.
-License: Custom-regex
- Development of this software was funded, in part, by Cray Research Inc.,
- UUNET Communications Services Inc., Sun Microsystems Inc., and Scriptics
- Corporation, none of whom are responsible for the results.  The author
- thanks all of them.
- .
- Redistribution and use in source and binary forms -- with or without
- modification -- are permitted for any purpose, provided that
- redistributions in source form retain this entire copyright notice and
- indicate the origin and nature of any modifications.
- .
- I'd appreciate being given credit for this package in the documentation
- of software which uses it, but that is not a requirement.
- .
- THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
- INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
- AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL
- HENRY SPENCER BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
- OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
- OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Files: src/backend/regex/regc_locale.c
-Copyright: Copyright (c) 1998 by Scriptics Corporation.
-License: Tcl
-
-Files: src/backend/regex/re_syntax.n
-Copyright: Copyright (c) 1998 Sun Microsystems, Inc.
-           Copyright (c) 1999 Scriptics Corporation
-License: Tcl
+Copyright:
+ Copyright (c) 2013-2022, PostgreSQL Global Development Group
+ Copyright (c) 1998, 1999 Henry Spencer.  All rights reserved.
+ Copyright (c) 1998 Sun Microsystems, Inc.
+ Copyright (c) 1998, 1999 by Scriptics Corporation.
+License: PostgreSQL and Custom-regex and Tcl
 
 Files: src/bin/pg_dump/*
 Copyright: Portions Copyright (c) 2000, Philip Warner
@@ -200,6 +156,24 @@ License: BSD-2-clause
 
 ### licenses ###
 
+License: PostgreSQL
+ Permission to use, copy, modify, and distribute this software and its
+ documentation for any purpose, without fee, and without a written agreement
+ is hereby granted, provided that the above copyright notice and this
+ paragraph and the following two paragraphs appear in all copies.
+ .
+ IN NO EVENT SHALL THE UNIVERSITY OF CALIFORNIA BE LIABLE TO ANY PARTY FOR
+ DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING
+ LOST PROFITS, ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS
+ DOCUMENTATION, EVEN IF THE UNIVERSITY OF CALIFORNIA HAS BEEN ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+ .
+ THE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY WARRANTIES,
+ INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+ AND FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
+ ON AN "AS IS" BASIS, AND THE UNIVERSITY OF CALIFORNIA HAS NO OBLIGATIONS TO
+ PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+
 License: BSD-3-Clause
  All rights reserved.
  .
@@ -227,6 +201,31 @@ License: BSD-3-Clause
  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: Custom-regex
+ Development of this software was funded, in part, by Cray Research Inc.,
+ UUNET Communications Services Inc., Sun Microsystems Inc., and Scriptics
+ Corporation, none of whom are responsible for the results.  The author
+ thanks all of them.
+ .
+ Redistribution and use in source and binary forms -- with or without
+ modification -- are permitted for any purpose, provided that
+ redistributions in source form retain this entire copyright notice and
+ indicate the origin and nature of any modifications.
+ .
+ I'd appreciate being given credit for this package in the documentation
+ of software which uses it, but that is not a requirement.
+ .
+ THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+ AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL
+ HENRY SPENCER BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 License: Tcl
  This software is copyrighted by the Regents of the University of
