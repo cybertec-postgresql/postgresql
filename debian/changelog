@@ -1,6 +1,7 @@
 postgresql-15 (15~beta2-2) UNRELEASED; urgency=medium
 
   * debian/copyright: Update src/backend/regex section.
+  * Update lintian overrides.
 
  -- Christoph Berg <myon@debian.org>  Wed, 29 Jun 2022 13:22:02 +0200
 
