@@ -1,6 +1,1 @@
-# These are PostgreSQL server plugins; some need no external libraries
-hardening-no-fortify-functions usr/lib/postgresql/*/lib/*
-# These are PostgreSQL server plugins; some need no external libraries
-library-not-linked-against-libc usr/lib/postgresql/*/lib/*
-# These are PostgreSQL server plugins; some need no external libraries
-shared-lib-without-dependency-information usr/lib/postgresql/*/lib/*
+postgresql-12.lintian-overrides
