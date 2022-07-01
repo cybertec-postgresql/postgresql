@@ -1,7 +1,1 @@
-# We ship binaries and libs in subdirs of /usr/lib/postgresql
-repeated-path-segment lib *
-
-# These are PostgreSQL server plugins; some need no external libraries
-hardening-no-fortify-functions usr/lib/postgresql/*/lib/*
-library-not-linked-against-libc usr/lib/postgresql/*/lib/*
-shared-library-lacks-prerequisites usr/lib/postgresql/*/lib/*
+postgresql-13.lintian-overrides
