@@ -1,12 +1,15 @@
 Tests: run-testsuite
 Depends:
  build-essential,
+ debhelper,
+ fakeroot,
  hunspell-en-us,
- locales,
+ iproute2,
+ locales-all,
  logrotate,
- net-tools,
  netcat-openbsd,
  perl,
+ procps,
  @,
 Restrictions: needs-root
 
