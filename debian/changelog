@@ -1,3 +1,9 @@
+postgresql-15 (15~beta3-2) UNRELEASED; urgency=medium
+
+  * Add Italian debconf translation by Ceppo, thanks! (Closes: #1019162)
+
+ -- Christoph Berg <myon@debian.org>  Mon, 05 Sep 2022 20:24:43 +0200
+
 postgresql-15 (15~beta3-1) experimental; urgency=medium
 
   * New upstream beta version.
