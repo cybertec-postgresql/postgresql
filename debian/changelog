@@ -1,3 +1,9 @@
+postgresql-15 (15~rc1-1) experimental; urgency=medium
+
+  * New upstream RC version.
+
+ -- Christoph Berg <myon@debian.org>  Tue, 27 Sep 2022 11:31:54 +0200
+
 postgresql-15 (15~beta4-1) experimental; urgency=medium
 
   * New upstream beta version.
