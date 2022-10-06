@@ -1,8 +1,12 @@
-postgresql-15 (15~rc2-1) experimental; urgency=medium
+postgresql-15 (15~rc2-1) unstable; urgency=medium
 
+  [ Christoph Berg ]
   * New upstream RC version.
 
- -- Christoph Berg <myon@debian.org>  Mon, 03 Oct 2022 23:25:12 +0200
+  [ Petter Jacobsen ]
+  * Add . to extension_destdir description.
+
+ -- Christoph Berg <myon@debian.org>  Thu, 06 Oct 2022 14:06:05 +0200
 
 postgresql-15 (15~rc1-1) experimental; urgency=medium
 
