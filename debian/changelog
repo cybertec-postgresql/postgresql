@@ -1,3 +1,9 @@
+postgresql-15 (15.0-1) unstable; urgency=medium
+
+  * New upstream version.
+
+ -- Christoph Berg <myon@debian.org>  Fri, 14 Oct 2022 10:36:49 +0200
+
 postgresql-15 (15~rc2-1) unstable; urgency=medium
 
   [ Christoph Berg ]
