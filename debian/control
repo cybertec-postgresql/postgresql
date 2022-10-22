@@ -170,6 +170,8 @@ Provides:
  postgresql-15-jit-llvm (= ${llvm:Version}) [!alpha !hppa !hurd-i386 !ia64 !kfreebsd-amd64 !kfreebsd-i386 !m68k !powerpc !riscv64 !s390x !sh4 !sparc64 !x32],
 Recommends:
  sysstat,
+Breaks:
+ dbconfig-common (<< 2.0.22~),
 Description: The World's Most Advanced Open Source Relational Database
  PostgreSQL, also known as Postgres, is a free and open-source relational
  database management system (RDBMS) emphasizing extensibility and SQL
