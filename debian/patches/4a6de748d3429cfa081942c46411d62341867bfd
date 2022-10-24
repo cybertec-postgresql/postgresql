@@ -1,0 +1,23 @@
+commit 4a6de748d3429cfa081942c46411d62341867bfd
+Author: Peter Eisentraut <peter@eisentraut.org>
+Date:   Sat Oct 22 09:41:38 2022 +0200
+
+    psql: Fix exit status when query is canceled
+    
+    Because of a small thinko in 7844c9918a43b494adde3575891d217a37062378,
+    psql -c would exit successfully when a query is canceled.  Fix this so
+    that it exits with a nonzero status, just like for all other errors.
+
+diff --git a/src/bin/psql/common.c b/src/bin/psql/common.c
+index 53e710e92f..f5909f9547 100644
+--- a/src/bin/psql/common.c
++++ b/src/bin/psql/common.c
+@@ -1114,7 +1114,7 @@ SendQuery(const char *query)
+ 			 pset.crosstab_flag || !is_select_command(query))
+ 	{
+ 		/* Default fetch-it-all-and-print mode */
+-		OK = (ExecQueryAndProcessResults(query, &elapsed_msec, &svpt_gone, false, NULL, NULL) >= 0);
++		OK = (ExecQueryAndProcessResults(query, &elapsed_msec, &svpt_gone, false, NULL, NULL) > 0);
+ 	}
+ 	else
+ 	{
