@@ -9,4 +9,3 @@ libpgport-pkglibdir
 extension_destdir
 autoconf2.69
 focal-arm64-outline-atomics
-4a6de748d3429cfa081942c46411d62341867bfd
