@@ -1,3 +1,9 @@
+postgresql-13 (13.9-1) unstable; urgency=medium
+
+  * New upstream version.
+
+ -- Christoph Berg <myon@debian.org>  Tue, 08 Nov 2022 11:15:42 +0100
+
 postgresql-13 (13.8-1) unstable; urgency=medium
 
   * New upstream version.
