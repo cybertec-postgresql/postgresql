@@ -9,11 +9,14 @@ libpq.so.5 libpq5 #MINVER#
  PQcmdTuples@Base 0
  PQconndefaults@Base 0
  PQconnectPoll@Base 0
+ PQconnectSSLHandshake@Base 12.13-1
  PQconnectStart@Base 0
  PQconnectStartParams@Base 9.0~
  PQconnectdb@Base 0
  PQconnectdbParams@Base 9.0~
+ PQconnectedToSocket@Base 12.13-1
  PQconnectionNeedsPassword@Base 8.3~rc1-1~
+ PQconnectionSSLMode@Base 12.13-1
  PQconnectionUsedPassword@Base 8.3~
  PQconninfo@Base 9.3~
  PQconninfoFree@Base 0
@@ -83,6 +86,7 @@ libpq.so.5 libpq5 #MINVER#
  PQoidStatus@Base 0
  PQoidValue@Base 0
  PQoptions@Base 0
+ PQpacketSend@Base 12.13-1
  PQparameterStatus@Base 0
  PQparamtype@Base 0
  PQpass@Base 0
