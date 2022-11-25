@@ -1,11 +1,9 @@
 Source: postgresql-15
 Section: database
 Priority: optional
-Maintainer: Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>
+Maintainer: Ivan Kovmir <ivan.kovmir@cybertec.at>
 Uploaders:
- Martin Pitt <mpitt@debian.org>,
- Peter Eisentraut <petere@debian.org>,
- Christoph Berg <myon@debian.org>,
+ Patrick Thomschitz <patrick.thomschitz@cybertec.at>,
 Standards-Version: 4.5.0
 Rules-Requires-Root: no
 Build-Depends:
