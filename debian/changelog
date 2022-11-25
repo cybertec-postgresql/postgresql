@@ -1,4 +1,4 @@
-postgresql-14 (14.6-1.cybertec) unstable; urgency=medium
+postgresql-14 (14.6-1.cybertec.1) unstable; urgency=medium
 
   * Add TDE 1.1.2 patch.
 
