@@ -1,3 +1,9 @@
+postgresql-14 (14.6-1.cybertec) unstable; urgency=medium
+
+  * Add TDE 1.1.2 patch.
+
+ -- Ivan Kovmir <ivan.kovmir@cybertec.at>  Thu, 24 Nov 2022 23:23:33 +0100
+
 postgresql-14 (14.6-1) unstable; urgency=medium
 
   * New upstream version.
