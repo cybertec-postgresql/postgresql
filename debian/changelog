@@ -1,3 +1,9 @@
+postgresql-12 (12.13-1.cybertec.1) unstable; urgency=medium
+
+  * Add TDE 1.0.3 patch.
+
+ -- Ivan Kovmir <ivan.kovmir@cybertec.at>  Fri, 25 Nov 2022 11:45:19 +0100
+
 postgresql-12 (12.13-1) unstable; urgency=medium
 
   * New upstream version.
